@@ -86,7 +86,7 @@ body {
   background-color: #dbdbdb;
 }
 
-.skillstree .intro > span {
+.skillstree .introduction > span {
   background-image: url("../imgs/book.svg");
 }
 .skillstree .alphabet > span {
@@ -95,7 +95,7 @@ body {
 .skillstree .basic > span {
   background-image: url("../imgs/pencil.svg");
 }
-.skillstree .speech > span {
+.skillstree .phrases > span {
   background-image: url("../imgs/speech.svg");
   background-size: 62%;
 }
@@ -107,16 +107,16 @@ body {
   background-image: url("../imgs/animal.svg");
   background-size: 60%;
 }
-.skillstree .stars > span {
+.skillstree .plurals > span {
   background-image: url("../imgs/stars.svg");
 }
-.skillstree .box > span {
+.skillstree .possession > span {
   background-image: url("../imgs/box.svg");
 }
 .skillstree .clothing > span {
   background-image: url("../imgs/clothing.svg");
 }
-.skillstree .question > span {
+.skillstree .questions > span {
   background-image: url("../imgs/question.svg");
 }
 .skillstree .run > span {
@@ -128,7 +128,7 @@ body {
   background-image: url("../imgs/art.svg");
   background-size: 60%;
 }
-.skillstree .magnet > span {
+.skillstree .conjunctions > span {
   background-image: url("../imgs/magnet.svg");
   background-size: 60%;
 }
@@ -139,7 +139,7 @@ body {
   background-image: url("../imgs/prepositions.svg");
   background-size: 60%;
 }
-.skillstree .clock > span {
+.skillstree .time > span {
   background-color: #d7daa6;
   background-image: url("../imgs/clock.svg");
 }
@@ -150,7 +150,7 @@ body {
 .skillstree .sizes > span {
   background-image: url("../imgs/mountain.svg");
 }
-.skillstree .crown > span {
+.skillstree .occupation > span {
   background-image: url("../imgs/crown.svg");
   background-size: 70%;
 }
@@ -161,14 +161,14 @@ body {
 .skillstree .cog > span {
   background-image: url("../imgs/cog.svg");
 }
-.skillstree .sound > span {
+.skillstree .adverbs > span {
   background-image: url("../imgs/sound-vibe.svg");
 }
-.skillstree .glasses > span {
+.skillstree .objects > span {
   background-image: url("../imgs/glasses.svg");
   background-size: 70%;
 }
-.skillstree .diamond > span {
+.skillstree .tobe > span {
   background-image: url("../imgs/diamond.svg");
   background-size: 70%;
 }
@@ -177,18 +177,18 @@ body {
   background-image: url("../imgs/location.svg");
   background-size: 63%;
 }
-.skillstree .group > span {
+.skillstree .people > span {
   background-image: url("../imgs/group.svg");
   background-size: 55%;
 }
-.skillstree .circle > span {
+.skillstree .numbers > span {
   background-image: url("../imgs/circle.svg");
   background-size: 70%;
 }
-.skillstree .flag > span {
+.skillstree .countries > span {
   background-image: url("../imgs/flag.svg");
 }
-.skillstree .compass > span {
+.skillstree .direction > span {
   background-image: url("../imgs/compass.svg");
   background-size: 65%;
 }
@@ -196,7 +196,7 @@ body {
   background-image: url("../imgs/education.svg");
   background-size: 70%;
 }
-.skillstree .heart > span {
+.skillstree .feelings > span {
   background-image: url("../imgs/heart.svg");
   background-size: 58%;
 }
@@ -220,7 +220,7 @@ body {
 .skillstree .communication > span {
   background-image: url("../imgs/phone.svg");
 }
-.skillstree .ghost > span {
+.skillstree .spiritual > span {
   background-image: url("../imgs/ghost.svg");
 }
 .skillstree .politics > span {
