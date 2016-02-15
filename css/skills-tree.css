@@ -239,27 +239,3 @@ body {
   background-size: 100%;
   opacity: .7;
 }
-
-.skillstree .fa {
-  color: #fff;
-  font-size: 40px;
-}
-/* .skill, .add-skill {
-  padding: 2em;
-  transition: all 150ms ease;
-}
-.skillstree .fa {
-  color: #fff;
-  font-size: 40px;
-} */
-
-/* Misc */
-.pointer {
-  cursor: pointer;
-}
-.center {
-  text-align: center;
-}
-.hide {
-  display: none;
-}

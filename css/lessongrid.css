@@ -1,0 +1,57 @@
+/* Lesson Grid */
+.lessons-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  padding: 3em 0;
+  background-color: #b5d7fb;
+  text-align: left;
+  overflow: auto;
+}
+.lessons-container > .lesson-flyer {
+  display: inline-block;
+  width: 30%;
+  padding: 1em 2.76em;
+  margin: 1em;
+  background-color: #fff;
+}
+.lessons-container > .lesson-flyer  h2 {
+  font-weight: bold;
+  color: #525559;
+}
+.gotolesson {
+  display: block;
+  width: 100%;
+}
+@media all and (max-width:1046px) {
+  .lessons-container > .lesson-flyer {
+    width: 44%;
+  }
+}
+@media all and (max-width:586px) {
+  .lessons-container {
+    text-align: center;
+    padding: 1em 0;
+  }
+  .lessons-container > .lesson-flyer {
+    display: block;
+    margin: 3em auto 0 auto;
+    width: 90%;
+  }
+}
+
+/* Back Button for Lesson */
+.goback, .gohome {
+  position: absolute;
+  top: 0.08em;
+  font-size: 2em;
+}
+.goback {
+  left: 0.8em;
+}
+.gohome {
+  right: 0.8em;
+}
