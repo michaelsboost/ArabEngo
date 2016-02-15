@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="512"
+   height="512"
+   viewBox="0 0 1706.6667 1706.6632"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="pyramid-logo.svg">
+  <metadata
+     id="metadata9">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs7" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1243"
+     inkscape:window-height="755"
+     id="namedview5"
+     showgrid="false"
+     units="px"
+     inkscape:zoom="0.83687768"
+     inkscape:cx="258.88068"
+     inkscape:cy="257.84894"
+     inkscape:window-x="37"
+     inkscape:window-y="1"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg2" />
+  <rect
+     style="opacity:1;fill:#f8f6f2;fill-opacity:1;stroke:none"
+     id="rect4137"
+     width="1706.6667"
+     height="1706.6667"
+     x="0"
+     y="-0.0018169483"
+     ry="0" />
+  <path
+     id="Selection"
+     d="m 1623.9,1115.2762 c 0,0 -277.1276,118.016 -423.6733,186.5529 L 721.88583,1511.6157 844.88777,240.59575 Z M 653.55142,1497.9489 120.54302,1224.6112 786.78484,250.27957 Z"
+     inkscape:connector-curvature="0"
+     style="fill:#c39c5d;fill-opacity:1;stroke:#d3a65f;stroke-width:13.66688251;stroke-opacity:1"
+     sodipodi:nodetypes="ccccccccc" />
+</svg>
