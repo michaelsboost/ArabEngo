@@ -75,7 +75,7 @@ var audioElement = document.createElement("audio"),
           .append("<h1>ص ب ي</h1>")
           .append("<input class='blacktxt txtcenter valsec' /><br>")
           .append("<button class='btn--default fill checkval'>Submit</button>")
-          $(".level").text("3")
+          $(".level").text("1")
           $(".valsec").focus()
 
           function checkLesson() {
