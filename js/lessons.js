@@ -75,10 +75,11 @@ var audioElement = document.createElement("audio"),
           .append("<h1>ص ب ي</h1>")
           .append("<input class='blacktxt txtcenter valsec' /><br>")
           .append("<button class='btn--default fill checkval'>Submit</button>")
-          $(".level").text("1")
+          $(".level").text("3")
           $(".valsec").focus()
 
           function checkLesson() {
+            var $val = $(".valsec").val()
             if ( $val == "" ) {
               errorSound()
             } else if ( $val == "صبي" ) {
@@ -104,16 +105,17 @@ var audioElement = document.createElement("audio"),
         function lesson2() {
           $(".lessonSec .cell").html("")
           .append("<p class='graytxt'>Type the letters below without spaces.</p>")
-          .append("<h1>ف ت ا ة</h1>")
+          .append("<h1>ب ن ت</h1>")
           .append("<input class='blacktxt txtcenter valsec' /><br>")
           .append("<button class='btn--default fill checkval'>Submit</button>")
           $(".level").text("2")
           $(".valsec").focus()
 
           function checkLesson() {
+            var $val = $(".valsec").val()
             if ( $val == "" ) {
               errorSound()
-            } else if ( $val == "فتاة" ) {
+            } else if ( $val == "بنت" ) {
               successSound()
               $(".lessonSec .cell").html("<h1>You just spelled \"Girl\".</h1>")
               setTimeout(function() {
@@ -136,20 +138,21 @@ var audioElement = document.createElement("audio"),
         function lesson3() {
           $(".lessonSec .cell").html("")
           .append("<p class='graytxt'>Type the letters below without spaces.</p>")
-          .append("<h1>ا م ر أ ة</h1>")
+          .append("<h1>ا م ر ا ه</h1>")
           .append("<input class='blacktxt txtcenter valsec' /><br>")
           .append("<button class='btn--default fill checkval'>Submit</button>")
           $(".level").text("3")
           $(".valsec").focus()
 
           function checkLesson() {
+            var $val = $(".valsec").val()
             if ( $val == "" ) {
               errorSound()
-            } else if ( $val == "امرأة" ) {
+            } else if ( $val == "امراه" ) {
               successSound()
               $(".lessonSec .cell").html("<h1>You just spelled \"Woman\".</h1>")
               setTimeout(function() {
-                lesson4()
+                lesson3()
               }, 1500)
             } else {
               errorSound()
