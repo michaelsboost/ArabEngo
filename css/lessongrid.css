@@ -48,6 +48,7 @@
   position: absolute;
   top: 0.08em;
   font-size: 2em;
+  z-index: 1;
 }
 .goback {
   left: 0.8em;

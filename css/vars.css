@@ -1,9 +1,5 @@
 /* Center DIVs Vertically and Horizontally */
 .table {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
   display: table;
   width: 100%;
   height: 100%;
@@ -42,8 +38,63 @@
   width: 100%;
   height: 100%;
 }
+.nomar {
+  margin: 0;
+}
+.notopmar {
+  margin-top: 0;
+}
+.nobtmmar {
+  margin-bottom: 0;
+}
+.nolftmar {
+  margin-left: 0;
+}
+.norgtmar {
+  margin-right: 0;
+}
+.bold {
+  font-weight: bold;
+}
+.bold-heading {
+  font-weight: bold;
+  font-family: cursive;
+  font-size: 20px;
+}
+.breakword {
+  /*word-wrap: break-word;*/
+  white-space: pre-line;
+}
+.coverbg {
+  /*background-position: top left;*/
+  background-size: cover;
+}
+.topfill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+.blacktxt {
+  color: #000;
+}
+.darkgraytxt {
+  color: #333;
+}
+.graytxt {
+  color: #686868;
+}
 
 /* Misc Var Classes */
 .whiteoverlay {
   background: rgba(194, 184, 243, 0.8);
+}
+.underline-links a {
+  text-decoration: underline;
+}
+.modintoh2 {
+  margin-bottom: 0.4em;
+}
+.fz30 {
+  font-size: 30px;
 }
