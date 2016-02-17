@@ -45,7 +45,7 @@ var audioElement = document.createElement("audio"),
               errorSound()
             } else if ( $val == "انا" ) {
               successSound()
-              $(".lessonSec .cell").html("<h1>You just spelled \"Boy\".</h1>")
+              $(".lessonSec .cell").html("<h1>You just spelled \"I, I am\".</h1>")
               setTimeout(function() {
                 lesson1()
               }, 1500)
