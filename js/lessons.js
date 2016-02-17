@@ -55,24 +55,6 @@ var audioElement = document.createElement("audio"),
               lesson2()
             } else if ( $val.toLowerCase() == "lesson3" ) {
               lesson3()
-            } else if ( $val.toLowerCase() == "lesson4" ) {
-              lesson4()
-            } else if ( $val.toLowerCase() == "lesson5" ) {
-              lesson5()
-            } else if ( $val.toLowerCase() == "lesson6" ) {
-              lesson6()
-            } else if ( $val.toLowerCase() == "lesson7" ) {
-              lesson7()
-            } else if ( $val.toLowerCase() == "lesson8" ) {
-              lesson8()
-            } else if ( $val.toLowerCase() == "lesson9" ) {
-              lesson9()
-            } else if ( $val.toLowerCase() == "lesson10" ) {
-              lesson10()
-            } else if ( $val.toLowerCase() == "lesson11" ) {
-              lesson11()
-            } else if ( $val.toLowerCase() == "lesson12" ) {
-              lesson12()
             } else {
               errorSound()
             }
@@ -105,30 +87,6 @@ var audioElement = document.createElement("audio"),
               setTimeout(function() {
                 lesson2()
               }, 1500)
-            } else if ( $val.toLowerCase() == "lesson0" ) {
-              lesson0()
-            } else if ( $val.toLowerCase() == "lesson2" ) {
-              lesson2()
-            } else if ( $val.toLowerCase() == "lesson3" ) {
-              lesson3()
-            } else if ( $val.toLowerCase() == "lesson4" ) {
-              lesson4()
-            } else if ( $val.toLowerCase() == "lesson5" ) {
-              lesson5()
-            } else if ( $val.toLowerCase() == "lesson6" ) {
-              lesson6()
-            } else if ( $val.toLowerCase() == "lesson7" ) {
-              lesson7()
-            } else if ( $val.toLowerCase() == "lesson8" ) {
-              lesson8()
-            } else if ( $val.toLowerCase() == "lesson9" ) {
-              lesson9()
-            } else if ( $val.toLowerCase() == "lesson10" ) {
-              lesson10()
-            } else if ( $val.toLowerCase() == "lesson11" ) {
-              lesson11()
-            } else if ( $val.toLowerCase() == "lesson12" ) {
-              lesson12()
             } else {
               errorSound()
             }
@@ -161,30 +119,6 @@ var audioElement = document.createElement("audio"),
               setTimeout(function() {
                 lesson3()
               }, 1500)
-            } else if ( $val.toLowerCase() == "lesson1" ) {
-              lesson1()
-            } else if ( $val.toLowerCase() == "lesson0" ) {
-              lesson0()
-            } else if ( $val.toLowerCase() == "lesson3" ) {
-              lesson3()
-            } else if ( $val.toLowerCase() == "lesson4" ) {
-              lesson4()
-            } else if ( $val.toLowerCase() == "lesson5" ) {
-              lesson5()
-            } else if ( $val.toLowerCase() == "lesson6" ) {
-              lesson6()
-            } else if ( $val.toLowerCase() == "lesson7" ) {
-              lesson7()
-            } else if ( $val.toLowerCase() == "lesson8" ) {
-              lesson8()
-            } else if ( $val.toLowerCase() == "lesson9" ) {
-              lesson9()
-            } else if ( $val.toLowerCase() == "lesson10" ) {
-              lesson10()
-            } else if ( $val.toLowerCase() == "lesson11" ) {
-              lesson11()
-            } else if ( $val.toLowerCase() == "lesson12" ) {
-              lesson12()
             } else {
               errorSound()
             }
@@ -217,30 +151,6 @@ var audioElement = document.createElement("audio"),
               setTimeout(function() {
                 lesson4()
               }, 1500)
-            } else if ( $val.toLowerCase() == "lesson1" ) {
-              lesson1()
-            } else if ( $val.toLowerCase() == "lesson2" ) {
-              lesson2()
-            } else if ( $val.toLowerCase() == "lesson0" ) {
-              lesson0()
-            } else if ( $val.toLowerCase() == "lesson4" ) {
-              lesson4()
-            } else if ( $val.toLowerCase() == "lesson5" ) {
-              lesson5()
-            } else if ( $val.toLowerCase() == "lesson6" ) {
-              lesson6()
-            } else if ( $val.toLowerCase() == "lesson7" ) {
-              lesson7()
-            } else if ( $val.toLowerCase() == "lesson8" ) {
-              lesson8()
-            } else if ( $val.toLowerCase() == "lesson9" ) {
-              lesson9()
-            } else if ( $val.toLowerCase() == "lesson10" ) {
-              lesson10()
-            } else if ( $val.toLowerCase() == "lesson11" ) {
-              lesson11()
-            } else if ( $val.toLowerCase() == "lesson12" ) {
-              lesson12()
             } else {
               errorSound()
             }
