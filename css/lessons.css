@@ -11,6 +11,12 @@ body {
   bottom: 0;
   padding: 0 2em;
 }
+.lesson [data-asound] {
+  font-size: 3em;
+}
+.lesson [data-letter] {
+  font-size: 7em;
+}
 .flashcard {
   display: inline-block;
   padding: 12%;
@@ -19,4 +25,7 @@ body {
   background-position: top center;
   background-size: 100%;
   background-repeat: no-repeat;
+}
+.transparentbtn {
+
 }

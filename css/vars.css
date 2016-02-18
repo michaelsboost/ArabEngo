@@ -3,7 +3,6 @@
   display: table;
   width: 100%;
   height: 100%;
-  color: #fff;
   text-align: center;
   overflow: hidden;
 }
@@ -25,6 +24,12 @@
 .txtcenter {
   text-align: center;
 }
+.txtleft {
+  text-align: left;
+}
+.txtright {
+  text-align: right;
+}
 .block {
   display: block;
 }
@@ -33,6 +38,12 @@
 }
 .fill {
   width: 100%;
+}
+.wauto {
+  width: auto;
+}
+.hauto {
+  height: auto;
 }
 .wfill {
   width: 100%;
