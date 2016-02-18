@@ -1,6 +1,6 @@
-// $("body").append("<a href=\"/\" class=\"gohome\">\n    <i class=\"fa fa-home\"></i>\n  </a>")
-// $("body").append("<a href=\"/\" class=\"goback\">\n    <i class=\"fa fa-chevron-left\"></i>\n  </a>")
-$("body").append("<a href=\"../\" class=\"goback\">\n    <i class=\"fa fa-chevron-left\"></i>\n  </a>")
+// $("body").append("<a href=\"../../\" class=\"gohome\">\n    <i class=\"fa fa-home\"></i>\n  </a>")
+// $("body").append("<a onclick='history.back()' class=\"goback\">\n    <i class=\"fa fa-chevron-left\"></i>\n  </a>")
+$("body").append("<a onclick='history.back()' class=\"goback\">\n    <i class=\"fa fa-chevron-left\"></i>\n  </a>")
 
 // Variables
 var audioElement = document.createElement("audio"),
@@ -267,7 +267,7 @@ function alphabetHearing() {
   $("body").append(grabLetter)
 
   $(".goback").remove()
-  $("body").append("<a href=\"/\" class=\"goback\">\n    <i class=\"fa fa-home\"></i>\n  </a>")
+  $("body").append("<a href=\"../../\" class=\"goback\">\n    <i class=\"fa fa-home\"></i>\n  </a>")
   $("body").append('<div class="grid"><div class="grid__col--12 lesson blacktxt"></div></div>')
 
   for ( i = 0; i < char.length; i++ ) {
@@ -301,7 +301,7 @@ function alphabetSentence() {
   $(".goback").remove()
 
   // Show Home Button
-  $("body").append("<a href=\"/\" class=\"goback\">\n    <i class=\"fa fa-home\"></i>\n  </a>")
+  $("body").append("<a href=\"../../\" class=\"goback\">\n    <i class=\"fa fa-home\"></i>\n  </a>")
   $("body").append("<a class=\"level\" style=\"position: absolute; top: 0.08em; right: 0.8em; font-size: 2em;\"></a>")
 
   // Lesson Course
