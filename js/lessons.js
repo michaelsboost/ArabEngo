@@ -6,124 +6,124 @@ $("body").append("<a onclick='history.back()' class=\"goback pointer\">\n    <i 
 var audioElement = document.createElement("audio"),
     audioLetter  = document.createElement("audio"),
     successSound = function() {
-      audioElement.setAttribute("src", "/sounds/effects/success.mp3")
+      audioElement.setAttribute("src", "../../sounds/effects/success.mp3")
       audioElement.play()
     },
     errorSound = function() {
-      audioElement.setAttribute("src", "/sounds/effects/error.mp3")
+      audioElement.setAttribute("src", "../../sounds/effects/error.mp3")
       audioElement.play()
     },
     letterSounds = function() {
       اSound = function() {
-        audioLetter.setAttribute("src", "/sounds/alphabet/ا.mp3")
+        audioLetter.setAttribute("src", "../../sounds/alphabet/ا.mp3")
         audioLetter.play()
       },
       بSound = function() {
-        audioLetter.setAttribute("src", "/sounds/alphabet/ب.mp3")
+        audioLetter.setAttribute("src", "../../sounds/alphabet/ب.mp3")
         audioLetter.play()
       },
       تSound = function() {
-        audioLetter.setAttribute("src", "/sounds/alphabet/ت.mp3")
+        audioLetter.setAttribute("src", "../../sounds/alphabet/ت.mp3")
         audioLetter.play()
       },
       ثSound = function() {
-        audioLetter.setAttribute("src", "/sounds/alphabet/ث.mp3")
+        audioLetter.setAttribute("src", "../../sounds/alphabet/ث.mp3")
         audioLetter.play()
       },
       جSound = function() {
-        audioLetter.setAttribute("src", "/sounds/alphabet/ج.mp3")
+        audioLetter.setAttribute("src", "../../sounds/alphabet/ج.mp3")
         audioLetter.play()
       },
       حSound = function() {
-        audioLetter.setAttribute("src", "/sounds/alphabet/ح.mp3")
+        audioLetter.setAttribute("src", "../../sounds/alphabet/ح.mp3")
         audioLetter.play()
       },
       خSound = function() {
-        audioLetter.setAttribute("src", "/sounds/alphabet/خ.mp3")
+        audioLetter.setAttribute("src", "../../sounds/alphabet/خ.mp3")
         audioLetter.play()
       },
       دSound = function() {
-        audioLetter.setAttribute("src", "/sounds/alphabet/د.mp3")
+        audioLetter.setAttribute("src", "../../sounds/alphabet/د.mp3")
         audioLetter.play()
       },
       ذSound = function() {
-        audioLetter.setAttribute("src", "/sounds/alphabet/ذ.mp3")
+        audioLetter.setAttribute("src", "../../sounds/alphabet/ذ.mp3")
         audioLetter.play()
       },
       رSound = function() {
-        audioLetter.setAttribute("src", "/sounds/alphabet/ر.mp3")
+        audioLetter.setAttribute("src", "../../sounds/alphabet/ر.mp3")
         audioLetter.play()
       },
       زSound = function() {
-        audioLetter.setAttribute("src", "/sounds/alphabet/ز.mp3")
+        audioLetter.setAttribute("src", "../../sounds/alphabet/ز.mp3")
         audioLetter.play()
       },
       سSound = function() {
-        audioLetter.setAttribute("src", "/sounds/alphabet/س.mp3")
+        audioLetter.setAttribute("src", "../../sounds/alphabet/س.mp3")
         audioLetter.play()
       },
       شSound = function() {
-        audioLetter.setAttribute("src", "/sounds/alphabet/ش.mp3")
+        audioLetter.setAttribute("src", "../../sounds/alphabet/ش.mp3")
         audioLetter.play()
       },
       صSound = function() {
-        audioLetter.setAttribute("src", "/sounds/alphabet/ص.mp3")
+        audioLetter.setAttribute("src", "../../sounds/alphabet/ص.mp3")
         audioLetter.play()
       },
       ضSound = function() {
-        audioLetter.setAttribute("src", "/sounds/alphabet/ض.mp3")
+        audioLetter.setAttribute("src", "../../sounds/alphabet/ض.mp3")
         audioLetter.play()
       },
       طSound = function() {
-        audioLetter.setAttribute("src", "/sounds/alphabet/ط.mp3")
+        audioLetter.setAttribute("src", "../../sounds/alphabet/ط.mp3")
         audioLetter.play()
       },
       ظSound = function() {
-        audioLetter.setAttribute("src", "/sounds/alphabet/ظ.mp3")
+        audioLetter.setAttribute("src", "../../sounds/alphabet/ظ.mp3")
         audioLetter.play()
       },
       عSound = function() {
-        audioLetter.setAttribute("src", "/sounds/alphabet/ع.mp3")
+        audioLetter.setAttribute("src", "../../sounds/alphabet/ع.mp3")
         audioLetter.play()
       },
       غSound = function() {
-        audioLetter.setAttribute("src", "/sounds/alphabet/غ.mp3")
+        audioLetter.setAttribute("src", "../../sounds/alphabet/غ.mp3")
         audioLetter.play()
       },
       فSound = function() {
-        audioLetter.setAttribute("src", "/sounds/alphabet/ف.mp3")
+        audioLetter.setAttribute("src", "../../sounds/alphabet/ف.mp3")
         audioLetter.play()
       },
       قSound = function() {
-        audioLetter.setAttribute("src", "/sounds/alphabet/ق.mp3")
+        audioLetter.setAttribute("src", "../../sounds/alphabet/ق.mp3")
         audioLetter.play()
       },
       كSound = function() {
-        audioLetter.setAttribute("src", "/sounds/alphabet/ك.mp3")
+        audioLetter.setAttribute("src", "../../sounds/alphabet/ك.mp3")
         audioLetter.play()
       },
       لSound = function() {
-        audioLetter.setAttribute("src", "/sounds/alphabet/ل.mp3")
+        audioLetter.setAttribute("src", "../../sounds/alphabet/ل.mp3")
         audioLetter.play()
       },
       مSound = function() {
-        audioLetter.setAttribute("src", "/sounds/alphabet/م.mp3")
+        audioLetter.setAttribute("src", "../../sounds/alphabet/م.mp3")
         audioLetter.play()
       },
       نSound = function() {
-        audioLetter.setAttribute("src", "/sounds/alphabet/ن.mp3")
+        audioLetter.setAttribute("src", "../../sounds/alphabet/ن.mp3")
         audioLetter.play()
       },
       هSound = function() {
-        audioLetter.setAttribute("src", "/sounds/alphabet/ه.mp3")
+        audioLetter.setAttribute("src", "../../sounds/alphabet/ه.mp3")
         audioLetter.play()
       },
       وSound = function() {
-        audioLetter.setAttribute("src", "/sounds/alphabet/و.mp3")
+        audioLetter.setAttribute("src", "../../sounds/alphabet/و.mp3")
         audioLetter.play()
       },
       يSound = function() {
-        audioLetter.setAttribute("src", "/sounds/alphabet/ي.mp3")
+        audioLetter.setAttribute("src", "../../sounds/alphabet/ي.mp3")
         audioLetter.play()
       }
 
