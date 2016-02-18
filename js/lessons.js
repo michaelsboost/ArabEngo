@@ -278,7 +278,7 @@ function alphabetHearing() {
   }
   letterSounds()
 
-  $("body").append('<button class="btn--default block fill nomar pointer" style="position: absolute; bottom: 0;">skip</button>')
+  $("body").append('<button class="btn--default block fill nomar pointer" style="position: absolute; bottom: 0;" onclick="location.reload(true)">skip</button>')
   $(".lessonSec").addClass("hide")
   $("[data-alphabetLetter="+ $(".grabLetter").text() +"]").removeClass("hide")
   $("[data-alphabetLetter="+ $(".grabLetter").text() +"] [data-asound]").click()
