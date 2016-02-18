@@ -95,6 +95,9 @@
 .graytxt {
   color: #686868;
 }
+.noborderradius {
+  border-radius: 0;
+}
 
 /* Misc Var Classes */
 .whiteoverlay {
