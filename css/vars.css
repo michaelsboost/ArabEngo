@@ -30,6 +30,18 @@
 .txtright {
   text-align: right;
 }
+.fc {
+  float: center;
+}
+.fl {
+  float: left;
+}
+.fr {
+  float: right;
+}
+.fn {
+  float: none;
+}
 .block {
   display: block;
 }
@@ -97,6 +109,21 @@
 }
 .noborderradius {
   border-radius: 0;
+}
+.noborder {
+  border: 0;
+}
+.nobg {
+  background: transparent;
+}
+.bgposc {
+  background-position: center;
+}
+.bgnorept {
+  background-repeat: no-repeat;
+}
+.bgs100p {
+  background-size: 100%;
 }
 
 /* Misc Var Classes */

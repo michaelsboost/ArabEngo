@@ -3,17 +3,19 @@
 $("body").append("<a onclick='history.back()' class=\"goback pointer\">\n    <i class=\"fa fa-chevron-left\"></i>\n  </a>")
 
 // Variables
-var audioElement = document.createElement("audio"),
-    audioLetter  = document.createElement("audio"),
-    successSound = function() {
+var audioElement  = document.createElement("audio"),
+    audioWord     = document.createElement("audio"),
+    audioLetter   = document.createElement("audio"),
+    singleLetter  = document.createElement("audio"),
+    successSound  = function() {
       audioElement.setAttribute("src", "../../sounds/effects/success.mp3")
       audioElement.play()
     },
-    errorSound = function() {
+    errorSound    = function() {
       audioElement.setAttribute("src", "../../sounds/effects/error.mp3")
       audioElement.play()
     },
-    letterSounds = function() {
+    letterSounds  = function() {
       اSound = function() {
         audioLetter.setAttribute("src", "../../sounds/alphabet/ا.mp3")
         audioLetter.play()
@@ -211,6 +213,73 @@ var audioElement = document.createElement("audio"),
       $("[data-asound=27]").click(function() {
         يSound()
       })
+    },
+    basic1Words = function() {
+      $man = $("<div>", {
+        text: "رجل",
+        title: "man = ر ج ل"
+      }).prepend($("<a>", {
+          class: "pointer fl man audioFile"
+        }).on("click mouseover", function() {
+          audioWord.setAttribute("src", "../../sounds/nouns/man.mp3")
+          audioWord.play()
+        }).html('<i class="fa fa-volume-up"></i>')
+      ),
+      $woman = $("<div>", {
+        text: "امراه",
+        title: "woman = ا م ر أ ة"
+      }).prepend($("<a>", {
+          class: "pointer fl woman audioFile"
+        }).on("click mouseover", function() {
+          audioWord.setAttribute("src", "../../sounds/nouns/woman.mp3")
+          audioWord.play()
+        }).html('<i class="fa fa-volume-up"></i>')
+      ),
+      $girl = $("<div>", {
+        text: "بنت",
+        title: "girl"
+      }).prepend($("<a>", {
+          class: "pointer fl girl audioFile"
+        }).on("click mouseover", function() {
+          audioWord.setAttribute("src", "../../sounds/nouns/girl.mp3")
+          audioWord.play()
+        }).html('<i class="fa fa-volume-up"></i>')
+      ),
+      $boy = $("<div>", {
+        text: "ولد",
+        title: "boy = و ل د"
+      }).prepend($("<a>", {
+          class: "pointer fl boy audioFile"
+        }).on("click mouseover", function() {
+          audioWord.setAttribute("src", "../../sounds/nouns/boy.mp3")
+          audioWord.play()
+        }).html('<i class="fa fa-volume-up"></i>')
+      ),
+      $I = $("<div>", {
+        text: "انا",
+        title: "I = ا ن ا"
+      }).prepend($("<a>", {
+          class: "pointer fl I audioFile"
+        }).on("click mouseover", function() {
+          audioWord.setAttribute("src", "../../sounds/nouns/I.mp3")
+          audioWord.play()
+        }).html('<i class="fa fa-volume-up"></i>')
+      );
+    },
+    basic2Words = function() {
+      // nothing to add yet
+    },
+    basic3Words = function() {
+      $bread = $("<div>", {
+        text: "خبز",
+        title: "bread = خ ب ز"
+      }).prepend($("<a>", {
+          class: "pointer fl bread audioFile"
+        }).on("click mouseover", function() {
+          audioWord.setAttribute("src", "../../sounds/nouns/bread.mp3")
+          audioWord.play()
+        }).html('<i class="fa fa-volume-up"></i>')
+      )
     };
 
 function alphabetLesson() {
@@ -298,8 +367,59 @@ function alphabetHearing() {
   })
 };
 
-// // Test Script
-// $("body").append('<textarea class="writescript" style="position: absolute; bottom: 0; left: 0; height: 25%; overflow: auto;"></textarea>')
+function Basics1() {
+  basic1Words()
+  $("body").append('<div class="grid"><div class="grid__col--12 lesson blacktxt"></div></div>')
+
+  var $cell = '<nav class="cell lessonSec"></nav>'
+  var $newDiv = $('<header class="table" />').html($cell)
+  $(".lesson").append( $newDiv )
+
+  // Find translation for "woman = امرأة"
+  // Find translation for "man = رجل"
+  // Find translation for "girl = بنت"
+  // Find translation for "boy = ولد"
+  // I am a girl = انا فتاة
+  // The man, the boy = الرجل والصبي
+  // A boy = ولد
+
+  var $sentenceInput = [
+    $man,
+    $woman,
+    $girl,
+    $boy
+  ]
+
+  $sentence = $("<p>", {class: "translateSentence txtcenter"}).html( $sentenceInput[Math.floor(Math.random() * $sentenceInput.length)] )
+  $input    = $("<input>", {class: "userSentence txtcenter"}).on("keyup", function(e) {
+    if ( e.which == 13 ) {
+      $(".checkSentence").trigger("click")
+    }
+  })
+  $button   = $("<button>", {class: "btn--default fill checkSentence", text: "Confirm"}).on("click", function() {
+    if ( $(".userSentence").val() === $(".translateSentence").text() ) {
+      successSound()
+      // $(".translateSentence").html( $sentenceInput[Math.floor(Math.random() * $sentenceInput.length)] )
+      // $(".userSentence").val("")
+      // $(".audioFile").trigger("click")
+      // $(".userSentence").focus()
+      setTimeout(function() {
+        location.reload(true)
+      }, 1300)
+    } else {
+      errorSound()
+    }
+  })
+  $(".lessonSec").append( $sentence )
+  $(".lessonSec").append( $input )
+  $(".lessonSec").append( "<p></p>" )
+  $(".lessonSec").append( $button )
+  $(".userSentence").focus()
+  $(".audioFile").trigger("click")
+}
+
+// Test Script
+// $("body").append('<textarea class="writescript" style="position: absolute; bottom: 0; left: 0; height: 25%; overflow: auto; z-index: 9;"></textarea>')
 // $(".writescript").on("keyup", function() {
 //   eval(this.value)
 // })
