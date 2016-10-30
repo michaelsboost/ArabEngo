@@ -1,4 +1,2 @@
 # ArabEngo
-Language learning application template.
-
-No longer an active project!
+A simple open source language learning application template.
