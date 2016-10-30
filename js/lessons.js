@@ -744,7 +744,34 @@ $(document).ready(function() {
 
       // Speak the sentence
       $(".speak").on("click", function() {
-        annyangTest();
+        answer = $("." + $("input:checked").attr("id") + " .answer");
+
+        // first we make sure annyang started succesfully
+        if (annyang) {
+          // define our commands.
+          var commands = {
+            answer.text(): function() {
+              alertify.log("hello");
+            }
+          };
+
+          annyang.addCommands(commands);
+          annyang.debug();
+
+          // Set a language for speech recognition (defaults to English)
+          annyang.setLanguage('ar-EG');
+
+          if ($(this).hasClass("listening")) {
+            annyang.abort();
+            $(this).removeClass("listening");
+          } else {
+            annyang.start();
+            $(this).addClass("listening");
+          }
+        } else {
+          alertify.error("Ooops... Looks like your browser does not support the HTML5 Speach API.");
+          alertify.error("Please upgrade to a newer version. Chrome recommended");
+        }
       });
 
       // Listen to sentence
