@@ -744,13 +744,11 @@ $(document).ready(function() {
 
       // Speak the sentence
       $(".speak").on("click", function() {
-        answer = $("." + $("input:checked").attr("id") + " .answer");
-
         // first we make sure annyang started succesfully
         if (annyang) {
           // define our commands.
           var commands = {
-            answer.text(): function() {
+            $("." + $("input:checked").attr("id") + " .answer").text(): function() {
               alertify.log("hello");
             }
           };
