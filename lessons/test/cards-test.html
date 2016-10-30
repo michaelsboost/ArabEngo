@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ArabEngo: Cards Test</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=9">
+    <link rel="stylesheet" href="../../css/style.css">
+    <script src="../../libraries/jquery/jquery.js"></script>
+    <script src="../../libraries/alertify/alertify.min.js"></script>
+  </head>
+  <body>
+    <script src="../../js/responsivevoice.js"></script>
+    <script src="../../js/lessons.js"></script>
+    
+    <div class="cards-container txtcenter">
+      <a class="card pointer">
+        <h2>رجل</h2>
+        
+        <img src="../../imgs/basics/man.jpg">
+      </a>
+      <a class="card pointer">
+        <h2>امراه</h2>
+        
+        <img src="../../imgs/basics/woman.png">
+      </a>
+      <a class="card pointer">
+        <h2>بنت</h2>
+        
+        <img src="../../imgs/basics/girl.jpg">
+      </a>
+      <a class="card pointer">
+        <h2>ولد</h2>
+        
+        <img src="../../imgs/basics/boy.jpg">
+      </a>
+    </div>
+    
+    <div style="position: absolute; top: 5px; left: 65px; right: 65px; text-align: center; font: 400 normal normal 24px/2 'Lato'; cursor: default;">
+      Which one of these is "<span class="pointer underline eng">woman</span>"?
+    </div>
+    
+    <script>
+      // Randomize cards
+      $(".cards-container").randomize(".card");
+      
+      // Find answer
+      $(".card").on("click", function() {
+        var pickedCard = $(this).find("h2").text();
+        
+        if ( pickedCard === "امراه" ) {
+          successSound();
+        } else {
+          errorSound();
+          this.style.backgroundColor = "#ff3666";
+        }
+      });
+    </script>
+  </body>
+</html>

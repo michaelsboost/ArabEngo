@@ -37,6 +37,9 @@ body {
   margin: 0 auto;
   padding: 3em 1em;
 }
+.skillnotavailable {
+  opacity: .5;
+}
 
 @media all and (max-width:680px) {
   .skillstree {
@@ -53,7 +56,8 @@ body {
   padding: 2.56em;
   transition: all 150ms ease;
 }
-.learning-courses a:hover .skillhover  {
+.learning-courses a:not(.skillnotavailable):hover .skill,
+.learning-courses a:not(.skillnotavailable):hover .add-skill {
   opacity: .5;
 }
 .skill, .add-skill  {
@@ -64,177 +68,177 @@ body {
   background-repeat: no-repeat;
 }
 
-.red {
+.skillstree a:nth-child(5n+1) > .skill {
   background-color: #ff7f92;
 }
-.green {
+.skillstree a:nth-child(5n+3) > .skill {
   background-color: #7fffae;
 }
-.blue {
+.skillstree a:nth-child(5n+5) > .skill {
   background-color: #56bcf3;
 }
-.pink {
+.skillstree a:nth-child(5n+4) > .skill {
   background-color: #f78cef;
 }
-.yellow {
+.skillstree a:nth-child(5n+2) > .skill {
+  background-color: #e3e27f;
+}
+.skillstree a:nth-child(2) > .skill {
   background-color: #e3d400;
 }
-.white {
-  background-color: #fff;
-}
-.gray {
-  background-color: #dbdbdb;
+.skillnotavailable > .skill {
+  background-color: #dbdbdb!important;
 }
 
-.skillstree .introduction > span {
+.skillstree .introduction > .skill {
   background-image: url("../imgs/book.svg");
 }
-.skillstree .alphabet > span {
+.skillstree .alphabet > .skill {
   background-image: url("../imgs/alphabet.svg");
 }
-.skillstree .basic > span {
+.skillstree .basic > .skill {
   background-image: url("../imgs/pencil.svg");
 }
-.skillstree .phrases > span {
+.skillstree .phrases > .skill {
   background-image: url("../imgs/speech.svg");
   background-size: 62%;
 }
-.skillstree .food > span {
+.skillstree .food > .skill {
   background-image: url("../imgs/apple.svg");
 }
-.skillstree .animals > span {
+.skillstree .animals > .skill {
   background-color: #e3e27f;
   background-image: url("../imgs/animal.svg");
   background-size: 60%;
 }
-.skillstree .plurals > span {
+.skillstree .plurals > .skill {
   background-image: url("../imgs/stars.svg");
 }
-.skillstree .possession > span {
+.skillstree .possession > .skill {
   background-image: url("../imgs/box.svg");
 }
-.skillstree .clothing > span {
+.skillstree .clothing > .skill {
   background-image: url("../imgs/clothing.svg");
 }
-.skillstree .questions > span {
+.skillstree .questions > .skill {
   background-image: url("../imgs/question.svg");
 }
-.skillstree .run > span {
+.skillstree .run > .skill {
   background-color: #e3e27f;
   background-image: url("../imgs/run.svg");
   background-size: 60%;
 }
-.skillstree .art > span {
+.skillstree .art > .skill {
   background-image: url("../imgs/art.svg");
   background-size: 60%;
 }
-.skillstree .conjunctions > span {
+.skillstree .conjunctions > .skill {
   background-image: url("../imgs/magnet.svg");
   background-size: 60%;
 }
-.skillstree .family > span {
+.skillstree .family > .skill {
   background-image: url("../imgs/pacifier.svg");
 }
-.skillstree .prepositions > span {
+.skillstree .prepositions > .skill {
   background-image: url("../imgs/prepositions.svg");
   background-size: 60%;
 }
-.skillstree .time > span {
+.skillstree .time > .skill {
   background-color: #d7daa6;
   background-image: url("../imgs/clock.svg");
 }
-.skillstree .household > span {
+.skillstree .household > .skill {
   background-image: url("../imgs/toilet.svg");
   background-size: 60%;
 }
-.skillstree .sizes > span {
+.skillstree .sizes > .skill {
   background-image: url("../imgs/mountain.svg");
 }
-.skillstree .occupation > span {
+.skillstree .occupation > .skill {
   background-image: url("../imgs/crown.svg");
   background-size: 70%;
 }
-.skillstree .adject > span {
+.skillstree .adject > .skill {
   background-image: url("../imgs/thumbup.svg");
   background-size: 70%;
 }
-.skillstree .cog > span {
+.skillstree .cog > .skill {
   background-image: url("../imgs/cog.svg");
 }
-.skillstree .adverbs > span {
+.skillstree .adverbs > .skill {
   background-image: url("../imgs/sound-vibe.svg");
 }
-.skillstree .objects > span {
+.skillstree .objects > .skill {
   background-image: url("../imgs/glasses.svg");
   background-size: 70%;
 }
-.skillstree .tobe > span {
+.skillstree .tobe > .skill {
   background-image: url("../imgs/diamond.svg");
   background-size: 70%;
 }
-.skillstree .places > span {
+.skillstree .places > .skill {
   background-color: #e3e27f;
   background-image: url("../imgs/location.svg");
   background-size: 63%;
 }
-.skillstree .people > span {
+.skillstree .people > .skill {
   background-image: url("../imgs/group.svg");
   background-size: 55%;
 }
-.skillstree .numbers > span {
+.skillstree .numbers > .skill {
   background-image: url("../imgs/circle.svg");
   background-size: 70%;
 }
-.skillstree .countries > span {
+.skillstree .countries > .skill {
   background-image: url("../imgs/flag.svg");
 }
-.skillstree .direction > span {
+.skillstree .direction > .skill {
   background-image: url("../imgs/compass.svg");
   background-size: 65%;
 }
-.skillstree .education > span {
+.skillstree .education > .skill {
   background-image: url("../imgs/education.svg");
   background-size: 70%;
 }
-.skillstree .feelings > span {
+.skillstree .feelings > .skill {
   background-image: url("../imgs/heart.svg");
   background-size: 58%;
 }
-.skillstree .nature > span {
+.skillstree .nature > .skill {
   background-image: url("../imgs/flower.svg");
   background-size: 60%;
 }
-.skillstree .sports > span {
+.skillstree .sports > .skill {
   background-image: url("../imgs/sports.svg");
   background-size: 60%;
 }
-.skillstree .medical > span {
+.skillstree .medical > .skill {
   background-image: url("../imgs/medical.svg");
   background-size: 60%;
 }
-.skillstree .business > span {
+.skillstree .business > .skill {
   background-image: url("../imgs/business.svg");
   /*background-image: url("../imgs/shake.svg");*/
   background-size: 60%;
 }
-.skillstree .communication > span {
+.skillstree .communication > .skill {
   background-image: url("../imgs/phone.svg");
 }
-.skillstree .spiritual > span {
+.skillstree .spiritual > .skill {
   background-image: url("../imgs/ghost.svg");
 }
-.skillstree .politics > span {
+.skillstree .politics > .skill {
   background-image: url("../imgs/politics.svg");
   background-size: 60%;
 }
-.skillstree .science > span {
+.skillstree .science > .skill {
   background-image: url("../imgs/science.svg");
   background-size: 60%;
 }
-/*.skillstree .add > span {
+/*.skillstree .add > .skill {
   background-image: url("../imgs/add.svg");
 }*/
-.skillstree .addskill > span {
+.skillstree .addskill > .add-skill {
   background-image: url("../imgs/addskill.svg");
   background-size: 100%;
   opacity: .7;

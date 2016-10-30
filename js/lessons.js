@@ -1,425 +1,833 @@
-// $("body").append("<a href=\"../../\" class=\"gohome pointer\">\n    <i class=\"fa fa-home\"></i>\n  </a>")
-// $("body").append("<a onclick='history.back()' class=\"goback pointer\">\n    <i class=\"fa fa-chevron-left\"></i>\n  </a>")
-$("body").append("<a onclick='history.back()' class=\"goback pointer\">\n    <i class=\"fa fa-chevron-left\"></i>\n  </a>")
+// Is back button visible?
+if ( !$(".goback").is(":visible") ) {
+  // $("body").append("<a href=\"../../index.html\" class=\"gohome pointer\">\n    <i class=\"fa fa-home\"></i>\n  </a>");
+  // $("body").append("<a onclick='history.back()' class=\"goback pointer\">\n    <i class=\"fa fa-chevron-left\"></i>\n  </a>");
+  // $("body").append("<a onclick='history.back()' class=\"goback pointer\">\n    <i class=\"fa fa-chevron-left\"></i>\n  </a>");
+  $("body").append("<a href='../../index.html' class=\"goback pointer\">\n    <i class=\"fa fa-home\"></i>\n  </a>");
+}
+
+//if (window.location.indexOf("basics1") > -1) {
+//  $("body").append("<a href=\"../../\" class=\"goback pointer\">\n    <i class=\"fa fa-home\"></i>\n  </a>");
+//}
+
+// Plugins
+(function($) {
+  $.fn.randomize = function(childElm) {
+    return this.each(function() {
+      var $this = $(this);
+      var elms = $this.children(childElm);
+      
+      elms.sort(function() {
+        return (Math.round(Math.random())-0.05);
+      });
+      $this.remove(childElm);
+      
+      for (i = 0; i < elms.length; i++) {
+        $this.append(elms[i]);
+      }
+    });
+  }
+})(jQuery);
 
 // Variables
-var audioElement  = document.createElement("audio"),
+var counter = 0;
+    parentPage = window.location.toString().split(/\?|#/)[0],
+    audioElement  = document.createElement("audio"),
     audioWord     = document.createElement("audio"),
-    audioLetter   = document.createElement("audio"),
-    singleLetter  = document.createElement("audio"),
     successSound  = function() {
-      audioElement.setAttribute("src", "../../sounds/effects/success.mp3")
-      audioElement.play()
+      audioElement.setAttribute("src", "../../sounds/effects/success.mp3");
+      audioElement.play();
     },
     errorSound    = function() {
-      audioElement.setAttribute("src", "../../sounds/effects/error.mp3")
-      audioElement.play()
+      audioElement.setAttribute("src", "../../sounds/effects/error.mp3");
+      audioElement.play();
     },
-    letterSounds  = function() {
-      اSound = function() {
-        audioLetter.setAttribute("src", "../../sounds/alphabet/ا.mp3")
-        audioLetter.play()
-      },
-      بSound = function() {
-        audioLetter.setAttribute("src", "../../sounds/alphabet/ب.mp3")
-        audioLetter.play()
-      },
-      تSound = function() {
-        audioLetter.setAttribute("src", "../../sounds/alphabet/ت.mp3")
-        audioLetter.play()
-      },
-      ثSound = function() {
-        audioLetter.setAttribute("src", "../../sounds/alphabet/ث.mp3")
-        audioLetter.play()
-      },
-      جSound = function() {
-        audioLetter.setAttribute("src", "../../sounds/alphabet/ج.mp3")
-        audioLetter.play()
-      },
-      حSound = function() {
-        audioLetter.setAttribute("src", "../../sounds/alphabet/ح.mp3")
-        audioLetter.play()
-      },
-      خSound = function() {
-        audioLetter.setAttribute("src", "../../sounds/alphabet/خ.mp3")
-        audioLetter.play()
-      },
-      دSound = function() {
-        audioLetter.setAttribute("src", "../../sounds/alphabet/د.mp3")
-        audioLetter.play()
-      },
-      ذSound = function() {
-        audioLetter.setAttribute("src", "../../sounds/alphabet/ذ.mp3")
-        audioLetter.play()
-      },
-      رSound = function() {
-        audioLetter.setAttribute("src", "../../sounds/alphabet/ر.mp3")
-        audioLetter.play()
-      },
-      زSound = function() {
-        audioLetter.setAttribute("src", "../../sounds/alphabet/ز.mp3")
-        audioLetter.play()
-      },
-      سSound = function() {
-        audioLetter.setAttribute("src", "../../sounds/alphabet/س.mp3")
-        audioLetter.play()
-      },
-      شSound = function() {
-        audioLetter.setAttribute("src", "../../sounds/alphabet/ش.mp3")
-        audioLetter.play()
-      },
-      صSound = function() {
-        audioLetter.setAttribute("src", "../../sounds/alphabet/ص.mp3")
-        audioLetter.play()
-      },
-      ضSound = function() {
-        audioLetter.setAttribute("src", "../../sounds/alphabet/ض.mp3")
-        audioLetter.play()
-      },
-      طSound = function() {
-        audioLetter.setAttribute("src", "../../sounds/alphabet/ط.mp3")
-        audioLetter.play()
-      },
-      ظSound = function() {
-        audioLetter.setAttribute("src", "../../sounds/alphabet/ظ.mp3")
-        audioLetter.play()
-      },
-      عSound = function() {
-        audioLetter.setAttribute("src", "../../sounds/alphabet/ع.mp3")
-        audioLetter.play()
-      },
-      غSound = function() {
-        audioLetter.setAttribute("src", "../../sounds/alphabet/غ.mp3")
-        audioLetter.play()
-      },
-      فSound = function() {
-        audioLetter.setAttribute("src", "../../sounds/alphabet/ف.mp3")
-        audioLetter.play()
-      },
-      قSound = function() {
-        audioLetter.setAttribute("src", "../../sounds/alphabet/ق.mp3")
-        audioLetter.play()
-      },
-      كSound = function() {
-        audioLetter.setAttribute("src", "../../sounds/alphabet/ك.mp3")
-        audioLetter.play()
-      },
-      لSound = function() {
-        audioLetter.setAttribute("src", "../../sounds/alphabet/ل.mp3")
-        audioLetter.play()
-      },
-      مSound = function() {
-        audioLetter.setAttribute("src", "../../sounds/alphabet/م.mp3")
-        audioLetter.play()
-      },
-      نSound = function() {
-        audioLetter.setAttribute("src", "../../sounds/alphabet/ن.mp3")
-        audioLetter.play()
-      },
-      هSound = function() {
-        audioLetter.setAttribute("src", "../../sounds/alphabet/ه.mp3")
-        audioLetter.play()
-      },
-      وSound = function() {
-        audioLetter.setAttribute("src", "../../sounds/alphabet/و.mp3")
-        audioLetter.play()
-      },
-      يSound = function() {
-        audioLetter.setAttribute("src", "../../sounds/alphabet/ي.mp3")
-        audioLetter.play()
-      }
+    wrongSound    = function() {
+      audioElement.setAttribute("src", "../../sounds/effects/wrong.mp3");
+      audioElement.play();
+    },
+    wrongAnswer   = function(answer, call) {
+      wrongSound();
 
-      $("[data-asound=0]").click(function() {
-        اSound()
-      })
-      $("[data-asound=1]").click(function() {
-        بSound()
-      })
-      $("[data-asound=2]").click(function() {
-        تSound()
-      })
-      $("[data-asound=3]").click(function() {
-        ثSound()
-      })
-      $("[data-asound=4]").click(function() {
-        جSound()
-      })
-      $("[data-asound=5]").click(function() {
-        حSound()
-      })
-      $("[data-asound=6]").click(function() {
-        خSound()
-      })
-      $("[data-asound=7]").click(function() {
-        دSound()
-      })
-      $("[data-asound=8]").click(function() {
-        ذSound()
-      })
-      $("[data-asound=9]").click(function() {
-        رSound()
-      })
-      $("[data-asound=10]").click(function() {
-        زSound()
-      })
-      $("[data-asound=11]").click(function() {
-        سSound()
-      })
-      $("[data-asound=12]").click(function() {
-        شSound()
-      })
-      $("[data-asound=13]").click(function() {
-        صSound()
-      })
-      $("[data-asound=14]").click(function() {
-        ضSound()
-      })
-      $("[data-asound=15]").click(function() {
-        طSound()
-      })
-      $("[data-asound=16]").click(function() {
-        ظSound()
-      })
-      $("[data-asound=17]").click(function() {
-        عSound()
-      })
-      $("[data-asound=18]").click(function() {
-        غSound()
-      })
-      $("[data-asound=19]").click(function() {
-        فSound()
-      })
-      $("[data-asound=20]").click(function() {
-        قSound()
-      })
-      $("[data-asound=21]").click(function() {
-        كSound()
-      })
-      $("[data-asound=22]").click(function() {
-        لSound()
-      })
-      $("[data-asound=23]").click(function() {
-        مSound()
-      })
-      $("[data-asound=24]").click(function() {
-        نSound()
-      })
-      $("[data-asound=25]").click(function() {
-        هSound()
-      })
-      $("[data-asound=26]").click(function() {
-        وSound()
-      })
-      $("[data-asound=27]").click(function() {
-        يSound()
-      })
+      alertify.alert("The correct answer is... " + "<h1>"+ answer +"</h1>");
     },
-    basic1Words = function() {
-      $man = $("<div>", {
-        text: "رجل",
-        title: "man = ر ج ل"
-      }).prepend($("<a>", {
-          class: "pointer fl man audioFile"
-        }).on("click mouseover", function() {
-          audioWord.setAttribute("src", "../../sounds/nouns/man.mp3")
-          audioWord.play()
-        }).html('<i class="fa fa-volume-up"></i>')
-      ),
-      $woman = $("<div>", {
-        text: "امراه",
-        title: "woman = ا م ر أ ة"
-      }).prepend($("<a>", {
-          class: "pointer fl woman audioFile"
-        }).on("click mouseover", function() {
-          audioWord.setAttribute("src", "../../sounds/nouns/woman.mp3")
-          audioWord.play()
-        }).html('<i class="fa fa-volume-up"></i>')
-      ),
-      $girl = $("<div>", {
-        text: "بنت",
-        title: "girl"
-      }).prepend($("<a>", {
-          class: "pointer fl girl audioFile"
-        }).on("click mouseover", function() {
-          audioWord.setAttribute("src", "../../sounds/nouns/girl.mp3")
-          audioWord.play()
-        }).html('<i class="fa fa-volume-up"></i>')
-      ),
-      $boy = $("<div>", {
-        text: "ولد",
-        title: "boy = و ل د"
-      }).prepend($("<a>", {
-          class: "pointer fl boy audioFile"
-        }).on("click mouseover", function() {
-          audioWord.setAttribute("src", "../../sounds/nouns/boy.mp3")
-          audioWord.play()
-        }).html('<i class="fa fa-volume-up"></i>')
-      ),
+    randomCorrect = function() {
+      successSound();
+//      alertify.log("correct")
+      setTimeout(function() {
+        location.reload(true);
+      }, 1300);
+      return false;
+    },
+    randomError   = function() {
+//      alertify.log("wrong")
+      errorSound();
+    },
+    randomWrong   = function(answer) {
+      wrongSound();
+      $("body").css("background", "#fec2f1");
+      
+      // Show the user what question he/she got wrong
+      alertify.set({
+        labels: {
+          ok    : "Continue"
+        }
+      });
+      alertify.alert("The correct answer is... " + answer, function(e) {
+        if (e) {
+//          setTimeout(function() {
+//            location.reload(true);
+//          }, 1300);
+            location.reload(true);
+        } else {
+          alertify.error("Houston there's a problem " + e);
+        }
+      });
+      
+      return answer;
+    };
+    basic1L1Words = function() {
+      $man = $("<a>", {
+          class: "card pointer"
+        }).html('<h2 data-title="man">رجل</h2><img src="../../imgs/basics/man.jpg">')
+      $woman = $("<a>", {
+          class: "card pointer"
+        }).html('<h2 data-title="woman">امراه</h2><img src="../../imgs/basics/woman.png">')
+      $girl = $("<a>", {
+          class: "card pointer"
+        }).html('<h2 data-title="girl">بنت</h2><img src="../../imgs/basics/girl.jpg">')
+      $boy = $("<a>", {
+          class: "card pointer"
+        }).html('<h2 data-title="boy">ولد</h2><img src="../../imgs/basics/boy.jpg">')
+    },
+    basic1L2Words = function() {
       $I = $("<div>", {
         text: "انا",
         title: "I = ا ن ا"
       }).prepend($("<a>", {
           class: "pointer fl I audioFile"
         }).on("click mouseover", function() {
-          audioWord.setAttribute("src", "../../sounds/nouns/I.mp3")
-          audioWord.play()
+          audioWord.setAttribute("src", "../../sounds/nouns/I.mp3");
+          audioWord.play();
         }).html('<i class="fa fa-volume-up"></i>')
       );
-    },
-    basic2Words = function() {
-      // nothing to add yet
-    },
-    basic3Words = function() {
-      $bread = $("<div>", {
-        text: "خبز",
-        title: "bread = خ ب ز"
-      }).prepend($("<a>", {
-          class: "pointer fl bread audioFile"
-        }).on("click mouseover", function() {
-          audioWord.setAttribute("src", "../../sounds/nouns/bread.mp3")
-          audioWord.play()
-        }).html('<i class="fa fa-volume-up"></i>')
-      )
     };
 
-function alphabetLesson() {
-  $(".goback").remove()
-  $("body").append("<a href=\"../../\" class=\"goback pointer\">\n    <i class=\"fa fa-home\"></i>\n  </a>")
-  $("body").append('<div class="grid"><div class="grid__col--12 lesson blacktxt"></div></div>')
+function reverseStr(str) {
+  var splitString = str.split("");
 
-  for ( i = 0; i < 28; i++ ) {
-    var $sound = '<nav class="cell txtleft" style="padding-left: 20%;"><a class="pointer blacktxt" data-asound="'+ i +'"><i class="fa fa-volume-up"></i></a></nav>'
-    var $letter = '<nav class="cell txtright" data-letter="'+ i +'" style="padding-right: 20%;">Letter</nav>'
-    var $newDiv = $('<header class="table hauto lessonSec" data-alphabet="'+ i +'"/>').html($sound + $letter)
-    $(".lesson").css("margin-top", "3em").append( $newDiv )
-  }
-  letterSounds()
-  $("[data-letter=0]").text("ا")
-  $("[data-letter=1]").text("ب")
-  $("[data-letter=2]").text("ت")
-  $("[data-letter=3]").text("ث")
-  $("[data-letter=4]").text("ج")
-  $("[data-letter=5]").text("ح")
-  $("[data-letter=6]").text("خ")
-  $("[data-letter=7]").text("د")
-  $("[data-letter=8]").text("ذ")
-  $("[data-letter=9]").text("ر")
-  $("[data-letter=10]").text("ز")
-  $("[data-letter=11]").text("س")
-  $("[data-letter=12]").text("ش")
-  $("[data-letter=13]").text("ص")
-  $("[data-letter=14]").text("ض")
-  $("[data-letter=15]").text("ط")
-  $("[data-letter=16]").text("ظ")
-  $("[data-letter=17]").text("ع")
-  $("[data-letter=18]").text("غ")
-  $("[data-letter=19]").text("ف")
-  $("[data-letter=20]").text("ق")
-  $("[data-letter=21]").text("ك")
-  $("[data-letter=22]").text("ل")
-  $("[data-letter=23]").text("م")
-  $("[data-letter=24]").text("ن")
-  $("[data-letter=25]").text("ه")
-  $("[data-letter=26]").text("و")
-  $("[data-letter=27]").text("ي")
-};
-function alphabetHearing() {
-  var char = "ابتثجحخدذرزسشصضطظعغفقكلمنهوي",
-      setLetter  = "";
+  var reverseArray = splitString.reverse();
 
-  for (i = 0; i < 1; i++) {
-    var rnum  = Math.floor(Math.random() * char.length)
-    setLetter += char.substring(rnum, rnum + 1)
-  }
+  var joinArray = reverseArray.join("");
 
-  var grabLetter = '<div class="hide grabLetter">'+ setLetter +'</div>'
-  $("body").append(grabLetter)
-
-  $(".goback").remove()
-  $("body").append("<a href=\"../../\" class=\"goback pointer\">\n    <i class=\"fa fa-home\"></i>\n  </a>")
-  $("body").append('<div class="grid"><div class="grid__col--12 lesson blacktxt"></div></div>')
-
-  for ( i = 0; i < char.length; i++ ) {
-    var $sound = '<nav class="cell txtleft" style="padding-left: 10%;"><a class="pointer blacktxt" data-asound="'+ i +'"><i class="fa fa-volume-up"></i></a></nav>'
-    var $csound = '<nav class="cell"><input type="text" class="txtcenter" data-csound="'+ i +'" data-getletter="'+ char[i] +'" /></nav>'
-    var $newDiv = $('<header class="table lessonSec" data-alphabet="'+ i +'" data-alphabetLetter="'+ char[i] +'"/>').html($sound + $csound)
-    $(".lesson").css("margin-top", "3em").append( $newDiv )
-  }
-  letterSounds()
-
-  $("body").append('<button class="btn--default block fill nomar noborderradius pointer" style="position: absolute; bottom: 0;" onclick="location.reload(true)">skip</button>')
-  $(".lessonSec").addClass("hide")
-  $("[data-alphabetLetter="+ $(".grabLetter").text() +"]").removeClass("hide")
-  $("[data-alphabetLetter="+ $(".grabLetter").text() +"] [data-asound]").click()
-  $("[data-getletter="+ $(".grabLetter").text() +"]").focus().on("keyup", function(e) {
-    if ( e.which == 13 ) {
-      $("[data-alphabetLetter="+ $(".grabLetter").text() +"] [data-asound]").click()
-      e.preventDefault()
-    } else if ( this.value === $(this).attr("data-getletter") ) {
-      successSound()
-      setTimeout(function() {
-        location.reload(true)
-      }, 1300)
-    } else {
-      errorSound()
-      this.value = ""
+  return joinArray;
+}
+function removeDuplicateChars(str) {
+  var curr_index = 0;
+  var curr_char;
+  var strSplit;
+  var found_first;
+  while(curr_char != '') {
+    curr_char = str.charAt(curr_index);
+    // Ignores Spaces
+    if (curr_char == ' ') {
+      curr_index++;
+      continue;
     }
+  strSplit = str.split('');
+  found_first = false;
+  
+  for (var i = 0; i < strSplit.length; i++) {
+    if (str.charAt(i) == curr_char && !found_first) {
+      found_first = true;
+    } else if (str.charAt(i) == curr_char && found_first) {
+      // Remove it from the string
+      str = setCharAt(str,i,'');
+    }
+  }
+  curr_index++
+  }
+  return str;
+}
+function setCharAt(str, index, chr) {
+  if(index > str.length - 1) return str;
+  return str.substr(0, index) + chr + str.substr(index + 1);
+}
+
+function testCards() {
+  basic1L1Words();
+  $("body").append('<div class="cards-container txtcenter"></div>');
+
+  var $cards = [
+    $man,
+    $woman,
+    $girl,
+    $boy
+  ];
+
+  // Display Cards
+  $(".cards-container").append( $cards );
+  $(".cards-container").randomize(".card");
+
+  // Randomize 1 Card
+  $card = $cards[Math.floor(Math.random() * $cards.length)];
+  $arabWord = $card.find("h2").attr("data-title");
+
+  // Display Random work in title
+  $("body").append("<div class=\"object\" style=\"position: absolute; top: 5px; left: 65px; right: 65px; text-align: center; font: 400 normal normal 24px/2 'Lato'; cursor: default;\">Press on the \"<span class=\"chosenword pointer\" style=\"text-decoration: underline;\">"+ $arabWord +"</span>\"</div>");
+  
+  // Click on Title word
+  $(".chosenword").on("click", function() {
+    audioWord.setAttribute("src", "../../sounds/nouns/"+ this.textContent +".mp3");
+    audioWord.play();
+  }).trigger("click");
+  
+  // Click on Card
+  $(".card").on("click", function() {
+    var cardName = $(this).find("h2").attr("data-title");
+    
+    if ( cardName === $(".chosenword").text() ) {
+      successSound();
+      setTimeout(function() {
+        location.reload(true);
+      }, 1300);
+    } else {
+      $(this).css("backgroundColor", "#ff3666")
+      errorSound();
+    }
+
+    setTimeout(function() {
+      audioWord.setAttribute("src", "../../sounds/nouns/"+ cardName +".mp3");
+      audioWord.play();
+    }, 500);
   })
-};
-
-function Basics1() {
-  basic1Words()
-  $("body").append('<div class="grid"><div class="grid__col--12 lesson blacktxt"></div></div>')
-
-  var $cell = '<nav class="cell lessonSec"></nav>'
-  var $newDiv = $('<header class="table" />').html($cell)
-  $(".lesson").append( $newDiv )
+}
+function testSentence() {
+  $They = $("<span>", {
+      text: "They; Them",
+      class: "word",
+    }).attr("data-word", "انهم")
 
   // Find translation for "woman = امرأة"
   // Find translation for "man = رجل"
   // Find translation for "girl = بنت"
   // Find translation for "boy = ولد"
   // I am a girl = انا فتاة
+  // He is a boy = هو ولد
+  // She is a woman = هو انها
   // The man, the boy = الرجل والصبي
   // A boy = ولد
 
+  var a_I = "<span data-word=\"I am\">انا</span>";
+  var e_I = "<span data-word=\"انا\">I am</span>";
+  var a_He = "<span data-word=\"He is\">هو</span>";
+  var e_He = "<span data-word=\"هو\">He is</span>";
+  var a_She = "<span data-word=\"She is\">هو</span>";
+  var e_She = "<span data-word=\"هو\">She is</span>";
+  
+  var a_man = "<span data-word=\"man\">رجل</span>";
+  var e_man = "<span data-word=\"رجل\">man</span>";
+  var a_woman = "<span data-word=\"woman\">امرأة</span>";
+  var e_woman = "<span data-word=\"امرأة\">woman</span>";
+  var a_boy = "<span data-word=\"boy\">ولد</span>";
+  var e_boy = "<span data-word=\"ولد\">boy</span>";
+  var a_girl = "<span data-word=\"girl\">بنت</span>";
+  var e_girl = "<span data-word=\"بنت\">girl</span>";
+  var a_Aboy = "<span data-word=\"A boy\">ولد</span>";
+  var e_Aboy = "<span data-word=\"ولد\">A boy</span>";
+  var a_Tman = "<span data-word=\"The man\">الرجل</span>";
+  var e_Tman = "<span data-word=\"الرجل\">The man</span>";
+  var a_Tboy = "<span data-word=\"The boy\">والصبي</span>";
+  var e_Tboy = "<span data-word=\"والصبي\">The boy</span>";
+  
   var $sentenceInput = [
-    $man,
-    $woman,
-    $girl,
-    $boy
+    "<span class=\"word eng\" data-sentence=\"انا رجل\">"+ e_I +" a "+ e_man +"</span>",
+    "<span class=\"word arb\" data-sentence=\"I am a man\">"+ a_I +" "+ a_man +"</span>",
+    "<span class=\"word eng\" data-sentence=\"انا رجل\">"+ e_I +" a "+ e_woman +"</span>",
+    "<span class=\"word arb\" data-sentence=\"I am a woman\">"+ a_I +" "+ a_woman +"</span>",
+    "<span class=\"word eng\" data-sentence=\"انا رجل\">"+ e_I +" a "+ e_boy +"</span>",
+    "<span class=\"word arb\" data-sentence=\"I am a boy\">"+ a_I +" "+ a_boy +"</span>",
+    "<span class=\"word eng\" data-sentence=\"انا رجل\">"+ e_I +" a "+ e_girl +"</span>",
+    "<span class=\"word arb\" data-sentence=\"I am a girl\">"+ a_I +" "+ a_girl +"</span>",
+    
+    "<span class=\"word eng\" data-sentence=\"هو رجل\">"+ e_He +" a "+ e_man +"</span>",
+    "<span class=\"word arb\" data-sentence=\"He is a man\">"+ a_He +" "+ a_man +"</span>",
+    "<span class=\"word eng\" data-sentence=\"هو ولد\">"+ e_He +" a "+ e_boy +"</span>",
+    "<span class=\"word arb\" data-sentence=\"He is a boy\">"+ a_He +" "+ a_boy +"</span>",
+    "<span class=\"word eng\" data-sentence=\"هو امرأة\">"+ e_She +" a "+ e_woman +"</span>",
+    "<span class=\"word arb\" data-sentence=\"She is a woman\">"+ a_She +" "+ a_woman +"</span>",
+    "<span class=\"word eng\" data-sentence=\"هو بنت\">"+ e_She +" a "+ e_girl +"</span>",
+    "<span class=\"word arb\" data-sentence=\"She is a girl\">"+ a_She +" "+ a_girl +"</span>",
+    
+    "<span class=\"word eng\" data-sentence=\"ولد\">"+ e_Aboy +"</span>",
+    "<span class=\"word arb\" data-sentence=\"A boy\">"+ a_Aboy +"</span>",
+    "<span class=\"word eng\" data-sentence=\"ولد\">"+ e_Tman +"</span>",
+    "<span class=\"word arb\" data-sentence=\"The man\">"+ a_Tman +"</span>",
+    "<span class=\"word eng\" data-sentence=\"والصبي\">"+ e_Tboy +"</span>",
+    "<span class=\"word arb\" data-sentence=\"The man\">"+ a_Tboy +"</span>"
   ]
 
-  $sentence = $("<p>", {class: "translateSentence txtcenter"}).html( $sentenceInput[Math.floor(Math.random() * $sentenceInput.length)] )
-  $input    = $("<input>", {class: "userSentence txtcenter"}).on("keyup", function(e) {
+  $word = $sentenceInput[Math.floor(Math.random() * $sentenceInput.length)]
+  
+  // Word
+  $input    = $("<input>", {class: "userSentence txtcenter"});
+  $(document).on("keydown", function(e) {
     if ( e.which == 13 ) {
-      $(".checkSentence").trigger("click")
+      $(".checkSentence").trigger("click");
     }
-  })
-  $button   = $("<button>", {class: "btn--default fill checkSentence", text: "Confirm"}).on("click", function() {
-    if ( $(".userSentence").val() === $(".translateSentence").text() ) {
-      successSound()
-      // $(".translateSentence").html( $sentenceInput[Math.floor(Math.random() * $sentenceInput.length)] )
-      // $(".userSentence").val("")
-      // $(".audioFile").trigger("click")
-      // $(".userSentence").focus()
+  });
+  $button   = $("<button>", {class: "btn--default fill checkSentence", text: "Confirm"}).on("click", function(answer) {
+    answer = $("[data-sentence]").attr("data-sentence");
+    if ( $(".userSentence").val().toLowerCase() === answer.toLowerCase() ) {
+      successSound();
       setTimeout(function() {
-        location.reload(true)
-      }, 1300)
+        location.reload(true);
+      }, 1300);
     } else {
-      errorSound()
+//      errorSound();
+//      counter++
+//      if (counter == 3) {
+//        randomWrong(answer);
+//      }
+//      randomWrong(answer);
+      
+      if (answer.toString().match(/\s/g)) {
+        randomWrong("<h1>"+ answer +"</h1>", "<p>Watch those spaces</p>");
+      } else {
+        randomWrong("<h1>"+ answer +"</h1>");
+      }
     }
   })
-  $(".lessonSec").append( $sentence )
-  $(".lessonSec").append( $input )
-  $(".lessonSec").append( "<p></p>" )
-  $(".lessonSec").append( $button )
-  $(".userSentence").focus()
-  $(".audioFile").trigger("click")
+  $("body").append('<div class="grid"></div>');
+  $(".grid").append('<div class="grid__col--12"></div>');
+  $(".grid__col--12").append('<div class="wordContain" style="height: auto; margin: calc(100vh/4) 0 0 0;"></div>');
+  $(".wordContain").append('<div class="txtright"></div>');
+  $(".txtright").append('<a class="pointer fl speak"><i class="fa fa-volume-up"></i></a>');
+  $(".txtright").append('&nbsp;');
+  $(".txtright").append($word);
+  
+  $(".wordContain").append("<p></p>");
+  $(".wordContain").append($input);
+  $(".wordContain").append("<p></p>");
+  $(".wordContain").append($button);
+
+  // Lesson Title
+  if ($(".eng").is(":visible")) {
+    var lessonTitle = 'How do you say, <span class=\"pointer speak\">"'+ $(".word").text() +'</span>"';
+  } else {
+    var lessonTitle = 'Translate the sentence, <span class=\"pointer speak\">"'+ $(".word").text() +'</span>"';
+  }
+  $("body").append("<div style=\"position: absolute; top: 5px; left: 65px; right: 65px; text-align: center; font: 400 normal normal 24px/2 'Lato'; cursor: default;\">"+ lessonTitle +"</div>");
+
+  // Keyboard
+  $("body").append('<div class="grid"><div class="grid__col--8 wordlist txtcenter"><div class="addbuts"></div><button class="btn--default addword spacebar block" style="width: 100%;"> </button></div><div class="grid__col--4"><button class="btn--default delword fr" style="background: #fff;"><img class="nomar" src="../../imgs/backspace.svg" alt="backspace"></button></div></div>');
+  var $sentencenodups = $("[data-sentence]").attr("data-sentence").split(" ");
+  
+  // Remove duplicate words from string
+  var uniqueList = $sentencenodups.filter(function(item,i,allItems) {
+    return i==allItems.indexOf(item);
+  });
+  
+  // Add word buttons
+  for (i = 0; i < uniqueList.length; i++) {
+    $(".addbuts").append('<button class="btn--default addword">'+ uniqueList[Math.floor(Math.abs(i))] +'</button>');
+  }
+  // Randomize words
+  $(".addbuts").randomize(".addword");
+  
+  // Only spacebar to add spaces
+  if ($(".addbuts").find(".addword:contains(' ')").is(":visible")) {
+    $(".addbuts").find(".addword:contains(' ')").remove();
+  }
+  
+  // Add words to textbox
+//  var lastAddedWord = "";
+  $(".addword").on("click", function(e) {
+    var $val = $(".userSentence").val();
+    $(".userSentence").val( $val + this.textContent);
+//    var e = lastAddedWord = this.textContent;
+//    console.log(e);
+  });
+  
+  // Delete words from textbox
+  $(".delword").on("click", function() {
+    var $val = $(".userSentence").val();
+    $(".userSentence").val($val.slice(0, -1));
+//    $(".userSentence").val($val.replace(lastAddedWord, ""));
+//    console.log(lastAddedWord)
+  });
+  
+  // Speak sentences
+  if ( $(".arb").is(":visible") ) {
+    $(".speak").on("click mouseover", function() {
+      responsiveVoice.cancel();
+      responsiveVoice.speak($(".arb").text(), "Arabic Female");
+    });
+    setTimeout(function() {
+      console.log('speaking...');
+      responsiveVoice.cancel();
+      responsiveVoice.speak($(".arb").text(), "Arabic Female");
+    }, 500);
+  } else if ( $(".eng").is(":visible") ) {
+    $(".speak").on("click mouseover", function() {
+      responsiveVoice.cancel();
+      responsiveVoice.speak($(".eng").text(), "UK English Female");
+    });
+    setTimeout(function() {
+      console.log('speaking...');
+      responsiveVoice.cancel();
+      responsiveVoice.speak($(".eng").text(), "UK English Female");
+    }, 500);
+  }
+  
+  $(".arb").find('[data-word]').on("click mouseover", function() {
+    responsiveVoice.cancel();
+    responsiveVoice.speak(this.textContent, "Arabic Female");
+  });
+  $(".eng").find('[data-word]').on("click mouseover", function() {
+    responsiveVoice.cancel();
+    responsiveVoice.speak(this.textContent, "UK English Female");
+  });
+}
+function testWord() {
+  $I = $("<span>", {
+      text: "I; I am; me",
+      class: "word eng",
+    }).attr("data-word", "انا")
+  $انا = $("<span>", {
+      text: "انا",
+      class: "word arb",
+    }).attr("data-word", "I am; me")
+    
+  var $words = [
+    $I,
+    $انا
+  ]
+
+  $word = $words[Math.floor(Math.random() * $words.length)]
+  $letter = $word.attr("data-word")
+  var chosenLang = $word.attr("class").replace("word ", "");
+
+  $input    = $("<input>", {class: "userSentence txtcenter"});
+  $(document).on("keydown", function(e) {
+    if ( e.which == 13 ) {
+      $(".checkSentence").trigger("click");
+    }
+  });
+  $button   = $("<button>", {class: "btn--default fill checkSentence", text: "Confirm"}).on("click", function(answer) {
+    answer = $(".word").attr("data-word");
+    $val = $(".userSentence").val();
+    if (chosenLang === "arb") {
+      $checkWord = answer.split("; ")
+      $.each($checkWord, function(key, val) {
+        if ($val.indexOf(val) != -1) {
+          randomCorrect();
+          return false;
+        } else {
+//          errorSound();
+//          counter++
+//          if (counter == 3) {
+//            randomWrong(answer);
+//          }
+          randomWrong("<h1>"+ answer +"</h1>");
+        }
+      });
+    } else {
+      if ($val === $(".word").attr("data-word") ) {
+        randomCorrect();
+      } else {
+//          errorSound();
+//          counter++
+//          if (counter == 3) {
+//            randomWrong(answer);
+//          }
+          randomWrong("<h1>"+ answer +"</h1>");
+      }
+    }
+  })
+  $("body").append('<div class="grid"></div>');
+  $(".grid").append('<div class="grid__col--12"></div>');
+  $(".grid__col--12").append('<div class="wordContain" style="height: auto; margin: calc(100vh/4) 0 0 0;"></div>');
+  $(".wordContain").append('<div class="txtright"></div>');
+  $(".txtright").append('<a class="pointer fl"><i class="fa fa-volume-up"></i></a>');
+  $(".txtright").append('&nbsp;');
+  $(".txtright").append($word);
+  $(".wordContain").append("<p></p>");
+  $(".wordContain").append($input);
+  $(".wordContain").append("<p></p>");
+  $(".wordContain").append($button);
+
+  // Lesson Title
+  if ($(".eng").is(":visible")) {
+    var lessonTitle = 'How do you spell, "'+ $word.text() +'"'
+  } else {
+    var lessonTitle = 'How do you spell, "'+ $word.text() +'"'
+//    var lessonTitle = 'Translate the word, "'+ $word.text() +'"'
+  }
+  $("body").append("<div style=\"position: absolute; top: 5px; left: 65px; right: 65px; text-align: center; font: 400 normal normal 24px/2 'Lato'; cursor: default;\">"+ lessonTitle +"</div>");
+
+  // Keyboard
+  $("body").append('<div class="grid"><div class="grid__col--8 wordlist txtcenter"><div class="addbuts"></div><button class="btn--default addword spacebar block" style="width: 100%;"> </button></div><div class="grid__col--4"><button class="btn--default delword fr" style="background: #fff;"><img class="nomar" src="../../imgs/backspace.svg" alt="backspace"></button></div></div>');
+  var $wordnospaces = $word.attr("data-word").split(" ").toString();
+  var $wordnoduplics = removeDuplicateChars($wordnospaces);
+  
+  for (i = 0; i < $wordnoduplics.length; i++) {
+    $(".addbuts").append('<button class="btn--default addword">'+ $wordnoduplics[Math.floor(Math.abs(i))] +'</button>');
+  }
+  
+  if ($(".addbuts").find(".addword:contains(';')").is(":visible")) {
+    $(".addbuts").find(".addword:contains(';')").remove();
+    $(".addbuts").append('<button class="btn--default addword">;</button>');
+  }
+  if (!$(".addbuts").find(".addword:contains('e')").is(":visible") && $(".word").hasClass("arb")) {
+    $(".addbuts").find(".addword:contains('e')").remove();
+    $(".addbuts").append('<button class="btn--default addword">e</button>');
+  }
+  $(".addbuts").randomize(".addword");
+  
+  // Add words to textbox
+  $(".addword").on("click", function() {
+    var $val = $(".userSentence").val();
+    $(".userSentence").val( $val + this.textContent);
+  });
+  
+  // Delete words from textbox
+  $(".delword").on("click", function() {
+    var $val = $(".userSentence").val();
+    $(".userSentence").val($val.slice(0, -1));
+  });
+}
+var funcArray = [
+  function() {
+    testCards()
+  },
+  function() {
+    testSentence()
+  },
+  function() {
+    testWord()
+  }
+];
+function randomFrom(array) {
+  return array[Math.floor(Math.random() * array.length)];
+}
+function randomFunction() {
+  randomFrom(funcArray).call()
 }
 
-// Test Script
-// $("body").append('<textarea class="writescript" style="position: absolute; bottom: 0; left: 0; height: 25%; overflow: auto; z-index: 9;"></textarea>')
-// $(".writescript").on("keyup", function() {
-//   eval(this.value)
-// })
+$(document).ready(function() {
+  if ( $("body").hasClass("speak") ) {
+    if ( $(".arb").is(":visible") ) {
+      $(".speak").on("click mouseover", function() {
+        responsiveVoice.cancel();
+        responsiveVoice.speak($(".arb").text(), "Arabic Female");
+      });
+      setTimeout(function() {
+        responsiveVoice.cancel();
+        responsiveVoice.speak($(".arb").text(), "Arabic Female");
+      }, 500);
+    } else if ( $(".eng").is(":visible") ) {
+      $(".speak").on("click mouseover", function() {
+        responsiveVoice.cancel();
+        responsiveVoice.speak($(".eng").text(), "UK English Female");
+      });
+      setTimeout(function() {
+        responsiveVoice.cancel();
+        responsiveVoice.speak($(".eng").text(), "UK English Female");
+      }, 500);
+    }
+  }
+  
+  $(".arb").on("click mouseover", function() {
+    responsiveVoice.cancel();
+    responsiveVoice.speak(this.textContent.trim(), "Arabic Female");
+  });
+  $(".eng").on("click mouseover", function() {
+    responsiveVoice.cancel();
+    responsiveVoice.speak(this.textContent.trim(), "UK English Female");
+  });
+  
+  $(function() {
+    // Variables
+    var $val, nextElm,
+        counter          = 1;
+        words            = null,
+        answer           = $("." + $("input:checked").attr("id") + " .answer").text(),
+        speakQues        = function() {
+          if ( $("." + $("input:checked").attr("id") + " .arb.ques").is(":visible") ) {
+            var $txt = $("." + $("input:checked").attr("id") + " .arb.ques");
+            setTimeout(function() {
+              $txt.trigger("click");
+            }, 300);
+          } else {
+            var $txt = $("." + $("input:checked").attr("id") + " .eng.ques");
+            setTimeout(function() {
+              $txt.trigger("click");
+            }, 300);
+          }
+        },
+        speechKitTest    = function() {
+          // first we make sure annyang started succesfully
+          if (annyang) {
+            annyang.debug();
+
+            // Add our commands to annyang
+            annyang.addCommands({
+              'hello': function() { alert('Hello world!'); }
+            });
+
+            // Tell KITT to use annyang
+            SpeechKITT.annyang();
+
+            // Define a stylesheet for KITT to use
+            SpeechKITT.setStylesheet('../../css/flat.css');
+
+            // Render KITT's interface
+            SpeechKITT.vroom();
+
+            // Set a language for speech recognition (defaults to English)
+            // annyang.setLanguage('ar-EG');
+          } else {
+            alertify.error("Ooops... Looks like your browser does not support the HTML5 Speach API.");
+            alertify.error("Please upgrade to a newer version. Chrome recommended");
+          }
+        },
+        annyangTest      = function() {
+          // first we make sure annyang started succesfully
+          if (annyang) {
+            // define our commands.
+            var commands = {
+              'hello': function() {
+                alertify.log("hello");
+              }
+            };
+
+            annyang.addCommands(commands);
+            annyang.debug();
+
+            // Set a language for speech recognition (defaults to English)
+            // annyang.setLanguage('ar-EG');
+
+            if ($(this).hasClass("listening")) {
+              annyang.abort();
+              $(this).removeClass("listening");
+            } else {
+              annyang.start();
+              $(this).addClass("listening");
+            }
+          } else {
+            alertify.error("Ooops... Looks like your browser does not support the HTML5 Speach API.");
+            alertify.error("Please upgrade to a newer version. Chrome recommended");
+          }
+        },
+        html5SpeechTest1 = function() {
+          if ("webkitSpeechRecognition" in window) {
+            var recognition = new webkitSpeechRecognition();
+            recognition.lang = "EN-US";
+            recognition.continuous = false;
+            recognition.interimResults = false;
+          }
+
+          recognition.start();
+          $(".mic").removeClass("fa-microphone")
+                  .addClass("fa-microphone-slash");
+
+          recognition.onresult = function(evt) {
+            for (var i = evt.resultIndex; i < evt.results.length; i++) {
+              var transcript = evt.results[i][0].transcript;
+              if (evt.results[i].isFinal) {
+                console.log(transcript);
+                recognition.stop();
+                $(".mic").removeClass("fa-microphone-slash")
+                        .addClass("fa-microphone");
+                return true;
+              } else {
+                console.log(transcript);
+              }
+            }
+            console.log(evt);
+          }
+        };
+        html5SpeechTest2 = function() {
+          var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
+          var recognition = new SpeechRecognition();
+          recognition.lang = "en-US";
+          // recognition.continuous = false;
+          recognition.interimResults = false;
+          recognition.maxAlternatives = 5;
+          recognition.start();
+          recognition.onstart = function() {
+            $(".mic").addClass("fa-microphone")
+                    .removeClass("fa-microphone-slash");
+          };
+
+          recognition.onresult = function(evt) {
+            var transcript = evt.results[0][0].transcript;
+            alertify.log("You said: " + transcript);
+          }
+          recognition.onspeechend = function() {
+            $(".mic").removeClass("fa-microphone-slash")
+                    .addClass("fa-microphone");
+          };
+        };
+
+    function initializeTest() {
+      // Translate Sentence
+      $(".userSentence").on("keyup", function(e) {
+        if ( e.which == 13 ) {
+          $("." + $("input:checked").attr("id") + " .checkSentence").trigger("click");
+        }
+        if ( this.value === $("." + $("input:checked").attr("id") + " .answer").text() ) {
+          $("." + $("input:checked").attr("id") + " .checkSentence").trigger("click");
+        }
+        return false;
+      });
+      // Check answer
+      $(".checkSentence").on("click", function() {
+        $val = $("." + $("input:checked").attr("id") + " .userSentence").val();
+        nextElm = Number( $("input:checked").attr("id") ) + 1;
+
+        if ( $val === $("." + $("input:checked").attr("id") + " .answer").text() ) {
+          successSound();
+          $("[data-correct=amount]").text(counter++);
+          if ( $("input#" + nextElm).is(":visible") ) {
+            $("input#" + nextElm).trigger("click");
+            speakQues();
+          } else {
+            alertify.log("End of lesson");
+          }
+        } else {
+          answer = $("." + $("input:checked").attr("id") + " .answer").text();
+
+          if ( $("input#" + nextElm).is(":visible") ) {
+            wrongSound();
+            alertify.alert("The correct answer is... " + "<h1>"+ answer +"</h1>", function(e) {
+              if (e) {
+                // Go to next section when ok is clicked 
+                $("input#" + nextElm).trigger("click");
+              }
+            });
+          } else {
+            wrongAnswer($("." + $("input:checked").attr("id") + " .answer").text());
+            alertify.log("End of lesson");
+          }
+        }
+        return false;
+      });
+      // Add a letter to the textbox
+      $(".charmenu a").on("click", function() {
+        $val = $("." + $("input:checked").attr("id") + " .userSentence").val();
+        $("." + $("input:checked").attr("id") + " .userSentence").val( $val + this.textContent );
+
+        // Is this correct?
+        if ( $val === $("." + $("input:checked").attr("id") + " .answer").text() ) {
+          $("." + $("input:checked").attr("id") + " .checkSentence").trigger("click");
+        }
+      });
+      // Backspace
+      $(".delword").on("click", function() {
+        $val = $("." + $("input:checked").attr("id") + " .userSentence").val();
+        $("." + $("input:checked").attr("id") + " .userSentence").val($val.slice(0, -1));
+        return false;
+      });
+
+      // Find card answer
+      $(".card").on("click", function() {
+        var pickedCard = $(this).find("h2").text();
+        answer = $("." + $("input:checked").attr("id") + " .answer");
+
+        if ( !pickedCard === answer.text() ) {
+          this.style.backgroundColor = "#ff3666";
+        }
+        return false;
+      });
+
+      // Speak the sentence
+      $(".speak").on("click", function() {
+        annyangTest();
+      });
+
+      // Listen to sentence
+      $(".listen").on("click mouseover", function() {
+        speakQues();
+      });
+      $(".hear").on("click", function() {
+        speakQues();
+      });
+      speakQues();
+
+      // Check answers
+      $(".correct").on("click", function() {
+        $("[data-correct=amount]").text(counter++);
+        nextElm = Number( $("input:checked").attr("id") ) + 1;
+        if ( $("input#" + nextElm).is(":visible") ) {
+          successSound();
+          $("input#" + nextElm).trigger("click");
+          speakQues();
+        } else {
+          successSound();
+          alertify.log("End of lesson");
+        }
+        return false;
+      });
+      $(".wrong").on("click", function(e) {
+        nextElm = Number( $("input:checked").attr("id") ) + 1;
+        answer =  $("." + $("input:checked").attr("id") + " .answer").text();
+        if ( $("input#" + nextElm).is(":visible") ) {
+          wrongSound();
+          alertify.alert("The correct answer is... " + "<h1>"+ answer +"</h1>", function(e) {
+            if (e) {
+              // Go to next section when ok is clicked 
+              $("input#" + nextElm).trigger("click");
+              speakQues();
+            }
+          });
+        } else {
+          wrongAnswer($("." + $("input:checked").attr("id") + " .answer").text());
+          alertify.log("End of lesson");
+        }
+        return false;
+      });
+      $(".error").on("click", function() {
+        errorSound();
+        return false;
+      });
+      $(".skip").on("click", function() {
+        nextElm = Number( $("input:checked").attr("id") ) + 1;
+        if ( $("input#" + nextElm).is(":visible") ) {
+          $("input#" + nextElm).trigger("click");
+          speakQues();
+        } else {
+          alertify.log("End of lesson");
+        }
+        return false;
+      });
+    }
+    initializeTest();
+
+    // Randomize stuff
+    $(".cards-container").randomize(".card");
+    $(".list").randomize(".addword");  });
+  
+  // Check if alphabet menu is visible
+  if ( $("#charmenu").is(":visible") ) {
+    // Scroll Character Menu
+    (function() {
+      function scrollMenu(e) {
+        e = window.event || e;
+        var delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
+        document.getElementById('charmenu').scrollLeft -= (delta*40); // Multiplied by 40
+        return false;
+      }
+      if (document.getElementById('charmenu').addEventListener) {
+        // IE9, Chrome, Safari, Opera
+        document.getElementById('charmenu').addEventListener('mousewheel', scrollMenu, false);
+        // Firefox
+        document.getElementById('charmenu').addEventListener('DOMMouseScroll', scrollMenu, false);
+      } else {
+        // IE 6/7/8
+        document.getElementById('charmenu').attachEvent('onmousewheel', scrollMenu);
+      }
+    })();
+  }
+});

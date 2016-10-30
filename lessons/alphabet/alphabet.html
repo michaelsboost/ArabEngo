@@ -4,22 +4,151 @@
     <title>ArabEngo: Alphabet</title>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=9" />
-    <link rel="stylesheet" href="../../libraries/polyui/polyui.css">
-    <link rel="stylesheet" href="../../libraries/alertify/themes/alertify.core.css" />
-    <link rel="stylesheet" href="../../libraries/alertify/themes/alertify.default.css" />
-    <link rel="stylesheet" href="../../libraries/font-awesome/font-awesome.css" />
-    <link rel="stylesheet" href="../../libraries/font-awesome/macset.css" />
-    <link rel="stylesheet" href="../../css/lessongrid.css" />
-    <link rel="stylesheet" href="../../css/lessons.css" />
-    <link rel="stylesheet" href="../../css/vars.css" />
+    <meta http-equiv="X-UA-Compatible" content="IE=9">
+    <link rel="stylesheet" href="../../css/style.css">
     <script src="../../libraries/jquery/jquery.js"></script>
     <script src="../../libraries/alertify/alertify.min.js"></script>
   </head>
-  <body>
-    <script src="../../js/lessons.js"></script>
+  <body class="notxtsel">
     <script>
-      alphabetLesson()
+      // $("body").append("<a onclick='history.back()' class=\"goback pointer\">\n    <i class=\"fa fa-chevron-left\"></i>\n  </a>");
+      
+      var singleLetter = document.createElement("audio");
+          audioLetter  = document.createElement("audio"),
+          letterSounds = function() {
+            alphSound = function(letter) {
+              audioLetter.setAttribute("src", "../../sounds/alphabet/"+letter+".mp3");
+              audioLetter.play();
+            };
+
+            $("[data-asound=0]").click(function() {
+              alphSound("ا");
+            });
+            $("[data-asound=1]").click(function() {
+              alphSound("ب");
+            });
+            $("[data-asound=2]").click(function() {
+              alphSound("ت");
+            });
+            $("[data-asound=3]").click(function() {
+              alphSound("ث");
+            });
+            $("[data-asound=4]").click(function() {
+              alphSound("ج");
+            });
+            $("[data-asound=5]").click(function() {
+              alphSound("ح");
+            });
+            $("[data-asound=6]").click(function() {
+              alphSound("خ");
+            });
+            $("[data-asound=7]").click(function() {
+              alphSound("د");
+            });
+            $("[data-asound=8]").click(function() {
+              alphSound("ذ");
+            });
+            $("[data-asound=9]").click(function() {
+              alphSound("ر");
+            });
+            $("[data-asound=10]").click(function() {
+              alphSound("ز");
+            });
+            $("[data-asound=11]").click(function() {
+              alphSound("س");
+            });
+            $("[data-asound=12]").click(function() {
+              alphSound("ش");
+            });
+            $("[data-asound=13]").click(function() {
+              alphSound("ص");
+            });
+            $("[data-asound=14]").click(function() {
+              alphSound("ض");
+            });
+            $("[data-asound=15]").click(function() {
+              alphSound("ط");
+            });
+            $("[data-asound=16]").click(function() {
+              alphSound("ظ");
+            });
+            $("[data-asound=17]").click(function() {
+              alphSound("ع");
+            });
+            $("[data-asound=18]").click(function() {
+              alphSound("غ");
+            });
+            $("[data-asound=19]").click(function() {
+              alphSound("ف");
+            });
+            $("[data-asound=20]").click(function() {
+              alphSound("ق");
+            });
+            $("[data-asound=21]").click(function() {
+              alphSound("ك");
+            });
+            $("[data-asound=22]").click(function() {
+              alphSound("ل");
+            });
+            $("[data-asound=23]").click(function() {
+              alphSound("م");
+            });
+            $("[data-asound=24]").click(function() {
+              alphSound("ن");
+            });
+            $("[data-asound=25]").click(function() {
+              alphSound("ه");
+            });
+            $("[data-asound=26]").click(function() {
+              alphSound("و");
+            });
+            $("[data-asound=27]").click(function() {
+              alphSound("ي");
+            });
+          };
+
+      function alphabetLesson() {
+        // $(".goback").remove();
+        $("body").append("<a href=\"../../\" class=\"goback pointer\">\n    <i class=\"fa fa-home\"></i>\n  </a>");
+        var lessonTitle = "Press Letter to Hear Sound"
+        $("body").append("<div style=\"position: absolute; top: 5px; left: 65px; right: 65px; text-align: center; font: 400 normal normal 24px/2 'Lato'; cursor: default;\">"+ lessonTitle +"</div>");
+        $("body").append('<div class="grid"><div class="grid__col--12 lesson"></div></div>');
+
+        for ( i = 0; i < 28; i++ ) {
+          var $letter = '<a class="pointer blacktxt txtcenter ib" data-asound="'+ i +'" style="font-size: 14em; width: auto; padding: 0 5%;">Letter</a>';
+          $(".lesson").css("margin-top", "3em").append( $letter );
+        }
+        letterSounds();
+        $("[data-asound=0]").text("ا");
+        $("[data-asound=1]").text("ب");
+        $("[data-asound=2]").text("ت");
+        $("[data-asound=3]").text("ث");
+        $("[data-asound=4]").text("ج");
+        $("[data-asound=5]").text("ح");
+        $("[data-asound=6]").text("خ");
+        $("[data-asound=7]").text("د");
+        $("[data-asound=8]").text("ذ");
+        $("[data-asound=9]").text("ر");
+        $("[data-asound=10]").text("ز");
+        $("[data-asound=11]").text("س");
+        $("[data-asound=12]").text("ش");
+        $("[data-asound=13]").text("ص");
+        $("[data-asound=14]").text("ض");
+        $("[data-asound=15]").text("ط");
+        $("[data-asound=16]").text("ظ");
+        $("[data-asound=17]").text("ع");
+        $("[data-asound=18]").text("غ");
+        $("[data-asound=19]").text("ف");
+        $("[data-asound=20]").text("ق");
+        $("[data-asound=21]").text("ك");
+        $("[data-asound=22]").text("ل");
+        $("[data-asound=23]").text("م");
+        $("[data-asound=24]").text("ن");
+        $("[data-asound=25]").text("ه");
+        $("[data-asound=26]").text("و");
+        $("[data-asound=27]").text("ي");
+      }
+      alphabetLesson();
     </script>
   </body>
 </html>
