@@ -6,10 +6,6 @@ if ( !$(".goback").is(":visible") ) {
   $("body").append("<a href='../../index.html' class=\"goback pointer\">\n    <i class=\"fa fa-home\"></i>\n  </a>");
 }
 
-//if (window.location.indexOf("basics1") > -1) {
-//  $("body").append("<a href=\"../../\" class=\"goback pointer\">\n    <i class=\"fa fa-home\"></i>\n  </a>");
-//}
-
 // Plugins
 (function($) {
   $.fn.randomize = function(childElm) {
@@ -544,7 +540,8 @@ $(document).ready(function() {
   });
   $(".eng").on("click mouseover", function() {
     responsiveVoice.cancel();
-    responsiveVoice.speak(this.textContent.trim(), "UK English Female");
+    //responsiveVoice.speak(this.textContent.trim(), "UK English Female");
+    responsiveVoice.speak($(this).attr("data-meaning"), "Arabic Female");
   });
   
   $(function() {
@@ -557,12 +554,15 @@ $(document).ready(function() {
           if ( $("." + $("input:checked").attr("id") + " .arb.ques").is(":visible") ) {
             var $txt = $("." + $("input:checked").attr("id") + " .arb.ques");
             setTimeout(function() {
-              $txt.trigger("click");
+              responsiveVoice.cancel();
+              responsiveVoice.speak($txt.text().trim(), "Arabic Female");
             }, 300);
           } else {
             var $txt = $("." + $("input:checked").attr("id") + " .eng.ques");
             setTimeout(function() {
-              $txt.trigger("click");
+              responsiveVoice.cancel();
+              responsiveVoice.speak($txt.attr("data-meaning"), "Arabic Female");
+              //responsiveVoice.speak($txt.text().trim(), "UK English Female");
             }, 300);
           }
         },
@@ -670,8 +670,11 @@ $(document).ready(function() {
                     .addClass("fa-microphone");
           };
         };
-
-    function initializeTest() {
+    
+    // Lesson name
+    $("[data-document=title]").text( document.title.replace("ArabEngo: ", "") );
+    
+    function initializeLesson() {
       // Translate Sentence
       $(".userSentence").on("keyup", function(e) {
         if ( e.which == 13 ) {
@@ -803,11 +806,32 @@ $(document).ready(function() {
         return false;
       });
     }
-    initializeTest();
+    initializeLesson();
 
     // Randomize stuff
     $(".cards-container").randomize(".card");
-    $(".list").randomize(".addword");  });
+    $(".list").randomize(".addword");  
+    
+    // Translate question on click
+    $("body").on("click", function(e) {
+      console.log( $(e.target).attr("class") )
+      if ( $(e.target).attr("data-meaning") ) {
+        if ( $(e.target).hasClass("ques") ) {
+          $meaning = $(e.target).attr("data-meaning");
+          $width   = $(e.target).css("width").toString().replace("px", "");
+          $top     = $(e.target).offset().top;
+          $left    = $(e.target).offset().left;
+ 
+          $(".translation").slideDown().css({
+            top: "calc(" + $top + "px + 36px)",
+            left: $left + "px"
+          }).find(".text").text($meaning);
+        }
+      } else {
+        $(".translation").slideUp();
+      }
+    });
+  });
   
   // Check if alphabet menu is visible
   if ( $("#charmenu").is(":visible") ) {

@@ -18,7 +18,8 @@ body {
 .lessons-container .lesson-note,
 .lessons-container .lesson-flyer {
   display: inline-block;
-  width: calc(100vw/4.7);
+  width: calc(100vw/2.3);
+  max-width: 300px;
   padding: 1em 2.76em;
   margin: 1em;
   background-color: #fff;

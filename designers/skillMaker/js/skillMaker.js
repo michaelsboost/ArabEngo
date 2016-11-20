@@ -225,13 +225,16 @@ $(function() {
 $(document).ready(function() {
   // Make editable properties active
   $("[data-set=editable]").attr("contenteditable", "true");
-  $(".lesson-note").find("a").attr("href", "../lessons/"+ skillName.replace(" ", "").toLowerCase() +"/notes.html");
 
   // Re-add Skills with proper length
   var totalLessons = $(".lesson-flyer").length;
   $(".lesson-flyer").each(function(index) {
     var count = index + 1;
     $(this).find("h2").text("Lesson " + count + " / " + totalLessons);
+
+    $(this).find("a.gotolesson").attr("href", "../lessons/"+ skillName.replace(" ", "").toLowerCase() +"/lesson"+ count +".html");
+    $(".lesson-note").find("a").attr("href", "../lessons/"+ skillName.replace(" ", "").toLowerCase() +"/notes.html");
+    $(".lesson-chat").find("a").attr("href", "../lessons/"+ skillName.replace(" ", "").toLowerCase() +"/chat.html");
   });
   
   // Delete and Edit/Design Lessons
@@ -319,6 +322,10 @@ $("[data-add=lesson]").on("click", function() {
     var count = index + 1;
     $(this).find("h2").text("Lesson " + count + " / " + totalLessons);
 
+    $(this).find("a.gotolesson").attr("href", "../lessons/"+ skillName.replace(" ", "").toLowerCase() +"/lesson"+ count +".html");
+    $(".lesson-note").find("a").attr("href", "../lessons/"+ skillName.replace(" ", "").toLowerCase() +"/notes.html");
+    $(".lesson-chat").find("a").attr("href", "../lessons/"+ skillName.replace(" ", "").toLowerCase() +"/chat.html");
+
     // Make editable properties active
     $("[data-set=editable]").attr("contenteditable", "true");
   });
@@ -374,11 +381,13 @@ $("[data-download=skill]").click(function() {
   htmlEditor.setValue(noteFull);
   beautifyHTML(htmlEditor);
   noteFull = htmlEditor.getValue();
+
+  var chatCode = "<!DOCTYPE html>\n<html>\n  <head>\n    <title>"+ langApp + ": "+ skillName +" Chat</title>\n    <meta charset=\"utf-8\">\n    <meta name=\"viewport\" content=\"initial-scale=1.0\">\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=9\">\n    <link rel=\"stylesheet\" href=\"../../css/chat.css\">\n    <script src=\"../../libraries/jquery/jquery.js\"></script>\n    <script src=\"../../libraries/alertify/alertify.min.js\"></script>\n    <script src=\"../../js/responsivevoice.js\"></script>\n  </head>\n  <body>\n    <div class=\"contact-bar\">\n      <!--Contact Gender MUST be male or female-->\n      <i class=\"contact-pic fa fa-user\"></i> <span data-gender=\"female\"></span>\n    </div>\n    \n    <div class=\"chat-container\">\n      <div class=\"chat-history\">\n        <!--\n          Bot talks, you talk, bot talks, you talk...\n          That's how the app is configured.\n          Chat ends when the bot says goodbye, followed by your goodbye response.\n        -->\n        \n        <div class=\"them msg\">\n          <p class=\"message\" data-meaning=\"Welcome!\">اهلا</p>\n        </div>\n        <div class=\"tar you msg hide\">\n          <p class=\"message\" data-meaning=\"Hello!\">مرحبا</p>\n        </div>\n        <div class=\"them msg hide\">\n          <p class=\"message\" data-meaning=\"My name is ...\">انا اسمي ؟؟؟</p>\n        </div>\n        <div class=\"tar you msg hide\">\n          <p class=\"message\" data-meaning=\"Nice to meet you\">فر صة سعيدة</p>\n        </div>\n        <div class=\"them msg hide\">\n          <p class=\"message\" data-meaning=\"Thanks you too\">لك ايضا شكرا</p>\n        </div>\n        <div class=\"tar you msg hide\">\n          <p class=\"message\" data-meaning=\"How are you?\">كيف حالك؟</p>\n        </div>\n        <div class=\"them msg hide\">\n          <p class=\"message\" data-meaning=\"I'm good and you?\">انا بخير وانت؟</p>\n        </div>\n        <div class=\"tar you msg hide\">\n          <p class=\"message\" data-meaning=\"I'm good. Thank you!\">انا بخير شكرا</p>\n        </div>\n        <div class=\"them msg hide\">\n          <p class=\"message\" data-meaning=\"Goodbye\">مع السلامه</p>\n        </div>\n        <div class=\"tar you msg hide\">\n          <p class=\"message\" data-meaning=\"Goodbye\">مع السلامه</p>\n        </div>\n        <div class=\"them msg hide\">\n          <p class=\"message\"></p>\n        </div>\n      </div>\n      \n      <div class=\"them typingloader hide\">\n        <div class=\"message\">\n          <div class=\"typing\">\n            <div class=\"load1\"></div>\n            <div class=\"load2\"></div>\n            <div class=\"load3\"></div>\n          </div>\n        </div>\n      </div>\n    </div>\n    \n    <div class=\"bottom-bar\">\n      <div class=\"preview\">\n        <h1></h1>\n      </div>\n      <div class=\"keyboard notxtsel\">\n        <div>\n          <button>ض</button>\n          <button>ص</button>\n          <button>ث</button>\n          <button>ق</button>\n          <button>ف</button>\n          <button>غ</button>\n          <button>ع</button>\n          <button>ه</button>\n          <button>خ</button>\n          <button>ح</button>\n          <button>ج</button>\n        </div>\n        <div>\n          <button>ة</button>\n          <button>ش</button>\n          <button>س</button>\n          <button>ي</button>\n          <button>ب</button>\n          <button>ل</button>\n          <button>ا</button>\n          <button>ت</button>\n          <button>ن</button>\n          <button>م</button>\n          <button>ك</button>\n        </div>\n        <div>\n          <button>ظ</button>\n          <button>ط</button>\n          <button>ذ</button>\n          <button>د</button>\n          <button>ز</button>\n          <button>ر</button>\n          <button>و</button>\n          <button>؛</button>\n          <button>،</button>\n          <button>.</button>\n          <button>؟</button>\n        </div>\n        <div>\n          <button class=\"spacebar\"> </button>\n        </div>\n      </div>\n    </div>\n\n    <script src=\"../../js/chat.js\"></script>\n  </body>\n</html>";
   
   // Download code
   var fileName = $("[data-skill=name]").text().replace(" ", "").toLowerCase();
-//  blob = new Blob([ skillCode ], {type: "text/html"});
-//  saveAs(blob, fileName + ".html");
+  //blob = new Blob([ skillCode ], {type: "text/html"});
+  //saveAs(blob, fileName + ".html");
   var redirectCode = '<script>\n  location.href = "../../skills/'+ fileName +'.html"\n</script>';
   
   var zip = new JSZip();
@@ -386,6 +395,7 @@ $("[data-download=skill]").click(function() {
   skills.file(fileName + ".html", skillFull);
   zip.file("lessons/" + fileName + "/index.html", redirectCode);
   zip.file("lessons/" + fileName + "/notes.html", noteFull);
+  zip.file("lessons/" + fileName + "/chat.html", chatCode);
   zip.file("lessons/" + fileName + "/dictionary.txt", $("[data-code=dictionary]").val());
   var content = zip.generate({type:"blob"});
   saveAs(content, fileName + ".zip");
@@ -394,7 +404,6 @@ $("[data-download=skill]").click(function() {
   lessonPrev.attr("data-set", "editable");
   lessonPrev.attr("contentEditable", "true");
   $("[data-place=lesson]").find(".lesson-flyer").prepend("<a class='pointer fa fa-times deleteLesson' data-delete='lesson'></a>");
-  // $("[data-place=lesson]").find(".lesson-flyer").prepend("<a class='pointer fa fa-edit editLesson' data-edit='lesson'></a>");
 });
 
 // Mousewhell for Designer's Horizontal Scrollbar
