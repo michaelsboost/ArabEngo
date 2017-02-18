@@ -30,6 +30,7 @@ var counter = 0;
     parentPage = window.location.toString().split(/\?|#/)[0],
     audioElement  = document.createElement("audio"),
     audioWord     = document.createElement("audio"),
+    keyLetter     = document.createElement("audio"),
     successSound  = function() {
       audioElement.setAttribute("src", "../../sounds/effects/success.mp3");
       audioElement.play();
@@ -46,6 +47,10 @@ var counter = 0;
       wrongSound();
 
       alertify.alert("The correct answer is... " + "<h1>"+ answer +"</h1>");
+    },
+    keySound    = function() {
+      keyLetter.setAttribute("src", "../../sounds/effects/keypress.mp3");
+      keyLetter.play();
     },
     randomCorrect = function() {
       successSound();
@@ -721,6 +726,7 @@ $(document).ready(function() {
       $(".charmenu a").on("click", function() {
         $val = $("." + $("input:checked").attr("id") + " .userSentence").val();
         $("." + $("input:checked").attr("id") + " .userSentence").val( $val + this.textContent );
+        keySound();
 
         // Is this correct?
         if ( $val === $("." + $("input:checked").attr("id") + " .answer").text() ) {
@@ -731,9 +737,17 @@ $(document).ready(function() {
       $(".delword").on("click", function() {
         $val = $("." + $("input:checked").attr("id") + " .userSentence").val();
         $("." + $("input:checked").attr("id") + " .userSentence").val($val.slice(0, -1));
+        keySound();
         return false;
       });
-
+      // Spacebar
+      $(".wordlist").on("click", function() {
+        $val = $("." + $("input:checked").attr("id") + " .userSentence").val();
+        $("." + $("input:checked").attr("id") + " .userSentence").val( $val + " " );
+        keySound();
+        return false;
+      });
+      
       // Find card answer
       $(".card").on("click", function() {
         var pickedCard = $(this).find("h2").text();
