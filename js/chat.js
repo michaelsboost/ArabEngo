@@ -149,6 +149,7 @@ var remWord        = "",
     nextStr        = str.substr(1, str.length),
     audioElement   = document.createElement("audio"),
     audioWord      = document.createElement("audio"),
+    audioKey       = document.createElement("audio"),
     finishedLesson = function() {
       audioElement.setAttribute("src", "../../sounds/effects/lesson-complete.mp3");
       audioElement.play();
@@ -278,6 +279,10 @@ var remWord        = "",
       // console.log("Type String: " + str);
       // console.log("Remember Word: " + remWord);
       // console.log("Next String: " + nextStr);
+    },
+    keySound  = function() {
+      audioKey.setAttribute("src", "../../sounds/effects/keypress.mp3");
+      audioKey.play();
     };
 
 // Speak first message
@@ -299,6 +304,7 @@ $(".keyboard").each(function(i) {
     $(".keyboard").find(".active").on("click", function(e) {
       if ($(e.target).hasClass("active")) {
         typeWord();
+        keySound();
       }
       return false;
     }).trigger("click");
