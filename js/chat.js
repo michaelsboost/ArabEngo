@@ -10,10 +10,14 @@ var male   = "Kareem Shamon",
 if ( !$.inArray($("[data-gender]").text().toLowerCase(), ["male", "female"]) ) {
   alertify.error("Operation cancelled! Contact MUST have a male/female gender!");
 }
-if ( $("[data-gender]").attr("data-gender") === "female" ) {
-  $("[data-gender]").text(female);
+if ( $("[data-person]").attr("data-person") ) {
+  $("[data-person]").text($("[data-person]").attr("data-person"));
 } else {
-  $("[data-gender]").text(male);
+  if ( $("[data-gender]").attr("data-gender") === "female" ) {
+    $("[data-gender]").text(female);
+  } else {
+    $("[data-gender]").text(male);
+  }
 }
 
 // Type the word with a physical keyboard
@@ -151,7 +155,7 @@ var remWord        = "",
     audioWord      = document.createElement("audio"),
     audioKey       = document.createElement("audio"),
     finishedLesson = function() {
-      audioElement.setAttribute("src", "../../sounds/effects/lesson-complete.mp3");
+      audioElement.setAttribute("src", "../../sounds/lesson-complete.mp3");
       audioElement.play();
     },
     scroll2B       = function() {
@@ -281,7 +285,7 @@ var remWord        = "",
       // console.log("Next String: " + nextStr);
     },
     keySound  = function() {
-      audioKey.setAttribute("src", "../../sounds/effects/keypress.mp3");
+      audioKey.setAttribute("src", "../../sounds/keypress.mp3");
       audioKey.play();
     };
 

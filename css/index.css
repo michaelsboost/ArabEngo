@@ -1,0 +1,82 @@
+/*incorporated resources*/
+@import url("../libraries/uikit/css/uikit.min.css");
+@import url("../libraries/alertify/themes/alertify.core.css");
+@import url("../libraries/alertify/themes/alertify.default.css");
+@import url("../libraries/font-awesome/font-awesome.css");
+@import url("../libraries/font-awesome/macset.css");
+@import url("vars.css");
+
+body {
+/*  background: #1e87f0; */
+  background: #40a0ff;
+/*  background: #fff;*/
+  
+  background: linear-gradient(to bottom, rgba(198, 255, 61, 0.86) 0%, rgba(61, 174, 255, 0.56) 0%), url(../imgs/FreeVector-Mayan-Pyramid-Vector.svg);
+  background-size: 100%;
+  background-position: bottom;
+  background-repeat: no-repeat;
+}
+
+.pointer.uk-card:hover {
+  text-decoration: none;
+}
+.pointer.uk-card-default:hover {
+  color: #666;
+}
+
+/*donate images*/
+.contribute {
+  background-color: #fefff6;
+}
+.donate img {
+  height: 60px;
+  margin-top: -20px;
+}
+.donate span:first-child {
+  float: left;
+}
+.donate span:nth-child(2) {
+  display: inline-block;
+  width: calc(100vw - 250px);
+}
+.donate span:last-child {
+  float: right;
+}
+
+/*modal*/
+.uk-offcanvas-bar {
+  background-color: #fefff6;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
+  color: #797e83;
+}
+.uk-offcanvas-bar h1,
+.uk-offcanvas-bar h3,
+.uk-offcanvas-bar button svg {
+  color: #000;
+}
+.uk-offcanvas-bar h2 {
+  color: #999da1;
+  letter-spacing: 1px;
+  font-weight: 100;
+  font-size: 1.5em;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.uk-offcanvas-bar h3 {
+  display: block;
+  margin: 0;
+  margin-top: 15px;
+}
+.uk-offcanvas-bar .bold-heading {
+  display: block;
+  color: #000;
+  font-weight: bold;
+  font-family: cursive;
+  font-size: 20px;
+}
+.uk-offcanvas-bar a {
+  color: #1473c7;
+  text-decoration: underline;
+}
+.uk-offcanvas-bar a:hover {
+  color: #0089ff;
+}

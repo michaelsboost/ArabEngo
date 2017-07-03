@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ArabEngo: Basics 1 Chat</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=9">
+    <link rel="stylesheet" href="../css/chat.css">
+    <script src="../libraries/jquery/jquery.js"></script>
+    <script src="../libraries/alertify/alertify.min.js"></script>
+    <script src="../js/responsivevoice.js"></script>
+  </head>
+  <body>
+    <div class="contact-bar">
+      <!--Contact Gender MUST be male or female-->
+      <i class="contact-pic fa fa-user"></i> <span data-gender="female"></span>
+    </div>
+    
+    <div class="chat-container">
+      <div class="chat-history">
+        <!--
+          Bot talks, you talk, bot talks, you talk...
+          That's how the app is configured.
+          Chat ends when the bot says goodbye, followed by your goodbye response.
+        -->
+        
+        <div class="them msg">
+          <p class="message" data-meaning="Welcome!">اهلا</p>
+        </div>
+        <div class="tar you msg hide">
+          <p class="message" data-meaning="Hello!">مرحبا</p>
+        </div>
+        <div class="them msg hide">
+          <p class="message" data-meaning="My name is ...">انا اسمي ؟؟؟</p>
+        </div>
+        <div class="tar you msg hide">
+          <p class="message" data-meaning="Nice to meet you">فر صة سعيدة</p>
+        </div>
+        <div class="them msg hide">
+          <p class="message" data-meaning="Thanks you too">لك ايضا شكرا</p>
+        </div>
+        <div class="tar you msg hide">
+          <p class="message" data-meaning="How are you?">كيف حالك؟</p>
+        </div>
+        <div class="them msg hide">
+          <p class="message" data-meaning="I'm good and you?">انا بخير وانت؟</p>
+        </div>
+        <div class="tar you msg hide">
+          <p class="message" data-meaning="I'm good. Thank you!">انا بخير شكرا</p>
+        </div>
+        <div class="them msg hide">
+          <p class="message" data-meaning="Goodbye">مع السلامه</p>
+        </div>
+        <div class="tar you msg hide">
+          <p class="message" data-meaning="Goodbye">مع السلامه</p>
+        </div>
+        <div class="them msg hide">
+          <p class="message"></p>
+        </div>
+      </div>
+      
+      <div class="them typingloader hide">
+        <div class="message">
+          <div class="typing">
+            <div class="load1"></div>
+            <div class="load2"></div>
+            <div class="load3"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="bottom-bar">
+      <div class="preview">
+        <h1></h1>
+      </div>
+      <div class="keyboard notxtsel">
+        <div>
+          <button>ض</button>
+          <button>ص</button>
+          <button>ث</button>
+          <button>ق</button>
+          <button>ف</button>
+          <button>غ</button>
+          <button>ع</button>
+          <button>ه</button>
+          <button>خ</button>
+          <button>ح</button>
+          <button>ج</button>
+        </div>
+        <div>
+          <button>ة</button>
+          <button>ش</button>
+          <button>س</button>
+          <button>ي</button>
+          <button>ب</button>
+          <button>ل</button>
+          <button>ا</button>
+          <button>ت</button>
+          <button>ن</button>
+          <button>م</button>
+          <button>ك</button>
+        </div>
+        <div>
+          <button>ظ</button>
+          <button>ط</button>
+          <button>ذ</button>
+          <button>د</button>
+          <button>ز</button>
+          <button>ر</button>
+          <button>و</button>
+          <button>؛</button>
+          <button>،</button>
+          <button>.</button>
+          <button>؟</button>
+        </div>
+        <div>
+          <button class="spacebar"> </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="../js/chat.js"></script>
+  </body>
+</html>
