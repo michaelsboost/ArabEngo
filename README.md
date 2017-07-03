@@ -29,16 +29,18 @@ Currently ArabEngo is only available [Online](https://mikethedj4.github.io/ArabE
 
 - [WebDGap](https://mikethedj4.github.io/WebDGap/)
 - [kodeWeave](https://mikethedj4.github.io/kodeWeave/)
-- [AngularJS](http://angularjs.org)
-- [Ionic Framework](http://ionicframework.com/)
-- [jQuery](http://jquery.com)
-- [Codemirror](http://codemirror.net/)
-- [io.js](https://iojs.org/en/index.html)
-- [node.js](http://nodejs.org)
-- [Twitter Bootstrap](http://twitter.github.com/bootstrap/)
-- [Uikit](https://getuikit.com)
-- [Poly UI Kit](https://github.com/Guilh/Poly)
-- [CodePen](http://codepen.io/mikethedj4)
+- [Araby](https://itunes.apple.com/us/app/learn-arabic-language-with-araby/id1070554896?mt=8)
+- [Duolingo](https://duolingo.com/)
+- [Memrise](https://memrise.com/)
+- [HelloChinese](http://www.hellochinese.cc/)
+- [ChineseSkill](http://www.chinese-skill.com/cs.html)
+- [MindSnacks](https://www.mindsnacks.com/)
+- [Leaf](https://www.leaf.how/)
+- [Lingua.ly](https://webapp.lingua.ly/)
+- [TripLingo](http://www.triplingo.com/)
+- [MosaLingua](https://ees6.app.link/lifes)
+- [HiNative](https://hinative.com/)
+- [(How To) Pronounce](http://howtopronounce.dafterapps.com/)
 
 ### Author
 
