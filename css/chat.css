@@ -42,6 +42,25 @@ body {
   margin: 5px;
   padding: 10px;
 }
+.sharelist {
+  position: absolute;
+  top: 54px;
+  left: 33px;
+  border: 1px solid #e5e5e5;
+  text-align: center;
+  background-color: #fff;
+  z-index: 1;
+}
+.sharelist a {
+  transform: scale(1.3);
+  display: block;
+  padding: 15px;
+  font-size: 1em;
+  color: #737882;
+}
+.sharelist a:hover {
+  color: #55caff;
+}
 .contact {
   text-transform: capitalize;
 }
