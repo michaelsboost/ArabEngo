@@ -164,6 +164,7 @@ setTimeout(function() {
 
 // Speak message when hovered over
 speakSentence();
+
 $('.keyboard button').click(function() {
   if ($(this).attr("class") === "spacebar editor") {
     $val = $(".preview h1").text();
@@ -188,7 +189,19 @@ $('.keyboard button').click(function() {
       // That's how the app is configured.
       // Chat ends when the bot says goodbye, followed by your goodbye response.
 
-      
+      if ( !$("[data-output=messages").html() ) {
+        $("[data-output=messages]").append('<div class="them msg"><p class="message" data-meaning="">'+ $(".preview h1").text() +'</p></div>');
+      } else {
+        if ($("[data-output=messages] > div:last").hasClass("them")) {
+          $("[data-output=messages]").append('<div class="tr you msg"><p class="message" data-meaning="">'+ $(".preview h1").text() +'</p></div>');
+        } else {
+          $("[data-output=messages]").append('<div class="them msg"><p class="message" data-meaning="">'+ $(".preview h1").text() +'</p></div>');
+        }
+      }
+      $(".preview h1").text("");
+
+      // Speak message when hovered over
+      speakSentence();
     }
   } else {
     $val = $(".preview h1").text();
