@@ -24,6 +24,7 @@ To Dos
 - Make it so users can make and publish chats
 - Make all published chats editable
 - Make it so everyone can share a chat
+- Make it possible so "them" can send multiple messages
 
 Availability
 -------------
