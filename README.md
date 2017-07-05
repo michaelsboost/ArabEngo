@@ -25,6 +25,8 @@ To Dos
 - Make all published chats editable
 - Make it so everyone can share a chat
 - Make it possible so "them" can send multiple messages
+- Add Emoji's
+- If user has wifi can search * add images to chat
 
 Availability
 -------------
