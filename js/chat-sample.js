@@ -186,7 +186,7 @@ $(".comingsoon").click(function() {
 
 // Speak first message
 setTimeout(function() {
-  speakThis( $(".chat-history .them:first").text() );
+  speakThis( $(".chat-history .msg:first").text() );
 }, 300);
 
 // Speak message when hovered over
@@ -341,6 +341,23 @@ function typeWordKeyBoard() {
     }
     return false;
   });
+}
+
+// Check and see if you start first
+if ($(".chat-history > .you:first").is(":visible")) {
+  $(".typingloader").removeClass("hide");
+  $(".bottom-bar").fadeOut();
+  $(".chat-container").delay(150).css("height", "calc(100vh - 55px");
+  speakThis( $(".chat-history .msg:visible:last").text() );
+  scroll2B();
+  setTimeout(function() {
+    $(".chat-history > .them:hidden:first").removeClass("hide");
+    $(".typingloader").addClass("hide");
+    $(".chat-container").attr("style", "");
+    $(".bottom-bar").fadeIn();
+    speakThis( $(".chat-history .msg:visible:last").text() );
+    scroll2B();
+  }, 2000);
 }
 
 // If url doesn't contain a hash launch editor

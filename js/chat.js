@@ -369,6 +369,23 @@ $(document).ready(function() {
         
         typeWordKeyBoard();
 
+        // Check and see if you start first
+        if ($(".chat-history > .you:first").is(":visible")) {
+          $(".typingloader").removeClass("hide");
+          $(".bottom-bar").fadeOut();
+          $(".chat-container").delay(150).css("height", "calc(100vh - 55px");
+          speakThis( $(".chat-history .msg:visible:last").text() );
+          scroll2B();
+          setTimeout(function() {
+            $(".chat-history > .them:hidden:first").removeClass("hide");
+            $(".typingloader").addClass("hide");
+            $(".chat-container").attr("style", "");
+            $(".bottom-bar").fadeIn();
+            speakThis( $(".chat-history .msg:visible:last").text() );
+            scroll2B();
+          }, 2000);
+        }
+
         // Make first letter active to type
         $(".keyboard button:contains('"+ typeIt +"')").addClass("active");
 
