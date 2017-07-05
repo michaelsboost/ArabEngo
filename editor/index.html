@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ArabEngo: chatMaker</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=9">
+    <link rel="stylesheet" href="../libraries/uikit/css/uikit.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" href="../css/chat.css">
+    <script src="../libraries/jquery/jquery.js"></script>
+    <script src="../libraries/alertify/alertify.min.js"></script>
+    <script src="../js/responsivevoice.js"></script>
+    <script src="../libraries/uikit/js/uikit.min.js"></script>
+    <script src="../libraries/uikit/js/uikit-icons.min.js"></script>
+  </head>
+  <body>
+    <div class="uk-offcanvas-content">
+      <div class="contact-bar">
+        <!--Contact Gender MUST be male or female-->
+        <div class="ib fl contactbtns cb-left">
+          <a href="../">
+            <span class="fa fa-caret-left scale"></span>
+          </a>
+          <a href="javascript:void(0)">
+            <span class="fa fa-save scale"></span>
+          </a>
+        </div>
+        <span class="contact" data-person="Your Name" data-gender="male" contenteditable="true"></span>
+
+        <div class="ib fr contactbtns cb-right">
+          <a class="pointer">
+            <span class="fa fa-phone scale"></span>
+          </a>
+          <a class="pointer">
+            <span class="fa fa-video-camera scale"></span>
+          </a>
+          <a class="pointer" uk-toggle="target: #user-info">
+            <span class="fa fa-user-circle-o scale"></span>
+          </a>
+        </div>
+      </div>
+
+      <div class="chat-container">
+        <div class="chat-history">
+          <!--
+            Bot talks, you talk, bot talks, you talk...
+            That's how the app is configured.
+            Chat ends when the bot says goodbye, followed by your goodbye response.
+          -->
+
+          <span data-output="messages">
+            <!--
+            <div class="them msg">
+              <p class="message" data-meaning="Welcome!">اهلا</p>
+            </div>
+            <div class="tr you msg hide">
+              <p class="message" data-meaning="Hello!">مرحبا</p>
+            </div>
+            -->
+            <div class="them msg">
+              <p class="message" data-meaning="Welcome!">اهلا</p>
+            </div>
+            <div class="them msg">
+              <p class="message">
+                <img src="../imgs/kareem.svg" alt="">
+              </p>
+            </div>
+          </span>
+        </div>
+      </div>
+
+      <div class="bottom-bar">
+        <div class="preview">
+          <h1></h1>
+        </div>
+        <div class="keyboard notxtsel">
+          <div>
+            <button>١</button>
+            <button>٢</button>
+            <button>٣</button>
+            <button>٤</button>
+            <button>٥</button>
+            <button>٦</button>
+            <button>٧</button>
+            <button>٨</button>
+            <button>٩</button>
+            <button>٠</button>
+            <button class="pictures">
+              <span uk-icon="icon: image"></span>
+            </button>
+            <button class="backspace">
+              <span uk-icon="icon: arrow-left"></span>
+            </button>
+          </div>
+          <div>
+            <button>ض</button>
+            <button>ص</button>
+            <button>ث</button>
+            <button>ق</button>
+            <button>ف</button>
+            <button>غ</button>
+            <button>ع</button>
+            <button>ه</button>
+            <button>خ</button>
+            <button>ح</button>
+            <button>ج</button>
+          </div>
+          <div>
+            <button>ة</button>
+            <button>ش</button>
+            <button>س</button>
+            <button>ي</button>
+            <button>ب</button>
+            <button>ل</button>
+            <button>ا</button>
+            <button>ت</button>
+            <button>ن</button>
+            <button>م</button>
+            <button>ك</button>
+          </div>
+          <div>
+            <button>ظ</button>
+            <button>ط</button>
+            <button>ذ</button>
+            <button>د</button>
+            <button>ز</button>
+            <button>ر</button>
+            <button>و</button>
+            <button>؛</button>
+            <button>،</button>
+            <button>.</button>
+            <button>؟</button>
+          </div>
+          <div>
+            <button class="spacebar editor"> </button>
+            <button class="enter">
+              <span uk-icon="icon: check"></span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div id="user-info" class="bright" uk-offcanvas="mode: reveal; flip: true; overlay: true">
+        <div class="uk-offcanvas-bar">
+
+          <button id="top" class="uk-offcanvas-close" type="button" uk-close></button>
+          
+          <div class="tc pointer avatarbg" style="background-image: url('../imgs/kareem.svg')">&nbsp;</div>
+          <h3 class="tc nameoutput contact" data-output="name" class="tc"></h3>
+          <h4 class="location">
+            <span class="uk-margin-small-right" uk-icon="icon: location"></span> <span data-set="location" contenteditable="true">Chicago, IL</span>
+          </h4>
+
+          <h1 class="uk-nav-header">Topic</h1>
+          <p data-set="topic" contenteditable="true">topic of your conversation</p>
+          
+          <h1 class="uk-nav-header">Bio</h1>
+          <p data-set="bio" contenteditable="true">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          
+          <ul class="uk-nav uk-nav-default">
+            <li class="uk-nav-header">Contact</li>
+            <li>
+              <a href="#">
+                <span class="uk-margin-small-right" uk-icon="icon: world"></span> 
+                <input id="website" class="socialbox" type="text" placeholder="http://yoursite.com/">
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span class="uk-margin-small-right" uk-icon="icon: facebook"></span> 
+                <input id="facebook" class="socialbox" type="text" placeholder="Your facebook page">
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span class="uk-margin-small-right" uk-icon="icon: github"></span> 
+                <input id="github" class="socialbox" type="text" placeholder="Your github page">
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span class="uk-margin-small-right" uk-icon="icon: github-alt"></span> 
+                <input id="github-alt" class="socialbox" type="text" placeholder="Your github page">
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span class="uk-margin-small-right" uk-icon="icon: google-plus"></span> 
+                <input id="google-plus" class="socialbox" type="text" placeholder="Your google+ page">
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span class="uk-margin-small-right" uk-icon="icon: instagram"></span> 
+                <input id="instagram" class="socialbox" type="text" placeholder="Your instagram handle">
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span class="uk-margin-small-right" uk-icon="icon: linkedin"></span> 
+                <input id="linkedin" class="socialbox" type="text" placeholder="Your linkedin page">
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span class="uk-margin-small-right" uk-icon="icon: pinterest"></span> 
+                <input id="pinterest" class="socialbox" type="text" placeholder="Your pinterest handle">
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span class="uk-margin-small-right" uk-icon="icon: soundcloud"></span> 
+                <input id="soundcloud" class="socialbox" type="text" placeholder="Your soundcloud handle">
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span class="uk-margin-small-right" uk-icon="icon: twitter"></span> 
+                <input id="twitter" class="socialbox" type="text" placeholder="Your twitter handle">
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span class="uk-margin-small-right" uk-icon="icon: vimeo"></span> 
+                <input id="vimeo" class="socialbox" type="text" placeholder="Your Vimeo url">
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span class="uk-margin-small-right" uk-icon="icon: whatsapp"></span> 
+                <input id="whatsapp" class="socialbox" type="text" placeholder="Your whatsapp number">
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span class="uk-margin-small-right" uk-icon="icon: youtube"></span> 
+                <input id="youtube" class="socialbox" type="text" placeholder="Your youtube handle">
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span class="uk-margin-small-right" uk-icon="icon: credit-card"></span> 
+                <input id="paypal" class="socialbox" type="text" placeholder="Your PayPal URL">
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span class="uk-margin-small-right" uk-icon="icon: credit-card"></span> 
+                <input id="squarecash" class="socialbox" type="text" placeholder="Your SquareCash URL">
+              </a>
+            </li>
+            <li class="tc">
+              <a class="pointer" data-scroll="top">
+                <span class="uk-margin-small-right" uk-icon="icon: arrow-up"></span>
+                <span class="uk-button">Scroll up</span>
+                <span class="uk-margin-small-left" uk-icon="icon: arrow-up"></span>
+              </a>
+            </li>
+          </ul>
+          
+        </div>
+      </div>
+    </div>
+
+    <script src="../js/editor.js"></script>
+  </body>
+</html>

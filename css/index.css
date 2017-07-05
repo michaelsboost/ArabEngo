@@ -43,40 +43,40 @@ body {
   float: right;
 }
 
-/*modal*/
-.uk-offcanvas-bar {
+/*off-canvas*/
+.bright .uk-offcanvas-bar {
   background-color: #fefff6;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
   color: #797e83;
 }
-.uk-offcanvas-bar h1,
-.uk-offcanvas-bar h3,
-.uk-offcanvas-bar button svg {
+.bright .uk-offcanvas-bar h1,
+.bright .uk-offcanvas-bar h3,
+.bright .uk-offcanvas-bar button svg {
   color: #000;
 }
-.uk-offcanvas-bar h2 {
+.bright .uk-offcanvas-bar h2 {
   color: #999da1;
   letter-spacing: 1px;
   font-weight: 100;
   font-size: 1.5em;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
-.uk-offcanvas-bar h3 {
+.bright .uk-offcanvas-bar h3 {
   display: block;
   margin: 0;
   margin-top: 15px;
 }
-.uk-offcanvas-bar .bold-heading {
+.bright .uk-offcanvas-bar .bold-heading {
   display: block;
   color: #000;
   font-weight: bold;
   font-family: cursive;
   font-size: 20px;
 }
-.uk-offcanvas-bar a {
+.bright .uk-offcanvas-bar a {
   color: #1473c7;
   text-decoration: underline;
 }
-.uk-offcanvas-bar a:hover {
+.bright .uk-offcanvas-bar a:hover {
   color: #0089ff;
 }

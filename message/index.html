@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>ArabEngo: Meet Akira</title>
+    <title>ArabEngo: Community Made Lesson</title>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=9">
@@ -27,7 +27,7 @@
             <span class="fa fa-share-square-o scale"></span>
           </a>
         </div>
-        <span class="pointer" data-person="Akira Khoury" data-gender="female" uk-toggle="target: #user-info"></span>
+        <span class="contact pointer" data-person="Your Name" data-gender="male" uk-toggle="target: #user-info"></span>
 
         <div class="ib fr contactbtns cb-right">
           <a class="pointer">
@@ -50,39 +50,7 @@
             Chat ends when the bot says goodbye, followed by your goodbye response.
           -->
 
-          <div class="them msg">
-            <p class="message" data-meaning="Welcome!">اهلا</p>
-          </div>
-          <div class="tr you msg hide">
-            <p class="message" data-meaning="Hello!">مرحبا</p>
-          </div>
-          <div class="them msg hide">
-            <p class="message" data-meaning="My name is Akira">انا اسمي أكيرا</p>
-          </div>
-          <div class="tr you msg hide">
-            <p class="message" data-meaning="Nice to meet you">فر صة سعيدة</p>
-          </div>
-          <div class="them msg hide">
-            <p class="message" data-meaning="Thanks you too">لك ايضا شكرا</p>
-          </div>
-          <div class="tr you msg hide">
-            <p class="message" data-meaning="How are you?">كيف حالك؟</p>
-          </div>
-          <div class="them msg hide">
-            <p class="message" data-meaning="I'm good and you?">انا بخير وانت؟</p>
-          </div>
-          <div class="tr you msg hide">
-            <p class="message" data-meaning="I'm good. Thank you!">انا بخير شكرا</p>
-          </div>
-          <div class="them msg hide">
-            <p class="message" data-meaning="Goodbye">مع السلامه</p>
-          </div>
-          <div class="tr you msg hide">
-            <p class="message" data-meaning="Goodbye">مع السلامه</p>
-          </div>
-          <div class="them msg hide">
-            <p class="message"></p>
-          </div>
+          <span data-output="conversation"></span>
         </div>
 
         <div class="them typingloader hide">
@@ -163,135 +131,108 @@
 
           <button class="uk-offcanvas-close" type="button" uk-close></button>
           
-          <div class="tc cur-defaut avatarbg" style="background-image: url('../imgs/akira.svg')">&nbsp;</div>
+          <div class="tc cur-defaut avatarbg" style="background-image: url('../imgs/kareem.svg')">&nbsp;</div>
           <h3 class="tc nameoutput" data-output="name" class="tc"></h3>
           <h4 class="location">
-            <span class="uk-margin-small-right" uk-icon="icon: location"></span> Chicago, IL
+            <span class="uk-margin-small-right" uk-icon="icon: location"></span> <span data-set="location">Chicago, IL</span>
           </h4>
 
+          <h1 class="uk-nav-header">Topic</h1>
+          <p data-set="topic">topic of your conversation</p>
+          
           <h1 class="uk-nav-header">Bio</h1>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          <p data-set="bio">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
           
           <ul class="uk-nav uk-nav-default">
             <li class="uk-nav-header">Contact</li>
             <li>
               <a href="#">
-                <span class="uk-margin-small-right" uk-icon="icon: world"></span> website
+                <span class="uk-margin-small-right" uk-icon="icon: world"></span> 
+                <span data-output="social"></span>
               </a>
             </li>
             <li>
               <a href="#">
-                <span class="uk-margin-small-right" uk-icon="icon: behance"></span> behance
+                <span class="uk-margin-small-right" uk-icon="icon: facebook"></span> 
+                <span data-output="social"></span>
               </a>
             </li>
             <li>
               <a href="#">
-                <span class="uk-margin-small-right" uk-icon="icon: dribbble"></span> dribbble
+                <span class="uk-margin-small-right" uk-icon="icon: github"></span> 
+                <span data-output="social"></span>
               </a>
             </li>
             <li>
               <a href="#">
-                <span class="uk-margin-small-right" uk-icon="icon: facebook"></span> facebook
+                <span class="uk-margin-small-right" uk-icon="icon: github-alt"></span> 
+                <span data-output="social"></span>
               </a>
             </li>
             <li>
               <a href="#">
-                <span class="uk-margin-small-right" uk-icon="icon: flickr"></span> flickr
+                <span class="uk-margin-small-right" uk-icon="icon: google-plus"></span> 
+                <span data-output="social"></span>
               </a>
             </li>
             <li>
               <a href="#">
-                <span class="uk-margin-small-right" uk-icon="icon: foursquare"></span> foursquare
+                <span class="uk-margin-small-right" uk-icon="icon: instagram"></span> 
+                <span data-output="social"></span>
               </a>
             </li>
             <li>
               <a href="#">
-                <span class="uk-margin-small-right" uk-icon="icon: github"></span> github
+                <span class="uk-margin-small-right" uk-icon="icon: linkedin"></span> 
+                <span data-output="social"></span>
               </a>
             </li>
             <li>
               <a href="#">
-                <span class="uk-margin-small-right" uk-icon="icon: github-alt"></span> github
+                <span class="uk-margin-small-right" uk-icon="icon: pinterest"></span> 
+                <span data-output="social"></span>
               </a>
             </li>
             <li>
               <a href="#">
-                <span class="uk-margin-small-right" uk-icon="icon: google-plus"></span> google-plus
+                <span class="uk-margin-small-right" uk-icon="icon: soundcloud"></span> 
+                <span data-output="social"></span>
               </a>
             </li>
             <li>
               <a href="#">
-                <span class="uk-margin-small-right" uk-icon="icon: instagram"></span> instagram
+                <span class="uk-margin-small-right" uk-icon="icon: twitter"></span> 
+                <span data-output="social"></span>
               </a>
             </li>
             <li>
               <a href="#">
-                <span class="uk-margin-small-right" uk-icon="icon: linkedin"></span> linkedin
+                <span class="uk-margin-small-right" uk-icon="icon: vimeo"></span>
+                <span data-output="social"></span>
               </a>
             </li>
             <li>
               <a href="#">
-                <span class="uk-margin-small-right" uk-icon="icon: pinterest"></span> pinterest
+                <span class="uk-margin-small-right" uk-icon="icon: whatsapp"></span> 
+                <span data-output="social"></span>
               </a>
             </li>
             <li>
               <a href="#">
-                <span class="uk-margin-small-right" uk-icon="icon: soundcloud"></span> soundcloud
+                <span class="uk-margin-small-right" uk-icon="icon: youtube"></span> 
+                <span data-output="social"></span>
               </a>
             </li>
             <li>
               <a href="#">
-                <span class="uk-margin-small-right" uk-icon="icon: tripadvisor"></span> tripadvisor
+                <span class="uk-margin-small-right" uk-icon="icon: credit-card"></span> 
+                <span data-output="social"></span>
               </a>
             </li>
             <li>
               <a href="#">
-                <span class="uk-margin-small-right" uk-icon="icon: tumblr"></span> tumblr
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <span class="uk-margin-small-right" uk-icon="icon: twitter"></span> twitter
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <span class="uk-margin-small-right" uk-icon="icon: vimeo"></span> vimeo
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <span class="uk-margin-small-right" uk-icon="icon: whatsapp"></span> whatsapp
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <span class="uk-margin-small-right" uk-icon="icon: wordpress"></span> wordpress
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <span class="uk-margin-small-right" uk-icon="icon: xing"></span> xing
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <span class="uk-margin-small-right" uk-icon="icon: yelp"></span> yelp
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <span class="uk-margin-small-right" uk-icon="icon: youtube"></span> youtube
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <span class="uk-margin-small-right" uk-icon="icon: credit-card"></span> Donate via PayPal
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <span class="uk-margin-small-right" uk-icon="icon: credit-card"></span> Donate via SquareCash
+                <span class="uk-margin-small-right" uk-icon="icon: credit-card"></span> 
+                <span data-output="social"></span>
               </a>
             </li>
           </ul>
@@ -300,6 +241,6 @@
       </div>
     </div>
 
-    <script src="../js/chat-sample.js"></script>
+    <script src="../js/chat.js"></script>
   </body>
 </html>

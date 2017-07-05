@@ -176,6 +176,14 @@ var remWord        = "",
       audioKey.play();
     };
 
+// Speak first message
+setTimeout(function() {
+  speakThis( $(".chat-history .them:first").text() );
+}, 300);
+
+// Speak message when hovered over
+speakSentence();
+
 // Type the word with a physical keyboard
 function typeWordKeyBoard() {
   $(window).on("keydown", function(e) {
@@ -330,56 +338,35 @@ function typeWordKeyBoard() {
 // If url doesn't contain a hash launch editor
 $(document).ready(function() {
   if (!url) {
-    $(document.body).append('<div class="fixedfill no-weave"></div>');
-    $(".no-weave").html('<div class="table"><div class="cell"><h1>No chat detected!</h1><a class="launcheditor" href="../editor" target="_blank">Launch Editor!</a></div></div>');
+    typeWordKeyBoard();
+
+    // Make first letter active to type
+    $(".keyboard button:contains('"+ typeIt +"')").addClass("active");
+
+    // Reload keyboard keys click function
+    $(".keyboard").each(function(i) {
+      $(".keyboard").eq(i).on("click", "> div > .active", function(e) {
+        $(".keyboard").eq( Number(!i) ).append(this);
+
+        $(".keyboard").find(".active").on("click", function(e) {
+          if ($(e.target).hasClass("active")) {
+            typeWord();
+            keySound();
+          }
+          return false;
+        }).trigger("click");
+        return false;
+      });
+    });
   } else {
     // Show Editors If URL Contains Them
     if (url.indexOf("?") > -1) {
       if (url.indexOf("full") > -1) {
-        // Speak first message
-        setTimeout(function() {
-          speakThis( $(".chat-history .them:first").text() );
-        }, 300);
-
-        // Speak message when hovered over
-        speakSentence();
-        
-        typeWordKeyBoard();
-        
         $(".bottom-bar, .typingloader").remove();
         $(".chat-container").css("height", "calc(100vh - 55px");
         $(".chat-history .them, .chat-history .you").removeClass("hide");
         $(".chat-history .them, .chat-history .you").removeClass("hide");
         $(".chat-history .them:last-child").remove();
-      } else {
-        // Speak first message
-        setTimeout(function() {
-          speakThis( $(".chat-history .them:first").text() );
-        }, 300);
-
-        // Speak message when hovered over
-        speakSentence();
-        
-        typeWordKeyBoard();
-
-        // Make first letter active to type
-        $(".keyboard button:contains('"+ typeIt +"')").addClass("active");
-
-        // Reload keyboard keys click function
-        $(".keyboard").each(function(i) {
-          $(".keyboard").eq(i).on("click", "> div > .active", function(e) {
-            $(".keyboard").eq( Number(!i) ).append(this);
-
-            $(".keyboard").find(".active").on("click", function(e) {
-              if ($(e.target).hasClass("active")) {
-                typeWord();
-                keySound();
-              }
-              return false;
-            }).trigger("click");
-            return false;
-          });
-        });
       }
     }
   }

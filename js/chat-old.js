@@ -63,18 +63,6 @@ var remWord        = "",
         responsiveVoice.speak($(".chat-history > div").last().text(), "Arabic Male");
       }
     },
-    speakSentenceHover  = function() {
-      // Speak arabic word/sentence
-      $(".them, .you").find("[data-meaning]").on("click mouseover", function() {
-        responsiveVoice.cancel();
-        if ( $("[data-gender]").attr("data-gender") === "female" ) {
-          responsiveVoice.speak(this.textContent, "Arabic Female");
-        } else {
-          responsiveVoice.speak(this.textContent, "Arabic Male");
-        }
-        return false;
-      });
-    },
     speakThis      = function(msg) {
       // Speak arabic word/sentence
       responsiveVoice.cancel();
@@ -123,26 +111,8 @@ var remWord        = "",
             $(".chat-history > .them:hidden:first").removeClass("hide");
             $(".typingloader").addClass("hide");
             
-            // Detect if last message
-            if ($(".chat-history > .you:last").is(":visible")) {
-              $(".chat-container").css("height", "calc(100vh - 55px");
-              $(".bottom-bar").remove();
-              
-              alertify.alert("Fantastic! You've completed the lesson!", function(e) {
-                if (e) {
-                  // window.location.href = "../";
-                  alertify.log("test");
-                } else {
-                  alertify.error("Houston there's a problem " + e);
-                }
-              });
-              finishedLesson();
-              speakSentence();
-              return false;
-            } else {
-              $(".chat-container").attr("style", "");
-              $(".bottom-bar").fadeIn();
-            }
+            $(".chat-container").attr("style", "");
+            $(".bottom-bar").fadeIn();
             
             speakThis( $(".chat-history .them:visible:last").text() );
           
@@ -153,13 +123,39 @@ var remWord        = "",
             checkSentence();
             $(".keyboard button:contains('"+ typeIt +"')").addClass("active");
             scroll2B();
+            // Speak message when hovered over
+            speakSentence();
           }, 2000);
           $("h1").text("");
+          // Speak message when hovered over
+          speakSentence();
+        }
+        // Goodbye
+        if (remWord === $(".chat-history > .them:last").prev().text().trim()) {
+          $("h1").text("");
+
+          // Reset variables
+          remWord = "";
+          str = $(".chat-history > .you:last").text().trim();
+          nextStr = str;
+          checkSentence();
+          $(".keyboard button:contains('"+ typeIt +"')").addClass("active");
+          
+          alertify.alert("Fantastic! You've completed the lesson!", function(e) {
+            if (e) {
+              // Speak message when hovered over
+              // speakSentence();
+              window.location.href = "../";
+              alertify.log("test");
+            } else {
+              alertify.error("Houston there's a problem " + e);
+            }
+          });
+          finishedLesson();
+          // Speak message when hovered over
+          speakSentence();
         }
         reloadChat();
-        
-        // Speak message when hovered over
-        speakSentenceHover();
         return false;
       } else {
         checkSentence();
