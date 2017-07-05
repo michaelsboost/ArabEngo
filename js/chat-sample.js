@@ -348,14 +348,14 @@ if ($(".chat-history > .you:first").is(":visible")) {
   $(".typingloader").removeClass("hide");
   $(".bottom-bar").fadeOut();
   $(".chat-container").delay(150).css("height", "calc(100vh - 55px");
-  speakThis( $(".chat-history .msg:visible:last").text() );
+  speakThis( $(".chat-history .you:visible:last").text() );
   scroll2B();
   setTimeout(function() {
     $(".chat-history > .them:hidden:first").removeClass("hide");
     $(".typingloader").addClass("hide");
     $(".chat-container").attr("style", "");
     $(".bottom-bar").fadeIn();
-    speakThis( $(".chat-history .msg:visible:last").text() );
+    speakThis( $(".chat-history .them:visible:last").text() );
     scroll2B();
   }, 2000);
 }
