@@ -92,12 +92,14 @@ var audioKey       = document.createElement("audio"),
       }
       $("[data-set=avatar]").on("click", function() {
         UIkit.modal.prompt('Enter Image URL!').then(function(value) {
-          $(this).css("background-image", "url('"+ value +"')");
-          localStorage.setItem("personAvatar", value);
-          // console.log(value);
-          location.reload(true);
-        }, function () {
-          // cancelled
+          if (!value) {
+            location.reload(true);
+          } else {
+            $(this).css("background-image", "url('"+ value +"')");
+            localStorage.setItem("personAvatar", value);
+            // console.log(value);
+            location.reload(true);
+          }
         });
       });
       // location
