@@ -144,17 +144,30 @@ var audioKey       = document.createElement("audio"),
     },
     msgTranslation = function() {
       localStorage.setItem("chatMessages", $("[data-output=messages]").html());
+
       $(".them, .you").find("[data-meaning]").on("click", function() {
         $(this).addClass("selected-msg");
-        UIkit.modal.prompt('What does "'+ $(this).text() +'" mean?').then(function(value) {
-          if (!value) {
-            location.reload(true);
-          } else {
-            $(".selected-msg").attr("data-meaning", value);
-            console.log(value);
-            $(".selected-msg").removeClass("selected-msg");
+
+        // First do you want to delete this message
+        UIkit.modal.confirm('Do you want to delete this message?').then(function() {
+          UIkit.modal.confirm('This is a distructive action that cannot be undone!<br> Are you sure you wish to proceed?').then(function() {
+            $(".selected-msg").remove();
             localStorage.setItem("chatMessages", $("[data-output=messages]").html());
-          }
+            return false;
+          }, function () {
+            // rejected
+          });
+        }, function () {
+          UIkit.modal.prompt('What does "'+ $(".selected-msg").text() +'" mean?').then(function(value) {
+            if (!value) {
+              // location.reload(true);
+            } else {
+              $(".selected-msg").attr("data-meaning", value);
+              console.log(value);
+              $(".selected-msg").removeClass("selected-msg");
+              localStorage.setItem("chatMessages", $("[data-output=messages]").html());
+            }
+          });
         });
       });
     };
