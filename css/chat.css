@@ -47,14 +47,18 @@ body {
 }
 .avatarbg {
   background-position: top;
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
   padding: 3em;
   position: relative;
+  border-radius: 100%;
+  width: 108px;
+  margin: auto;
 }
 .nameoutput {
   position: relative;
-  margin-top: 20px;
+  /*margin-top: 20px;*/
+  margin-top: -15px;
   padding-bottom: 1px;
   z-index: 1;
 }

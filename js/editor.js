@@ -70,22 +70,35 @@ var audioKey       = document.createElement("audio"),
         localStorage.setItem("personName", this.textContent);
       });
       // gender
-      if ( localStorage.getItem("personGender")) {
+      if ( localStorage.getItem("personGender") ) {
         $("[data-gender]").attr("data-gender", localStorage.getItem("personGender"));
       }
-      if ( localStorage.getItem("genderState")) {
-        document.getElementById("setGender").checked = localStorage.getItem("personGender");
-      }
+      var checked = JSON.parse(localStorage.getItem("genderState"));
+      document.getElementById("setGender").checked = checked;
       $("[data-call=gender]").on("click", function() {
         if (this.checked) {
           $("[data-gender]").attr("data-gender", "male");
           localStorage.setItem("personGender", "male");
-          localStorage.setItem("genderState", true);
         } else {
           $("[data-gender]").attr("data-gender", "female");
           localStorage.setItem("personGender", "female");
-          localStorage.setItem("genderState", false);
         }
+        var checkbox = document.getElementById("setGender");
+        (checkbox.checked) ? localStorage.setItem("genderState", "true") : localStorage.setItem("genderState", "false");
+      });
+      // avatar
+      if ( localStorage.getItem("personAvatar")) {
+        $("[data-set=avatar]").css("background-image", "url('"+ localStorage.getItem("personAvatar") +"')");
+      }
+      $("[data-set=avatar]").on("click", function() {
+        UIkit.modal.prompt('Enter Image URL!').then(function(value) {
+          $(this).css("background-image", "url('"+ value +"')");
+          localStorage.setItem("personAvatar", value);
+          // console.log(value);
+          location.reload(true);
+        }, function () {
+          // cancelled
+        });
       });
       // location
       if ( localStorage.getItem("personLocation")) {
@@ -109,20 +122,23 @@ var audioKey       = document.createElement("audio"),
         localStorage.setItem("personBio", this.textContent);
       });
       // social network communication
-
+      // var arr = localStorage.getItem("socialValues") || {};
+      // if ( localStorage.getItem("socialValues")) {
+      //   var savedArrData = JSON.parse(arr);
+      //   $.each(savedArrData, function(key, value) {
+      //     $("[data-social=links] input#" + key).val(value);
+      //     // console.log(key + ": " + value);
+      //   });
+      // }
+      // $("[data-social=links] input").on("change keyup", function() {
+      //   arr[this.id] = (this.value ? '"' + this.value + '"' : "");
+      //   localStorage.setItem("socialValues", JSON.stringify(arr));
+      // });
+      // $("[data-social=links] input").trigger("change");
     };
 
 // Set Localstorage
 setLocalStorage();
-
-$("[data-set=avatar]").on("click", function() {
-  UIkit.modal.prompt('Enter Image URL!').then(function(value) {
-    // UIkit.notification(value)
-    console.log(value)
-  }, function () {
-    // cancelled
-  });
-});
 
 // Scroll to top from info screen
 $("[data-scroll=top]").click(function() {
@@ -348,8 +364,7 @@ $("[data-action=save-gist]").click(function() {
   var socialArr = {};
   $("[data-social=links] input").each(function() {
     var id = this.id;
-    // arr[id] = (this.value ? '"' + this.value + '"' : this.id);
-    arr[id] = (this.value ? '"' + this.value + '"' : "");
+    socialArr[id] = (this.value ? '"' + this.value + '"' : "");
   });
 
   var files = {};
@@ -408,4 +423,4 @@ $("[data-action=save-gist]").click(function() {
 });
 
 // Auto open profile info
-$(".fa-user-circle-o").trigger("click");
+// $(".fa-user-circle-o").trigger("click");

@@ -7,25 +7,42 @@ We all learned our first language through social interaction and communication. 
 
 However what if you don't want to have a conversation with a real person? What if you just want to text message a robot and learn the language that way? That's why we created ArabEngo!
 
-### Version
+License
+-------------
+
+[Creative Commons Attribution-NonCommercial 4.0](https://github.com/mikethedj4/ArabEngo/blob/gh-pages/LICENSE.md)
+
+Version
+-------------
+
 1.0.1
 
-### Tech
+To Dos
+-------------
+
+- Properly save and populate social content via LocalStorage to community shares
+- Make it so users can make and publish chats
+- Make all published chats editable
+- Make it so everyone can share a chat
+
+Availability
+-------------
+
+Currently ArabEngo is only available [Online](https://mikethedj4.github.io/ArabEngo/) however you can export it for Windows, Linux, Mac OS X, Chrome and for mobile devices (via PhoneGap) using [WebDGap](https://mikethedj4.github.io/WebDGap/)
+
+Tech
+-------------
 
 ArabEngo uses a number of open source projects to work properly:
 
 * [Poly UI Kit](https://github.com/Guilh/Poly) - Used for the alphabet's user interface
-* [Uikit](https://getuikit.com) - Used for the website's interface
+* [Uikit](https://getuikit.com) - Used mostly for the website's interface and part of the lessons's interface
 * [jQuery](http://jquery.com/) - duh
+* [Github Gists](https://developer.github.com/v3/gists/) - A reliable host used to save your weave to the cloud
+* [Twitter Web API](https://dev.twitter.com/web/embedded-timelines) - Allows users to interact with ArabEngo developers easier and share their chats to the ArabEngo community.
 
-### License
-[Creative Commons Attribution-NonCommercial 4.0](https://github.com/mikethedj4/ArabEngo/blob/gh-pages/LICENSE.md)
-
-### Availability
-
-Currently ArabEngo is only available [Online](https://mikethedj4.github.io/ArabEngo/) however you can export it for Windows, Linux, Mac OS X, Chrome and for mobile devices (via PhoneGap) using [WebDGap](https://mikethedj4.github.io/WebDGap/)
-
-### Free Software, Hell Yeah!
+Free Software, Hell Yeah!
+-------------
 
 - [WebDGap](https://mikethedj4.github.io/WebDGap/)
 - [kodeWeave](https://mikethedj4.github.io/kodeWeave/)
@@ -42,11 +59,13 @@ Currently ArabEngo is only available [Online](https://mikethedj4.github.io/ArabE
 - [HiNative](https://hinative.com/)
 - [(How To) Pronounce](http://howtopronounce.dafterapps.com/)
 
-### Author
+Author
+-------------
 
 - [michael schwartz](http://mikethedj4.github.io/) and others
 
-### Development
+Development
+-------------
 
 Want to contribute? Great!  
 
