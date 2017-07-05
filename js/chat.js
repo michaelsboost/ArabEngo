@@ -106,7 +106,7 @@ var remWord        = "",
 
       // Remember typed word
       remWord = remWord += typeIt;
-      $("h1").text(remWord);
+      $(".preview h1").text(remWord);
       // alertify.log(nextStr);
 
       if (!nextStr) {
@@ -154,7 +154,7 @@ var remWord        = "",
             $(".keyboard button:contains('"+ typeIt +"')").addClass("active");
             scroll2B();
           }, 2000);
-          $("h1").text("");
+          $(".preview h1").text("");
         }
         reloadChat();
         
