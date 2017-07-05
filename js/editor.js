@@ -137,6 +137,20 @@ var audioKey       = document.createElement("audio"),
       //   localStorage.setItem("socialValues", JSON.stringify(arr));
       // });
       // $("[data-social=links] input").trigger("change");
+    },
+    msgTranslation = function() {
+      $(".them, .you").find("[data-meaning]").on("click", function() {
+        $(this).addClass("selected-msg");
+        UIkit.modal.prompt('What does "'+ $(this).text() +'" mean?').then(function(value) {
+          if (!value) {
+            location.reload(true);
+          } else {
+            $(".selected-msg").attr("data-meaning", value);
+            console.log(value);
+            $(".selected-msg").removeClass("selected-msg");
+          }
+        });
+      });
     };
 
 // Set Localstorage
@@ -164,6 +178,10 @@ setTimeout(function() {
 
 // Speak message when hovered over
 speakSentence();
+
+// Once message is added
+// You can click on it to set its translation
+msgTranslation();
 
 $('.keyboard button').click(function() {
   if ($(this).attr("class") === "spacebar editor") {
@@ -199,6 +217,10 @@ $('.keyboard button').click(function() {
 
       // Speak message when hovered over
       speakSentence();
+
+      // Once message is added
+      // You can click on it to set its translation
+      msgTranslation();
     }
   } else {
     $val = $(".preview h1").text();
