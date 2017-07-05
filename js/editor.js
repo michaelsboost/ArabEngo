@@ -69,6 +69,24 @@ var audioKey       = document.createElement("audio"),
         $("[data-output=name]").text(this.textContent);
         localStorage.setItem("personName", this.textContent);
       });
+      // gender
+      if ( localStorage.getItem("personGender")) {
+        $("[data-gender]").attr("data-gender", localStorage.getItem("personGender"));
+      }
+      if ( localStorage.getItem("genderState")) {
+        document.getElementById("setGender").checked = localStorage.getItem("personGender");
+      }
+      $("[data-call=gender]").on("click", function() {
+        if (this.checked) {
+          $("[data-gender]").attr("data-gender", "male");
+          localStorage.setItem("personGender", "male");
+          localStorage.setItem("genderState", true);
+        } else {
+          $("[data-gender]").attr("data-gender", "female");
+          localStorage.setItem("personGender", "female");
+          localStorage.setItem("genderState", false);
+        }
+      });
       // location
       if ( localStorage.getItem("personLocation")) {
         $("[data-set=location]").text(localStorage.getItem("personLocation"));
@@ -97,11 +115,13 @@ var audioKey       = document.createElement("audio"),
 // Set Localstorage
 setLocalStorage();
 
-UIkit.modal.prompt('UIkit prompt!').then(function(value) {
-  // UIkit.notification(this.value)
-  console.log(this.value)
-}, function () {
-  // cancelled
+$("[data-set=avatar]").on("click", function() {
+  UIkit.modal.prompt('Enter Image URL!').then(function(value) {
+    // UIkit.notification(value)
+    console.log(value)
+  }, function () {
+    // cancelled
+  });
 });
 
 // Scroll to top from info screen
@@ -386,3 +406,6 @@ $("[data-action=save-gist]").click(function() {
     alertify.error("Error: Could not save weave!");
   });
 });
+
+// Auto open profile info
+$(".fa-user-circle-o").trigger("click");

@@ -65,14 +65,27 @@ body {
   display: inline-block;
   width: 25%;
 }
-/*
-.donatebtns a:first-child {
-  float: left;
+.gender {
+  position: relative;
+  font-size: 2em;
+  top: -36px;
+  left: -30px;
 }
-.donatebtns a:last-child {
-  float: right;
+.gender[data-gender=male] {
+  color: #3ce46b;
 }
-*/
+.gender[data-gender=female] {
+  color: violet;
+}
+/*** custom checkboxes ***/
+#setGender { display:none; } /* to hide the checkbox itself */
+#setGender + label:before {
+  font-family: FontAwesome;
+  display: inline-block;
+}
+
+#setGender + label:before { content: "\f221"; } /* unchecked icon */
+#setGender:checked + label:before { content: "\f222"; } /* checked icon */
 
 /* Chat History */
 .chat-container {
