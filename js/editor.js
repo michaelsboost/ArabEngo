@@ -178,11 +178,8 @@ $('.keyboard button').click(function() {
     alertify.log("pictures & emoticons coming soon....");
     return false;
   } else if ($(this).attr("class") === "enter") {
-    if ($(".preview h1").text() === "") {
-      alertify.error("Abandoned operation!");
-      setTimeout(function() {
-        alertify.log("Cannot send empty messages!");
-      }, 500);
+    if ($(".preview h1").text().trim() === "") {
+      alertify.log("Cannot send empty messages!");
       return false;
     } else {
       // Bot talks, you talk, bot talks, you talk...
