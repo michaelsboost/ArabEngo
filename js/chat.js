@@ -331,7 +331,6 @@ function typeWordKeyBoard() {
       }
       return false;
     }
-    return false;
   });
 }
 

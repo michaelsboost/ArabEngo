@@ -140,7 +140,6 @@ body {
   font-family: FontAwesome;
   font-style: normal;
   font-weight: normal;
-  font-decoration: inherit;
 }
 .chat-container .them:before {
   content: "\f0d9";
