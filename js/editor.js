@@ -123,6 +123,10 @@ var audioKey       = document.createElement("audio"),
       $("[data-set=bio]").on("keyup change", function() {
         localStorage.setItem("personBio", this.textContent);
       });
+      // messages
+      if ( localStorage.getItem("chatMessages")) {
+        $("[data-output=messages]").html(localStorage.getItem("chatMessages"));
+      }
       // social network communication
       // var arr = localStorage.getItem("socialValues") || {};
       // if ( localStorage.getItem("socialValues")) {
@@ -139,6 +143,7 @@ var audioKey       = document.createElement("audio"),
       // $("[data-social=links] input").trigger("change");
     },
     msgTranslation = function() {
+      localStorage.setItem("chatMessages", $("[data-output=messages]").html());
       $(".them, .you").find("[data-meaning]").on("click", function() {
         $(this).addClass("selected-msg");
         UIkit.modal.prompt('What does "'+ $(this).text() +'" mean?').then(function(value) {
@@ -148,6 +153,7 @@ var audioKey       = document.createElement("audio"),
             $(".selected-msg").attr("data-meaning", value);
             console.log(value);
             $(".selected-msg").removeClass("selected-msg");
+            localStorage.setItem("chatMessages", $("[data-output=messages]").html());
           }
         });
       });
@@ -410,7 +416,8 @@ $("[data-action=save-gist]").click(function() {
   });
 
   var files = {};
-	files["social.json"] = { "content": JSON.stringify(socialArr) };
+  files["messages.html"]   = $("[data-output=messages]").html() ? { content: $("[data-output=messages]").html() } : null;
+  files["social.json"]     = { "content": JSON.stringify(socialArr) };
 	files["properties.json"] = { "content": JSON.stringify(sArr) };
 
   data = {
