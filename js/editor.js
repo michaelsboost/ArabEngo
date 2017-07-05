@@ -140,8 +140,12 @@ var audioKey       = document.createElement("audio"),
 // Set Localstorage
 setLocalStorage();
 
-$("[data-call=share]").click(function() {
+// Share to Social Networks
+$("[data-call=share]").on("click", function() {
   $(".sharelist").slideToggle();
+});
+$(".comingsoon").on("click", function() {
+  alertify.log("coming soon");
 });
 
 // Scroll to top from info screen
@@ -348,10 +352,6 @@ function typeWordKeyBoard() {
   });
 }
 typeWordKeyBoard();
-
-$(".comingsoon").click(function() {
-  alertify.log("coming soon");
-});
 
 // Save as a Gist Online
 $("[data-action=save-gist]").click(function() {

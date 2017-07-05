@@ -175,6 +175,14 @@ var remWord        = "",
       audioKey.setAttribute("src", "../../sounds/keypress.mp3");
       audioKey.play();
     };
+    
+// Share to Social Networks
+$("[data-call=share]").click(function() {
+  $(".sharelist").slideToggle();
+});
+$(".comingsoon").click(function() {
+  alertify.log("coming soon");
+});
 
 // Type the word with a physical keyboard
 function typeWordKeyBoard() {

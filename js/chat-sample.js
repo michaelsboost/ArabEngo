@@ -176,6 +176,14 @@ var remWord        = "",
       audioKey.play();
     };
 
+// Share to Social Networks
+$("[data-call=share]").click(function() {
+  $(".sharelist").slideToggle();
+});
+$(".comingsoon").click(function() {
+  alertify.log("coming soon");
+});
+
 // Speak first message
 setTimeout(function() {
   speakThis( $(".chat-history .them:first").text() );
