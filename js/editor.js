@@ -233,7 +233,7 @@ msgTranslation();
 // Add emoticons
 addEmoticons();
 
-$('.keyboard button').click(function() {
+$('.keyboard button').on("click", function() {
   if ($(this).attr("class") === "spacebar editor") {
     $val = $(".preview h1").text();
     $(".preview h1").text($val + " ");

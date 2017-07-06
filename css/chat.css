@@ -150,6 +150,9 @@ body {
   color: #fff;
   position: relative;
   top: 22px;
+  right: -20px;
+}
+.added-msgs .them:before {
   right: -16px;
 }
 .chat-container .them.emoticon:before {
@@ -403,6 +406,15 @@ body {
 .socialbox {
   display: inline-block;
   width: calc(100% - 34px);
+}
+
+.largephone {
+  display: inline;
+}
+@media all and (max-width:400px) {
+  .largephone {
+    display: none;
+  }
 }
 
 /* Variables */
