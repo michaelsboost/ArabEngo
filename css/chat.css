@@ -411,7 +411,7 @@ body {
 .largephone {
   display: inline;
 }
-@media all and (max-width:400px) {
+@media all and (max-width:600px) {
   .largephone {
     display: none;
   }
