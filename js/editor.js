@@ -170,6 +170,21 @@ var audioKey       = document.createElement("audio"),
           });
         });
       });
+    },
+    addEmoticons = function() {
+      $(".them img").on("click", function() {
+        $(this).parent().addClass("selected-msg");
+        // First do you want to delete this message
+        UIkit.modal.confirm('Do you want to delete this message?').then(function() {
+          UIkit.modal.confirm('This is a distructive action that cannot be undone!<br> Are you sure you wish to proceed?').then(function() {
+            $(".selected-msg").remove();
+            localStorage.setItem("chatMessages", $("[data-output=messages]").html());
+            return false;
+          }, function () {
+            // rejected
+          });
+        });
+      });
     };
 
 // Set Localstorage
@@ -181,6 +196,13 @@ $("[data-call=share]").on("click", function() {
 });
 $(".comingsoon").on("click", function() {
   alertify.log("coming soon");
+});
+
+// Add emotion as message
+$("[data-add=emotion]").on("click", function() {
+  $("[data-output=messages]").append('<div class="them msg"><p class="message">'+ this.innerHTML +'</p></div>');
+  localStorage.setItem("chatMessages", $("[data-output=messages]").html());
+  addEmoticons();
 });
 
 // Scroll to top from info screen
@@ -202,6 +224,9 @@ speakSentence();
 // You can click on it to set its translation
 msgTranslation();
 
+// Add emoticons
+addEmoticons();
+
 $('.keyboard button').click(function() {
   if ($(this).attr("class") === "spacebar editor") {
     $val = $(".preview h1").text();
@@ -212,7 +237,7 @@ $('.keyboard button').click(function() {
     $(".preview h1").text($val.slice(0, -1));
     return false;
   } else if ($(this).attr("class") === "pictures") {
-    alertify.log("pictures & emoticons coming soon....");
+    // ignore pictures
     return false;
   } else if ($(this).attr("class") === "enter") {
     if ($(".preview h1").text().trim() === "") {

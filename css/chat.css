@@ -330,6 +330,11 @@ body {
   color: #4E92A2;
 }
 
+/*modal*/
+#emoticons a {
+  text-decoration: none;
+}
+
 /*off-canvas*/
 .bright .uk-offcanvas-bar {
   background-color: #fff;

@@ -30,13 +30,13 @@
         <span class="contact" data-person="Your Name" data-gender="male" contenteditable="true"></span>
 
         <div class="ib fr contactbtns cb-right">
-          <a class="pointer">
+          <a class="pointer uk-modal-close" data-add="emotion">
             <span class="fa fa-phone scale"></span>
           </a>
-          <a class="pointer">
+          <a class="pointer uk-modal-close" data-add="emotion">
             <span class="fa fa-video-camera scale"></span>
           </a>
-          <a class="pointer" uk-toggle="target: #user-info">
+          <a class="pointer uk-modal-close" data-add="emotion" uk-toggle="target: #user-info">
             <span class="fa fa-user-circle-o scale"></span>
           </a>
         </div>
@@ -99,8 +99,9 @@
             <button>٨</button>
             <button>٩</button>
             <button>٠</button>
-            <button class="pictures">
-              <span uk-icon="icon: image"></span>
+            <button class="pictures" uk-toggle="target: #emoticons">
+              <!--<span uk-icon="icon: image"></span>-->
+              <span uk-icon="icon: happy"></span>
             </button>
             <button class="backspace">
               <span uk-icon="icon: arrow-left"></span>
@@ -150,6 +151,97 @@
             <button class="enter">
               <span uk-icon="icon: check"></span>
             </button>
+          </div>
+        </div>
+      </div>
+
+
+      <div id="emoticons" uk-modal>
+        <div class="uk-modal-dialog">
+          <button class="uk-modal-close-default" type="button" uk-close></button>
+
+          <div class="uk-modal-body" data-output="emoticons" uk-overflow-auto style="padding: 0; height: 100vh;">
+            <a class="pointer uk-modal-close" data-add="emotion">
+              <img src="../imgs/emoticons/emoji_1.gif">
+            </a>
+            <a class="pointer uk-modal-close" data-add="emotion">
+              <img src="../imgs/emoticons/emoji_2.gif">
+            </a>
+            <a class="pointer uk-modal-close" data-add="emotion">
+              <img src="../imgs/emoticons/emoji_3.gif">
+            </a>
+            <a class="pointer uk-modal-close" data-add="emotion">
+              <img src="../imgs/emoticons/emoji_4.gif">
+            </a>
+            <a class="pointer uk-modal-close" data-add="emotion">
+              <img src="../imgs/emoticons/emoji_5.gif">
+            </a>
+            <a class="pointer uk-modal-close" data-add="emotion">
+              <img src="../imgs/emoticons/emoji_6.gif">
+            </a>
+            <a class="pointer uk-modal-close" data-add="emotion">
+              <img src="../imgs/emoticons/emoji_7.gif">
+            </a>
+            <a class="pointer uk-modal-close" data-add="emotion">
+              <img src="../imgs/emoticons/emoji_9.gif">
+            </a>
+            <a class="pointer uk-modal-close" data-add="emotion">
+              <img src="../imgs/emoticons/emoji_10.gif">
+            </a>
+            <a class="pointer uk-modal-close" data-add="emotion">
+              <img src="../imgs/emoticons/emoji_11.gif">
+            </a>
+            <a class="pointer uk-modal-close" data-add="emotion">
+              <img src="../imgs/emoticons/emoji_12.gif">
+            </a>
+            <a class="pointer uk-modal-close" data-add="emotion">
+              <img src="../imgs/emoticons/emoji_13.gif">
+            </a>
+            <a class="pointer uk-modal-close" data-add="emotion">
+              <img src="../imgs/emoticons/emoji_14.gif">
+            </a>
+            <a class="pointer uk-modal-close" data-add="emotion">
+              <img src="../imgs/emoticons/emoji_15.gif">
+            </a>
+            <a class="pointer uk-modal-close" data-add="emotion">
+              <img src="../imgs/emoticons/emoji_16.gif">
+            </a>
+            <a class="pointer uk-modal-close" data-add="emotion">
+              <img src="../imgs/emoticons/emoji_17.gif">
+            </a>
+            <a class="pointer uk-modal-close" data-add="emotion">
+              <img src="../imgs/emoticons/emoji_18.gif">
+            </a>
+            <a class="pointer uk-modal-close" data-add="emotion">
+              <img src="../imgs/emoticons/emoji_19.gif">
+            </a>
+            <a class="pointer uk-modal-close" data-add="emotion">
+              <img src="../imgs/emoticons/emoji_20.gif">
+            </a>
+            <a class="pointer uk-modal-close" data-add="emotion">
+              <img src="../imgs/emoticons/emoji_21.gif">
+            </a>
+            <a class="pointer uk-modal-close" data-add="emotion">
+              <img src="../imgs/emoticons/emoji_22.gif">
+            </a>
+            <a class="pointer uk-modal-close" data-add="emotion">
+              <img src="../imgs/emoticons/emoji_23.gif">
+            </a>
+            <a class="pointer uk-modal-close" data-add="emotion">
+              <img src="../imgs/emoticons/emoji_24.gif">
+            </a>
+            <a class="pointer uk-modal-close" data-add="emotion">
+              <img src="../imgs/emoticons/emoji_25.gif">
+            </a>
+            <a class="pointer uk-modal-close" data-add="emotion">
+              <img src="../imgs/emoticons/emoji_26.gif">
+            </a>
+            <a class="pointer uk-modal-close" data-add="emotion">
+              <img src="../imgs/emoticons/emoji_27.gif">
+            </a>
+            <a class="pointer uk-modal-close" data-add="emotion">
+              <img src="../imgs/emoticons/emoji_28.gif">
+            </a>
           </div>
         </div>
       </div>
@@ -268,7 +360,7 @@
               </a>
             </li>
             <li class="tc">
-              <a class="pointer" data-scroll="top">
+              <a class="pointer uk-modal-close" data-add="emotion" data-scroll="top">
                 <span class="uk-margin-small-right" uk-icon="icon: arrow-up"></span>
                 <span class="uk-button">Scroll up</span>
                 <span class="uk-margin-small-left" uk-icon="icon: arrow-up"></span>
