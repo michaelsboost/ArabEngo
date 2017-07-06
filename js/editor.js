@@ -198,9 +198,15 @@ $(".comingsoon").on("click", function() {
   alertify.log("coming soon");
 });
 
+// Clear chat
+$("[data-clear=chat]").click(function() {
+  $("[data-output=messages]").html("");
+  localStorage.setItem("chatMessages", $("[data-output=messages]").html());
+});
+
 // Add emotion as message
 $("[data-add=emotion]").on("click", function() {
-  $("[data-output=messages]").append('<div class="them msg"><p class="message">'+ this.innerHTML +'</p></div>');
+  $("[data-output=messages]").append('<div class="them emoticon msg"><p class="message">'+ this.innerHTML +'</p></div>');
   localStorage.setItem("chatMessages", $("[data-output=messages]").html());
   addEmoticons();
 });

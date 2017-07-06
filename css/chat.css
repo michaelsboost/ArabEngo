@@ -114,7 +114,9 @@ body {
 .chat-container {
 /*  height: calc(100vh - 54px - 255px - 13px);*/
   height: calc(100vh - 54px - 255px - 34px);
-  background-color: #fff;
+  /*background-color: #fff;*/
+  /*background-color: #f1f4f7;*/
+  background-color: #f1f7f5;
   overflow: auto;
   padding-bottom: 15px;
 }
@@ -128,7 +130,8 @@ body {
   margin-bottom: 0;
 }
 .chat-container .them > .message {
-  background-color: #f1f4f7;
+  /*background-color: #f1f4f7;*/
+  background-color: #fff;
   border-bottom-left-radius: 0;
 }
 .chat-container .you > .message {
@@ -143,10 +146,14 @@ body {
 }
 .chat-container .them:before {
   content: "\f0d9";
-  color: #f1f4f7;
+  /*color: #f1f4f7;*/
+  color: #fff;
   position: relative;
   top: 22px;
-  right: -21px;
+  right: -16px;
+}
+.chat-container .them.emoticon:before {
+  top: 60px;
 }
 .chat-container .you > .message:after {
   content: "\f0da";
