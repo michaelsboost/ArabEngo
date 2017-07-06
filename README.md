@@ -21,12 +21,10 @@ To Dos
 -------------
 
 - Properly save and populate social content via LocalStorage to community shares
-- Make it so users can make and publish chats
-- Make all published chats editable
-- Make it so everyone can share a chat
-- Make it possible so "them" can send multiple messages
-- Add Emoji's
 - If user has wifi can search * add images to chat
+- Make it possible so "them" can send multiple messages
+- Make it so everyone can make & share/publish a chat
+- Make all published chats editable
 
 Availability
 -------------
