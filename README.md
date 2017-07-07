@@ -20,7 +20,6 @@ Version
 To Dos
 -------------
 
-- Fix spacebar bug when typing in editor (it should not send let alone opens up the emoticons)
 - Properly save and populate social content via LocalStorage to community shares
 - Make it so everyone can make & share/publish a chat
 - Make all published chats editable

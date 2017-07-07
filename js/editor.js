@@ -432,7 +432,7 @@ function typeWordKeyBoard() {
           $('.keyboard button:contains("و")').trigger("click");
         }
         if ( e.which === 32 ) {
-          $('.keyboard button:contains(" ")').trigger("click");
+          $('.keyboard .spacebar').trigger("click");
         }
 
         // Symbols
