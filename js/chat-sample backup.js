@@ -20,7 +20,8 @@ if ( $("[data-person]").attr("data-person") ) {
 }
 
 // Reply and keyboard variables
-var remWord        = "",
+var intervalChat,
+    remWord        = "",
     str            = $(".chat-history > .you:hidden:first").text().trim(),
     typeIt         = str.substr(0, str.length - str.length + 1),
     nextStr        = str.substr(1, str.length),
@@ -63,6 +64,18 @@ var remWord        = "",
         responsiveVoice.speak($(".chat-history > div").last().text(), "Arabic Male");
       }
     },
+    speakSentenceHover  = function() {
+      // Speak arabic word/sentence
+      $(".them, .you").find("[data-meaning]").on("click mouseover", function() {
+        responsiveVoice.cancel();
+        if ( $("[data-gender]").attr("data-gender") === "female" ) {
+          responsiveVoice.speak(this.textContent, "Arabic Female");
+        } else {
+          responsiveVoice.speak(this.textContent, "Arabic Male");
+        }
+        return false;
+      });
+    },
     speakThis      = function(msg) {
       // Speak arabic word/sentence
       responsiveVoice.cancel();
@@ -94,7 +107,7 @@ var remWord        = "",
 
       // Remember typed word
       remWord = remWord += typeIt;
-      $("h1").text(remWord);
+      $(".preview h1").text(remWord);
       // alertify.log(nextStr);
 
       if (!nextStr) {
@@ -107,14 +120,65 @@ var remWord        = "",
 
           speakThis( $(".chat-history .you:visible:last").text() );
           scroll2B();
-          setTimeout(function() {
-            $(".chat-history > .them:hidden:first").removeClass("hide");
-            $(".typingloader").addClass("hide");
-            
-            $(".chat-container").attr("style", "");
-            $(".bottom-bar").fadeIn();
-            
-            speakThis( $(".chat-history .them:visible:last").text() );
+          intervalChat = setInterval(function() {
+            // Detect if they have multiple messages
+            if ( $(".chat-history > .msg:hidden:first").hasClass("them")) {
+              $(".typingloader").removeClass("hide");
+              scroll2B();
+              $(".chat-history > .them:hidden:first").removeClass("hide");
+              speakThis( $(".chat-history .them:visible:last").text() );
+              scroll2B();
+
+              if ( $(".chat-history > .msg:hidden:first").hasClass("you")) {
+                $(".typingloader").addClass("hide");
+                $(".chat-container").attr("style", "");
+                $(".bottom-bar").fadeIn();
+
+                // Detect first letter for typing
+                typeIt = str.substr(0, str.length - str.length + 1);
+                // Remove first letter for typing
+                nextStr = str.substr(1, str.length);
+
+                // Find out character's charCode
+                // alertify.log(typeIt.charCodeAt(0));
+                
+                // Remove clicked letter and reset word to type
+                $(".keyboard .active").removeClass("active");
+
+                // Remember typed word
+                remWord = remWord += typeIt;
+                $(".preview h1").text(remWord);
+                
+                clearInterval(intervalChat);
+              }
+            } else {
+              clearInterval(intervalChat);
+              $(".typingloader").addClass("hide");
+              // Detect if last message
+              if ($(".chat-history > .you:last").is(":visible")) {
+                clearInterval(intervalChat);
+                $(".chat-container").css("height", "calc(100vh - 55px");
+                $(".bottom-bar").remove();
+                
+                alertify.alert("Fantastic! You've completed the lesson!", function(e) {
+                  if (e) {
+                    // window.location.href = "../";
+                    alertify.log("test");
+                  } else {
+                    alertify.error("Houston there's a problem " + e);
+                  }
+                });
+                finishedLesson();
+                speakSentence();
+                return false;
+              } else {
+                clearInterval(intervalChat);
+                $(".chat-container").attr("style", "");
+                $(".bottom-bar").fadeIn();
+              }
+            }
+              
+            // speakThis( $(".chat-history .them:visible:last").text() );
           
             // Reset variables
             remWord = "";
@@ -123,39 +187,13 @@ var remWord        = "",
             checkSentence();
             $(".keyboard button:contains('"+ typeIt +"')").addClass("active");
             scroll2B();
-            // Speak message when hovered over
-            speakSentence();
           }, 2000);
-          $("h1").text("");
-          // Speak message when hovered over
-          speakSentence();
-        }
-        // Goodbye
-        if (remWord === $(".chat-history > .them:last").prev().text().trim()) {
-          $("h1").text("");
-
-          // Reset variables
-          remWord = "";
-          str = $(".chat-history > .you:last").text().trim();
-          nextStr = str;
-          checkSentence();
-          $(".keyboard button:contains('"+ typeIt +"')").addClass("active");
-          
-          alertify.alert("Fantastic! You've completed the lesson!", function(e) {
-            if (e) {
-              // Speak message when hovered over
-              // speakSentence();
-              window.location.href = "../";
-              alertify.log("test");
-            } else {
-              alertify.error("Houston there's a problem " + e);
-            }
-          });
-          finishedLesson();
-          // Speak message when hovered over
-          speakSentence();
+          $(".preview h1").text("");
         }
         reloadChat();
+        
+        // Speak message when hovered over
+        speakSentenceHover();
         return false;
       } else {
         checkSentence();
@@ -166,11 +204,30 @@ var remWord        = "",
       // console.log("Type String: " + str);
       // console.log("Remember Word: " + remWord);
       // console.log("Next String: " + nextStr);
+      return false;
     },
     keySound  = function() {
       audioKey.setAttribute("src", "../../sounds/keypress.mp3");
       audioKey.play();
     };
+
+// Share to Social Networks
+$("[data-call=share]").click(function() {
+  $(".sharelist").slideToggle();
+});
+$(".comingsoon").click(function() {
+  alertify.log("coming soon");
+});
+
+// Speak first message
+setTimeout(function() {
+  if ($(".chat-history > .msg:visible:first").is(":visible")) {
+    speakThis( $(".chat-history .msg:visible:first").text() );
+  }
+}, 300);
+
+// Speak message when hovered over
+speakSentence();
 
 // Type the word with a physical keyboard
 function typeWordKeyBoard() {
@@ -323,59 +380,55 @@ function typeWordKeyBoard() {
   });
 }
 
+// Check and see if you start first
+if ($(".chat-history > .you:first").is(":visible")) {
+  $(".typingloader").removeClass("hide");
+  $(".bottom-bar").fadeOut();
+  $(".chat-container").delay(150).css("height", "calc(100vh - 55px");
+  speakThis( $(".chat-history .you:visible:last").text() );
+  scroll2B();
+  setTimeout(function() {
+    $(".chat-history > .them:hidden:first").removeClass("hide");
+    $(".typingloader").addClass("hide");
+    $(".chat-container").attr("style", "");
+    $(".bottom-bar").fadeIn();
+    speakThis( $(".chat-history .them:visible:last").text() );
+    scroll2B();
+  }, 2000);
+}
+
 // If url doesn't contain a hash launch editor
 $(document).ready(function() {
   if (!url) {
-    $(document.body).append('<div class="fixedfill no-weave"></div>');
-    $(".no-weave").html('<div class="table"><div class="cell"><h1>No chat detected!</h1><a class="launcheditor" href="../editor" target="_blank">Launch Editor!</a></div></div>');
+    typeWordKeyBoard();
+
+    // Make first letter active to type
+    $(".keyboard button:contains('"+ typeIt +"')").addClass("active");
+
+    // Reload keyboard keys click function
+    $(".keyboard").each(function(i) {
+      $(".keyboard").eq(i).on("click", "> div > .active", function(e) {
+        $(".keyboard").eq( Number(!i) ).append(this);
+
+        $(".keyboard").find(".active").on("click", function(e) {
+          if ($(e.target).hasClass("active")) {
+            typeWord();
+            keySound();
+          }
+          return false;
+        }).trigger("click");
+        return false;
+      });
+    });
   } else {
     // Show Editors If URL Contains Them
     if (url.indexOf("?") > -1) {
       if (url.indexOf("full") > -1) {
-        // Speak first message
-        setTimeout(function() {
-          speakThis( $(".chat-history .them:first").text() );
-        }, 300);
-
-        // Speak message when hovered over
-        speakSentence();
-        
-        typeWordKeyBoard();
-        
         $(".bottom-bar, .typingloader").remove();
         $(".chat-container").css("height", "calc(100vh - 55px");
         $(".chat-history .them, .chat-history .you").removeClass("hide");
         $(".chat-history .them, .chat-history .you").removeClass("hide");
         $(".chat-history .them:last-child").remove();
-      } else {
-        // Speak first message
-        setTimeout(function() {
-          speakThis( $(".chat-history .them:first").text() );
-        }, 300);
-
-        // Speak message when hovered over
-        speakSentence();
-        
-        typeWordKeyBoard();
-
-        // Make first letter active to type
-        $(".keyboard button:contains('"+ typeIt +"')").addClass("active");
-
-        // Reload keyboard keys click function
-        $(".keyboard").each(function(i) {
-          $(".keyboard").eq(i).on("click", "> div > .active", function(e) {
-            $(".keyboard").eq( Number(!i) ).append(this);
-
-            $(".keyboard").find(".active").on("click", function(e) {
-              if ($(e.target).hasClass("active")) {
-                typeWord();
-                keySound();
-              }
-              return false;
-            }).trigger("click");
-            return false;
-          });
-        });
       }
     }
   }

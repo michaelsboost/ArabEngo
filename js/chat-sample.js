@@ -20,7 +20,8 @@ if ( $("[data-person]").attr("data-person") ) {
 }
 
 // Reply and keyboard variables
-var remWord        = "",
+var intervalChat,
+    remWord        = "",
     str            = $(".chat-history > .you:hidden:first").text().trim(),
     typeIt         = str.substr(0, str.length - str.length + 1),
     nextStr        = str.substr(1, str.length),
@@ -119,32 +120,65 @@ var remWord        = "",
 
           speakThis( $(".chat-history .you:visible:last").text() );
           scroll2B();
-          setTimeout(function() {
-            $(".chat-history > .them:hidden:first").removeClass("hide");
-            $(".typingloader").addClass("hide");
-            
-            // Detect if last message
-            if ($(".chat-history > .you:last").is(":visible")) {
-              $(".chat-container").css("height", "calc(100vh - 55px");
-              $(".bottom-bar").remove();
-              
-              alertify.alert("Fantastic! You've completed the lesson!", function(e) {
-                if (e) {
-                  // window.location.href = "../";
-                  alertify.log("test");
-                } else {
-                  alertify.error("Houston there's a problem " + e);
-                }
-              });
-              finishedLesson();
-              speakSentence();
-              return false;
+          intervalChat = setInterval(function() {
+            // Detect if they have multiple messages
+            if ( $(".chat-history > .msg:hidden:first").hasClass("them")) {
+              $(".typingloader").removeClass("hide");
+              scroll2B();
+              $(".chat-history > .them:hidden:first").removeClass("hide");
+              speakThis( $(".chat-history .them:visible:last").text() );
+              scroll2B();
+
+              if ( $(".chat-history > .msg:hidden:first").hasClass("you")) {
+                $(".typingloader").addClass("hide");
+                $(".chat-container").attr("style", "");
+                $(".bottom-bar").fadeIn();
+
+                // Detect first letter for typing
+                typeIt = str.substr(0, str.length - str.length + 1);
+                // Remove first letter for typing
+                nextStr = str.substr(1, str.length);
+
+                // Find out character's charCode
+                // alertify.log(typeIt.charCodeAt(0));
+                
+                // Remove clicked letter and reset word to type
+                $(".keyboard .active").removeClass("active");
+
+                // Remember typed word
+                remWord = remWord += typeIt;
+                $(".preview h1").text(remWord);
+                
+                clearInterval(intervalChat);
+              }
             } else {
-              $(".chat-container").attr("style", "");
-              $(".bottom-bar").fadeIn();
+              clearInterval(intervalChat);
+              $(".typingloader").addClass("hide");
+              // Detect if last message
+              if ($(".chat-history > .you:last").is(":visible")) {
+                clearInterval(intervalChat);
+                $(".chat-container").css("height", "calc(100vh - 55px");
+                $(".bottom-bar").remove();
+                
+                alertify.alert("Fantastic! You've completed the lesson!", function(e) {
+                  if (e) {
+                    window.location.href = "../";
+                    // alertify.log("test");
+                  } else {
+                    alertify.error("Houston there's a problem " + e);
+                  }
+                });
+                finishedLesson();
+                speakSentence();
+                return false;
+              } else {
+                clearInterval(intervalChat);
+                $(".chat-container").attr("style", "");
+                $(".bottom-bar").fadeIn();
+              }
             }
-            
-            speakThis( $(".chat-history .them:visible:last").text() );
+              
+            // speakThis( $(".chat-history .them:visible:last").text() );
           
             // Reset variables
             remWord = "";
@@ -170,6 +204,7 @@ var remWord        = "",
       // console.log("Type String: " + str);
       // console.log("Remember Word: " + remWord);
       // console.log("Next String: " + nextStr);
+      return false;
     },
     keySound  = function() {
       audioKey.setAttribute("src", "../../sounds/keypress.mp3");
@@ -186,7 +221,9 @@ $(".comingsoon").click(function() {
 
 // Speak first message
 setTimeout(function() {
-  speakThis( $(".chat-history .msg:first").text() );
+  if ($(".chat-history > .msg:visible:first").is(":visible")) {
+    speakThis( $(".chat-history .msg:visible:first").text() );
+  }
 }, 300);
 
 // Speak message when hovered over
