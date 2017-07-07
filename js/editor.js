@@ -200,6 +200,7 @@ $("[data-clear=chat]").on("click", function() {
     UIkit.modal.confirm('This is a distructive action that cannot be undone!<br> Are you sure you wish to proceed?').then(function() {
       $("[data-output=messages]").html("");
       localStorage.setItem("chatMessages", $("[data-output=messages]").html());
+      // localStorage.clear();
       return false;
     }, function () {
       // rejected
