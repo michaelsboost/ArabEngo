@@ -150,13 +150,9 @@ var audioKey       = document.createElement("audio"),
 
         // First do you want to delete this message
         UIkit.modal.confirm('Do you want to delete this message?').then(function() {
-          UIkit.modal.confirm('This is a distructive action that cannot be undone!<br> Are you sure you wish to proceed?').then(function() {
-            $(".selected-msg").remove();
-            localStorage.setItem("chatMessages", $("[data-output=messages]").html());
-            return false;
-          }, function () {
-            // rejected
-          });
+          $(".selected-msg").remove();
+          localStorage.setItem("chatMessages", $("[data-output=messages]").html());
+          return false;
         }, function () {
           UIkit.modal.prompt('What does "'+ $(".selected-msg").text() +'" mean?').then(function(value) {
             if (!value) {
@@ -199,9 +195,18 @@ $(".comingsoon").on("click", function() {
 });
 
 // Clear chat
-$("[data-clear=chat]").click(function() {
-  $("[data-output=messages]").html("");
-  localStorage.setItem("chatMessages", $("[data-output=messages]").html());
+$("[data-clear=chat]").on("click", function() {
+  UIkit.modal.confirm('Do you wish to start a new clean chat?').then(function() {
+    UIkit.modal.confirm('This is a distructive action that cannot be undone!<br> Are you sure you wish to proceed?').then(function() {
+      $("[data-output=messages]").html("");
+      localStorage.setItem("chatMessages", $("[data-output=messages]").html());
+      return false;
+    }, function () {
+      // rejected
+    });
+  }, function () {
+    // rejected
+  });
 });
 
 // Add emotion as message
@@ -209,10 +214,11 @@ $("[data-add=emotion]").on("click", function() {
   $("[data-output=messages]").append('<div class="them emoticon msg"><p class="message">'+ this.innerHTML +'</p></div>');
   localStorage.setItem("chatMessages", $("[data-output=messages]").html());
   addEmoticons();
+  scroll2B();
 });
 
 // Scroll to top from info screen
-$("[data-scroll=top]").click(function() {
+$("[data-scroll=top]").on("click", function() {
   $(".uk-offcanvas-bar").animate({
     scrollTop: 0
   });
@@ -220,7 +226,9 @@ $("[data-scroll=top]").click(function() {
 
 // Speak first message
 setTimeout(function() {
-  speakThis( $(".chat-history .them:first").text() );
+  if ($(".chat-history > .msg:visible:first").is(":visible")) {
+    speakThis( $(".chat-history .msg:visible:first").text() );
+  }
 }, 300);
 
 // Speak message when hovered over
@@ -233,7 +241,7 @@ msgTranslation();
 // Add emoticons
 addEmoticons();
 
-$('.keyboard button').on("click", function() {
+$('.keyboard').find('button').on("click", function() {
   if ($(this).attr("class") === "spacebar editor") {
     $val = $(".preview h1").text();
     $(".preview h1").text($val + " ");
@@ -254,29 +262,34 @@ $('.keyboard button').on("click", function() {
       // That's how the app is configured.
       // Chat ends when the bot says goodbye, followed by your goodbye response.
 
-      if ( !$("[data-output=messages").html() ) {
-        $("[data-output=messages]").append('<div class="them msg"><p class="message" data-meaning="">'+ $(".preview h1").text() +'</p></div>');
-      } else {
+      if ( $("[data-output=messages").html() ) {
         if ($("[data-output=messages] > div:last").hasClass("them")) {
           $("[data-output=messages]").append('<div class="tr you msg"><p class="message" data-meaning="">'+ $(".preview h1").text() +'</p></div>');
         } else {
           $("[data-output=messages]").append('<div class="them msg"><p class="message" data-meaning="">'+ $(".preview h1").text() +'</p></div>');
         }
       }
+      var chatHistory = $("[data-output=messages]").html();
+      $("[data-output=messages]").html("");
+      $("[data-output=messages]").html(chatHistory);
       $(".preview h1").text("");
-
-      // Speak message when hovered over
-      speakSentence();
 
       // Once message is added
       // You can click on it to set its translation
       msgTranslation();
+      scroll2B();
+
+      // Speak message when hovered over
+      speakSentence();
     }
   } else {
     $val = $(".preview h1").text();
     $(".preview h1").text($val + this.textContent);
   }
+  return false;
 });
+
+scroll2B();
 
 // Type the word with a physical keyboard
 function typeWordKeyBoard() {
@@ -438,7 +451,7 @@ function typeWordKeyBoard() {
 typeWordKeyBoard();
 
 // Save as a Gist Online
-$("[data-action=save-gist]").click(function() {
+$("[data-action=save-gist]").on("click", function() {
   // check if description and markdown editor have a value
   if ( !$("[data-set=topic]").text()) {
      $("[data-set=topic]").text("Saved from ArabEngo!");

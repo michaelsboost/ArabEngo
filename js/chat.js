@@ -147,7 +147,7 @@ var intervalChat,
 
                 // Remember typed word
                 remWord = remWord += typeIt;
-                $(".preview h1").text(remWord);
+                $(".preview h1").text("");
                 
                 clearInterval(intervalChat);
               }
@@ -177,9 +177,11 @@ var intervalChat,
                 $(".bottom-bar").fadeIn();
               }
             }
-              
-            // speakThis( $(".chat-history .them:visible:last").text() );
-          
+            
+            var chatHistory = $("[data-output=messages]").html();
+            $("[data-output=messages]").html("");
+            $("[data-output=messages]").html(chatHistory);
+            
             // Reset variables
             remWord = "";
             str = $(".chat-history > .you:hidden:first").text().trim();

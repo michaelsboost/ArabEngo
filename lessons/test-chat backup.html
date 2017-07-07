@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>ArabEngo: Meet Akira</title>
+    <title>ArabEngo: Meet Droid</title>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=9">
@@ -33,7 +33,7 @@
           <a class="pointer">
             <span class="fa fa-phone scale"></span>
           </a>
-          <a class="pointer">
+          <a class="pointer largephone">
             <span class="fa fa-video-camera scale"></span>
           </a>
           <a class="pointer" uk-toggle="target: #user-info">
@@ -68,14 +68,19 @@
             Chat ends when the bot says goodbye, followed by your goodbye response.
           -->
 
-          <div class="them msg">
-            <p class="message" data-meaning="Welcome!">اهلا</p>
-          </div>
           <div class="tr you msg hide">
             <p class="message" data-meaning="Hello!">مرحبا</p>
           </div>
+          <div class="tr you msg hide">
+            <p class="message" data-meaning="My name is Michael">انا اسمي مايكل</p>
+          </div>
           <div class="them msg hide">
-            <p class="message" data-meaning="My name is Akira">انا اسمي أكيرا</p>
+            <p class="message" data-meaning="Welcome!">اهلا</p>
+          </div>
+          <div class="them emoticon msg hide">
+            <p class="message">
+              <img src="../imgs/emoticons/emoji_9.gif">
+            </p>
           </div>
           <div class="tr you msg hide">
             <p class="message" data-meaning="Nice to meet you">فر صة سعيدة</p>
@@ -91,6 +96,9 @@
           </div>
           <div class="tr you msg hide">
             <p class="message" data-meaning="I'm good. Thank you!">انا بخير شكرا</p>
+          </div>
+          <div class="them msg hide">
+            <p class="message" data-meaning="Goodbye">مع السلامه</p>
           </div>
         </div>
 
