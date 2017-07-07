@@ -9,8 +9,11 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
     <link rel="stylesheet" href="../css/chat.css">
+    <link rel="stylesheet" href="../libraries/alertifyjs/css/alertify.min.css">
+    <link rel="stylesheet" href="../libraries/alertifyjs/css/themes/default.min.css">
     <script src="../libraries/jquery/jquery.js"></script>
-    <script src="../libraries/alertify/alertify.min.js"></script>
+    <!--<script src="../libraries/alertify/alertify.min.js"></script>-->
+    <script src="../libraries/alertifyjs/alertify.min.js"></script>
     <script src="../js/responsivevoice.js"></script>
     <script src="../libraries/uikit/js/uikit.min.js"></script>
     <script src="../libraries/uikit/js/uikit-icons.min.js"></script>
@@ -33,8 +36,8 @@
         <span class="contact" data-person="Your Name" data-gender="male" contenteditable="true"></span>
 
         <div class="ib fr contactbtns cb-right">
-          <a class="pointer uk-modal-close">
-            <span class="fa fa-phone scale"></span>
+          <a class="pointer uk-modal-close" href="javascript:location.reload(true)">
+            <span class="fa fa-refresh scale"></span>
           </a>
           <a class="pointer uk-modal-close largephone">
             <span class="fa fa-video-camera scale"></span>
@@ -102,10 +105,7 @@
             <button>٨</button>
             <button>٩</button>
             <button>٠</button>
-            <button class="pictures" uk-toggle="target: #emoticons">
-              <!--<span uk-icon="icon: image"></span>-->
-              <span uk-icon="icon: happy"></span>
-            </button>
+            <button class="pictures" uk-toggle="target: #emoticons"><span uk-icon="icon:happy"></span></button>
             <button class="backspace">
               <span uk-icon="icon: arrow-left"></span>
             </button>
@@ -157,7 +157,6 @@
           </div>
         </div>
       </div>
-
 
       <div id="emoticons" uk-modal>
         <div class="uk-modal-dialog">
@@ -366,6 +365,47 @@
           </ul>
           
         </div>
+      </div>
+    </div>
+
+    <!--Share to social media dialog-->
+    <div class="dialog-bg column hide" data-action="socialdialog">
+      <div>
+        <nav>
+          <div class="grid socialdialog">
+            <div class="grid__col-12 tc socialbtns">
+              <h1>Share your weave with your friends!</h1>
+              <h4 class="tl nomar" style="color: #888888;">Link:</h4>
+              <input class="txtbox block" data-output="projectURL">
+
+              <h4 class="tl nomar" style="color: #888888;">Edit:</h4>
+              <input class="txtbox block" data-output="editProject">
+
+              <a class="share-facebook" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A//mikethedj4.github.io/kodeWeave/editor/%23c8f226c5e20b774806f507a06be12fee">
+                <i class="fa fa-facebook-square"></i>
+              </a>
+              <a class="share-twitter" target="_blank" href="https://twitter.com/home?status=Checkout%20my%20site%20title%20%23weave%20on%20%23kodeWeave%20%23kodeWeaveShare%20-%20https%3A//mikethedj4.github.io/kodeWeave/e/%23c8f226c5e20b774806f507a06be12fee">
+                <i class="fa fa-twitter-square"></i>
+              </a>
+              <a class="share-gplus" target="_blank" href="https://plus.google.com/share?url=https%3A//mikethedj4.github.io/kodeWeave/editor/%23c8f226c5e20b774806f507a06be12fee">
+                <i class="fa fa-google-plus-square"></i>
+              </a>
+              <a class="share-instagram" target="_blank">
+                <i class="fa fa-instagram"></i>
+              </a>
+              <a target="_blank" href="https://cash.me/$mschwar4">
+                <i class="fa fa-credit-card"></i>
+              </a>
+              <a target="_blank" href="https://paypal.me/mikethedj4">
+                <i class="fa fa-cc-paypal"></i>
+              </a>
+              <p></p>
+              <p>
+                <a class="btn--warning" data-action="social-cancel">Cancel</a>
+              </p>
+            </div>
+          </div>
+        </nav>
       </div>
     </div>
 

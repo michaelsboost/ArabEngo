@@ -150,7 +150,7 @@ var audioKey       = document.createElement("audio"),
 
         // First do you want to delete this message
         UIkit.modal.confirm('Do you want to delete this message?').then(function() {
-          $(".selected-msg").remove();
+          $(".selected-msg").parent().remove();
           localStorage.setItem("chatMessages", $("[data-output=messages]").html());
           return false;
         }, function () {
@@ -191,7 +191,7 @@ $("[data-call=share]").on("click", function() {
   $(".sharelist").slideToggle();
 });
 $(".comingsoon").on("click", function() {
-  alertify.log("coming soon");
+  alertify.message("coming soon");
 });
 
 // Clear chat
@@ -242,7 +242,7 @@ msgTranslation();
 // Add emoticons
 addEmoticons();
 
-$('.keyboard').find('button').on("click", function() {
+$('.keyboard button').on("click", function() {
   if ($(this).attr("class") === "spacebar editor") {
     $val = $(".preview h1").text();
     $(".preview h1").text($val + " ");
@@ -256,7 +256,7 @@ $('.keyboard').find('button').on("click", function() {
     return false;
   } else if ($(this).attr("class") === "enter") {
     if ($(".preview h1").text().trim() === "") {
-      alertify.log("Cannot send empty messages!");
+      alertify.message("Cannot send empty messages!");
       return false;
     } else {
       // Bot talks, you talk, bot talks, you talk...
@@ -461,6 +461,8 @@ $("[data-action=save-gist]").on("click", function() {
   // Return user properties
   var sArr = {
     "personName": $("[data-person]").text(),
+    "personAvatar": $("[data-set=avatar]").css('background-image'),
+    "personGender": (document.getElementById('setGender').checked ? true : false),
     "personLocation": $("[data-set=location]").text(),
     "personTopic": $("[data-set=topic]").text(),
     "personBio": $("[data-set=bio]").text(),
@@ -495,34 +497,21 @@ $("[data-action=save-gist]").on("click", function() {
     hash = window.location.hash.replace(/#/g,"");
     
     embedProject = e.html_url.split("https://gist.github.com/").join("");
-    document.querySelector("[data-output=projectURL]").value = "https://mikethedj4.github.io/kodeWeave/editor/#" + embedProject;
+    document.querySelector("[data-output=projectURL]").value = "https://mikethedj4.github.io/ArabEngo/editor/#" + embedProject;
     document.querySelector("[data-output=projectURL]").onclick = function() {
       this.select(true);
     };
-    
-    document.getElementById("clearSharePreview").innerHTML = "";
-    var shareFrame = document.createElement("iframe");
-    shareFrame.setAttribute("id", "shareWeavePreview");
-    shareFrame.setAttribute("sandbox", "allow-forms allow-modals allow-pointer-lock allow-popups allow-same-origin allow-scripts");
-    shareFrame.style.width = "calc(100% + 1.5em)";
-    shareFrame.style.height = "300px";
-    document.getElementById("clearSharePreview").appendChild(shareFrame);
-    var previewWeave = document.getElementById("shareWeavePreview");
-    previewWeave.src = "https://mikethedj4.github.io/kodeWeave/embed/#" + embedProject + "?" + showEditors;
-    document.querySelector("[data-output=embedProject]").value = "<iframe width=\"100%\" height=\"300\" src=\"https://mikethedj4.github.io/kodeWeave/embed/#" + embedProject + "?" + showEditors + "\" allowfullscreen=\"allowfullscreen\" frameborder=\"0\"></iframe>";
-    document.querySelector("[data-output=embedProject]").onclick = function() {
-      this.select(true);
-    };
 
-    $(".share-facebook").attr("href", "https://www.facebook.com/sharer/sharer.php?u=https%3A//mikethedj4.github.io/kodeWeave/editor/%23" + hash);
-    $(".share-twitter").attr("href", "https://twitter.com/home?status=Checkout%20my%20"+ document.querySelector("[data-action=sitetitle]").value.split(" ").join("%20") +"%20%23weave%20on%20%23kodeWeave%20%23kodeWeaveShare%20-%20https%3A//mikethedj4.github.io/kodeWeave/e/%23" + hash);
-    $(".share-gplus").attr("href", "https://plus.google.com/share?url=https%3A//mikethedj4.github.io/kodeWeave/editor/%23" + hash);
-    $(".share-linkedin-square").attr("href", "https://www.linkedin.com/shareArticle?mini=true&url=https%3A//mikethedj4.github.io/kodeWeave/editor/%23"+ hash +"&title=Checkout%20my%20%23weave%20on%20%23kodeWeave%3A%20&summary=&source=");
+    $(".share-facebook").attr("href", "https://www.facebook.com/sharer/sharer.php?u=https%3A//mikethedj4.github.io/ArabEngo/chat/%23" + hash);
+    $(".share-twitter").attr("href", "https://twitter.com/home?status=Checkout%20my%20"+ $("[data-set=topic]").text().split(" ").join("%20") +"%20chat%20on%20%23ArabEngo%20%23ArabEngoChat%20-%20https%3A//mikethedj4.github.io/ArabEngo/chat/%23" + hash);
+    $(".share-gplus").attr("href", "https://plus.google.com/share?url=https%3A//mikethedj4.github.io/ArabEngo/chat/%23" + hash);
+    $(".share-linkedin-square").attr("href", "https://www.linkedin.com/shareArticle?mini=true&url=https%3A//mikethedj4.github.io/ArabEngo/chat/%23"+ hash +"&title=Checkout%20my%20%23weave%20on%20%23kodeWeave%3A%20&summary=&source=");
     $("[data-action=socialdialog]").fadeIn();
 
     // Successfully saved weave. 
     // Ask to support open source software.
     // UIkit.notification("<div class=\"grid\"><div class=\"centered grid__col--12 tc\"><h2>Help keep this free!</h2><a href=\"https://snaptee.co/t/2nezt/?r=fb&teeId=2nezt\" target=\"_blank\"><img src=\"../assets/images/model-2.jpg\" width=\"100%\"></a><a class=\"btn--success\" href=\"https://snaptee.co/t/2nezt/?r=fb&teeId=2nezt\" target=\"_blank\" style=\"display: block;\">Buy Now</a></div></div>");
+    // alertify.message("<div class=\"grid\"><div class=\"centered grid__col--12 tc\"><h2>Help keep this free!</h2><a href=\"https://snaptee.co/t/2nezt/?r=fb&teeId=2nezt\" target=\"_blank\"><img src=\"../assets/images/model-2.jpg\" width=\"100%\"></a><a class=\"btn--success\" href=\"https://snaptee.co/t/2nezt/?r=fb&teeId=2nezt\" target=\"_blank\" style=\"display: block;\">Buy Now</a></div></div>");
   }).error(function(e) {
     console.warn("Error: Could not save weave!", e);
     alertify.error("Error: Could not save weave!");
