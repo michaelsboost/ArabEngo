@@ -190,7 +190,7 @@ var grabHTML,
         $(this).parent().find("[data-meaning]").addClass("selected-msg");
 
         // Update message if spelling was wrong
-        UIkit.modal.prompt('<h3>Did you spell "'+ $(".selected-msg").text() +'" wrong?</h3><i>Make sure you\'re using the correct keyboard!<br><u>Remember! ArabEngo doesnt integrate accent marks!</u></i><hr>').then(function(value) {
+        UIkit.modal.prompt('<h3>Did you spell "'+ $(".selected-msg").text() +'" wrong?</h3><i>Make sure you\'re using the correct keyboard!<br><u>Remember! ArabEngo does <strong>NOT</strong> integrate accent marks!</u></i><hr>').then(function(value) {
           if (!value) {
             // location.reload(true);
           } else {
