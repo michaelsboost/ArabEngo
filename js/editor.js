@@ -59,6 +59,12 @@ var grabHTML,
       audioKey.setAttribute("src", "../../sounds/keypress.mp3");
       audioKey.play();
     },
+    clearHash = function() {
+      // Remove hash when user makes a change
+      if (window.location.hash) {
+        window.location.href = window.location.toString().split(/\?|#/)[0];
+      }
+    },
     setLocalStorage = function() {
       // name
       if ( localStorage.getItem("personName")) {
@@ -79,6 +85,9 @@ var grabHTML,
       var checked = JSON.parse(localStorage.getItem("genderState"));
       document.getElementById("setGender").checked = checked;
       $("[data-call=gender]").on("click", function() {
+        // Remove hash when user makes a change
+        clearHash();
+
         if (this.checked) {
           $("[data-gender]").attr("data-gender", "male");
           localStorage.setItem("personGender", "male");
@@ -151,6 +160,9 @@ var grabHTML,
       localStorage.setItem("chatMessages", $("[data-output=messages]").html());
 
       $(".them, .you").find("[data-meaning]").on("click", function() {
+        // Remove hash when user makes a change
+        clearHash();
+        
         $(this).addClass("selected-msg");
 
         // First do you want to delete this message
@@ -189,6 +201,9 @@ var grabHTML,
       localStorage.setItem("chatMessages", $("[data-output=messages]").html());
 
       $(".them, .you").find("[data-edit]").on("click", function() {
+        // Remove hash when user makes a change
+        clearHash();
+
         $(this).parent().find("[data-meaning]").addClass("selected-msg");
 
         // Update message if spelling was wrong
@@ -222,6 +237,11 @@ var grabHTML,
     initiateEditor  = function() {
       // Set Localstorage
       setLocalStorage();
+
+      // Remove hash when user makes a change
+      $("input[type=text], [contentEditable]").on("keyup change", function() {
+        clearHash();
+      });
 
       // Share to Social Networks
       $("[data-call=share]").on("click", function() {
@@ -259,6 +279,9 @@ var grabHTML,
         localStorage.setItem("chatMessages", $("[data-output=messages]").html());
         addEmoticons();
         scroll2B();
+
+        // Remove hash when user makes a change
+        clearHash();
       });
 
       // Scroll to top from info screen
@@ -327,6 +350,9 @@ var grabHTML,
 
             // Speak message when hovered over
             speakSentence();
+            
+            // Remove hash when user makes a change
+            clearHash();
           }
         } else {
           $val = $(".preview h1").text();
