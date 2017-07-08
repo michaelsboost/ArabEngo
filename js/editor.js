@@ -128,19 +128,21 @@ var audioKey       = document.createElement("audio"),
         $("[data-output=messages]").html(localStorage.getItem("chatMessages"));
       }
       // social network communication
-      // var arr = localStorage.getItem("socialValues") || {};
-      // if ( localStorage.getItem("socialValues")) {
-      //   var savedArrData = JSON.parse(arr);
-      //   $.each(savedArrData, function(key, value) {
-      //     $("[data-social=links] input#" + key).val(value);
-      //     // console.log(key + ": " + value);
-      //   });
-      // }
-      // $("[data-social=links] input").on("change keyup", function() {
-      //   arr[this.id] = (this.value ? '"' + this.value + '"' : "");
-      //   localStorage.setItem("socialValues", JSON.stringify(arr));
-      // });
-      // $("[data-social=links] input").trigger("change");
+      var arr = JSON.parse(localStorage.getItem("socialValues")) || {};
+
+      if (localStorage.getItem("socialValues")) {
+        var savedArrData = JSON.parse(localStorage.getItem("socialValues"));
+        $.each(savedArrData, function(key, value) {
+          $("#" + key).val(value);
+        });
+      }
+
+      $("[data-social=links] input").on("change keyup", function() {
+        var id = this.id;
+        arr[id] = (this.value ? this.value : "");
+        localStorage.removeItem("socialValues");
+        localStorage.setItem("socialValues", JSON.stringify(arr));
+      });
     },
     msgTranslation = function() {
       localStorage.setItem("chatMessages", $("[data-output=messages]").html());
@@ -453,6 +455,9 @@ typeWordKeyBoard();
 
 // Save as a Gist Online
 $("[data-action=save-gist]").on("click", function() {
+  $(".sharelist").slideToggle();
+  $("[data-output=messages] .msg").addClass("hide");
+  
   // check if description and markdown editor have a value
   if ( !$("[data-set=topic]").text()) {
      $("[data-set=topic]").text("Saved from ArabEngo!");
@@ -472,7 +477,7 @@ $("[data-action=save-gist]").on("click", function() {
   var socialArr = {};
   $("[data-social=links] input").each(function() {
     var id = this.id;
-    socialArr[id] = (this.value ? '"' + this.value + '"' : "");
+    socialArr[id] = (this.value ? this.value : "");
   });
 
   var files = {};
@@ -497,25 +502,32 @@ $("[data-action=save-gist]").on("click", function() {
     hash = window.location.hash.replace(/#/g,"");
     
     embedProject = e.html_url.split("https://gist.github.com/").join("");
-    document.querySelector("[data-output=projectURL]").value = "https://mikethedj4.github.io/ArabEngo/editor/#" + embedProject;
-    document.querySelector("[data-output=projectURL]").onclick = function() {
+    document.querySelector("[data-output=chatURL]").value = "https://mikethedj4.github.io/ArabEngo/chat/#" + embedProject;
+    document.querySelector("[data-output=chatURL]").onclick = function() {
+      this.select(true);
+    };
+    document.querySelector("[data-output=editProject]").value = "https://mikethedj4.github.io/ArabEngo/editor/#" + embedProject;
+    document.querySelector("[data-output=editProject]").onclick = function() {
       this.select(true);
     };
 
     $(".share-facebook").attr("href", "https://www.facebook.com/sharer/sharer.php?u=https%3A//mikethedj4.github.io/ArabEngo/chat/%23" + hash);
-    $(".share-twitter").attr("href", "https://twitter.com/home?status=Checkout%20my%20"+ $("[data-set=topic]").text().split(" ").join("%20") +"%20chat%20on%20%23ArabEngo%20%23ArabEngoChat%20-%20https%3A//mikethedj4.github.io/ArabEngo/chat/%23" + hash);
+    $(".share-twitter").attr("href", "https://twitter.com/home?status=Checkout%20my%20%23"+ $("[data-set=topic]").text().split(" ") +"%20%23chat%20on%20%23ArabEngo%20%23ArabEngoChat%20-%20https%3A//mikethedj4.github.io/ArabEngo/chat/%23" + hash);
     $(".share-gplus").attr("href", "https://plus.google.com/share?url=https%3A//mikethedj4.github.io/ArabEngo/chat/%23" + hash);
-    $(".share-linkedin-square").attr("href", "https://www.linkedin.com/shareArticle?mini=true&url=https%3A//mikethedj4.github.io/ArabEngo/chat/%23"+ hash +"&title=Checkout%20my%20%23weave%20on%20%23kodeWeave%3A%20&summary=&source=");
+    $(".share-linkedin-square").attr("href", "https://www.linkedin.com/shareArticle?mini=true&url=https%3A//mikethedj4.github.io/ArabEngo/chat/%23"+ hash +"&title=Checkout%20my%20%23"+ $("[data-set=topic]").text().split(" ") +"%20%23chat%20on%20%23ArabEngo%3A%20&summary=&source=");
     $("[data-action=socialdialog]").fadeIn();
 
     // Successfully saved weave. 
     // Ask to support open source software.
-    // UIkit.notification("<div class=\"grid\"><div class=\"centered grid__col--12 tc\"><h2>Help keep this free!</h2><a href=\"https://snaptee.co/t/2nezt/?r=fb&teeId=2nezt\" target=\"_blank\"><img src=\"../assets/images/model-2.jpg\" width=\"100%\"></a><a class=\"btn--success\" href=\"https://snaptee.co/t/2nezt/?r=fb&teeId=2nezt\" target=\"_blank\" style=\"display: block;\">Buy Now</a></div></div>");
     // alertify.message("<div class=\"grid\"><div class=\"centered grid__col--12 tc\"><h2>Help keep this free!</h2><a href=\"https://snaptee.co/t/2nezt/?r=fb&teeId=2nezt\" target=\"_blank\"><img src=\"../assets/images/model-2.jpg\" width=\"100%\"></a><a class=\"btn--success\" href=\"https://snaptee.co/t/2nezt/?r=fb&teeId=2nezt\" target=\"_blank\" style=\"display: block;\">Buy Now</a></div></div>");
   }).error(function(e) {
     console.warn("Error: Could not save weave!", e);
     alertify.error("Error: Could not save weave!");
   });
+});
+$("[data-action=social-close]").click(function() {
+  $("[data-output=messages] .msg").removeClass("hide");
+  $("[data-action=socialdialog]").fadeOut();
 });
 
 // Auto open profile info

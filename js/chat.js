@@ -160,13 +160,8 @@ var intervalChat,
                 $(".chat-container").css("height", "calc(100vh - 55px");
                 $(".bottom-bar").remove();
                 
-                alertify.alert("Fantastic! You've completed the lesson!", function(e) {
-                  if (e) {
-                    // window.location.href = "../";
-                    alertify.log("test");
-                  } else {
-                    alertify.error("Houston there's a problem " + e);
-                  }
+                UIkit.modal.alert("Fantastic! You've completed the lesson!").then(function() {
+                  window.location.href = "../#community";
                 });
                 finishedLesson();
                 speakSentence();
@@ -213,6 +208,142 @@ var intervalChat,
       audioKey.play();
     };
     
+function getFirstWord(str) {
+  let spacePosition = str.indexOf(' ');
+  if (spacePosition === -1)
+    return str;
+  else
+    return str.substr(0, spacePosition);
+}
+
+var hash = window.location.hash.substring(1);
+function loadgist(gistid) {
+  $.ajax({
+    url: "https://api.github.com/gists/" + gistid,
+    type: "GET",
+    dataType: "jsonp",
+    jsonp: "callback"
+  }).success(function(gistdata) {
+    // Update edit chat link
+    $("[data-action=edit-chat]").attr('href', "../editor/" + window.location.hash);
+
+    var chatMessages = gistdata.data.files["messages.html"];
+    var properties   = gistdata.data.files["properties.json"].content;
+    var social       = gistdata.data.files["social.json"].content;
+    var jsonSets     = JSON.parse(properties);
+    var jsonSocial   = JSON.parse(social);
+
+    // Return biographical information from json
+    $("[data-person]").attr("data-person", jsonSets.personName);
+    $("[data-person]").text(jsonSets.personName);
+    document.title = "ArabEngo: Meet " + getFirstWord(jsonSets.personName);
+    $("[data-output=name]").text(jsonSets.personName);
+    $("[data-set=avatar]").css('background-image', jsonSets.personAvatar);
+    $("#setGender").prop("checked", jsonSets.personGender);
+    $("[data-set=location]").text(jsonSets.personLocation);
+    $("[data-set=topic]").text(jsonSets.personTopic);
+    $("[data-set=bio]").text(jsonSets.personBio);
+    $("[data-set=topic]").text(jsonSets.description);
+
+    // Return social links from json
+    $.each(jsonSocial, function(name, value) {
+      $("[data-social=links] #" + name).text(value).parent().attr("href", value);
+      if (!value) {
+        $("[data-social=links] #" + name).parent().parent().remove();
+      }
+    });
+    // Load in conversation
+    $("[data-output=conversation]").html(chatMessages.content);
+
+    // Initiate Chat
+
+    // Check and see if you start first
+    if ($(".chat-history > .msg:hidden:first").hasClass("them")) {
+      $("[data-output=conversation] .msg:hidden:first").removeClass("hide");
+    }
+    speakThis( $(".chat-history .msg:visible:last").text() );
+    scroll2B();
+
+    // Speak first message
+    setTimeout(function() {
+      if ($(".chat-history > .msg:visible:first").is(":visible")) {
+        speakThis( $(".chat-history .msg:visible:first").text() );
+      }
+    }, 300);
+
+    // Speak message when hovered over
+    speakSentence();
+
+    // Check and see if you start first
+    if ($(".chat-history > .you:first").is(":visible")) {
+      $(".typingloader").removeClass("hide");
+      $(".bottom-bar").fadeOut();
+      $(".chat-container").delay(150).css("height", "calc(100vh - 55px");
+      speakThis( $(".chat-history .you:visible:last").text() );
+      scroll2B();
+      setTimeout(function() {
+        $(".chat-history > .them:hidden:first").removeClass("hide");
+        $(".typingloader").addClass("hide");
+        $(".chat-container").attr("style", "");
+        $(".bottom-bar").fadeIn();
+        speakThis( $(".chat-history .them:visible:last").text() );
+        scroll2B();
+      }, 2000);
+    }
+
+    typeWordKeyBoard();
+
+    // Make first letter active to type
+    $(".keyboard button:contains('"+ typeIt +"')").addClass("active");
+
+    // Reload keyboard keys click function
+    $(".keyboard").each(function(i) {
+      $(".keyboard").eq(i).on("click", "> div > .active", function(e) {
+        $(".keyboard").eq( Number(!i) ).append(this);
+
+        $(".keyboard").find(".active").on("click", function(e) {
+          if ($(e.target).hasClass("active")) {
+            typeWord();
+            keySound();
+          }
+          return false;
+        }).trigger("click");
+        return false;
+      });
+    });
+    $(".keyboard").find(".active").trigger("click");
+
+    // If url doesn't contain a hash launch editor
+    // Show chat history If URL Contains Them
+    if (url.indexOf("?") > -1) {
+      if (url.indexOf("full") > -1) {
+        // Speak first message
+        setTimeout(function() {
+          speakThis( $(".chat-history .them:first").text() );
+        }, 300);
+        
+        $(".bottom-bar, .typingloader").remove();
+        $(".chat-container").css("height", "calc(100vh - 55px");
+        $(".chat-history .msg").removeClass("hide");
+        $(".chat-history .msg:last-child").remove();
+      }
+    }
+    $(".preloader").remove();
+  }).error(function(e) {
+    // ajax error
+    console.warn("Error: Could not load weave!", e);
+    alertify.error("Error: Could not load weave!");
+  });
+}
+if (window.location.hash) {
+  $(document.body).append('<div class="fixedfill preloader"></div>');
+  $(".preloader").html('<div class="table"><div class="cell"><img class="spin" src="../imgs/loading.svg"></div></div>');
+  loadgist(hash);
+} else {
+  $(document.body).append('<div class="fixedfill no-hash"></div>');
+  $(".no-hash").html('<div class="table"><div class="cell"><h1>No chat detected!</h1><a class="launcheditor" href="../editor" target="_blank">Launch Editor!</a></div></div>');
+}
+
 // Share to Social Networks
 $("[data-call=share]").click(function() {
   $(".sharelist").slideToggle();
@@ -370,81 +501,6 @@ function typeWordKeyBoard() {
     }
   });
 }
-
-// If url doesn't contain a hash launch editor
-$(document).ready(function() {
-  if (!url) {
-    $(document.body).append('<div class="fixedfill no-weave"></div>');
-    $(".no-weave").html('<div class="table"><div class="cell"><h1>No chat detected!</h1><a class="launcheditor" href="../editor" target="_blank">Launch Editor!</a></div></div>');
-  } else {
-    // Show Editors If URL Contains Them
-    if (url.indexOf("?") > -1) {
-      if (url.indexOf("full") > -1) {
-        // Speak first message
-        setTimeout(function() {
-          speakThis( $(".chat-history .them:first").text() );
-        }, 300);
-
-        // Speak message when hovered over
-        speakSentence();
-        
-        typeWordKeyBoard();
-        
-        $(".bottom-bar, .typingloader").remove();
-        $(".chat-container").css("height", "calc(100vh - 55px");
-        $(".chat-history .them, .chat-history .you").removeClass("hide");
-        $(".chat-history .them, .chat-history .you").removeClass("hide");
-        $(".chat-history .them:last-child").remove();
-      } else {
-        // Speak first message
-        setTimeout(function() {
-          speakThis( $(".chat-history .them:first").text() );
-        }, 300);
-
-        // Speak message when hovered over
-        speakSentence();
-        
-        typeWordKeyBoard();
-
-        // Check and see if you start first
-        if ($(".chat-history > .you:first").is(":visible")) {
-          $(".typingloader").removeClass("hide");
-          $(".bottom-bar").fadeOut();
-          $(".chat-container").delay(150).css("height", "calc(100vh - 55px");
-          speakThis( $(".chat-history .you:visible:last").text() );
-          scroll2B();
-          setTimeout(function() {
-            $(".chat-history > .them:hidden:first").removeClass("hide");
-            $(".typingloader").addClass("hide");
-            $(".chat-container").attr("style", "");
-            $(".bottom-bar").fadeIn();
-            speakThis( $(".chat-history .them:visible:last").text() );
-            scroll2B();
-          }, 2000);
-        }
-
-        // Make first letter active to type
-        $(".keyboard button:contains('"+ typeIt +"')").addClass("active");
-
-        // Reload keyboard keys click function
-        $(".keyboard").each(function(i) {
-          $(".keyboard").eq(i).on("click", "> div > .active", function(e) {
-            $(".keyboard").eq( Number(!i) ).append(this);
-
-            $(".keyboard").find(".active").on("click", function(e) {
-              if ($(e.target).hasClass("active")) {
-                typeWord();
-                keySound();
-              }
-              return false;
-            }).trigger("click");
-            return false;
-          });
-        });
-      }
-    }
-  }
-});
 
 //// Trigger letter for completion
 //$(".keyboard .active").trigger("click");

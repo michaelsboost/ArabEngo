@@ -281,7 +281,7 @@ a, a:hover {
 }
 @media all and (max-width:475px) {
   .chat-container {
-    height: calc(100vh - 54px - 238px);
+    height: calc(100vh - 54px - 256px);
   }
   
   .bottom-bar > .keyboard > div > button {
@@ -330,11 +330,14 @@ a, a:hover {
   }
 }
 
-.no-weave {
+.no-hash {
   background: #fff;
   background: rgba(255,255,255,.68);
   z-index: 99999!important;
   color: #4E92A2;
+}
+.no-hash h1 {
+  margin: 0 0 0.67em 0;
 }
 .fixedfill {
   position: fixed;
@@ -437,9 +440,19 @@ a, a:hover {
 }
 
 /*Editor*/
+.uk-nav li > a {
+  display: inline-block; 
+}
+.uk-nav li {
+  display: block; 
+  width: 100%;
+  overflow: hidden;
+}
 .socialbox {
   display: inline-block;
   width: calc(100% - 34px);
+  color: #1473c7;
+  white-space: nowrap;
 }
 
 .largephone {
@@ -479,6 +492,12 @@ a, a:hover {
 }
 .socialdialog .btn--warning:hover {
   color: inherit;
+}
+.preloader {
+  background: #fff;
+  background: rgba(255, 255, 255, 0.68);
+  z-index: 99999!important;
+  color: #4E92A2;
 }
 nav {
   display: table-cell;
@@ -534,6 +553,16 @@ h1 {
 .cell {
   display: table-cell;
   vertical-align: middle;
+}
+.spin {
+  width: 30%;
+  animation: spin 1.3s infinite ease-in-out both;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 /* Variables */
