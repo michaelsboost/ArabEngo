@@ -354,6 +354,11 @@ if (window.location.hash) {
 $("[data-call=share]").click(function() {
   $(".sharelist").slideToggle();
 });
+$(".chat-container, .bottom-bar").click(function() {
+  if ($(".sharelist").is(":visible")) {
+    $(".sharelist").slideToggle();
+  }
+});
 $(".comingsoon").click(function() {
   alertify.log("coming soon");
 });
