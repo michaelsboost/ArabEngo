@@ -20,7 +20,8 @@ if ( $("[data-person]").attr("data-person") ) {
 }
 
 // Reply and keyboard variables
-var audioKey       = document.createElement("audio"),
+var grabHTML, 
+    audioKey       = document.createElement("audio"),
     scroll2B       = function() {
       $(".chat-container").animate({
         scrollTop: $(this).height()
@@ -151,12 +152,12 @@ var audioKey       = document.createElement("audio"),
         $(this).addClass("selected-msg");
 
         // First do you want to delete this message
-        UIkit.modal.confirm('Do you want to delete this message?').then(function() {
+        UIkit.modal.confirm('<h3>Do you want to delete this message?</h3>').then(function() {
           $(".selected-msg").parent().remove();
           localStorage.setItem("chatMessages", $("[data-output=messages]").html());
           return false;
         }, function () {
-          UIkit.modal.prompt('What does "'+ $(".selected-msg").text() +'" mean?').then(function(value) {
+          UIkit.modal.prompt('<h3>What does "'+ $(".selected-msg").text() +'" mean?</h3>').then(function(value) {
             if (!value) {
               // location.reload(true);
             } else {
@@ -166,6 +167,38 @@ var audioKey       = document.createElement("audio"),
               localStorage.setItem("chatMessages", $("[data-output=messages]").html());
             }
           });
+        });
+      });
+
+      $(".emoticon").on("click", function() {
+        $(this).addClass("selected-msg");
+
+        // First do you want to delete this message
+        UIkit.modal.confirm('<h3>Do you want to delete this message?</h3>').then(function() {
+          $(".selected-msg").parent().remove();
+          localStorage.setItem("chatMessages", $("[data-output=messages]").html());
+          return false;
+        }, function () {
+          // rejected
+        });
+      });
+    },
+    msgUpdate = function() {
+      localStorage.setItem("chatMessages", $("[data-output=messages]").html());
+
+      $(".them, .you").find("[data-edit]").on("click", function() {
+        $(this).parent().find("[data-meaning]").addClass("selected-msg");
+
+        // Update message if spelling was wrong
+        UIkit.modal.prompt('<h3>Did you spell "'+ $(".selected-msg").text() +'" wrong?</h3><i>Make sure you\'re using the correct keyboard!<br><u>Remember! ArabEngo doesnt integrate accent marks!</u></i><hr>').then(function(value) {
+          if (!value) {
+            // location.reload(true);
+          } else {
+            $(".selected-msg").text(value);
+            console.log(value);
+            $(".selected-msg").removeClass("selected-msg");
+            localStorage.setItem("chatMessages", $("[data-output=messages]").html());
+          }
         });
       });
     },
@@ -203,6 +236,7 @@ $("[data-clear=chat]").on("click", function() {
       $("[data-output=messages]").html("");
       localStorage.setItem("chatMessages", $("[data-output=messages]").html());
       // localStorage.clear();
+      location.reload(true);
       return false;
     }, function () {
       // rejected
@@ -240,6 +274,7 @@ speakSentence();
 // Once message is added
 // You can click on it to set its translation
 msgTranslation();
+msgUpdate();
 
 // Add emoticons
 addEmoticons();
@@ -267,9 +302,9 @@ $('.keyboard button').on("click", function() {
 
       if ( $("[data-output=messages").html() ) {
         if ($("[data-output=messages] > div:last").hasClass("them")) {
-          $("[data-output=messages]").append('<div class="tr you msg"><p class="message" data-meaning="">'+ $(".preview h1").text() +'</p></div>');
+          $("[data-output=messages]").append('<div class="tr you msg"><p class="message" data-meaning="">'+ $(".preview h1").text() +'</p><a href="javascript:void(0)" data-edit="msg" style="margin: 0 12px 0 0;"><i class="fa fa-edit scale"></i></a></div>');
         } else {
-          $("[data-output=messages]").append('<div class="them msg"><p class="message" data-meaning="">'+ $(".preview h1").text() +'</p></div>');
+          $("[data-output=messages]").append('<div class="them msg"><a href="javascript:void(0)" data-edit="msg" style="margin: 0 0 0 12px;"><i class="fa fa-edit scale"></i></a><p class="message" data-meaning="">'+ $(".preview h1").text() +'</p></div>');
         }
       }
       var chatHistory = $("[data-output=messages]").html();
@@ -280,6 +315,7 @@ $('.keyboard button').on("click", function() {
       // Once message is added
       // You can click on it to set its translation
       msgTranslation();
+      msgUpdate();
       scroll2B();
 
       // Speak message when hovered over
@@ -298,9 +334,11 @@ scroll2B();
 function typeWordKeyBoard() {
   $(window).on("keydown", function(e) {
     if (e.shiftKey) {
-      if ( e.shiftKey && e.which === 191 ) {
-        $(".keyboard button:contains('؟')").trigger("click");
-        return false;
+      if (!$(".uk-input").is(":focus") && !$("[contenteditable]").is(":focus") && !$(".socialbox").is(":focus")) {
+        if ( e.shiftKey && e.which === 191 ) {
+          $(".keyboard button:contains('؟')").trigger("click");
+          return false;
+        }
       }
     } else {
       if (!$(".uk-input").is(":focus") && !$("[contenteditable]").is(":focus") && !$(".socialbox").is(":focus")) {
@@ -456,7 +494,9 @@ typeWordKeyBoard();
 // Save as a Gist Online
 $("[data-action=save-gist]").on("click", function() {
   $(".sharelist").slideToggle();
+  grabHTML = $("[data-output=messages]").html();
   $("[data-output=messages] .msg").addClass("hide");
+  $("[data-edit=msg]").remove();
   
   // check if description and markdown editor have a value
   if ( !$("[data-set=topic]").text()) {
@@ -526,7 +566,7 @@ $("[data-action=save-gist]").on("click", function() {
   });
 });
 $("[data-action=social-close]").click(function() {
-  $("[data-output=messages] .msg").removeClass("hide");
+  $("[data-output=messages]").html(grabHTML);
   $("[data-action=socialdialog]").fadeOut();
 });
 

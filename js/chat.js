@@ -160,7 +160,7 @@ var intervalChat,
                 $(".chat-container").css("height", "calc(100vh - 55px");
                 $(".bottom-bar").remove();
                 
-                UIkit.modal.alert("Fantastic! You've completed the lesson!").then(function() {
+                UIkit.modal.alert("<h3>Fantastic! You've completed the \""+ $("[data-set=topic]").text() +"\" lesson!</h3>").then(function() {
                   window.location.href = "../#community";
                 });
                 finishedLesson();
@@ -274,6 +274,23 @@ function loadgist(gistid) {
     // Speak message when hovered over
     speakSentence();
 
+    // If url doesn't contain a hash launch editor
+    // Show chat history If URL Contains Them
+    if (url.indexOf("?") > -1) {
+      if (url.indexOf("full") > -1) {
+        // Speak first message
+        setTimeout(function() {
+          speakThis( $(".chat-history .them:first").text() );
+        }, 300);
+        
+        $(".bottom-bar, .typingloader").remove();
+        $(".chat-container").css("height", "calc(100vh - 55px");
+        $(".chat-history .msg").removeClass("hide");
+        $(".preloader").remove();
+        return false;
+      }
+    }
+
     // Check and see if you start first
     if ($(".chat-history > .you:first").is(":visible")) {
       $(".typingloader").removeClass("hide");
@@ -312,22 +329,6 @@ function loadgist(gistid) {
       });
     });
     $(".keyboard").find(".active").trigger("click");
-
-    // If url doesn't contain a hash launch editor
-    // Show chat history If URL Contains Them
-    if (url.indexOf("?") > -1) {
-      if (url.indexOf("full") > -1) {
-        // Speak first message
-        setTimeout(function() {
-          speakThis( $(".chat-history .them:first").text() );
-        }, 300);
-        
-        $(".bottom-bar, .typingloader").remove();
-        $(".chat-container").css("height", "calc(100vh - 55px");
-        $(".chat-history .msg").removeClass("hide");
-        $(".chat-history .msg:last-child").remove();
-      }
-    }
     $(".preloader").remove();
   }).error(function(e) {
     // ajax error

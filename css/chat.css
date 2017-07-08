@@ -187,7 +187,16 @@ a, a:hover {
   right: -20px;
 }
 .added-msgs .them:before {
+  right: -44px;
+}
+.added-msgs .them.emoticon:before {
   right: -16px;
+}
+.added-msgs [data-edit=msg] {
+  color: #59bbc1;
+}
+.added-msgs [data-edit=msg]:hover {
+  color: #737882;
 }
 .chat-container .them.emoticon:before {
   top: 60px;
