@@ -21,13 +21,13 @@ if ( $("[data-person]").attr("data-person") ) {
 
 // Reply and keyboard variables
 var grabHTML, 
-    audioKey       = document.createElement("audio"),
-    scroll2B       = function() {
+    audioKey        = document.createElement("audio"),
+    scroll2B        = function() {
       $(".chat-container").animate({
         scrollTop: $(this).height()
       });
     },
-    speakSentence  = function() {
+    speakSentence   = function() {
       // Speak arabic word/sentence
       $(".them, .you").find("[data-meaning]").on("click mouseover", function() {
         responsiveVoice.cancel();
@@ -45,7 +45,7 @@ var grabHTML,
         responsiveVoice.speak($(".chat-history > div").last().text(), "Arabic Male");
       }
     },
-    speakThis      = function(msg) {
+    speakThis       = function(msg) {
       // Speak arabic word/sentence
       responsiveVoice.cancel();
       if ( $("[data-gender]").attr("data-gender") === "female" ) {
@@ -55,7 +55,7 @@ var grabHTML,
       }
       return false;
     },
-    keySound  = function() {
+    keySound        = function() {
       audioKey.setAttribute("src", "../../sounds/keypress.mp3");
       audioKey.play();
     },
@@ -64,6 +64,8 @@ var grabHTML,
       if ( localStorage.getItem("personName")) {
         $("[data-person]").text(localStorage.getItem("personName"));
         $("[data-output=name]").text(localStorage.getItem("personName"));
+      } else if ( !localStorage.getItem("personName")) {
+        $("[data-person], [data-output=name]").text("Your Name").trigger("change");
       }
       $("[data-person]").on("keyup change", function() {
         $("[data-person]").attr("data-person", this.textContent);
@@ -145,7 +147,7 @@ var grabHTML,
         localStorage.setItem("socialValues", JSON.stringify(arr));
       });
     },
-    msgTranslation = function() {
+    msgTranslation  = function() {
       localStorage.setItem("chatMessages", $("[data-output=messages]").html());
 
       $(".them, .you").find("[data-meaning]").on("click", function() {
@@ -183,7 +185,7 @@ var grabHTML,
         });
       });
     },
-    msgUpdate = function() {
+    msgUpdate       = function() {
       localStorage.setItem("chatMessages", $("[data-output=messages]").html());
 
       $(".them, .you").find("[data-edit]").on("click", function() {
@@ -202,7 +204,7 @@ var grabHTML,
         });
       });
     },
-    addEmoticons = function() {
+    addEmoticons    = function() {
       $(".them img").on("click", function() {
         $(this).parent().addClass("selected-msg");
         // First do you want to delete this message
@@ -216,119 +218,207 @@ var grabHTML,
           });
         });
       });
-    };
+    },
+    initiateEditor  = function() {
+      // Set Localstorage
+      setLocalStorage();
 
-// Set Localstorage
-setLocalStorage();
+      // Share to Social Networks
+      $("[data-call=share]").on("click", function() {
+        $(".sharelist").slideToggle();
+      });
+      $(".comingsoon").on("click", function() {
+        alertify.message("coming soon");
+      });
 
-// Share to Social Networks
-$("[data-call=share]").on("click", function() {
-  $(".sharelist").slideToggle();
-});
-$(".comingsoon").on("click", function() {
-  alertify.message("coming soon");
-});
+      // Clear chat
+      $("[data-clear=chat]").on("click", function() {
+        UIkit.modal.confirm('Do you wish to start a new clean chat?').then(function() {
+          UIkit.modal.confirm('This is a distructive action that cannot be undone!<br> Are you sure you wish to proceed?').then(function() {
+            if (window.location.hash) {
+              window.location.href = window.location.toString().split(/\?|#/)[0];
+            }
+            $("[data-output=messages]").html("");
+            localStorage.setItem("chatMessages", $("[data-output=messages]").html());
+            // localStorage.clear();
+            setTimeout(function() {
+              location.reload(true);
+            }, 100);
+            return false;
+          }, function () {
+            // rejected
+          });
+        }, function () {
+          // rejected
+        });
+      });
 
-// Clear chat
-$("[data-clear=chat]").on("click", function() {
-  UIkit.modal.confirm('Do you wish to start a new clean chat?').then(function() {
-    UIkit.modal.confirm('This is a distructive action that cannot be undone!<br> Are you sure you wish to proceed?').then(function() {
-      $("[data-output=messages]").html("");
-      localStorage.setItem("chatMessages", $("[data-output=messages]").html());
-      // localStorage.clear();
-      location.reload(true);
-      return false;
-    }, function () {
-      // rejected
-    });
-  }, function () {
-    // rejected
-  });
-});
+      // Add emotion as message
+      $("[data-add=emotion]").on("click", function() {
+        $("[data-output=messages]").append('<div class="them emoticon msg"><p class="message">'+ this.innerHTML +'</p></div>');
+        localStorage.setItem("chatMessages", $("[data-output=messages]").html());
+        addEmoticons();
+        scroll2B();
+      });
 
-// Add emotion as message
-$("[data-add=emotion]").on("click", function() {
-  $("[data-output=messages]").append('<div class="them emoticon msg"><p class="message">'+ this.innerHTML +'</p></div>');
-  localStorage.setItem("chatMessages", $("[data-output=messages]").html());
-  addEmoticons();
-  scroll2B();
-});
+      // Scroll to top from info screen
+      $("[data-scroll=top]").on("click", function() {
+        $(".uk-offcanvas-bar").animate({
+          scrollTop: 0
+        });
+      });
 
-// Scroll to top from info screen
-$("[data-scroll=top]").on("click", function() {
-  $(".uk-offcanvas-bar").animate({
-    scrollTop: 0
-  });
-});
-
-// Speak first message
-setTimeout(function() {
-  if ($(".chat-history > .msg:visible:first").is(":visible")) {
-    speakThis( $(".chat-history .msg:visible:first").text() );
-  }
-}, 300);
-
-// Speak message when hovered over
-speakSentence();
-
-// Once message is added
-// You can click on it to set its translation
-msgTranslation();
-msgUpdate();
-
-// Add emoticons
-addEmoticons();
-
-$('.keyboard button').on("click", function() {
-  if ($(this).attr("class") === "spacebar editor") {
-    $val = $(".preview h1").text();
-    $(".preview h1").text($val + " ");
-    return false;
-  } else if ($(this).attr("class") === "backspace") {
-    $val = $(".preview h1").text();
-    $(".preview h1").text($val.slice(0, -1));
-    return false;
-  } else if ($(this).attr("class") === "pictures") {
-    // ignore pictures
-    return false;
-  } else if ($(this).attr("class") === "enter") {
-    if ($(".preview h1").text().trim() === "") {
-      alertify.message("Cannot send empty messages!");
-      return false;
-    } else {
-      // Bot talks, you talk, bot talks, you talk...
-      // That's how the app is configured.
-      // Chat ends when the bot says goodbye, followed by your goodbye response.
-
-      if ( $("[data-output=messages").html() ) {
-        if ($("[data-output=messages] > div:last").hasClass("them")) {
-          $("[data-output=messages]").append('<div class="tr you msg"><p class="message" data-meaning="">'+ $(".preview h1").text() +'</p><a href="javascript:void(0)" data-edit="msg" style="margin: 0 12px 0 0;"><i class="fa fa-edit scale"></i></a></div>');
-        } else {
-          $("[data-output=messages]").append('<div class="them msg"><a href="javascript:void(0)" data-edit="msg" style="margin: 0 0 0 12px;"><i class="fa fa-edit scale"></i></a><p class="message" data-meaning="">'+ $(".preview h1").text() +'</p></div>');
+      // Speak first message
+      setTimeout(function() {
+        if ($(".chat-history > .msg:visible:first").is(":visible")) {
+          speakThis( $(".chat-history .msg:visible:first").text() );
         }
-      }
-      var chatHistory = $("[data-output=messages]").html();
-      $("[data-output=messages]").html("");
-      $("[data-output=messages]").html(chatHistory);
-      $(".preview h1").text("");
+      }, 300);
+
+      // Speak message when hovered over
+      speakSentence();
 
       // Once message is added
       // You can click on it to set its translation
       msgTranslation();
       msgUpdate();
+
+      // Add emoticons
+      addEmoticons();
+
+      $('.keyboard button').on("click", function() {
+        if ($(this).attr("class") === "spacebar editor") {
+          $val = $(".preview h1").text();
+          $(".preview h1").text($val + " ");
+          return false;
+        } else if ($(this).attr("class") === "backspace") {
+          $val = $(".preview h1").text();
+          $(".preview h1").text($val.slice(0, -1));
+          return false;
+        } else if ($(this).attr("class") === "pictures") {
+          // ignore pictures
+          return false;
+        } else if ($(this).attr("class") === "enter") {
+          if ($(".preview h1").text().trim() === "") {
+            alertify.message("Cannot send empty messages!");
+            return false;
+          } else {
+            // Bot talks, you talk, bot talks, you talk...
+            // That's how the app is configured.
+            // Chat ends when the bot says goodbye, followed by your goodbye response.
+
+            if ( $("[data-output=messages").html() ) {
+              if ($("[data-output=messages] > div:last").hasClass("them")) {
+                $("[data-output=messages]").append('<div class="tr you msg"><p class="message" data-meaning="">'+ $(".preview h1").text() +'</p><a href="javascript:void(0)" data-edit="msg" style="margin: 0 12px 0 0;"><i class="fa fa-edit scale"></i></a></div>');
+              } else {
+                $("[data-output=messages]").append('<div class="them msg"><a href="javascript:void(0)" data-edit="msg" style="margin: 0 0 0 12px;"><i class="fa fa-edit scale"></i></a><p class="message" data-meaning="">'+ $(".preview h1").text() +'</p></div>');
+              }
+            }
+            var chatHistory = $("[data-output=messages]").html();
+            $("[data-output=messages]").html("");
+            $("[data-output=messages]").html(chatHistory);
+            $(".preview h1").text("");
+
+            // Once message is added
+            // You can click on it to set its translation
+            msgTranslation();
+            msgUpdate();
+            scroll2B();
+
+            // Speak message when hovered over
+            speakSentence();
+          }
+        } else {
+          $val = $(".preview h1").text();
+          $(".preview h1").text($val + this.textContent);
+        }
+        return false;
+      });
+
       scroll2B();
 
-      // Speak message when hovered over
-      speakSentence();
-    }
-  } else {
-    $val = $(".preview h1").text();
-    $(".preview h1").text($val + this.textContent);
-  }
-  return false;
-});
+      // Type the word with a physical keyboard
+      typeWordKeyBoard();
 
-scroll2B();
+      // Save as a Gist Online
+      $("[data-action=save-gist]").on("click", function() {
+        $(".sharelist").slideToggle();
+        grabHTML = $("[data-output=messages]").html();
+        $("[data-output=messages] .msg").addClass("hide");
+        $("[data-edit=msg]").remove();
+        
+        // check if description and markdown editor have a value
+        if ( !$("[data-set=topic]").text()) {
+          $("[data-set=topic]").text("Saved from ArabEngo!");
+        }
+
+        // Return user properties
+        var sArr = {
+          "personName": $("[data-person]").text(),
+          "personAvatar": $("[data-set=avatar]").css('background-image'),
+          "personGender": (document.getElementById('setGender').checked ? true : false),
+          "personLocation": $("[data-set=location]").text(),
+          "personTopic": $("[data-set=topic]").text(),
+          "personBio": $("[data-set=bio]").text(),
+          "description": $("[data-set=topic]").text()
+        };
+
+        var socialArr = {};
+        $("[data-social=links] input").each(function() {
+          var id = this.id;
+          socialArr[id] = (this.value ? this.value : "");
+        });
+
+        var files = {};
+        files["messages.html"]   = $("[data-output=messages]").html() ? { content: $("[data-output=messages]").html() } : null;
+        files["social.json"]     = { "content": JSON.stringify(socialArr) };
+        files["properties.json"] = { "content": JSON.stringify(sArr) };
+
+        data = {
+          "description": $("[data-set=topic]").text(),
+          "public": true,
+          "files": files
+        };
+
+        // Post on Github via JQuery Ajax
+        $.ajax({
+          url: "https://api.github.com/gists",
+          type: "POST",
+          dataType: "json",
+          data: JSON.stringify(data)
+        }).success(function(e) {
+          window.location.hash = e.html_url.split("https://gist.github.com/").join("");
+          hash = window.location.hash.replace(/#/g,"");
+          
+          embedProject = e.html_url.split("https://gist.github.com/").join("");
+          document.querySelector("[data-output=chatURL]").value = "https://mikethedj4.github.io/ArabEngo/chat/#" + embedProject;
+          document.querySelector("[data-output=chatURL]").onclick = function() {
+            this.select(true);
+          };
+          document.querySelector("[data-output=editProject]").value = "https://mikethedj4.github.io/ArabEngo/editor/#" + embedProject;
+          document.querySelector("[data-output=editProject]").onclick = function() {
+            this.select(true);
+          };
+
+          $(".share-facebook").attr("href", "https://www.facebook.com/sharer/sharer.php?u=https%3A//mikethedj4.github.io/ArabEngo/chat/%23" + hash);
+          $(".share-twitter").attr("href", "https://twitter.com/home?status=Checkout%20my%20%23"+ $("[data-set=topic]").text().split(" ") +"%20%23chat%20on%20%23ArabEngo%20%23ArabEngoChat%20-%20https%3A//mikethedj4.github.io/ArabEngo/chat/%23" + hash);
+          $(".share-gplus").attr("href", "https://plus.google.com/share?url=https%3A//mikethedj4.github.io/ArabEngo/chat/%23" + hash);
+          $(".share-linkedin-square").attr("href", "https://www.linkedin.com/shareArticle?mini=true&url=https%3A//mikethedj4.github.io/ArabEngo/chat/%23"+ hash +"&title=Checkout%20my%20%23"+ $("[data-set=topic]").text().split(" ") +"%20%23chat%20on%20%23ArabEngo%3A%20&summary=&source=");
+          $("[data-action=socialdialog]").fadeIn();
+
+          // Successfully saved weave. 
+          // Ask to support open source software.
+          // alertify.message("<div class=\"grid\"><div class=\"centered grid__col--12 tc\"><h2>Help keep this free!</h2><a href=\"https://snaptee.co/t/2nezt/?r=fb&teeId=2nezt\" target=\"_blank\"><img src=\"../assets/images/model-2.jpg\" width=\"100%\"></a><a class=\"btn--success\" href=\"https://snaptee.co/t/2nezt/?r=fb&teeId=2nezt\" target=\"_blank\" style=\"display: block;\">Buy Now</a></div></div>");
+        }).error(function(e) {
+          console.warn("Error: Could not save weave!", e);
+          alertify.error("Error: Could not save weave!");
+        });
+      });
+      $("[data-action=social-close]").click(function() {
+        $("[data-output=messages]").html(grabHTML);
+        $("[data-action=socialdialog]").fadeOut();
+      });
+    };
 
 // Type the word with a physical keyboard
 function typeWordKeyBoard() {
@@ -489,86 +579,66 @@ function typeWordKeyBoard() {
     }
   });
 }
-typeWordKeyBoard();
 
-// Save as a Gist Online
-$("[data-action=save-gist]").on("click", function() {
-  $(".sharelist").slideToggle();
-  grabHTML = $("[data-output=messages]").html();
-  $("[data-output=messages] .msg").addClass("hide");
-  $("[data-edit=msg]").remove();
-  
-  // check if description and markdown editor have a value
-  if ( !$("[data-set=topic]").text()) {
-     $("[data-set=topic]").text("Saved from ArabEngo!");
-  }
-
-  // Return user properties
-  var sArr = {
-    "personName": $("[data-person]").text(),
-    "personAvatar": $("[data-set=avatar]").css('background-image'),
-    "personGender": (document.getElementById('setGender').checked ? true : false),
-    "personLocation": $("[data-set=location]").text(),
-    "personTopic": $("[data-set=topic]").text(),
-    "personBio": $("[data-set=bio]").text(),
-    "description": $("[data-set=topic]").text()
-  };
-
-  var socialArr = {};
-  $("[data-social=links] input").each(function() {
-    var id = this.id;
-    socialArr[id] = (this.value ? this.value : "");
-  });
-
-  var files = {};
-  files["messages.html"]   = $("[data-output=messages]").html() ? { content: $("[data-output=messages]").html() } : null;
-  files["social.json"]     = { "content": JSON.stringify(socialArr) };
-	files["properties.json"] = { "content": JSON.stringify(sArr) };
-
-  data = {
-    "description": $("[data-set=topic]").text(),
-    "public": true,
-    "files": files
-  };
-
-  // Post on Github via JQuery Ajax
+var hash = window.location.hash.substring(1);
+function loadgist(gistid) {
   $.ajax({
-    url: "https://api.github.com/gists",
-    type: "POST",
-    dataType: "json",
-    data: JSON.stringify(data)
-  }).success(function(e) {
-    window.location.hash = e.html_url.split("https://gist.github.com/").join("");
-    hash = window.location.hash.replace(/#/g,"");
-    
-    embedProject = e.html_url.split("https://gist.github.com/").join("");
-    document.querySelector("[data-output=chatURL]").value = "https://mikethedj4.github.io/ArabEngo/chat/#" + embedProject;
-    document.querySelector("[data-output=chatURL]").onclick = function() {
-      this.select(true);
-    };
-    document.querySelector("[data-output=editProject]").value = "https://mikethedj4.github.io/ArabEngo/editor/#" + embedProject;
-    document.querySelector("[data-output=editProject]").onclick = function() {
-      this.select(true);
-    };
+    url: "https://api.github.com/gists/" + gistid,
+    type: "GET",
+    dataType: "jsonp",
+    jsonp: "callback"
+  }).success(function(gistdata) {
+    var chatMessages = gistdata.data.files["messages.html"];
+    var properties   = gistdata.data.files["properties.json"].content;
+    var social       = gistdata.data.files["social.json"].content;
+    var jsonSets     = JSON.parse(properties);
+    var jsonSocial   = JSON.parse(social);
 
-    $(".share-facebook").attr("href", "https://www.facebook.com/sharer/sharer.php?u=https%3A//mikethedj4.github.io/ArabEngo/chat/%23" + hash);
-    $(".share-twitter").attr("href", "https://twitter.com/home?status=Checkout%20my%20%23"+ $("[data-set=topic]").text().split(" ") +"%20%23chat%20on%20%23ArabEngo%20%23ArabEngoChat%20-%20https%3A//mikethedj4.github.io/ArabEngo/chat/%23" + hash);
-    $(".share-gplus").attr("href", "https://plus.google.com/share?url=https%3A//mikethedj4.github.io/ArabEngo/chat/%23" + hash);
-    $(".share-linkedin-square").attr("href", "https://www.linkedin.com/shareArticle?mini=true&url=https%3A//mikethedj4.github.io/ArabEngo/chat/%23"+ hash +"&title=Checkout%20my%20%23"+ $("[data-set=topic]").text().split(" ") +"%20%23chat%20on%20%23ArabEngo%3A%20&summary=&source=");
-    $("[data-action=socialdialog]").fadeIn();
+    // Return biographical information from json
+    $("[data-person]").attr("data-person", jsonSets.personName);
+    $("[data-person]").text(jsonSets.personName);
+    $("[data-output=name]").text(jsonSets.personName);
+    $("[data-set=avatar]").css('background-image', jsonSets.personAvatar);
+    $("#setGender").prop("checked", jsonSets.personGender);
+    $("[data-set=location]").text(jsonSets.personLocation);
+    $("[data-set=topic]").text(jsonSets.personTopic);
+    $("[data-set=bio]").text(jsonSets.personBio);
+    $("[data-set=topic]").text(jsonSets.description);
 
-    // Successfully saved weave. 
-    // Ask to support open source software.
-    // alertify.message("<div class=\"grid\"><div class=\"centered grid__col--12 tc\"><h2>Help keep this free!</h2><a href=\"https://snaptee.co/t/2nezt/?r=fb&teeId=2nezt\" target=\"_blank\"><img src=\"../assets/images/model-2.jpg\" width=\"100%\"></a><a class=\"btn--success\" href=\"https://snaptee.co/t/2nezt/?r=fb&teeId=2nezt\" target=\"_blank\" style=\"display: block;\">Buy Now</a></div></div>");
+    // Return social links from json
+    $.each(jsonSocial, function(name, value) {
+      $("[data-social=links] #" + name).val(value);
+    });
+    // Load in conversation
+    $("[data-output=messages]").html(chatMessages.content);
+
+    // Initiate Chat
+
+    // Check and see if you start first
+    $("[data-output=messages] .msg:hidden").removeClass("hide");
+    speakThis( $(".chat-history .msg:visible:last").text() );
+    scroll2B();
+
+    // Speak message when hovered over
+    speakSentence();
+
+    // Check and see if you start first
+    typeWordKeyBoard();
+    $(".preloader").remove();
   }).error(function(e) {
-    console.warn("Error: Could not save weave!", e);
-    alertify.error("Error: Could not save weave!");
+    // ajax error
+    console.warn("Error: Could not load weave!", e);
+    alertify.error("Error: Could not load weave!");
   });
-});
-$("[data-action=social-close]").click(function() {
-  $("[data-output=messages]").html(grabHTML);
-  $("[data-action=socialdialog]").fadeOut();
-});
-
-// Auto open profile info
-// $(".fa-user-circle-o").trigger("click");
+}
+if (window.location.hash) {
+  $(document.body).append('<div class="fixedfill preloader"></div>');
+  $(".preloader").html('<div class="table"><div class="cell"><img class="spin" src="../imgs/loading.svg"></div></div>');
+  loadgist(hash);
+  
+  // Initiate Editor
+  initiateEditor();
+} else {
+  // Initiate Editor
+  initiateEditor();
+}
