@@ -238,7 +238,8 @@ function loadgist(gistid) {
     $("[data-person]").text(jsonSets.personName);
     document.title = "ArabEngo: Meet " + getFirstWord(jsonSets.personName);
     $("[data-output=name]").text(jsonSets.personName);
-    $("[data-set=avatar]").css('background-image', jsonSets.personAvatar);
+    $("[data-avatarurl]").attr("data-avatarurl", jsonSets.personAvatar)
+    $("[data-avatarurl]").css('background-image', "url("+ jsonSets.personAvatar +")");
     $("#setGender").prop("checked", jsonSets.personGender);
     $("[data-set=location]").text(jsonSets.personLocation);
     $("[data-set=topic]").text(jsonSets.personTopic);

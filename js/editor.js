@@ -100,7 +100,8 @@ var grabHTML,
       });
       // avatar
       if ( localStorage.getItem("personAvatar")) {
-        $("[data-set=avatar]").css("background-image", "url('"+ localStorage.getItem("personAvatar") +"')");
+        $("[data-avatarurl]").attr("data-avatarurl", localStorage.getItem("personAvatar"))
+        $("[data-set=avatar]").css("background-image", "url("+ localStorage.getItem("personAvatar") +")");
       }
       $("[data-set=avatar]").on("click", function() {
         UIkit.modal.prompt('Enter Image URL!').then(function(value) {
@@ -110,7 +111,13 @@ var grabHTML,
             $(this).css("background-image", "url('"+ value +"')");
             localStorage.setItem("personAvatar", value);
             // console.log(value);
-            location.reload(true);
+            
+            // Remove hash when user makes a change
+            clearHash();
+
+            setTimeout(function() {
+              location.reload(true);
+            }, 100);
           }
         });
       });
@@ -381,7 +388,7 @@ var grabHTML,
         // Return user properties
         var sArr = {
           "personName": $("[data-person]").text(),
-          "personAvatar": $("[data-set=avatar]").css('background-image'),
+          "personAvatar": $("[data-set=avatar]").attr("data-avatarurl"),
           "personGender": (document.getElementById('setGender').checked ? true : false),
           "personLocation": $("[data-set=location]").text(),
           "personTopic": $("[data-set=topic]").text(),
@@ -624,7 +631,8 @@ function loadgist(gistid) {
     $("[data-person]").attr("data-person", jsonSets.personName);
     $("[data-person]").text(jsonSets.personName);
     $("[data-output=name]").text(jsonSets.personName);
-    $("[data-set=avatar]").css('background-image', jsonSets.personAvatar);
+    $("[data-avatarurl]").attr("data-avatarurl", jsonSets.personAvatar)
+    $("[data-avatarurl]").css('background-image', "url("+ jsonSets.personAvatar +")");
     $("#setGender").prop("checked", jsonSets.personGender);
     $("[data-set=location]").text(jsonSets.personLocation);
     $("[data-set=topic]").text(jsonSets.personTopic);
