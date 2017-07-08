@@ -1,3 +1,7 @@
 <script>
-  window.location.href = "../message/";
+  if (window.location.hash) {
+    window.location.href = "../message/editor" + window.location.hash
+  } else {
+    window.location.href = "../message/editor"
+  }
 </script>
