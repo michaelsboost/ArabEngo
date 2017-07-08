@@ -209,7 +209,7 @@ var intervalChat,
       return false;
     },
     keySound  = function() {
-      audioKey.setAttribute("src", "../../sounds/keypress.mp3");
+      audioKey.setAttribute("src", "../sounds/keypress.mp3");
       audioKey.play();
     };
 
