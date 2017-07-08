@@ -59,9 +59,10 @@ var grabHTML,
       audioKey.setAttribute("src", "../sounds/keypress.mp3");
       audioKey.play();
     },
-    clearHash = function() {
+    clearHash       = function() {
       // Remove hash when user makes a change
       if (window.location.hash) {
+        $("[data-person], [data-set=location], [data-set=topic], [data-set=bio], [data-output=messages], [data-social=links] input").trigger("change");
         window.location.href = window.location.toString().split(/\?|#/)[0];
       }
     },
@@ -85,9 +86,6 @@ var grabHTML,
       var checked = JSON.parse(localStorage.getItem("genderState"));
       document.getElementById("setGender").checked = checked;
       $("[data-call=gender]").on("click", function() {
-        // Remove hash when user makes a change
-        clearHash();
-
         if (this.checked) {
           $("[data-gender]").attr("data-gender", "male");
           localStorage.setItem("personGender", "male");
@@ -97,6 +95,9 @@ var grabHTML,
         }
         var checkbox = document.getElementById("setGender");
         (checkbox.checked) ? localStorage.setItem("genderState", "true") : localStorage.setItem("genderState", "false");
+        
+        // Remove hash when user makes a change
+        clearHash();
       });
       // avatar
       if ( localStorage.getItem("personAvatar")) {
@@ -167,15 +168,18 @@ var grabHTML,
       localStorage.setItem("chatMessages", $("[data-output=messages]").html());
 
       $(".them, .you").find("[data-meaning]").on("click", function() {
-        // Remove hash when user makes a change
-        clearHash();
-        
+        if ($(this).hasClass('emoticon')) {
+          return false;
+        }
         $(this).addClass("selected-msg");
 
         // First do you want to delete this message
         UIkit.modal.confirm('<h3>Do you want to delete this message?</h3>').then(function() {
           $(".selected-msg").parent().remove();
           localStorage.setItem("chatMessages", $("[data-output=messages]").html());
+        
+          // Remove hash when user makes a change
+          clearHash();
           return false;
         }, function () {
           UIkit.modal.prompt('<h3>What does "'+ $(".selected-msg").text() +'" mean?</h3>').then(function(value) {
@@ -186,21 +190,11 @@ var grabHTML,
               console.log(value);
               $(".selected-msg").removeClass("selected-msg");
               localStorage.setItem("chatMessages", $("[data-output=messages]").html());
+        
+              // Remove hash when user makes a change
+              clearHash();
             }
           });
-        });
-      });
-
-      $(".emoticon").on("click", function() {
-        $(this).addClass("selected-msg");
-
-        // First do you want to delete this message
-        UIkit.modal.confirm('<h3>Do you want to delete this message?</h3>').then(function() {
-          $(".selected-msg").parent().remove();
-          localStorage.setItem("chatMessages", $("[data-output=messages]").html());
-          return false;
-        }, function () {
-          // rejected
         });
       });
     },
@@ -208,9 +202,6 @@ var grabHTML,
       localStorage.setItem("chatMessages", $("[data-output=messages]").html());
 
       $(".them, .you").find("[data-edit]").on("click", function() {
-        // Remove hash when user makes a change
-        clearHash();
-
         $(this).parent().find("[data-meaning]").addClass("selected-msg");
 
         // Update message if spelling was wrong
@@ -222,17 +213,20 @@ var grabHTML,
             console.log(value);
             $(".selected-msg").removeClass("selected-msg");
             localStorage.setItem("chatMessages", $("[data-output=messages]").html());
+        
+            // Remove hash when user makes a change
+            clearHash();
           }
         });
       });
     },
-    addEmoticons    = function() {
+    delEmoticons    = function() {
       $(".them img").on("click", function() {
         $(this).parent().addClass("selected-msg");
         // First do you want to delete this message
-        UIkit.modal.confirm('Do you want to delete this message?').then(function() {
-          UIkit.modal.confirm('This is a distructive action that cannot be undone!<br> Are you sure you wish to proceed?').then(function() {
-            $(".selected-msg").remove();
+        UIkit.modal.confirm('<h3>Do you want to delete this message?</h3>').then(function() {
+          UIkit.modal.confirm('<h3>This is a distructive action that cannot be undone!<br> Are you sure you wish to proceed?</h3>').then(function() {
+            $(".selected-msg").parent().remove();
             localStorage.setItem("chatMessages", $("[data-output=messages]").html());
             return false;
           }, function () {
@@ -244,11 +238,6 @@ var grabHTML,
     initiateEditor  = function() {
       // Set Localstorage
       setLocalStorage();
-
-      // Remove hash when user makes a change
-      $("input[type=text], [contentEditable]").on("keyup change", function() {
-        clearHash();
-      });
 
       // Share to Social Networks
       $("[data-call=share]").on("click", function() {
@@ -289,7 +278,7 @@ var grabHTML,
       $("[data-add=emotion]").on("click", function() {
         $("[data-output=messages]").append('<div class="them emoticon msg"><p class="message">'+ this.innerHTML +'</p></div>');
         localStorage.setItem("chatMessages", $("[data-output=messages]").html());
-        addEmoticons();
+        delEmoticons();
         scroll2B();
 
         // Remove hash when user makes a change
@@ -319,7 +308,7 @@ var grabHTML,
       msgUpdate();
 
       // Add emoticons
-      addEmoticons();
+      delEmoticons();
 
       $('.keyboard button').on("click", function() {
         if ($(this).attr("class") === "spacebar editor") {
@@ -650,19 +639,39 @@ function loadgist(gistid) {
     });
     // Load in conversation
     $("[data-output=messages]").html(chatMessages.content);
+    if ( $("[data-output=messages").html() ) {
+      $("[data-output=messages] > .you").append('<a href="javascript:void(0)" data-edit="msg" style="margin: 0 12px 0 0;"><i class="fa fa-edit scale"></i></a>');
+      
+       if ($("[data-output=messages] > .them").hasClass("emoticon")) {
+        $("[data-output=messages] > .them:not(.emoticon)").prepend('<a href="javascript:void(0)" data-edit="msg"  style="margin: 0 0 0 12px;"><i class="fa fa-edit scale"></i></a>');
+       } else {
+        $("[data-output=messages] > .them").prepend('<a href="javascript:void(0)" data-edit="msg"  style="margin: 0 0 0 12px;"><i class="fa fa-edit scale"></i></a>');
+       }
+    }
 
     // Initiate Chat
 
     // Check and see if you start first
     $("[data-output=messages] .msg:hidden").removeClass("hide");
     speakThis( $(".chat-history .msg:visible:last").text() );
-    scroll2B();
+
+    // Speak first message
+    setTimeout(function() {
+      if ($(".chat-history > .msg:visible:first").is(":visible")) {
+        speakThis( $(".chat-history .msg:visible:first").text() );
+      }
+    }, 300);
 
     // Speak message when hovered over
     speakSentence();
 
-    // Check and see if you start first
-    typeWordKeyBoard();
+    // Once message is added
+    // You can click on it to set its translation
+    msgTranslation();
+    msgUpdate();
+
+    scroll2B();
+    
     $(".preloader").remove();
   }).error(function(e) {
     // ajax error
@@ -674,9 +683,11 @@ if (window.location.hash) {
   $(document.body).append('<div class="fixedfill preloader"></div>');
   $(".preloader").html('<div class="table"><div class="cell"><img class="spin" src="../imgs/loading.svg"></div></div>');
   loadgist(hash);
-  
+    
   // Initiate Editor
-  initiateEditor();
+  setTimeout(function() {
+    initiateEditor();
+  }, 150);
 } else {
   // Initiate Editor
   initiateEditor();
