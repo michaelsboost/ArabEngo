@@ -254,6 +254,11 @@ var grabHTML,
       $("[data-call=share]").on("click", function() {
         $(".sharelist").slideToggle();
       });
+      $(".chat-container, .bottom-bar").click(function() {
+        if ($(".sharelist").is(":visible")) {
+          $(".sharelist").slideToggle();
+        }
+      });
       $(".comingsoon").on("click", function() {
         alertify.message("coming soon");
       });
