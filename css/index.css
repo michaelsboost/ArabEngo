@@ -44,39 +44,40 @@ body {
 }
 
 /*off-canvas*/
-.bright .uk-offcanvas-bar {
+#introduction .uk-modal-dialog {
+  padding: 1em;
   background-color: #fefff6;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
   color: #797e83;
 }
-.bright .uk-offcanvas-bar h1,
-.bright .uk-offcanvas-bar h3,
-.bright .uk-offcanvas-bar button svg {
+#introduction h1,
+#introduction h3,
+#introduction button svg {
   color: #000;
 }
-.bright .uk-offcanvas-bar h2 {
+#introduction h2 {
   color: #999da1;
   letter-spacing: 1px;
   font-weight: 100;
   font-size: 1.5em;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
-.bright .uk-offcanvas-bar h3 {
+#introduction h3 {
   display: block;
   margin: 0;
   margin-top: 15px;
 }
-.bright .uk-offcanvas-bar .bold-heading {
+#introduction .bold-heading {
   display: block;
   color: #000;
   font-weight: bold;
   font-family: cursive;
   font-size: 20px;
 }
-.bright .uk-offcanvas-bar a {
+#introduction a {
   color: #1473c7;
   text-decoration: underline;
 }
-.bright .uk-offcanvas-bar a:hover {
+#introduction a:hover {
   color: #0089ff;
 }
