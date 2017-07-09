@@ -28,19 +28,22 @@ body {
 .contribute {
   background-color: #fefff6;
 }
-.donate img {
+.donate {
+  display: table;
+  margin: auto;
+}
+.donate div {
+  display: table-cell;
+  vertical-align: middle;
+  padding: 0 1em;
+}
+.donate div img {
   height: 60px;
-  margin-top: -20px;
+/*  margin-top: -20px;*/
+  max-width: none;
 }
-.donate span:first-child {
-  float: left;
-}
-.donate span:nth-child(2) {
-  display: inline-block;
+.donate div:nth-child(2) {
   width: calc(100vw - 250px);
-}
-.donate span:last-child {
-  float: right;
 }
 
 /*off-canvas*/
