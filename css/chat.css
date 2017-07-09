@@ -492,7 +492,8 @@ a, a:hover {
     display: none;
   }
 }
-.onlysmall {
+.onlysmall,
+.sharelist .onlysmall {
   display: none;
 }
 @media all and (max-width:600px) {
