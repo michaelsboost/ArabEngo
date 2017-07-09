@@ -62,7 +62,8 @@ var grabHTML,
     clearHash       = function() {
       // Remove hash when user makes a change
       if (window.location.hash) {
-        $("[data-person], [data-set=location], [data-set=topic], [data-set=bio], [data-output=messages], [data-social=links] input").trigger("change");
+        $("[data-person], [data-set=location], [data-set=topic], [data-set=bio], [data-social=links] input").trigger("keyup");
+        $("[data-output=messages]").trigger("change");
         window.location.href = window.location.toString().split(/\?|#/)[0];
       }
     },
@@ -85,7 +86,7 @@ var grabHTML,
       }
       var checked = JSON.parse(localStorage.getItem("genderState"));
       document.getElementById("setGender").checked = checked;
-      $("[data-call=gender]").on("click", function() {
+      $("[data-call=gender]").on("click change", function() {
         if (this.checked) {
           $("[data-gender]").attr("data-gender", "male");
           localStorage.setItem("personGender", "male");
@@ -95,16 +96,13 @@ var grabHTML,
         }
         var checkbox = document.getElementById("setGender");
         (checkbox.checked) ? localStorage.setItem("genderState", "true") : localStorage.setItem("genderState", "false");
-        
-        // Remove hash when user makes a change
-        clearHash();
       });
       // avatar
       if ( localStorage.getItem("personAvatar")) {
         $("[data-avatarurl]").attr("data-avatarurl", localStorage.getItem("personAvatar"))
         $("[data-set=avatar]").css("background-image", "url("+ localStorage.getItem("personAvatar") +")");
       }
-      $("[data-set=avatar]").on("click", function() {
+      $("[data-set=avatar]").on("click keyup", function() {
         UIkit.modal.prompt('Enter Image URL!').then(function(value) {
           if (!value) {
             location.reload(true);
@@ -627,7 +625,8 @@ function loadgist(gistid) {
     $("[data-output=name]").text(jsonSets.personName);
     $("[data-avatarurl]").attr("data-avatarurl", jsonSets.personAvatar)
     $("[data-avatarurl]").css('background-image', "url("+ jsonSets.personAvatar +")");
-    $("#setGender").prop("checked", jsonSets.personGender);
+    localStorage.setItem("personAvatar", jsonSets.personAvatar);
+    $("#setGender").prop("checked", jsonSets.personGender).trigger("change");
     $("[data-set=location]").text(jsonSets.personLocation);
     $("[data-set=topic]").text(jsonSets.personTopic);
     $("[data-set=bio]").text(jsonSets.personBio);
