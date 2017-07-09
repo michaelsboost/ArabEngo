@@ -317,10 +317,18 @@ var grabHTML,
           
           //If user presses enter
           if (e.which === 13) {
-            $("[data-output=images]").empty().fadeIn();
-            $("[data-output=emoticons]").fadeOut();
-            searchForPictures(this.value);
-            $("[data-search=pictures]").trigger('click');
+            var site = this.value.toString();
+            if (site.substring(0, 7) === "http://" || site.substring(0, 8) === "https://") {
+              $("[data-output=messages]").append('<div class="them emoticon msg"><p class="message"><img src="'+this.value+'"></p></div>');
+              localStorage.setItem("chatMessages", $("[data-output=messages]").html());
+              delEmoticons();
+              scroll2B();
+              $("[data-clear=search]").trigger('click');
+            } else {
+              $("[data-output=images]").empty().fadeIn();
+              $("[data-output=emoticons]").fadeOut();
+              searchForPictures(this.value);
+            }
           }
         }
       });
