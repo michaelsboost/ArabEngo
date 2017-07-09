@@ -261,7 +261,7 @@ var grabHTML,
           $("<a>", {
             class: "pointer uk-modal-close"
           }).attr("href", "javascript:void(0)").html('<img src="'+item.media.m+'" onclick="addImage(this.src)">').appendTo("[data-output=images]");
-          if ( i === 30 ) {
+          if ( i === 100 ) {
             return false;
           }
         });
