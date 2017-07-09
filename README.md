@@ -17,14 +17,6 @@ Version
 
 1.0.1
 
-To Dos
--------------
-
-- Properly save and populate social content via LocalStorage to community shares
-- Make it so everyone can make & share/publish a chat
-- Make all published chats editable
-- If user has wifi can search * add images to chat
-
 Availability
 -------------
 

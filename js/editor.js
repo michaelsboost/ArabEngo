@@ -233,6 +233,40 @@ var grabHTML,
         });
       });
     },
+    addImage        = function(source) {
+      $("[data-search=flicker]").val("").trigger("change");
+      $("[data-output=images]").empty();
+      
+      $("[data-output=messages]").append('<div class="them emoticon msg"><p class="message"><img src="'+ source +'" /></p></div>');
+      localStorage.setItem("chatMessages", $("[data-output=messages]").html());
+      delEmoticons();
+      scroll2B();
+
+      // Remove hash when user makes a change
+      clearHash();
+    },
+    searchForPictures = function(source) {
+      UIkit.notification('Searching for "'+source+'"', {
+        pos: 'bottom-right'
+      });
+
+      var flickerAPI = "http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?";
+      $.getJSON(flickerAPI, {
+        tags: source,
+        tagmode: "any",
+        format: "json"
+      })
+      .done(function( data ) {
+        $.each( data.items, function( i, item ) {
+          $("<a>", {
+            class: "pointer uk-modal-close"
+          }).attr("href", "javascript:void(0)").html('<img src="'+item.media.m+'" onclick="addImage(this.src)">').appendTo("[data-output=images]");
+          if ( i === 30 ) {
+            return false;
+          }
+        });
+      });
+    },
     initiateEditor  = function() {
       // Set Localstorage
       setLocalStorage();
@@ -270,6 +304,29 @@ var grabHTML,
         }, function () {
           // rejected
         });
+      });
+
+      // Search for pictures
+      // Add searched image as message
+      $("[data-search=flicker]").on("keyup change", function(e) {
+        if (!this.value) {
+          $("[data-output=images], [data-clear=search]").fadeOut();
+          $("[data-output=emoticons]").fadeIn();
+        } else {
+          $("[data-clear=search]").fadeIn();
+          
+          //If user presses enter
+          if (e.which === 13) {
+            $("[data-output=images]").empty().fadeIn();
+            $("[data-output=emoticons]").fadeOut();
+            searchForPictures(this.value);
+            $("[data-search=pictures]").trigger('click');
+          }
+        }
+      });
+      $("[data-clear=search]").click(function() {
+        $("[data-search=flicker]").val("").trigger("change");
+        $("[data-output=images]").empty();
       });
 
       // Add emotion as message
@@ -322,7 +379,10 @@ var grabHTML,
           return false;
         } else if ($(this).attr("class") === "enter") {
           if ($(".preview h1").text().trim() === "") {
-            alertify.message("Cannot send empty messages!");
+            UIkit.notification("Cannot send empty messages!", {
+              status:'warning',
+              pos: 'bottom-right'
+            });
             return false;
           } else {
             // Bot talks, you talk, bot talks, you talk...
@@ -449,14 +509,14 @@ var grabHTML,
 function typeWordKeyBoard() {
   $(window).on("keydown", function(e) {
     if (e.shiftKey) {
-      if (!$(".uk-input").is(":focus") && !$("[contenteditable]").is(":focus") && !$(".socialbox").is(":focus")) {
+      if (!$(".uk-input").is(":focus") && !$("[contenteditable]").is(":focus") && !$(".socialbox").is(":focus") && !$(".txtbox").is(":focus")) {
         if ( e.shiftKey && e.which === 191 ) {
           $(".keyboard button:contains('؟')").trigger("click");
           return false;
         }
       }
     } else {
-      if (!$(".uk-input").is(":focus") && !$("[contenteditable]").is(":focus") && !$(".socialbox").is(":focus")) {
+      if (!$(".uk-input").is(":focus") && !$("[contenteditable]").is(":focus") && !$(".socialbox").is(":focus") && !$(".txtbox").is(":focus")) {
         // Enter & Backspace
         if ( e.which === 8 ) {
           $('.keyboard .backspace').trigger("click");

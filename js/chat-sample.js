@@ -160,13 +160,8 @@ var intervalChat,
                 $(".chat-container").css("height", "calc(100vh - 55px");
                 $(".bottom-bar").remove();
                 
-                alertify.alert("Fantastic! You've completed the lesson!", function(e) {
-                  if (e) {
-                    window.location.href = "../";
-                    // alertify.log("test");
-                  } else {
-                    alertify.error("Houston there's a problem " + e);
-                  }
+                UIkit.modal.alert("<h3>Fantastic! You've completed the lesson!").then(function() {
+                  window.location.href = "../#community";
                 });
                 finishedLesson();
                 speakSentence();

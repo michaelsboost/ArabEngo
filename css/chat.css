@@ -463,6 +463,26 @@ a, a:hover {
   color: #1473c7;
   white-space: nowrap;
 }
+.searched-images img {
+  width: 117px;
+  height: 117px;
+/*
+  width: 100px;
+  height: 100px;
+*/
+  margin: 0;
+}
+.search-images, .clear-search {
+  float: right;
+  margin-top: -4em;
+  position: relative;
+  background: none;
+  border: 0;
+}
+.emoticon img {
+  width: 100px;
+  height: 100px;
+}
 
 .largephone {
   display: inline;
