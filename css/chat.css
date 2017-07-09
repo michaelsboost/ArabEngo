@@ -105,11 +105,11 @@ a, a:hover {
   position: relative;
   border-radius: 100%;
   width: 108px;
+  height: 108px;
   margin: auto;
 }
 .nameoutput {
   position: relative;
-  /*margin-top: 20px;*/
   margin-top: -15px;
   padding-bottom: 1px;
   z-index: 1;
@@ -145,11 +145,7 @@ a, a:hover {
 
 /* Chat History */
 .chat-container {
-/*  height: calc(100vh - 54px - 255px - 13px);*/
-  /*height: calc(100vh - 54px - 255px - 34px);*/
   height: calc(100vh - 54px - 255px - 43px);
-  /*background-color: #fff;*/
-  /*background-color: #f1f4f7;*/
   background-color: #f1f7f5;
   overflow: auto;
   padding-bottom: 15px;
@@ -164,7 +160,6 @@ a, a:hover {
   margin-bottom: 0;
 }
 .chat-container .them > .message {
-  /*background-color: #f1f4f7;*/
   background-color: #fff;
   border-bottom-left-radius: 0;
 }
@@ -180,7 +175,6 @@ a, a:hover {
 }
 .chat-container .them:before {
   content: "\f0d9";
-  /*color: #f1f4f7;*/
   color: #fff;
   position: relative;
   top: 22px;
@@ -214,8 +208,6 @@ a, a:hover {
   padding: 10px;
   font-size: 15px;
   border-radius: 10px;
-/*  background-color: #000;*/
-/*  background-color: #676340;*/
   background-color: #3a371f;
   background-color: rgba(0, 0, 0, .68);
   color: #fff;
@@ -229,9 +221,7 @@ a, a:hover {
 }
 .bottom-bar > .preview {
   padding-top: 5px;
-/*  height: calc(80px - 17px);*/
   height: calc(63px);
-  /*height: calc(54px);*/
   white-space: nowrap;
   overflow-y: hidden;
   overflow-x: auto;
@@ -244,7 +234,6 @@ a, a:hover {
   padding: 5px;
   margin: 3px;
   display: inline-block;
-  /*width: calc(100%/11 - 16px);*/
   width: calc(100%/12 - 16px);
   min-width: 24px;
   color: #000;
@@ -259,18 +248,14 @@ a, a:hover {
   background-color: #ccc;
 }
 .bottom-bar > .keyboard > div > button.spacebar {
-  /*width: calc(100% - 20px);*/
-  /*width: calc(100vw/1.1);*/
   width: 99%;
   margin: 10px 0 0 0;
   padding: 1em 0;
 }
 .bottom-bar > .keyboard > div > button.spacebar.editor {
-  /*width: calc(100% - 140px);*/
   width: calc(100% - 100px);
-  padding: 17px 0;
+  padding: 5px;
   position: relative;
-  top: -6px;
   left: 11px;
 }
 .bottom-bar > .keyboard > div > button.enter {
@@ -298,15 +283,35 @@ a, a:hover {
     margin: 3px 0;
   }
   .bottom-bar > .keyboard > div > button.spacebar.editor {
-    /*width: calc(100% - 140px);*/
     width: calc(100% - 100px);
-    padding: 12px 0;
     position: relative;
-    top: -6px;
     left: 11px;
+    padding: 0;
   }
   .bottom-bar > .keyboard > div > button.enter {
     width: 40px;
+  }
+}
+@media all and (max-width:380px) {
+  .bottom-bar > .keyboard > div > button {
+    width: calc(100%/12 - 16px);
+    min-width: 19px;
+  }
+  .bottom-bar > .keyboard > div > button,
+  .bottom-bar > .keyboard > div > button.spacebar.editor,
+  .bottom-bar > .keyboard > div > button.enter {
+    font-size: 16px;
+  }
+}
+@media all and (max-width:310px) {
+  .bottom-bar > .keyboard > div > button {
+    width: calc(100%/12 - 16px);
+    min-width: 12px;
+  }
+  .bottom-bar > .keyboard > div > button,
+  .bottom-bar > .keyboard > div > button.spacebar.editor,
+  .bottom-bar > .keyboard > div > button.enter {
+    font-size: 12px;
   }
 }
 
@@ -429,7 +434,6 @@ a, a:hover {
 }
 .uk-offcanvas-bar .uk-nav-default>li.uk-active>a,
 .bright .uk-nav .uk-nav-header {
-/*  color: #666;*/
   color: #1473c7;
 }
 
@@ -466,15 +470,10 @@ a, a:hover {
 .searched-images img {
   width: 117px;
   height: 117px;
-/*
-  width: 100px;
-  height: 100px;
-*/
   margin: 0;
 }
 .search-images, .clear-search {
   float: right;
-/*  margin-top: -4em;*/
   margin: -5em -8px 0 0;
   position: relative;
   background: none;
@@ -491,6 +490,17 @@ a, a:hover {
 @media all and (max-width:600px) {
   .largephone {
     display: none;
+  }
+}
+.onlysmall {
+  display: none;
+}
+@media all and (max-width:600px) {
+  .onlysmall {
+    display: inline;
+  }
+  .sharelist .onlysmall {
+    display: block;
   }
 }
 

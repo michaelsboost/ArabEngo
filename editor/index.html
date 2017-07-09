@@ -26,17 +26,20 @@
           <a href="../">
             <span class="fa fa-caret-left scale"></span>
           </a>
-          <a href="javascript:void(0)" data-call="share">
+          <a href="javascript:void(0)" class="onlysmall" data-call="share">
+            <span class="fa fa-bars scale"></span>
+          </a>
+          <a href="javascript:void(0)" class="largephone" data-call="share">
             <span class="fa fa-share-square-o scale"></span>
           </a>
-          <a href="javascript:void(0)" data-clear="chat">
+          <a href="javascript:void(0)" class="largephone" data-clear="chat">
             <span class="fa fa-file-o scale"></span>
           </a>
         </div>
         <span class="contact" data-person="Your Name" data-gender="male" contenteditable="true"></span>
 
         <div class="ib fr contactbtns cb-right">
-          <a class="pointer uk-modal-close" href="javascript:location.reload(true)">
+          <a class="pointer largephone uk-modal-close" href="javascript:location.reload(true)">
             <span class="fa fa-refresh scale"></span>
           </a>
           <a class="pointer uk-modal-close largephone">
@@ -49,7 +52,12 @@
       </div>
 
       <div class="sharelist hide">
-        <!--<a class="share-github pointer comingsoon">-->
+        <a class="pointer uk-modal-close onlysmall" href="javascript:location.reload(true)">
+          <span class="fa fa-refresh"></span>
+        </a>
+        <a href="javascript:void(0)" class="onlysmall" data-clear="chat">
+          <span class="fa fa-file-o"></span>
+        </a>
         <a class="pointer" data-action="save-gist">
           <i class="fa fa-cloud-upload"></i>
         </a>
@@ -106,9 +114,11 @@
             <button>٨</button>
             <button>٩</button>
             <button>٠</button>
-            <button class="pictures" uk-toggle="target: #emoticons"><span uk-icon="icon:happy"></span></button>
+            <button class="pictures" uk-toggle="target: #emoticons">
+              <i class="fa fa-smile-o"></i>
+            </button>
             <button class="backspace">
-              <span uk-icon="icon: arrow-left"></span>
+              <i class="fa fa-arrow-left"></i>
             </button>
           </div>
           <div>
@@ -151,9 +161,10 @@
             <button>؟</button>
           </div>
           <div>
-            <button class="spacebar editor"> </button>
+<!--            <button class="spacebar editor"> </button>-->
+            <button class="spacebar editor">&nbsp;</button>
             <button class="enter">
-              <span uk-icon="icon: check"></span>
+              <i class="fa fa-check"></i>
             </button>
           </div>
         </div>
@@ -166,7 +177,7 @@
           <div class="uk-modal-body" uk-overflow-auto style="padding: 0; height: 100vh;">
             <div class="grid">
               <div class="grid__col-12 tc">
-                <input type="search" class="txtbox ib" placeholder="search for something like dogs" data-search="flicker" style="width: calc(100% - 1.11111em - 30px); margin-top: 1.11111em; display: inline-block; padding-right: 50px;" />
+                <input type="search" class="txtbox ib" placeholder="search for something like dogs" data-search="flicker" style="width: calc(100% - 3.2em); margin-top: 1.11111em; display: inline-block; padding-right: 50px;" />
                 <button class="clear-search uk-modal-close-default hide" data-clear="search">
                   <span class="fa fa-times scale"></span>
                 </button>
