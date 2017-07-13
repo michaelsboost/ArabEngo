@@ -7,6 +7,10 @@ We all learned our first language through social interaction and communication. 
 
 However what if you don't want to have a conversation with a real person? What if you just want to text message a robot and learn the language that way? That's why we created ArabEngo!
 
+To Do's
+-------------
+- Build a lesson designer and make it so community can share lesson's they've built.
+
 License
 -------------
 
@@ -56,7 +60,7 @@ Author
 
 - [michael schwartz](http://mikethedj4.github.io/) and others
 
-Development
+Contribution
 -------------
 
 Want to contribute? Great!  
