@@ -6,81 +6,164 @@
 @import url("../libraries/font-awesome/macset.css");
 @import url("vars.css");
 
+html, body {
+  margin: 0;
+  height: 100%;
+}
+
 body {
-/*  background: #1e87f0; */
-  background: #40a0ff;
-/*  background: #fff;*/
-  
-  background: linear-gradient(to bottom, rgba(198, 255, 61, 0.86) 0%, rgba(61, 174, 255, 0.56) 0%), url(../imgs/FreeVector-Mayan-Pyramid-Vector.svg);
-  background-size: 100%;
-  background-position: bottom;
-  background-repeat: no-repeat;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  font-family: 'Lato', sans-serif;
+  font-weight: 100;
+}
+.herobg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: url('../imgs/pexels-photo-62348.jpeg');
+  background-position: center center;
+  background-size: cover;
+  animation: bgscale 25s infinite linear;
 }
 
-.pointer.uk-card:hover {
-  text-decoration: none;
+@keyframes bgscale {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(2);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
-.pointer.uk-card-default:hover {
-  color: #666;
+.hero {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 19px 1em;
+  overflow: auto;
+  color: #fff;
+  background-color: rgb(72, 154, 160);
+  background-color: rgba(0, 137, 173, 0.41);
 }
-
-/*donate images*/
-.contribute {
-  background-color: #fefff6;
-}
-.donate {
-  display: table;
-  margin: auto;
-}
-.donate div {
-  display: table-cell;
-  vertical-align: middle;
-  padding: 0 1em;
-}
-.donate div img {
-  height: 60px;
-/*  margin-top: -20px;*/
-  max-width: none;
-}
-.donate div:nth-child(2) {
-  width: calc(100vw - 250px);
-}
-
-/*off-canvas*/
-#introduction .uk-modal-dialog {
-  padding: 1em;
-  background-color: #fefff6;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
-  color: #797e83;
-}
-#introduction h1,
-#introduction h3,
-#introduction button svg {
-  color: #000;
-}
-#introduction h2 {
-  color: #999da1;
+.hero p {
+  font-family: "ProximaNova";
+  font-size: 20px;
+  line-height: 1.5em;
+  text-transform: none;
   letter-spacing: 1px;
   font-weight: 100;
-  font-size: 1.5em;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-style: italic;
+  color: #fff;
+  margin: 20px auto;
 }
-#introduction h3 {
-  display: block;
-  margin: 0;
-  margin-top: 15px;
+.btn {
+  font-family: "ProximaNova";
+  font-size: 15px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 600;
+  font-style: normal;
+  text-decoration: none;
+  padding: 1em 1.75em;
+  line-height: 1em;
+  margin: 10px 0;
 }
-#introduction .bold-heading {
+
+/*navbar*/
+.uk-navbar-toggle {
+  color: #fff;
+  transition: all linear .3s;
+}
+.uk-navbar-toggle:hover {
+  color: #a4cac1;
+}
+.uk-navbar-dropdown {
+  top: 65px!important;
+}
+.uk-navbar-nav>li>a,
+.uk-navbar-nav>li>button, .btn {
+  color: #fff;
+  transition: all linear .3s;
+}
+.uk-navbar-nav>li>a {
+  position: relative;
+  height: auto;
+  padding: 9px 15px;
+}
+.uk-navbar-nav>li>a:hover {
+  color: #fff;
+}
+.uk-navbar-nav>li>a:after{
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  height: 1px;
+  width: 0%;
+  background-color: #fff;
   display: block;
+  content: '';
+  transition: 0.3s;
+}
+.uk-navbar-nav>li>a:hover:after{
+  left: 0;
+  width: 100%;
+}
+.uk-navbar-nav>li>button, .btn {
+  border: 2px solid #fff;
+}
+.uk-navbar-nav>li>button:hover, .btn:hover {
   color: #000;
-  font-weight: bold;
-  font-family: cursive;
-  font-size: 20px;
+  background: #fff;
+  border: 2px solid #fff;
 }
-#introduction a {
-  color: #1473c7;
-  text-decoration: underline;
+
+/*center vertically*/
+.table {
+  display: table;
+  height: calc(100% - 100px);
+  width: 100%;
 }
-#introduction a:hover {
-  color: #0089ff;
+.cell {
+  position: relative;
+  display: table-cell;
+  top: -50px;
+  vertical-align: middle;
+}
+
+/*responsive*/
+.tablet {
+  display: flex;
+}
+.phone {
+  display: none;
+}
+@media all and (max-width:670px) {
+  .tablet {
+    display: none;
+  }
+  .phone {
+    display: block;
+  }
+}
+
+/*misc*/
+.pointer {
+  cursor: pointer;
+}
+.tc {
+  text-align: center;
+}
+.fr {
+  float: right;
 }

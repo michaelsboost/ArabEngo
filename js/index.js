@@ -1,14 +1,16 @@
-// Check if there's a hash onload
-if (window.location.hash === "#community") {
-  $("[data-open=arabengochats]").trigger('click');
-} else if (window.location.hash === "#introduction") {
-  $("[data-open=arabengochats]").trigger('click');
-}
+var interval,
+    /*
+    Last value for background color
+    counter   = 359,
+    */
+    counter   = 133,
+    countDown = function() {
+      if (counter === 0) {
+        counter = "359";
+        // clearInterval(interval);
+      } else {
+        document.querySelector(".hero").style.background = "hsla("+ counter-- +", 100%, 34%, 0.3)";
+      }
+    };
 
-// Add hash when commuity is clicked
-$("[data-open=arabengochats]").click(function() {
-  window.location.hash = "#community";
-});
-$("[data-open=introduction]").click(function() {
-  window.location.hash = "#introduction";
-});
+setInterval(countDown, 150);

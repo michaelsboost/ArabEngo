@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ArabEngo</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=9" />
+    <meta name="description" content="Learn Arabic for English Speakers with ArabEngo.">
+    <meta name="author" content="Michael Schwartz">
+    <link rel="icon" type="image/vnd.microsoft.icon" href="favicon.ico">
+    <link rel="SHORTCUT ICON" href="favicon.ico">
+    <link rel="stylesheet" href="css/app.css">
+    <script src="libraries/jquery/jquery.js"></script>
+    <script src="libraries/alertify/alertify.min.js"></script>
+    <script src="libraries/jquery/jquery-migrate-1.2.1.min.js"></script>
+    <script src="libraries/uikit/js/uikit.min.js"></script>
+    <script src="libraries/uikit/js/uikit-icons.min.js"></script>
+  </head>
+  <body>
+    <!-- lessons -->
+    <div class="uk-child-width-1-2@s uk-grid-match" uk-grid>
+      <div>
+        <div uk-toggle="target: #introduction" class="pointer uk-card uk-card-primary uk-card-hover uk-card-body uk-width-1-@m" data-open="introduction">
+          <div class="uk-card-badge uk-label">Beginner</div>
+          <h3 class="uk-card-title">Introduction</h3>
+          <p>All you need to know about ArabEngo!</p>
+        </div>
+      </div>
+      <div>
+        <a class="pointer uk-card uk-card-secondary uk-card-hover uk-card-body uk-width-1-@m" href="lessons/alphabet/index.html" target="_blank">
+          <div class="uk-card-badge uk-label">Beginner</div>
+          <h3 class="uk-card-title">Alphabet</h3>
+          <p>Fun games to learn the arabic alphabet!</p>
+        </a>
+      </div>
+      <div>
+        <a class="pointer uk-card uk-card-default uk-card-hover uk-card-body uk-width-1-@m" href="lessons/akira.html" target="_blank">
+          <div class="uk-card-badge uk-label">Beginner</div>
+          <div class="uk-grid-small uk-flex-middle" uk-grid>
+            <div class="uk-width-auto">
+              <img class="uk-border-circle" width="40" height="40" src="imgs/akira.svg">
+            </div>
+            <div class="uk-width-expand">
+              <h3 class="uk-card-title uk-margin-remove-bottom">Meet Akira</h3>
+            </div>
+          </div>
+          <p>In Arabic words change depending on the gender you're speaking with. First lets learn how to introduce ourselves to a female.</p>
+        </a>
+      </div>
+      <div>
+        <a class="pointer uk-card uk-card-default uk-card-hover uk-card-body uk-width-1-@m" href="lessons/kareem.html" target="_blank">
+          <div class="uk-card-badge uk-label">Beginner</div>
+          <div class="uk-grid-small uk-flex-middle" uk-grid>
+            <div class="uk-width-auto">
+              <img class="uk-border-circle" width="40" height="40" src="imgs/kareem.svg">
+            </div>
+            <div class="uk-width-expand">
+              <h3 class="uk-card-title uk-margin-remove-bottom">Meet Kareem</h3>
+            </div>
+          </div>
+          <p>In Arabic words change depending on the gender you're speaking with. Second lets learn how to introduce ourselves to a male.</p>
+        </a>
+      </div>
+    </div>
+    <hr class="uk-divider-icon">
+    <div class="uk-child-width-1-2@s uk-grid-match" uk-grid>
+      <div>
+        <a class="pointer uk-card uk-card-default uk-card-hover uk-card-body uk-width-1-@m" href="editor/" target="_blank">
+          <div class="uk-card-badge uk-label">Tool</div>
+          <div class="uk-grid-small uk-flex-middle" uk-grid>
+            <div class="uk-width-auto">
+              <img class="uk-border-circle" width="40" height="40" src="imgs/tool.svg">
+            </div>
+            <div class="uk-width-expand">
+              <h3 class="uk-card-title uk-margin-remove-bottom">Editor</h3>
+            </div>
+          </div>
+          <p>Build your own chat session and share it with the world!</p>
+        </a>
+      </div>
+      <div>
+        <div uk-toggle="target: #arabengochats" class="pointer uk-card uk-card-default uk-card-hover uk-card-body uk-width-1-@m" data-open="arabengochats">
+          <div class="uk-card-badge uk-label">Community</div>
+          <div class="uk-grid-small uk-flex-middle" uk-grid>
+            <div class="uk-width-auto">
+              <img class="uk-border-circle" width="40" height="40" src="imgs/group.svg">
+            </div>
+            <div class="uk-width-expand">
+              <h3 class="uk-card-title uk-margin-remove-bottom">Community Builds!</h3>
+            </div>
+          </div>
+          <p>Interact with chats made by the ArabEngo community!</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- off-canvas introduction menu -->
+    <div id="introduction" uk-modal>
+      <div class="uk-modal-dialog">
+        <button class="uk-modal-close-default" type="button" uk-close></button>
+
+        <h1>Introduction</h1>
+        <h3>Greetings and Salutations</h3>
+        <h3>السلام عليكم</h3>
+        <h3>و عليكم السلام</h3>
+        <h2>Things to know about the Arabic language before you get started.</h2>
+        
+        <b class="bold-heading">Modern Standard Arabic or Classical Arabic?</b>
+        Arabic is the official language of the counties within the Arab League.  The Arab Leagues is a region of 22 countries which covers a vast geographic area from Southwest Asia to Northwest Africa. Arabic is also used by over 1 million Muslims, as Classical Arabic is the religious language of the Qur’an (The holy book of Islam).  Classical Arabic is now considered more of a written language than a spoken one. Modern Standard Arabic (MSA) is what is mainly understood across most Arabic countries and is the version used to broadcast news on television, and what most students use as an introduction to Arabic.  Official documents, newspapers and modern literature also tend to be written in MSA.<br><br>
+
+        With ArabEngo you will be learning, "Modern Standard Arabic".<br><br>
+
+        <b class="bold-heading">Will Arabic help me with learning any other languages?</b>
+        You will encounter difficulties with Arabic dialects but you will be able to communicate using MSA.  If you are learning for a specific purpose/ going to a particular country, it may be worth learning MSA as your introduction to Arabic and dabbling in some phrases of the local dialect. As Arabic is a Semantic language, you will find similarities with spoken Aramaic and Hebrew.  As the alphabet is used by other languages, you will be able to decipher letters form Pashto, Kurdish, Urdu and Persian/Farsi – but you won’t know what they mean!<br><br>
+
+        By learning other languages, you gain a greater perspective and understanding about the world we live in.<br><br>
+
+        Excerpt from - <a href="https://lingos.co/blog/brief-introduction-to-arabic-language/" target="_blank">https://lingos.co/</a><br><br>
+
+        <b class="bold-heading">Sources:</b>
+        <a href="https://lingos.co/blog/brief-introduction-to-arabic-language/" target="_blank">https://lingos.co/</a><br>
+        <a href="http://www.omniglot.com/writing/arabic.htm" target="_blank">http://www.omniglot.com/</a><br>
+        <a href="http://www.al-bab.com/arab/language/lang.htm" target="_blank">http://www.al-bab.com/</a><br>
+        <a href="http://www.aataweb.org/about" target="_blank">http://www.aataweb.org/</a><br>
+        <a href="http://www.arabion.net/learnarabic.html" target="_blank">http://www.arabion.net/</a><br>
+        <a href="https://en.wikipedia.org/wiki/Arabic" target="_blank">https://en.wikipedia.org/wiki/Arabic</a>
+      </div>
+    </div>
+    <div id="arabengochats" uk-modal>
+      <div class="uk-modal-dialog">
+        <button class="uk-modal-close-default" type="button" uk-close></button>
+
+        <div class="uk-modal-body" uk-overflow-auto style="padding: 0; height: 100vh;">
+          <iframe src="community.html" width="100%" height="100%" frameborder="0"></iframe>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/app.js"></script>
+  </body>
+</html>
