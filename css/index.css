@@ -155,6 +155,9 @@ body {
   .phone {
     display: block;
   }
+  .table {
+    height: calc(100% - 120px);
+  }
 }
 
 /*misc*/
