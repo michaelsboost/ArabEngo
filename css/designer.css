@@ -57,7 +57,7 @@ a.mdl-js-ripple-effect {
 .mdl-card__supporting-text {
   width: 100%;
   height: calc(100vh - 128px);
-  overflow-v: auto;
+  overflow-y: auto;
 }
 @media all and (max-width:1024px) {
   .mdl-card__supporting-text {
@@ -75,7 +75,6 @@ a.mdl-js-ripple-effect {
 .lesson-types {
   white-space: nowrap;
   overflow-y: hidden;
-  overflow-x: auto;
 }
 .lesson-types a {
   display: inline-block;
@@ -98,4 +97,12 @@ a.mdl-js-ripple-effect {
   width: 80px;
   margin-left: 50px;
   margin-bottom: 15px;
+}
+
+/*misc*/
+.ib {
+  display: inline-block;
+}
+.tc {
+  text-align: center;
 }
