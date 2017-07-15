@@ -8,6 +8,12 @@ Primary Dark: #00796B
 Accent Shade: #FFAB40
 Accent Light (Fallback): #FFD180 */
 
+/*Globals*/
+a {
+  cursor: pointer;
+}
+
+/*Header*/
 .mdl-layout__header {
   background-color: #009688!important;
 }
@@ -41,15 +47,55 @@ a.mdl-js-ripple-effect {
 }
 
 /*Cards*/
-.demo-card-wide.mdl-card {
-/*  width: 512px;*/
+.mdl-layout__content {
+  background: #e5e5e5!important;
+}
+.mdl-card {
   width: 100%;
+  min-height: auto;
 }
-.demo-card-wide > .mdl-card__title {
-  color: #fff;
-  height: 176px;
-  background: url('https://getmdl.io/assets/demos/welcome_card.jpg') top center / cover;
+.mdl-card__supporting-text {
+  width: 100%;
+  height: calc(100vh - 128px);
+  overflow-v: auto;
 }
-.demo-card-wide > .mdl-card__menu {
-  color: #fff;
+@media all and (max-width:1024px) {
+  .mdl-card__supporting-text {
+    height: calc(100vh - 120px);
+  }
+}
+
+/*Alertify messages*/
+.ajs-message.ajs-visible {
+/*  box-shadow: 0 0 2em rgba(0, 0, 0, 0.48);*/
+  box-shadow: 0 0 1em rgba(0, 0, 0, 0.48);
+}
+
+/*Lesson types*/
+.lesson-types {
+  white-space: nowrap;
+  overflow-y: hidden;
+  overflow-x: auto;
+}
+.lesson-types a {
+  display: inline-block;
+  width: 180px;
+  text-align: center;
+  float: none;
+}
+.lesson-types .mdl-button {
+  color: #6776e2;
+  height: inherit;
+  min-width: auto;
+  padding: 5px;
+  text-transform: uppercase;
+/*  line-height: 24px;*/
+  line-height: 14px;
+  font-size: 12px;
+}
+.lesson-types img {
+  display: block;
+  width: 80px;
+  margin-left: 50px;
+  margin-bottom: 15px;
 }

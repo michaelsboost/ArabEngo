@@ -7,12 +7,18 @@
     <link rel="icon" sizes="32x32"   href="icon-32.png" >
     <meta name="theme-color" content="#009688">
     <!-- Material Design Lite -->
-    <script src="../js/material.min.js"></script>
-<!--    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">-->
     <link rel="stylesheet" href="../css/material.min.css">
+    <link rel="stylesheet" href="../css/designer.css">
+    <link rel="stylesheet" href="../libraries/alertifyjs/css/alertify.min.css">
+    <link rel="stylesheet" href="../libraries/alertifyjs/css/themes/default.min.css">
+    <script src="../libraries/alertifyjs/alertify.min.js"></script>
+    <script src="../libraries/jquery/jquery.js"></script>
+    <script src="../libraries/jquery/jquery-migrate-1.2.1.min.js"></script>
+    <!-- Material Design Lite -->
+    <script src="../js/material.min.js"></script>
     <!-- Material Design icon font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="../css/designer.css">
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:500,400,300,100&amp;subset=latin,latin-ext'>
     <!--
 Colors
 (picked from http://sankk.in/material-mixer/, following http://www.google.com/design/spec/style/color.html)
@@ -45,13 +51,13 @@ Accent Light (Fallback): #FFD180
             <script>
             (function() {
               'use strict';
-              var snackbarContainer = document.querySelector('#displayDebug');
-              var showToastButton = document.querySelector('[data-action=play]');
-              showToastButton.addEventListener('click', function() {
+              var notificationContainer = document.querySelector('#displayDebug');
+              var notificationButton = document.querySelector('[data-action=play]');
+              notificationButton.addEventListener('click', function() {
                 'use strict';
 //                var data = {message: 'Debugging Lesson'};
                 var data = {message: 'Debug lesson coming soon...'};
-                snackbarContainer.MaterialSnackbar.showSnackbar(data);
+                notificationContainer.MaterialSnackbar.showSnackbar(data);
               });
             }());
             </script>
@@ -61,17 +67,17 @@ Accent Light (Fallback): #FFD180
             <i class="material-icons">help</i>
           </button>
           <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="demo-menu-lower-right">
-            <li class="mdl-menu__item">
+            <li class="mdl-menu__item comingsoon">
               <i class="material-icons">play_arrow</i>
                 <span>
-                  Watch How To Video
+                  How to make a lesson
                 </span>
             </li>
             <a href="https://www.gospeaky.com/" target="_blank">
               <li class="mdl-menu__item">
                 <i class="material-icons">chat</i>
                 <span>
-                  Talk With a Real Person
+                  Talk with a real person
                 </span>
               </li>
             </a>
@@ -79,7 +85,7 @@ Accent Light (Fallback): #FFD180
               <li class="mdl-menu__item">
                 <i class="material-icons">person</i>
                 <span>
-                  Speak With a Real Person
+                  Speak with a real person
                 </span>
               </li>
             </a>
@@ -87,7 +93,7 @@ Accent Light (Fallback): #FFD180
               <li class="mdl-menu__item">
                 <i class="material-icons">group</i>
                 <span>
-                  Speak With a Group
+                  Speak with a group
                 </span>
               </li>
             </a>
@@ -123,55 +129,75 @@ Accent Light (Fallback): #FFD180
         <span class="mdl-layout-title">Navigation</span>
         <hr>
         <nav class="mdl-navigation">
-          <a class="mdl-navigation__link mdl-js-button mdl-js-ripple-effect" href="javascript:(0)">
+          <a class="mdl-navigation__link mdl-js-button">
             <i class="material-icons" role="presentation">adjust</i> &nbsp; Designer
           </a>
-          <a class="mdl-navigation__link mdl-js-button mdl-js-ripple-effect" href="javascript:(0)">
+          <a class="mdl-navigation__link mdl-js-button mdl-js-ripple-effect comingsoon">
             <i class="material-icons" role="presentation">share</i> &nbsp; Share
           </a>
-          <a class="mdl-navigation__link mdl-js-button mdl-js-ripple-effect" href="javascript:(0)">
+          <a class="mdl-navigation__link mdl-js-button mdl-js-ripple-effect comingsoon">
             <i class="material-icons" role="presentation">favorite</i> &nbsp; Donate
           </a>
           <hr>
-          <a class="mdl-navigation__link mdl-js-button mdl-js-ripple-effect" href="javascript:(0)">
+          <a class="mdl-navigation__link mdl-js-button mdl-js-ripple-effect comingsoon" href="javascript:void(0)">
             <i class="material-icons" role="presentation">face</i> &nbsp; People
           </a>
-          <a class="mdl-navigation__link mdl-js-button mdl-js-ripple-effect" href="javascript:(0)">
+          <a class="mdl-navigation__link mdl-js-button mdl-js-ripple-effect comingsoon" href="javascript:void(0)">
             <i class="material-icons" role="presentation">stars</i> &nbsp; Food
           </a>
-          <a class="mdl-navigation__link mdl-js-button mdl-js-ripple-effect" href="javascript:(0)">
+          <a class="mdl-navigation__link mdl-js-button mdl-js-ripple-effect comingsoon" href="javascript:void(0)">
             <i class="material-icons" role="presentation">nature</i> &nbsp; Objects
           </a>
         </nav>
       </div>
       <main class="mdl-layout__content">
         <section class="mdl-layout__tab-panel is-active" id="scroll-tab-summary">
-          <div class="page-content mdl-grid mdl-grid--no-spacing">
+          <div class="page-content">
             <div class="mdl-cell mdl-cell--12-col">
-              <!-- Square card -->
-              <div class="demo-card-wide mdl-card mdl-shadow--2dp">
-                <div class="mdl-card__title">
-                  <h2 class="mdl-card__title-text">Welcome</h2>
-                </div>
-                <div class="mdl-card__supporting-text">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Mauris sagittis pellentesque lacus eleifend lacinia...
-                </div>
-              </div>
-              <p>&nbsp;</p>
-              <div class="demo-card-wide mdl-card mdl-shadow--2dp">
-                <div class="mdl-card__supporting-text">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Mauris sagittis pellentesque lacus eleifend lacinia...
-                </div>
+              <div class="mdl-card mdl-shadow--2dp mdl-card__supporting-text" contenteditable="true">
+                <p>
+                  Describe your lesson here:
+                </p>
+                
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius nobis, quisquam error ratione. Fugiat provident aperiam nesciunt nulla, blanditiis in! Iste iure labore nam ratione expedita velit dolor, sint rerum.
+                </p>
               </div>
             </div>
           </div>
         </section>
         <section class="mdl-layout__tab-panel" id="scroll-tab-1">
           <div class="page-content">
-            <!-- Your content goes here -->
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad numquam laboriosam aperiam nobis similique earum fuga facere incidunt, sapiente deserunt facilis inventore, cupiditate, vitae aspernatur dignissimos modi porro perspiciatis temporibus.
+            <div class="mdl-cell mdl-cell--12-col">
+              <div class="mdl-card mdl-shadow--2dp mdl-card__supporting-text">
+                <div class="mdl-shadow--4dp lesson-types">
+                  <a data-lesson="whichoneoftheseis" class="mdl-button mdl-js-button mdl-js-ripple-effect">
+                    <img src="../imgs/group.svg">
+                    <span>Which one of these is?</span>
+                  </a>
+                  <a data-lesson="howdoyousay" class="mdl-button mdl-js-button mdl-js-ripple-effect">
+                    <img src="../imgs/group.svg">
+                    <span>How do you say?</span>
+                  </a>
+                  <a data-lesson="howdoyousaytyping" class="mdl-button mdl-js-button mdl-js-ripple-effect">
+                    <img src="../imgs/group.svg">
+                    <span>How do you say {typing}?</span>
+                  </a>
+                  <a data-lesson="whatwassaid" class="mdl-button mdl-js-button mdl-js-ripple-effect">
+                    <img src="../imgs/group.svg">
+                    <span>What was said?</span>
+                  </a>
+                  <a data-lesson="whatwassaidtyping" class="mdl-button mdl-js-button mdl-js-ripple-effect">
+                    <img src="../imgs/group.svg">
+                    <span>What was said {typing}?</span>
+                  </a>
+                  <a data-lesson="selectthemissingword" class="mdl-button mdl-js-button mdl-js-ripple-effect">
+                    <img src="../imgs/group.svg">
+                    <span>Select the missing word?</span>
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
         <section class="mdl-layout__tab-panel" id="scroll-tab-2">
@@ -296,5 +322,7 @@ Accent Light (Fallback): #FFD180
         </section>
       </main>
     </div>
+    
+    <script src="../js/designer.js"></script>
   </body>
 </html>
