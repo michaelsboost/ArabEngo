@@ -11,17 +11,36 @@ Accent Light (Fallback): #FFD180 */
 .mdl-layout__header {
   background-color: #009688!important;
 }
+
+/*Header menu dropdown*/
+.mdl-menu a {
+  text-decoration: none;
+  color: #000;
+}
+.mdl-menu .mdl-menu__item .material-icons {
+  display: inline-block;
+  position: relative;
+  top: 7px;
+  margin: 0 5px 0 -5px;
+}
+.mdl-menu .mdl-menu__item span {
+  display: inline-block;
+}
+
+/*Tab Menu*/
 .mdl-layout__tab-bar, .mdl-layout__tab-bar-button {
   background-color: inherit!important;
 }
+a.mdl-layout__tab.is-active::after {
+  background-color: #f9e88f!important;
+}
 
-/* Add ripple effect for navigation links */
+/*Add ripple effect for navigation links*/
 a.mdl-js-ripple-effect {
   position: relative;
 }
 
 /*Cards*/
-
 .demo-card-wide.mdl-card {
 /*  width: 512px;*/
   width: 100%;

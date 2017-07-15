@@ -7,8 +7,9 @@
     <link rel="icon" sizes="32x32"   href="icon-32.png" >
     <meta name="theme-color" content="#009688">
     <!-- Material Design Lite -->
-    <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <script src="../js/material.min.js"></script>
+<!--    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">-->
+    <link rel="stylesheet" href="../css/material.min.css">
     <!-- Material Design icon font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="../css/designer.css">
@@ -34,9 +35,26 @@ Accent Light (Fallback): #FFD180
           <div class="mdl-layout-spacer"></div>
           <!-- Navigation -->
           <nav class="mdl-navigation">
-            <button class="mdl-navigation__link mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect">
+            <button id="demo-show-toast" class="mdl-navigation__link mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect" type="button" data-action="play">
               <i class="material-icons">play_arrow</i>
             </button>
+            <div id="displayDebug" class="mdl-js-snackbar mdl-snackbar">
+              <div class="mdl-snackbar__text"></div>
+              <button class="mdl-snackbar__action" type="button"></button>
+            </div>
+            <script>
+            (function() {
+              'use strict';
+              var snackbarContainer = document.querySelector('#displayDebug');
+              var showToastButton = document.querySelector('[data-action=play]');
+              showToastButton.addEventListener('click', function() {
+                'use strict';
+//                var data = {message: 'Debugging Lesson'};
+                var data = {message: 'Debug lesson coming soon...'};
+                snackbarContainer.MaterialSnackbar.showSnackbar(data);
+              });
+            }());
+            </script>
           </nav>
           
           <button id="demo-menu-lower-right" class="mdl-button mdl-js-button mdl-button--icon">
@@ -44,17 +62,35 @@ Accent Light (Fallback): #FFD180
           </button>
           <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="demo-menu-lower-right">
             <li class="mdl-menu__item">
-              <i class="material-icons">play_arrow</i> &nbsp; Watch How To Video
+              <i class="material-icons">play_arrow</i>
+                <span>
+                  Watch How To Video
+                </span>
             </li>
-            <li class="mdl-menu__item">
-              <i class="material-icons">chat</i> &nbsp; Talk With a Real Person
-            </li>
-            <li class="mdl-menu__item">
-              <i class="material-icons">person</i> &nbsp; Speak With a Real Person
-            </li>
-            <li class="mdl-menu__item">
-              <i class="material-icons">group</i> &nbsp; Speak With a Group
-            </li>
+            <a href="https://www.gospeaky.com/" target="_blank">
+              <li class="mdl-menu__item">
+                <i class="material-icons">chat</i>
+                <span>
+                  Talk With a Real Person
+                </span>
+              </li>
+            </a>
+            <a href="https://www.gospeaky.com/" target="_blank">
+              <li class="mdl-menu__item">
+                <i class="material-icons">person</i>
+                <span>
+                  Speak With a Real Person
+                </span>
+              </li>
+            </a>
+            <a href="https://www.verbling.com/community" target="_blank">
+              <li class="mdl-menu__item">
+                <i class="material-icons">group</i>
+                <span>
+                  Speak With a Group
+                </span>
+              </li>
+            </a>
           </ul>
         </div>
         <!-- Tabs -->
