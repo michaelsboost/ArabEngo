@@ -1,0 +1,36 @@
+/* Colors
+(picked from http://sankk.in/material-mixer/, following http://www.google.com/design/spec/style/color.html)
+
+Primary Shade: #009688
+Primary Light: #B2DFDB
+Primary Dark: #00796B
+
+Accent Shade: #FFAB40
+Accent Light (Fallback): #FFD180 */
+
+.mdl-layout__header {
+  background-color: #009688!important;
+}
+.mdl-layout__tab-bar, .mdl-layout__tab-bar-button {
+  background-color: inherit!important;
+}
+
+/* Add ripple effect for navigation links */
+a.mdl-js-ripple-effect {
+  position: relative;
+}
+
+/*Cards*/
+
+.demo-card-wide.mdl-card {
+/*  width: 512px;*/
+  width: 100%;
+}
+.demo-card-wide > .mdl-card__title {
+  color: #fff;
+  height: 176px;
+  background: url('https://getmdl.io/assets/demos/welcome_card.jpg') top center / cover;
+}
+.demo-card-wide > .mdl-card__menu {
+  color: #fff;
+}
