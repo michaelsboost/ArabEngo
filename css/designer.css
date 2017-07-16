@@ -109,7 +109,8 @@ a.mdl-js-ripple-effect {
 }
 
 /*Search*/
-.images-modal {
+.images-modal,
+.preview-modal {
   position: absolute;
   top: 0;
   left: 0;
@@ -120,7 +121,8 @@ a.mdl-js-ripple-effect {
   background: #000;
   background: rgba(0, 0, 0, 0.48);
 }
-.images-modal .content {
+.images-modal .content,
+.preview-modal .content {
   position: absolute;
   top: 0;
   left: 0;
@@ -169,11 +171,18 @@ a.mdl-js-ripple-effect {
   margin: 6px;
   transform: scale(1.3);
 }
-.images-modal .content > .close-modal {
+.images-modal .content > .close-modal,
+.preview-modal .content > .close-modal {
   position: absolute;
   top: 0;
   right: 0;
   margin: 5px;
+}
+.preview-modal .content .preview,
+.preview-modal .content iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
 }
 
 /*Lesson cards*/

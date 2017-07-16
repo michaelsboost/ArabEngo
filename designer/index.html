@@ -3,8 +3,6 @@
   <head>
     <title>ArabEngo: Lesson Designer</title>
     <meta name="viewport"  content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
-    <link rel="icon" sizes="192x192" href="icon-192.png">
-    <link rel="icon" sizes="32x32"   href="icon-32.png" >
     <meta name="theme-color" content="#009688">
     <!-- Material Design Lite -->
     <link rel="stylesheet" href="../css/material.min.css">
@@ -40,36 +38,22 @@ Accent Light (Fallback): #FFD180
         <div class="mdl-layout__header-row">
           <span class="mdl-layout-title">ArabEngo: Lesson Designer</span>
           <div class="mdl-layout-spacer"></div>
-          <!-- Navigation -->
+          
+          <!-- Top right button navigation -->
           <nav class="mdl-navigation">
             <button class="mdl-navigation__link mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect" type="button" onclick="location.reload(true)">
               <i class="material-icons">refresh</i>
             </button>
-            <button id="demo-show-toast" class="mdl-navigation__link mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect" type="button" data-action="play">
+            <button class="mdl-navigation__link mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect" type="button" data-action="play">
               <i class="material-icons">play_arrow</i>
             </button>
-            <div id="displayDebug" class="mdl-js-snackbar mdl-snackbar">
-              <div class="mdl-snackbar__text"></div>
-              <button class="mdl-snackbar__action" type="button"></button>
-            </div>
-            <script>
-            (function() {
-              'use strict';
-              var notificationContainer = document.querySelector('#displayDebug');
-              var notificationButton = document.querySelector('[data-action=play]');
-              notificationButton.addEventListener('click', function() {
-                'use strict';
-//                var data = {message: 'Debugging Lesson'};
-                var data = {message: 'Debug lesson coming soon...'};
-                notificationContainer.MaterialSnackbar.showSnackbar(data);
-              });
-            }());
-            </script>
           </nav>
           
           <button id="demo-menu-lower-right" class="mdl-button mdl-js-button mdl-button--icon">
             <i class="material-icons">help</i>
           </button>
+          
+          <!-- Top right button nav dropdown -->
           <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="demo-menu-lower-right">
             <li class="mdl-menu__item comingsoon">
               <i class="material-icons">play_arrow</i>
@@ -115,8 +99,8 @@ Accent Light (Fallback): #FFD180
           <a href="#scroll-tab-7" class="mdl-layout__tab">Question 7</a>
           <a href="#scroll-tab-8" class="mdl-layout__tab">Question 8</a>
           <a href="#scroll-tab-9" class="mdl-layout__tab">Question 9</a>
-          <a href="#scroll-tab-10" class="mdl-layout__tab">Question 11</a>
-          <a href="#scroll-tab-10" class="mdl-layout__tab">Question 11</a>
+          <a href="#scroll-tab-10" class="mdl-layout__tab">Question 10</a>
+          <a href="#scroll-tab-11" class="mdl-layout__tab">Question 11</a>
           <a href="#scroll-tab-12" class="mdl-layout__tab">Question 12</a>
           <a href="#scroll-tab-13" class="mdl-layout__tab">Question 13</a>
           <a href="#scroll-tab-14" class="mdl-layout__tab">Question 14</a>
@@ -126,9 +110,10 @@ Accent Light (Fallback): #FFD180
           <a href="#scroll-tab-18" class="mdl-layout__tab">Question 18</a>
           <a href="#scroll-tab-19" class="mdl-layout__tab">Question 19</a>
           <a href="#scroll-tab-20" class="mdl-layout__tab">Question 20</a>
-          <a href="#scroll-tab-21" class="mdl-layout__tab">Question 21</a>
         </div>
       </header>
+      
+      <!--Menubar-->
       <div class="mdl-layout__drawer">
         <span class="mdl-layout-title">Navigation</span>
         <hr>
@@ -154,857 +139,770 @@ Accent Light (Fallback): #FFD180
           </a>
         </nav>
       </div>
+      
+      <!--Tabular data-->
       <main class="mdl-layout__content" data-output="html">
         <section class="mdl-layout__tab-panel is-active" id="scroll-tab-summary">
           <div class="page-content">
             <div class="mdl-cell mdl-cell--12-col">
-              <div class="mdl-card mdl-shadow--2dp mdl-card__supporting-text" contenteditable="true">
-                <p>
-                  Describe your lesson here:
-                </p>
-                
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius nobis, quisquam error ratione. Fugiat provident aperiam nesciunt nulla, blanditiis in! Iste iure labore nam ratione expedita velit dolor, sint rerum.
-                </p>
+              <div class="mdl-card mdl-shadow--2dp mdl-card__supporting-text">
+               <h1 contenteditable="true" data-lesson="title">Lesson title:</h1>
+               <div contenteditable="true" data-lesson="description">
+                 <p>
+                   Describe your lesson here:
+                 </p>
+ 
+                 <p>
+                   Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius nobis, quisquam error ratione. Fugiat provident aperiam nesciunt nulla, blanditiis in! Iste iure labore nam ratione expedita velit dolor, sint rerum.
+                 </p>
+               </div>
               </div>
             </div>
           </div>
         </section>
+        <!--HOW DO YOU SAY?-->
         <section class="mdl-layout__tab-panel" id="scroll-tab-1">
           <div class="page-content">
             <div class="mdl-cell mdl-cell--12-col">
               <div class="mdl-card mdl-shadow--2dp mdl-card__supporting-text">
                 <div class="mdl-shadow--4dp">
-                  <div class="lesson-types">
-                    <a data-lesson="whichoneoftheseis" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>Which one of these is?</span>
-                    </a>
-                    <a data-lesson="howdoyousay" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>How do you say?</span>
-                    </a>
-                    <a data-lesson="howdoyousaytyping" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>How do you say {typing}?</span>
-                    </a>
-                    <a data-lesson="whatwassaid" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>What was said?</span>
-                    </a>
-                    <a data-lesson="whatwassaidtyping" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>What was said {typing}?</span>
-                    </a>
-                    <a data-lesson="selectthemissingword" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>Select the missing word?</span>
-                    </a>
-                  </div>
+                  <div class="lesson-types"></div>
                 </div>
                 <div>
-                  <h3>Question Type: "<span data-output="questiontype">select a question type</span>"</h3>
-                  <div data-output="lesson"></div>
+                  <h3>Question Type: "<span data-output="questiontype">How do you say?</span>"</h3>
+                  <div data-output="lesson">
+                    <form action="#" class="mdl-cell--6-col ib">
+                      <div class="mdl-textfield mdl-js-textfield">
+                        <input class="mdl-textfield__input" type="text" placeholder="Arabic word:" data-word="arbword" value="مرحبا">
+                      </div>
+                    </form>
+                    <form action="#" class="mdl-cell--6-col ib">
+                      <div class="mdl-textfield mdl-js-textfield">
+                        <input class="mdl-textfield__input" type="text" placeholder="English translation:" data-word="engtrans" value="hello">
+                      </div>
+                    </form>
+                    <div>
+                      <form action="#" class="mdl-cell--6-col ib">
+                        <div class="mdl-textfield mdl-js-textfield">
+                          <input class="mdl-textfield__input" type="text" placeholder="Correct answer:" data-word="correctanswer" value="hello">
+                        </div>
+                      </form>
+                      <form action="#" class="mdl-cell--6-col ib">
+                        <div class="mdl-textfield mdl-js-textfield">
+                          <input class="mdl-textfield__input" type="text" placeholder="Wrong answer:" data-word="wronganswer1" value="woman">
+                        </div>
+                      </form>
+                    </div>
+                    <div>
+                      <form action="#" class="mdl-cell--6-col ib">
+                        <div class="mdl-textfield mdl-js-textfield">
+                          <input class="mdl-textfield__input" type="text" placeholder="Wrong answer:" data-word="wronganswer2" value="goodbye">
+                        </div>
+                      </form>
+                      <form action="#" class="mdl-cell--6-col ib">
+                        <div class="mdl-textfield mdl-js-textfield">
+                          <input class="mdl-textfield__input" type="text" placeholder="Wrong answer:" data-word="wronganswer3" value="good morning">
+                        </div>
+                      </form>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </section>
+        <!--WHICH ONE OF THESE IS?-->
         <section class="mdl-layout__tab-panel" id="scroll-tab-2">
           <div class="page-content">
             <div class="mdl-cell mdl-cell--12-col">
               <div class="mdl-card mdl-shadow--2dp mdl-card__supporting-text">
                 <div class="mdl-shadow--4dp">
-                  <div class="lesson-types">
-                    <a data-lesson="whichoneoftheseis" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>Which one of these is?</span>
-                    </a>
-                    <a data-lesson="howdoyousay" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>How do you say?</span>
-                    </a>
-                    <a data-lesson="howdoyousaytyping" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>How do you say {typing}?</span>
-                    </a>
-                    <a data-lesson="whatwassaid" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>What was said?</span>
-                    </a>
-                    <a data-lesson="whatwassaidtyping" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>What was said {typing}?</span>
-                    </a>
-                    <a data-lesson="selectthemissingword" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>Select the missing word?</span>
-                    </a>
-                  </div>
-                </div>
+                  <div class="lesson-types"></div>
                 <div>
-                  <h3>Question Type: "<span data-output="questiontype">select a question type</span>"</h3>
-                  <div data-output="lesson"></div>
+                  <h3>Question Type: "<span data-output="questiontype">Which one of these is?</span>"</h3>
+                  <div data-output="lesson">
+                    <div class="cards-container txtcenter">
+                      <h1 contenteditable="true">man</h1>
+                      
+                      <a class="card correct answer pointer">
+                        <h2 class="arb" contenteditable="true">رجل</h2>
+
+                        <img src="../imgs/basics/man.jpg">
+                      </a>
+                      <a class="card wrong pointer">
+                        <h2 class="arb" contenteditable="true">امراه</h2>
+
+                        <img src="../imgs/basics/woman.png">
+                      </a>
+                      <a class="card wrong pointer">
+                        <h2 class="arb" contenteditable="true">ولد</h2>
+
+                        <img src="../imgs/basics/boy.jpg">
+                      </a>
+                      <a class="card wrong pointer">
+                        <h2 class="arb" contenteditable="true">بنت</h2>
+
+                        <img src="../imgs/basics/girl.jpg">
+                      </a>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </section>
+        <!--WHICH ONE OF THESE IS?-->
         <section class="mdl-layout__tab-panel" id="scroll-tab-3">
           <div class="page-content">
             <div class="mdl-cell mdl-cell--12-col">
               <div class="mdl-card mdl-shadow--2dp mdl-card__supporting-text">
                 <div class="mdl-shadow--4dp">
-                  <div class="lesson-types">
-                    <a data-lesson="whichoneoftheseis" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>Which one of these is?</span>
-                    </a>
-                    <a data-lesson="howdoyousay" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>How do you say?</span>
-                    </a>
-                    <a data-lesson="howdoyousaytyping" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>How do you say {typing}?</span>
-                    </a>
-                    <a data-lesson="whatwassaid" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>What was said?</span>
-                    </a>
-                    <a data-lesson="whatwassaidtyping" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>What was said {typing}?</span>
-                    </a>
-                    <a data-lesson="selectthemissingword" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>Select the missing word?</span>
-                    </a>
-                  </div>
+                  <div class="lesson-types"></div>
                 </div>
                 <div>
-                  <h3>Question Type: "<span data-output="questiontype">select a question type</span>"</h3>
-                  <div data-output="lesson"></div>
+                  <h3>Question Type: "<span data-output="questiontype">Which one of these is?</span>"</h3>
+                  <div data-output="lesson">
+                    <div class="cards-container txtcenter">
+                      <h1 contenteditable="true">woman</h1>
+                      
+                      <a class="card correct answer pointer">
+                        <h2 class="arb" contenteditable="true">امراه</h2>
+
+                        <img src="../imgs/basics/woman.png">
+                      </a>
+                      <a class="card wrong pointer">
+                        <h2 class="arb" contenteditable="true">رجل</h2>
+
+                        <img src="../imgs/basics/man.jpg">
+                      </a>
+                      <a class="card wrong pointer">
+                        <h2 class="arb" contenteditable="true">ولد</h2>
+
+                        <img src="../imgs/basics/boy.jpg">
+                      </a>
+                      <a class="card wrong pointer">
+                        <h2 class="arb" contenteditable="true">بنت</h2>
+
+                        <img src="../imgs/basics/girl.jpg">
+                      </a>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </section>
+        <!--HOW DO YOU SAY?-->
         <section class="mdl-layout__tab-panel" id="scroll-tab-4">
           <div class="page-content">
             <div class="mdl-cell mdl-cell--12-col">
               <div class="mdl-card mdl-shadow--2dp mdl-card__supporting-text">
                 <div class="mdl-shadow--4dp">
-                  <div class="lesson-types">
-                    <a data-lesson="whichoneoftheseis" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>Which one of these is?</span>
-                    </a>
-                    <a data-lesson="howdoyousay" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>How do you say?</span>
-                    </a>
-                    <a data-lesson="howdoyousaytyping" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>How do you say {typing}?</span>
-                    </a>
-                    <a data-lesson="whatwassaid" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>What was said?</span>
-                    </a>
-                    <a data-lesson="whatwassaidtyping" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>What was said {typing}?</span>
-                    </a>
-                    <a data-lesson="selectthemissingword" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>Select the missing word?</span>
-                    </a>
-                  </div>
+                  <div class="lesson-types"></div>
                 </div>
                 <div>
-                  <h3>Question Type: "<span data-output="questiontype">select a question type</span>"</h3>
-                  <div data-output="lesson"></div>
+                  <h3>Question Type: "<span data-output="questiontype">How do you say?</span>"</h3>
+                  <div data-output="lesson">
+                    <form action="#" class="mdl-cell--6-col ib">
+                      <div class="mdl-textfield mdl-js-textfield">
+                        <input class="mdl-textfield__input" type="text" placeholder="Arabic word:" data-word="arbword" value="رجل">
+                      </div>
+                    </form>
+                    <form action="#" class="mdl-cell--6-col ib">
+                      <div class="mdl-textfield mdl-js-textfield">
+                        <input class="mdl-textfield__input" type="text" placeholder="English translation:" data-word="engtrans" value="man">
+                      </div>
+                    </form>
+                    <div>
+                      <form action="#" class="mdl-cell--6-col ib">
+                        <div class="mdl-textfield mdl-js-textfield">
+                          <input class="mdl-textfield__input" type="text" placeholder="Correct answer:" data-word="correctanswer" value="man">
+                        </div>
+                      </form>
+                      <form action="#" class="mdl-cell--6-col ib">
+                        <div class="mdl-textfield mdl-js-textfield">
+                          <input class="mdl-textfield__input" type="text" placeholder="Wrong answer:" data-word="wronganswer1" value="woman">
+                        </div>
+                      </form>
+                    </div>
+                    <div>
+                      <form action="#" class="mdl-cell--6-col ib">
+                        <div class="mdl-textfield mdl-js-textfield">
+                          <input class="mdl-textfield__input" type="text" placeholder="Wrong answer:" data-word="wronganswer2" value="hello">
+                        </div>
+                      </form>
+                      <form action="#" class="mdl-cell--6-col ib">
+                        <div class="mdl-textfield mdl-js-textfield">
+                          <input class="mdl-textfield__input" type="text" placeholder="Wrong answer:" data-word="wronganswer3" value="goodbye">
+                        </div>
+                      </form>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </section>
+        <!--HOW DO YOU SAY {TYPING}?-->
         <section class="mdl-layout__tab-panel" id="scroll-tab-5">
           <div class="page-content">
             <div class="mdl-cell mdl-cell--12-col">
               <div class="mdl-card mdl-shadow--2dp mdl-card__supporting-text">
                 <div class="mdl-shadow--4dp">
-                  <div class="lesson-types">
-                    <a data-lesson="whichoneoftheseis" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>Which one of these is?</span>
-                    </a>
-                    <a data-lesson="howdoyousay" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>How do you say?</span>
-                    </a>
-                    <a data-lesson="howdoyousaytyping" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>How do you say {typing}?</span>
-                    </a>
-                    <a data-lesson="whatwassaid" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>What was said?</span>
-                    </a>
-                    <a data-lesson="whatwassaidtyping" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>What was said {typing}?</span>
-                    </a>
-                    <a data-lesson="selectthemissingword" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>Select the missing word?</span>
-                    </a>
-                  </div>
+                  <div class="lesson-types"></div>
                 </div>
                 <div>
-                  <h3>Question Type: "<span data-output="questiontype">select a question type</span>"</h3>
-                  <div data-output="lesson"></div>
+                  <h3>Question Type: "<span data-output="questiontype">How do you say {typing}?</span>"</h3>
+                  <div data-output="lesson">
+                    <form action="#" class="mdl-cell--6-col ib">
+                      <div class="mdl-textfield mdl-js-textfield">
+                        <input class="mdl-textfield__input" type="text" placeholder="Arabic word:" data-word="arbword" value="مرحبا">
+                      </div>
+                    </form>
+                    <form action="#" class="mdl-cell--6-col ib">
+                      <div class="mdl-textfield mdl-js-textfield">
+                        <input class="mdl-textfield__input" type="text" placeholder="English translation:" data-word="engtrans" value="hello">
+                      </div>
+                    </form>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </section>
+        <!--WHAT WAS SAID {TYPING}?-->
         <section class="mdl-layout__tab-panel" id="scroll-tab-6">
           <div class="page-content">
             <div class="mdl-cell mdl-cell--12-col">
               <div class="mdl-card mdl-shadow--2dp mdl-card__supporting-text">
                 <div class="mdl-shadow--4dp">
-                  <div class="lesson-types">
-                    <a data-lesson="whichoneoftheseis" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>Which one of these is?</span>
-                    </a>
-                    <a data-lesson="howdoyousay" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>How do you say?</span>
-                    </a>
-                    <a data-lesson="howdoyousaytyping" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>How do you say {typing}?</span>
-                    </a>
-                    <a data-lesson="whatwassaid" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>What was said?</span>
-                    </a>
-                    <a data-lesson="whatwassaidtyping" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>What was said {typing}?</span>
-                    </a>
-                    <a data-lesson="selectthemissingword" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>Select the missing word?</span>
-                    </a>
-                  </div>
+                  <div class="lesson-types"></div>
                 </div>
                 <div>
-                  <h3>Question Type: "<span data-output="questiontype">select a question type</span>"</h3>
-                  <div data-output="lesson"></div>
+                  <h3>Question Type: "<span data-output="questiontype">What was said {typing}?</span>"</h3>
+                  <div data-output="lesson">
+                    <form action="#" class="mdl-cell--6-col ib">
+                      <div class="mdl-textfield mdl-js-textfield">
+                        <input class="mdl-textfield__input" type="text" placeholder="Arabic word:" data-word="arbword" value="امراه">
+                      </div>
+                    </form>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </section>
+        <!--WHICH ONE OF THESE IS?-->
         <section class="mdl-layout__tab-panel" id="scroll-tab-7">
           <div class="page-content">
             <div class="mdl-cell mdl-cell--12-col">
               <div class="mdl-card mdl-shadow--2dp mdl-card__supporting-text">
                 <div class="mdl-shadow--4dp">
-                  <div class="lesson-types">
-                    <a data-lesson="whichoneoftheseis" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>Which one of these is?</span>
-                    </a>
-                    <a data-lesson="howdoyousay" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>How do you say?</span>
-                    </a>
-                    <a data-lesson="howdoyousaytyping" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>How do you say {typing}?</span>
-                    </a>
-                    <a data-lesson="whatwassaid" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>What was said?</span>
-                    </a>
-                    <a data-lesson="whatwassaidtyping" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>What was said {typing}?</span>
-                    </a>
-                    <a data-lesson="selectthemissingword" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>Select the missing word?</span>
-                    </a>
-                  </div>
+                  <div class="lesson-types"></div>
                 </div>
                 <div>
-                  <h3>Question Type: "<span data-output="questiontype">select a question type</span>"</h3>
-                  <div data-output="lesson"></div>
+                  <h3>Question Type: "<span data-output="questiontype">Which one of these is?</span>"</h3>
+                  <div data-output="lesson">
+                    <div class="cards-container txtcenter">
+                      <h1 contenteditable="true">girl</h1>
+                      
+                      <a class="card correct answer pointer">
+                        <h2 class="arb" contenteditable="true">بنت</h2>
+
+                        <img src="../imgs/basics/girl.jpg">
+                      </a>
+                      <a class="card wrong pointer">
+                        <h2 class="arb" contenteditable="true">امراه</h2>
+
+                        <img src="../imgs/basics/woman.png">
+                      </a>
+                      <a class="card wrong pointer">
+                        <h2 class="arb" contenteditable="true">ولد</h2>
+
+                        <img src="../imgs/basics/boy.jpg">
+                      </a>
+                      <a class="card wrong pointer">
+                        <h2 class="arb" contenteditable="true">رجل</h2>
+
+                        <img src="../imgs/basics/man.jpg">
+                      </a>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </section>
+        <!--WHAT WAS SAID?-->
         <section class="mdl-layout__tab-panel" id="scroll-tab-8">
           <div class="page-content">
             <div class="mdl-cell mdl-cell--12-col">
               <div class="mdl-card mdl-shadow--2dp mdl-card__supporting-text">
                 <div class="mdl-shadow--4dp">
-                  <div class="lesson-types">
-                    <a data-lesson="whichoneoftheseis" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>Which one of these is?</span>
-                    </a>
-                    <a data-lesson="howdoyousay" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>How do you say?</span>
-                    </a>
-                    <a data-lesson="howdoyousaytyping" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>How do you say {typing}?</span>
-                    </a>
-                    <a data-lesson="whatwassaid" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>What was said?</span>
-                    </a>
-                    <a data-lesson="whatwassaidtyping" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>What was said {typing}?</span>
-                    </a>
-                    <a data-lesson="selectthemissingword" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>Select the missing word?</span>
-                    </a>
-                  </div>
+                  <div class="lesson-types"></div>
                 </div>
                 <div>
-                  <h3>Question Type: "<span data-output="questiontype">select a question type</span>"</h3>
-                  <div data-output="lesson"></div>
+                  <h3>Question Type: "<span data-output="questiontype">What was said?</span>"</h3>
+                  <div data-output="lesson">
+                    <form action="#" class="mdl-cell--6-col ib">
+                      <div class="mdl-textfield mdl-js-textfield">
+                        <input class="mdl-textfield__input" type="text" placeholder="Arabic word:" data-word="arbword" value="مرحبا">
+                      </div>
+                    </form>
+                    <div>
+                      <form action="#" class="mdl-cell--6-col ib">
+                        <div class="mdl-textfield mdl-js-textfield">
+                          <input class="mdl-textfield__input" type="text" placeholder="Correct answer:" data-word="correctanswer" value="girl">
+                        </div>
+                      </form>
+                      <form action="#" class="mdl-cell--6-col ib">
+                        <div class="mdl-textfield mdl-js-textfield">
+                          <input class="mdl-textfield__input" type="text" placeholder="Wrong answer:" data-word="wronganswer1" value="man">
+                        </div>
+                      </form>
+                    </div>
+                    <div>
+                      <form action="#" class="mdl-cell--6-col ib">
+                        <div class="mdl-textfield mdl-js-textfield">
+                          <input class="mdl-textfield__input" type="text" placeholder="Wrong answer:" data-word="wronganswer2" value="hello">
+                        </div>
+                      </form>
+                      <form action="#" class="mdl-cell--6-col ib">
+                        <div class="mdl-textfield mdl-js-textfield">
+                          <input class="mdl-textfield__input" type="text" placeholder="Wrong answer:" data-word="wronganswer3" value="woman">
+                        </div>
+                      </form>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </section>
+        <!--HOW DO YOU SAY {TYPING}?-->
         <section class="mdl-layout__tab-panel" id="scroll-tab-9">
           <div class="page-content">
             <div class="mdl-cell mdl-cell--12-col">
               <div class="mdl-card mdl-shadow--2dp mdl-card__supporting-text">
                 <div class="mdl-shadow--4dp">
-                  <div class="lesson-types">
-                    <a data-lesson="whichoneoftheseis" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>Which one of these is?</span>
-                    </a>
-                    <a data-lesson="howdoyousay" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>How do you say?</span>
-                    </a>
-                    <a data-lesson="howdoyousaytyping" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>How do you say {typing}?</span>
-                    </a>
-                    <a data-lesson="whatwassaid" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>What was said?</span>
-                    </a>
-                    <a data-lesson="whatwassaidtyping" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>What was said {typing}?</span>
-                    </a>
-                    <a data-lesson="selectthemissingword" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>Select the missing word?</span>
-                    </a>
-                  </div>
+                  <div class="lesson-types"></div>
                 </div>
                 <div>
-                  <h3>Question Type: "<span data-output="questiontype">select a question type</span>"</h3>
-                  <div data-output="lesson"></div>
+                  <h3>Question Type: "<span data-output="questiontype">How do you say {typing}?</span>"</h3>
+                  <div data-output="lesson">
+                    <form action="#" class="mdl-cell--6-col ib">
+                      <div class="mdl-textfield mdl-js-textfield">
+                        <input class="mdl-textfield__input" type="text" placeholder="Arabic word:" data-word="arbword" value="رجل">
+                      </div>
+                    </form>
+                    <form action="#" class="mdl-cell--6-col ib">
+                      <div class="mdl-textfield mdl-js-textfield">
+                        <input class="mdl-textfield__input" type="text" placeholder="English translation:" data-word="engtrans" value="man">
+                      </div>
+                    </form>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </section>
+        <!--HOW DO YOU SAY {TYPING}?-->
         <section class="mdl-layout__tab-panel" id="scroll-tab-10">
           <div class="page-content">
             <div class="mdl-cell mdl-cell--12-col">
               <div class="mdl-card mdl-shadow--2dp mdl-card__supporting-text">
                 <div class="mdl-shadow--4dp">
-                  <div class="lesson-types">
-                    <a data-lesson="whichoneoftheseis" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>Which one of these is?</span>
-                    </a>
-                    <a data-lesson="howdoyousay" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>How do you say?</span>
-                    </a>
-                    <a data-lesson="howdoyousaytyping" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>How do you say {typing}?</span>
-                    </a>
-                    <a data-lesson="whatwassaid" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>What was said?</span>
-                    </a>
-                    <a data-lesson="whatwassaidtyping" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>What was said {typing}?</span>
-                    </a>
-                    <a data-lesson="selectthemissingword" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>Select the missing word?</span>
-                    </a>
-                  </div>
+                  <div class="lesson-types"></div>
                 </div>
                 <div>
-                  <h3>Question Type: "<span data-output="questiontype">select a question type</span>"</h3>
-                  <div data-output="lesson"></div>
+                  <h3>Question Type: "<span data-output="questiontype">How do you say {typing}?</span>"</h3>
+                  <div data-output="lesson">
+                    <form action="#" class="mdl-cell--6-col ib">
+                      <div class="mdl-textfield mdl-js-textfield">
+                        <input class="mdl-textfield__input" type="text" placeholder="Arabic word:" data-word="arbword" value="بنت">
+                      </div>
+                    </form>
+                    <form action="#" class="mdl-cell--6-col ib">
+                      <div class="mdl-textfield mdl-js-textfield">
+                        <input class="mdl-textfield__input" type="text" placeholder="English translation:" data-word="engtrans" value="girl">
+                      </div>
+                    </form>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </section>
+        <!--HOW DO YOU SAY (ARB)?-->
         <section class="mdl-layout__tab-panel" id="scroll-tab-11">
           <div class="page-content">
             <div class="mdl-cell mdl-cell--12-col">
               <div class="mdl-card mdl-shadow--2dp mdl-card__supporting-text">
                 <div class="mdl-shadow--4dp">
-                  <div class="lesson-types">
-                    <a data-lesson="whichoneoftheseis" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>Which one of these is?</span>
-                    </a>
-                    <a data-lesson="howdoyousay" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>How do you say?</span>
-                    </a>
-                    <a data-lesson="howdoyousaytyping" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>How do you say {typing}?</span>
-                    </a>
-                    <a data-lesson="whatwassaid" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>What was said?</span>
-                    </a>
-                    <a data-lesson="whatwassaidtyping" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>What was said {typing}?</span>
-                    </a>
-                    <a data-lesson="selectthemissingword" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>Select the missing word?</span>
-                    </a>
-                  </div>
+                  <div class="lesson-types"></div>
                 </div>
                 <div>
-                  <h3>Question Type: "<span data-output="questiontype">select a question type</span>"</h3>
-                  <div data-output="lesson"></div>
+                  <h3>Question Type: "<span data-output="questiontype">How do you say (arb)?</span>"</h3>
+                  <div data-output="lesson">
+                    <form action="#" class="mdl-cell--6-col ib">
+                      <div class="mdl-textfield mdl-js-textfield">
+                        <input class="mdl-textfield__input" type="text" placeholder="Arabic word:" data-word="arbword" value="انا">
+                      </div>
+                    </form>
+                    <form action="#" class="mdl-cell--6-col ib">
+                      <div class="mdl-textfield mdl-js-textfield">
+                        <input class="mdl-textfield__input" type="text" placeholder="English translation:" data-word="engtrans" value="I; I am; Me">
+                      </div>
+                    </form>
+                    <div>
+                      <form action="#" class="mdl-cell--6-col ib">
+                        <div class="mdl-textfield mdl-js-textfield">
+                          <input class="mdl-textfield__input" type="text" placeholder="Correct answer:" data-word="correctanswer" value="انا">
+                        </div>
+                      </form>
+                      <form action="#" class="mdl-cell--6-col ib">
+                        <div class="mdl-textfield mdl-js-textfield">
+                          <input class="mdl-textfield__input" type="text" placeholder="Wrong answer:" data-word="wronganswer1" value="مرحبا">
+                        </div>
+                      </form>
+                    </div>
+                    <div>
+                      <form action="#" class="mdl-cell--6-col ib">
+                        <div class="mdl-textfield mdl-js-textfield">
+                          <input class="mdl-textfield__input" type="text" placeholder="Wrong answer:" data-word="wronganswer2" value="امراه">
+                        </div>
+                      </form>
+                      <form action="#" class="mdl-cell--6-col ib">
+                        <div class="mdl-textfield mdl-js-textfield">
+                          <input class="mdl-textfield__input" type="text" placeholder="Wrong answer:" data-word="wronganswer3" value="ولد">
+                        </div>
+                      </form>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </section>
+        <!--WHICH ONE OF THESE IS?-->
         <section class="mdl-layout__tab-panel" id="scroll-tab-12">
           <div class="page-content">
             <div class="mdl-cell mdl-cell--12-col">
               <div class="mdl-card mdl-shadow--2dp mdl-card__supporting-text">
                 <div class="mdl-shadow--4dp">
-                  <div class="lesson-types">
-                    <a data-lesson="whichoneoftheseis" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>Which one of these is?</span>
-                    </a>
-                    <a data-lesson="howdoyousay" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>How do you say?</span>
-                    </a>
-                    <a data-lesson="howdoyousaytyping" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>How do you say {typing}?</span>
-                    </a>
-                    <a data-lesson="whatwassaid" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>What was said?</span>
-                    </a>
-                    <a data-lesson="whatwassaidtyping" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>What was said {typing}?</span>
-                    </a>
-                    <a data-lesson="selectthemissingword" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>Select the missing word?</span>
-                    </a>
-                  </div>
+                  <div class="lesson-types"></div>
                 </div>
                 <div>
-                  <h3>Question Type: "<span data-output="questiontype">select a question type</span>"</h3>
-                  <div data-output="lesson"></div>
+                  <h3>Question Type: "<span data-output="questiontype">Which one of these is?</span>"</h3>
+                  <div data-output="lesson">
+                    <div class="cards-container txtcenter">
+                      <h1 contenteditable="true">boy</h1>
+                      
+                      <a class="card correct answer pointer">
+                        <h2 class="arb" contenteditable="true">ولد</h2>
+
+                        <img src="../imgs/basics/boy.jpg">
+                      </a>
+                      <a class="card wrong pointer">
+                        <h2 class="arb" contenteditable="true">امراه</h2>
+
+                        <img src="../imgs/basics/woman.png">
+                      </a>
+                      <a class="card wrong pointer">
+                        <h2 class="arb" contenteditable="true">بنت</h2>
+
+                        <img src="../imgs/basics/girl.jpg">
+                      </a>
+                      <a class="card wrong pointer">
+                        <h2 class="arb" contenteditable="true">رجل</h2>
+
+                        <img src="../imgs/basics/man.jpg">
+                      </a>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </section>
+        <!--SELECT THE MISSING WORD?-->
         <section class="mdl-layout__tab-panel" id="scroll-tab-13">
           <div class="page-content">
             <div class="mdl-cell mdl-cell--12-col">
               <div class="mdl-card mdl-shadow--2dp mdl-card__supporting-text">
                 <div class="mdl-shadow--4dp">
-                  <div class="lesson-types">
-                    <a data-lesson="whichoneoftheseis" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>Which one of these is?</span>
-                    </a>
-                    <a data-lesson="howdoyousay" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>How do you say?</span>
-                    </a>
-                    <a data-lesson="howdoyousaytyping" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>How do you say {typing}?</span>
-                    </a>
-                    <a data-lesson="whatwassaid" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>What was said?</span>
-                    </a>
-                    <a data-lesson="whatwassaidtyping" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>What was said {typing}?</span>
-                    </a>
-                    <a data-lesson="selectthemissingword" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>Select the missing word?</span>
-                    </a>
-                  </div>
+                  <div class="lesson-types"></div>
                 </div>
                 <div>
-                  <h3>Question Type: "<span data-output="questiontype">select a question type</span>"</h3>
-                  <div data-output="lesson"></div>
+                  <h3>Question Type: "<span data-output="questiontype">Select the missing word?</span>"</h3>
+                  <div data-output="lesson">
+                    <form action="#" class="mdl-cell--6-col ib">
+                      <div class="mdl-textfield mdl-js-textfield">
+                        <input class="mdl-textfield__input" type="text" placeholder="Arabic word:" data-word="arbword" value="... انا">
+                      </div>
+                    </form>
+                    <form action="#" class="mdl-cell--6-col ib">
+                      <div class="mdl-textfield mdl-js-textfield">
+                        <input class="mdl-textfield__input" type="text" placeholder="English translation:" data-word="engtrans" value="I am; I am a ...">
+                      </div>
+                    </form>
+                    <div>
+                      <form action="#" class="mdl-cell--6-col ib">
+                        <div class="mdl-textfield mdl-js-textfield">
+                          <input class="mdl-textfield__input" type="text" placeholder="Correct answer:" data-word="correctanswer" value="ولد">
+                        </div>
+                      </form>
+                      <form action="#" class="mdl-cell--6-col ib">
+                        <div class="mdl-textfield mdl-js-textfield">
+                          <input class="mdl-textfield__input" type="text" placeholder="Wrong answer:" data-word="wronganswer1" value="شكرا">
+                        </div>
+                      </form>
+                    </div>
+                    <div>
+                      <form action="#" class="mdl-cell--6-col ib">
+                        <div class="mdl-textfield mdl-js-textfield">
+                          <input class="mdl-textfield__input" type="text" placeholder="Wrong answer:" data-word="wronganswer2" value="مع السلامه">
+                        </div>
+                      </form>
+                      <form action="#" class="mdl-cell--6-col ib">
+                        <div class="mdl-textfield mdl-js-textfield">
+                          <input class="mdl-textfield__input" type="text" placeholder="Wrong answer:" data-word="wronganswer3" value="مرحبا">
+                        </div>
+                      </form>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </section>
+        <!--HOW DO YOU SAY {TYPING}?-->
         <section class="mdl-layout__tab-panel" id="scroll-tab-14">
           <div class="page-content">
             <div class="mdl-cell mdl-cell--12-col">
               <div class="mdl-card mdl-shadow--2dp mdl-card__supporting-text">
                 <div class="mdl-shadow--4dp">
-                  <div class="lesson-types">
-                    <a data-lesson="whichoneoftheseis" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>Which one of these is?</span>
-                    </a>
-                    <a data-lesson="howdoyousay" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>How do you say?</span>
-                    </a>
-                    <a data-lesson="howdoyousaytyping" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>How do you say {typing}?</span>
-                    </a>
-                    <a data-lesson="whatwassaid" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>What was said?</span>
-                    </a>
-                    <a data-lesson="whatwassaidtyping" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>What was said {typing}?</span>
-                    </a>
-                    <a data-lesson="selectthemissingword" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>Select the missing word?</span>
-                    </a>
-                  </div>
+                  <div class="lesson-types"></div>
                 </div>
                 <div>
-                  <h3>Question Type: "<span data-output="questiontype">select a question type</span>"</h3>
-                  <div data-output="lesson"></div>
+                  <h3>Question Type: "<span data-output="questiontype">How do you say {typing}?</span>"</h3>
+                  <div data-output="lesson">
+                    <form action="#" class="mdl-cell--6-col ib">
+                      <div class="mdl-textfield mdl-js-textfield">
+                        <input class="mdl-textfield__input" type="text" placeholder="Arabic word:" data-word="arbword" value="انا ولد">
+                      </div>
+                    </form>
+                    <form action="#" class="mdl-cell--6-col ib">
+                      <div class="mdl-textfield mdl-js-textfield">
+                        <input class="mdl-textfield__input" type="text" placeholder="English translation:" data-word="engtrans" value="I am a boy">
+                      </div>
+                    </form>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </section>
+        <!--HOW DO YOU SAY {TYPING}?-->
         <section class="mdl-layout__tab-panel" id="scroll-tab-15">
           <div class="page-content">
             <div class="mdl-cell mdl-cell--12-col">
               <div class="mdl-card mdl-shadow--2dp mdl-card__supporting-text">
                 <div class="mdl-shadow--4dp">
-                  <div class="lesson-types">
-                    <a data-lesson="whichoneoftheseis" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>Which one of these is?</span>
-                    </a>
-                    <a data-lesson="howdoyousay" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>How do you say?</span>
-                    </a>
-                    <a data-lesson="howdoyousaytyping" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>How do you say {typing}?</span>
-                    </a>
-                    <a data-lesson="whatwassaid" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>What was said?</span>
-                    </a>
-                    <a data-lesson="whatwassaidtyping" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>What was said {typing}?</span>
-                    </a>
-                    <a data-lesson="selectthemissingword" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>Select the missing word?</span>
-                    </a>
-                  </div>
+                  <div class="lesson-types"></div>
                 </div>
                 <div>
-                  <h3>Question Type: "<span data-output="questiontype">select a question type</span>"</h3>
-                  <div data-output="lesson"></div>
+                  <h3>Question Type: "<span data-output="questiontype">How do you say {typing}?</span>"</h3>
+                  <div data-output="lesson">
+                    <form action="#" class="mdl-cell--6-col ib">
+                      <div class="mdl-textfield mdl-js-textfield">
+                        <input class="mdl-textfield__input" type="text" placeholder="Arabic word:" data-word="arbword" value="انا رجل">
+                      </div>
+                    </form>
+                    <form action="#" class="mdl-cell--6-col ib">
+                      <div class="mdl-textfield mdl-js-textfield">
+                        <input class="mdl-textfield__input" type="text" placeholder="English translation:" data-word="engtrans" value="I am a man">
+                      </div>
+                    </form>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </section>
+        <!--HOW DO YOU SAY (ARB)?-->
         <section class="mdl-layout__tab-panel" id="scroll-tab-16">
           <div class="page-content">
             <div class="mdl-cell mdl-cell--12-col">
               <div class="mdl-card mdl-shadow--2dp mdl-card__supporting-text">
                 <div class="mdl-shadow--4dp">
-                  <div class="lesson-types">
-                    <a data-lesson="whichoneoftheseis" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>Which one of these is?</span>
-                    </a>
-                    <a data-lesson="howdoyousay" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>How do you say?</span>
-                    </a>
-                    <a data-lesson="howdoyousaytyping" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>How do you say {typing}?</span>
-                    </a>
-                    <a data-lesson="whatwassaid" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>What was said?</span>
-                    </a>
-                    <a data-lesson="whatwassaidtyping" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>What was said {typing}?</span>
-                    </a>
-                    <a data-lesson="selectthemissingword" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>Select the missing word?</span>
-                    </a>
-                  </div>
+                  <div class="lesson-types"></div>
                 </div>
                 <div>
-                  <h3>Question Type: "<span data-output="questiontype">select a question type</span>"</h3>
-                  <div data-output="lesson"></div>
+                  <h3>Question Type: "<span data-output="questiontype">How do you say (arb)?</span>"</h3>
+                  <div data-output="lesson">
+                    <form action="#" class="mdl-cell--6-col ib">
+                      <div class="mdl-textfield mdl-js-textfield">
+                        <input class="mdl-textfield__input" type="text" placeholder="Arabic word:" data-word="arbword" value="مع السلامه">
+                      </div>
+                    </form>
+                    <form action="#" class="mdl-cell--6-col ib">
+                      <div class="mdl-textfield mdl-js-textfield">
+                        <input class="mdl-textfield__input" type="text" placeholder="English translation:" data-word="engtrans" value="goodbye">
+                      </div>
+                    </form>
+                    <div>
+                      <form action="#" class="mdl-cell--6-col ib">
+                        <div class="mdl-textfield mdl-js-textfield">
+                          <input class="mdl-textfield__input" type="text" placeholder="Correct answer:" data-word="correctanswer" value="مع السلامه">
+                        </div>
+                      </form>
+                      <form action="#" class="mdl-cell--6-col ib">
+                        <div class="mdl-textfield mdl-js-textfield">
+                          <input class="mdl-textfield__input" type="text" placeholder="Wrong answer:" data-word="wronganswer1" value="شكرا">
+                        </div>
+                      </form>
+                    </div>
+                    <div>
+                      <form action="#" class="mdl-cell--6-col ib">
+                        <div class="mdl-textfield mdl-js-textfield">
+                          <input class="mdl-textfield__input" type="text" placeholder="Wrong answer:" data-word="wronganswer2" value="مرحبا">
+                        </div>
+                      </form>
+                      <form action="#" class="mdl-cell--6-col ib">
+                        <div class="mdl-textfield mdl-js-textfield">
+                          <input class="mdl-textfield__input" type="text" placeholder="Wrong answer:" data-word="wronganswer3" value="اهلا">
+                        </div>
+                      </form>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </section>
+        <!--HOW DO YOU SAY {TYPING}?-->
         <section class="mdl-layout__tab-panel" id="scroll-tab-17">
           <div class="page-content">
             <div class="mdl-cell mdl-cell--12-col">
               <div class="mdl-card mdl-shadow--2dp mdl-card__supporting-text">
                 <div class="mdl-shadow--4dp">
-                  <div class="lesson-types">
-                    <a data-lesson="whichoneoftheseis" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>Which one of these is?</span>
-                    </a>
-                    <a data-lesson="howdoyousay" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>How do you say?</span>
-                    </a>
-                    <a data-lesson="howdoyousaytyping" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>How do you say {typing}?</span>
-                    </a>
-                    <a data-lesson="whatwassaid" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>What was said?</span>
-                    </a>
-                    <a data-lesson="whatwassaidtyping" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>What was said {typing}?</span>
-                    </a>
-                    <a data-lesson="selectthemissingword" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>Select the missing word?</span>
-                    </a>
-                  </div>
+                  <div class="lesson-types"></div>
                 </div>
                 <div>
-                  <h3>Question Type: "<span data-output="questiontype">select a question type</span>"</h3>
-                  <div data-output="lesson"></div>
+                  <h3>Question Type: "<span data-output="questiontype">How do you say {typing}?</span>"</h3>
+                  <div data-output="lesson">
+                    <form action="#" class="mdl-cell--6-col ib">
+                      <div class="mdl-textfield mdl-js-textfield">
+                        <input class="mdl-textfield__input" type="text" placeholder="Arabic word:" data-word="arbword" value="مع السلامه">
+                      </div>
+                    </form>
+                    <form action="#" class="mdl-cell--6-col ib">
+                      <div class="mdl-textfield mdl-js-textfield">
+                        <input class="mdl-textfield__input" type="text" placeholder="English translation:" data-word="engtrans" value="goodbye">
+                      </div>
+                    </form>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </section>
+        <!--HOW DO YOU SAY (ARB)?-->
         <section class="mdl-layout__tab-panel" id="scroll-tab-18">
           <div class="page-content">
             <div class="mdl-cell mdl-cell--12-col">
               <div class="mdl-card mdl-shadow--2dp mdl-card__supporting-text">
                 <div class="mdl-shadow--4dp">
-                  <div class="lesson-types">
-                    <a data-lesson="whichoneoftheseis" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>Which one of these is?</span>
-                    </a>
-                    <a data-lesson="howdoyousay" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>How do you say?</span>
-                    </a>
-                    <a data-lesson="howdoyousaytyping" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>How do you say {typing}?</span>
-                    </a>
-                    <a data-lesson="whatwassaid" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>What was said?</span>
-                    </a>
-                    <a data-lesson="whatwassaidtyping" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>What was said {typing}?</span>
-                    </a>
-                    <a data-lesson="selectthemissingword" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>Select the missing word?</span>
-                    </a>
-                  </div>
+                  <div class="lesson-types"></div>
                 </div>
                 <div>
-                  <h3>Question Type: "<span data-output="questiontype">select a question type</span>"</h3>
-                  <div data-output="lesson"></div>
+                  <h3>Question Type: "<span data-output="questiontype">How do you say (arb)?</span>"</h3>
+                  <div data-output="lesson">
+                    <form action="#" class="mdl-cell--6-col ib">
+                      <div class="mdl-textfield mdl-js-textfield">
+                        <input class="mdl-textfield__input" type="text" placeholder="Arabic word:" data-word="arbword" value="اهلا">
+                      </div>
+                    </form>
+                    <form action="#" class="mdl-cell--6-col ib">
+                      <div class="mdl-textfield mdl-js-textfield">
+                        <input class="mdl-textfield__input" type="text" placeholder="English translation:" data-word="engtrans" value="welcome">
+                      </div>
+                    </form>
+                    <div>
+                      <form action="#" class="mdl-cell--6-col ib">
+                        <div class="mdl-textfield mdl-js-textfield">
+                          <input class="mdl-textfield__input" type="text" placeholder="Correct answer:" data-word="correctanswer" value="اهلا">
+                        </div>
+                      </form>
+                      <form action="#" class="mdl-cell--6-col ib">
+                        <div class="mdl-textfield mdl-js-textfield">
+                          <input class="mdl-textfield__input" type="text" placeholder="Wrong answer:" data-word="wronganswer1" value="مع السلامه">
+                        </div>
+                      </form>
+                    </div>
+                    <div>
+                      <form action="#" class="mdl-cell--6-col ib">
+                        <div class="mdl-textfield mdl-js-textfield">
+                          <input class="mdl-textfield__input" type="text" placeholder="Wrong answer:" data-word="wronganswer2" value="شكرا">
+                        </div>
+                      </form>
+                      <form action="#" class="mdl-cell--6-col ib">
+                        <div class="mdl-textfield mdl-js-textfield">
+                          <input class="mdl-textfield__input" type="text" placeholder="Wrong answer:" data-word="wronganswer3" value="مرحبا">
+                        </div>
+                      </form>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </section>
+        <!--HOW DO YOU SAY {TYPING}?-->
         <section class="mdl-layout__tab-panel" id="scroll-tab-19">
           <div class="page-content">
             <div class="mdl-cell mdl-cell--12-col">
               <div class="mdl-card mdl-shadow--2dp mdl-card__supporting-text">
                 <div class="mdl-shadow--4dp">
-                  <div class="lesson-types">
-                    <a data-lesson="whichoneoftheseis" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>Which one of these is?</span>
-                    </a>
-                    <a data-lesson="howdoyousay" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>How do you say?</span>
-                    </a>
-                    <a data-lesson="howdoyousaytyping" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>How do you say {typing}?</span>
-                    </a>
-                    <a data-lesson="whatwassaid" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>What was said?</span>
-                    </a>
-                    <a data-lesson="whatwassaidtyping" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>What was said {typing}?</span>
-                    </a>
-                    <a data-lesson="selectthemissingword" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>Select the missing word?</span>
-                    </a>
-                  </div>
+                  <div class="lesson-types"></div>
                 </div>
                 <div>
-                  <h3>Question Type: "<span data-output="questiontype">select a question type</span>"</h3>
-                  <div data-output="lesson"></div>
+                  <h3>Question Type: "<span data-output="questiontype">How do you say {typing}?</span>"</h3>
+                  <div data-output="lesson">
+                    <form action="#" class="mdl-cell--6-col ib">
+                      <div class="mdl-textfield mdl-js-textfield">
+                        <input class="mdl-textfield__input" type="text" placeholder="Arabic word:" data-word="arbword" value="اهلا">
+                      </div>
+                    </form>
+                    <form action="#" class="mdl-cell--6-col ib">
+                      <div class="mdl-textfield mdl-js-textfield">
+                        <input class="mdl-textfield__input" type="text" placeholder="English translation:" data-word="engtrans" value="welcome">
+                      </div>
+                    </form>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </section>
+        <!--WHAT WAS SAID {TYPING}?-->
         <section class="mdl-layout__tab-panel" id="scroll-tab-20">
           <div class="page-content">
             <div class="mdl-cell mdl-cell--12-col">
               <div class="mdl-card mdl-shadow--2dp mdl-card__supporting-text">
                 <div class="mdl-shadow--4dp">
-                  <div class="lesson-types">
-                    <a data-lesson="whichoneoftheseis" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>Which one of these is?</span>
-                    </a>
-                    <a data-lesson="howdoyousay" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>How do you say?</span>
-                    </a>
-                    <a data-lesson="howdoyousaytyping" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>How do you say {typing}?</span>
-                    </a>
-                    <a data-lesson="whatwassaid" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>What was said?</span>
-                    </a>
-                    <a data-lesson="whatwassaidtyping" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>What was said {typing}?</span>
-                    </a>
-                    <a data-lesson="selectthemissingword" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>Select the missing word?</span>
-                    </a>
-                  </div>
+                  <div class="lesson-types"></div>
                 </div>
                 <div>
-                  <h3>Question Type: "<span data-output="questiontype">select a question type</span>"</h3>
-                  <div data-output="lesson"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-        <section class="mdl-layout__tab-panel" id="scroll-tab-21">
-          <div class="page-content">
-            <div class="mdl-cell mdl-cell--12-col">
-              <div class="mdl-card mdl-shadow--2dp mdl-card__supporting-text">
-                <div class="mdl-shadow--4dp">
-                  <div class="lesson-types">
-                    <a data-lesson="whichoneoftheseis" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>Which one of these is?</span>
-                    </a>
-                    <a data-lesson="howdoyousay" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>How do you say?</span>
-                    </a>
-                    <a data-lesson="howdoyousaytyping" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>How do you say {typing}?</span>
-                    </a>
-                    <a data-lesson="whatwassaid" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>What was said?</span>
-                    </a>
-                    <a data-lesson="whatwassaidtyping" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>What was said {typing}?</span>
-                    </a>
-                    <a data-lesson="selectthemissingword" class="mdl-button mdl-js-button mdl-js-ripple-effect">
-                      <img src="../imgs/group.svg">
-                      <span>Select the missing word?</span>
-                    </a>
+                  <h3>Question Type: "<span data-output="questiontype">What was said {typing}?</span>"</h3>
+                  <div data-output="lesson">
+                    <form action="#" class="mdl-cell--6-col ib">
+                      <div class="mdl-textfield mdl-js-textfield">
+                        <input class="mdl-textfield__input" type="text" placeholder="Arabic word:" data-word="arbword" value="مع السلامه">
+                      </div>
+                    </form>
                   </div>
-                </div>
-                <div>
-                  <h3>Question Type: "<span data-output="questiontype">select a question type</span>"</h3>
-                  <div data-output="lesson"></div>
                 </div>
               </div>
             </div>
@@ -1024,6 +922,16 @@ Accent Light (Fallback): #FFD180
         </button>
 
         <div data-output="images" class="searched-images hide"></div>
+      </div>
+    </div>
+
+    <div class="preview-modal hide">
+      <div class="content">
+        <button class="close-modal mdl-button mdl-js-button mdl-button--icon">
+          <i class="material-icons">close</i>
+        </button>
+        
+        <div class="preview"></div>
       </div>
     </div>
     
