@@ -109,6 +109,9 @@ a.mdl-js-ripple-effect {
 }
 
 /*Lesson cards*/
+.cards-container {
+  padding: 0;
+}
 .cards-container > .card.correct {
   background: #b4fdf4;
 }
@@ -347,6 +350,7 @@ h1 {
   display: none;
 }
 .fullcode {
+/*  display: none;*/
   position: absolute;
   bottom: 0;
   right: 0;

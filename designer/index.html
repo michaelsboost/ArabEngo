@@ -41,6 +41,9 @@ Accent Light (Fallback): #FFD180
           
           <!-- Top right button navigation -->
           <nav class="mdl-navigation">
+            <button class="mdl-navigation__link mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect hidden" type="button" data-action="saveCode">
+              <i class="material-icons">autorenew</i>
+            </button>
             <button class="mdl-navigation__link mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect" type="button" onclick="localStorage.clear(); if(window.location.hash) {window.location.href = window.location.toString().split(/\?|#/)[0]} else {location.reload(true);}">
               <i class="material-icons">fiber_new</i>
             </button>

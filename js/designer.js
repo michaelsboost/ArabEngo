@@ -3,15 +3,22 @@ var addImage = function(source) {
   document.querySelector("[data-output=images]").innerHTML = "";
   
   document.querySelector(".selected").src = source;
+  document.querySelector(".selected").className = "";
+  document.querySelector("[data-action=saveCode]").click();
 };
+//localStorage.clear();
 
 $(document).ready(function() {
 //  $(".mdl-layout__tab-bar a:eq(3)").click();
   $(".comingsoon").click(function() {
     alertify.message('coming soon..');
   });
+  $("[data-action=saveCode]").click(function() {
+    setLessonCode();
+    fullLessonCode();
+  });
   
-  $(".lesson-types").html("<a data-lesson=\"whichoneoftheseis\" class=\"mdl-button mdl-js-button mdl-js-ripple-effect\">\n  <img src=\"../imgs/matching.png\">\n  <span>Which one of these is?</span>\n</a>\n<a data-lesson=\"howdoyousay\" class=\"mdl-button mdl-js-button mdl-js-ripple-effect\">\n  <img src=\"../imgs/speak.png\">\n  <span>How do you say?</span>\n</a>\n<a data-lesson=\"howdoyousayarbbtns\" class=\"mdl-button mdl-js-button mdl-js-ripple-effect\">\n  <img src=\"../imgs/ear.png\">\n  <span>How do you say (arb)?</span>\n</a>\n<a data-lesson=\"howdoyousaytyping\" class=\"mdl-button mdl-js-button mdl-js-ripple-effect\">\n  <img src=\"../imgs/message1.png\">\n  <span>How do you say {typing}?</span>\n</a>\n<a data-lesson=\"whatwassaid\" class=\"mdl-button mdl-js-button mdl-js-ripple-effect\">\n  <img src=\"../imgs/ear2.png\">\n  <span>What was said?</span>\n</a>\n<a data-lesson=\"whatwassaidtyping\" class=\"mdl-button mdl-js-button mdl-js-ripple-effect\">\n  <img src=\"../imgs/message2.png\">\n  <span>What was said {typing}?</span>\n</a>\n<a data-lesson=\"selectthemissingword\" class=\"mdl-button mdl-js-button mdl-js-ripple-effect\">\n  <img src=\"../imgs/eye.png\">\n  <span>Select the missing word?</span>\n</a>");
+  $(".lesson-types").html("<a data-lesson=\"whichoneoftheseis\" class=\"mdl-button mdl-js-button mdl-js-ripple-effect\">\n  <img src=\"../imgs/matching.png\">\n  <span>Which one of these is?</span>\n</a>\n<a data-lesson=\"saveLessonState\" class=\"mdl-button mdl-js-button mdl-js-ripple-effect\">\n  <img src=\"../imgs/speak.png\">\n  <span>How do you say?</span>\n</a>\n<a data-lesson=\"saveLessonStatebtns\" class=\"mdl-button mdl-js-button mdl-js-ripple-effect\">\n  <img src=\"../imgs/ear.png\">\n  <span>How do you say (arb)?</span>\n</a>\n<a data-lesson=\"saveLessonState\" class=\"mdl-button mdl-js-button mdl-js-ripple-effect\">\n  <img src=\"../imgs/message1.png\">\n  <span>How do you say {typing}?</span>\n</a>\n<a data-lesson=\"saveLessonState\" class=\"mdl-button mdl-js-button mdl-js-ripple-effect\">\n  <img src=\"../imgs/ear2.png\">\n  <span>What was said?</span>\n</a>\n<a data-lesson=\"saveLessonState\" class=\"mdl-button mdl-js-button mdl-js-ripple-effect\">\n  <img src=\"../imgs/message2.png\">\n  <span>What was said {typing}?</span>\n</a>\n<a data-lesson=\"saveLessonState\" class=\"mdl-button mdl-js-button mdl-js-ripple-effect\">\n  <img src=\"../imgs/eye.png\">\n  <span>Select the missing word?</span>\n</a>");
   
   var page,
       searchForPictures    = function(source) {
@@ -52,25 +59,11 @@ $(document).ready(function() {
             $(this).addClass("selected");
           }
           $(".images-modal").fadeIn();
+          $("[data-search=flicker]").focus();
           localStorage.setItem("grabLessons", $("[data-output=html]").html());
         });
       },
-      HOWDOYOUSAY          = function() {
-        localStorage.setItem("grabLessons", $("[data-output=html]").html());
-      },
-      HOWDOYOUSAYARB       = function() {
-        localStorage.setItem("grabLessons", $("[data-output=html]").html());
-      },
-      HOWDOYOUSAYTYPING    = function() {
-        localStorage.setItem("grabLessons", $("[data-output=html]").html());
-      },
-      WHATWASSAID          = function() {
-        localStorage.setItem("grabLessons", $("[data-output=html]").html());
-      },
-      WHATWASSAIDTYPING    = function() {
-        localStorage.setItem("grabLessons", $("[data-output=html]").html());
-      },
-      SELECTTHEMISSINGWORD = function() {
+      saveLessonState      = function() {
         localStorage.setItem("grabLessons", $("[data-output=html]").html());
       },
       setLocalStorage      = function() {
@@ -93,14 +86,16 @@ $(document).ready(function() {
         if ( localStorage.getItem("grabLessons")) {
           $("[data-output=html]").html(localStorage.getItem("grabLessons"));
         }
-        $("input[type=text]").on("keyup change", function() {
+        $("[data-output=html] input[type=text]").on("keyup change", function() {
           $(this).attr('value', this.value);
+          $("[data-action=saveCode]").trigger("click");
           localStorage.setItem("grabLessons", $("[data-output=html]").html());
         });
         $("form").submit(function(e) {
           e.preventDefault();
         });
         $("[contenteditable]").on("keyup change", function() {
+          $("[data-action=saveCode]").trigger("click");
           localStorage.setItem("grabLessons", $("[data-output=html]").html());
         });
       },
@@ -122,7 +117,7 @@ $(document).ready(function() {
           // Grab text for cards
           var engWord = $(this).parent().find(".cards-container").find("h1").text();
           var cardContainer = $(this).parent().find(".cards-container");
-          cardContainer.find("h1").remove();
+          cardContainer.find("h1").hide();
           cardContainer = cardContainer.html();
           
           if (lessonType.toUpperCase() === "WHICH ONE OF THESE IS?") {
@@ -155,6 +150,7 @@ $(document).ready(function() {
             var lastPage = "<!--End of the lesson-->\n    <div class=\"page 21 end\">\n      <div class=\"txtcenter\" style=\"font: 400 normal normal 24px/2 'Lato';\">\n        <br><br>\n        You've completed <span data-document=\"title\"></span>\n        <p>&nbsp;</p>\n      </div>\n      \n      <div class=\"grid\">\n        <div class=\"grid__col--12\">\n          <h2>You scored!</h2>\n          <h1>\n            <span data-correct=\"amount\">0</span> out of 20\n          </h1>\n        </div>\n      </div>\n      \n      <p>&nbsp;</p>\n      <p>&nbsp;</p>\n      \n      <div class=\"grid\">\n        <div class=\"grid__col--12 txtcenter\">\n          <a href=\"../lessons/\" class=\"btn--default fill pointer\">\n            Back\n          </a>\n        </div>\n      </div>\n    </div>\n    \n    <!-- Speaking Tips -->\n    <div class=\"tips\">\n      <div class=\"txtcenter\" style=\"font: 400 normal normal 24px/2 'Lato';\">\n        <br><br>\n        General tips on how to pass a speaking exercise:\n        <p>&nbsp;</p>\n      </div>\n      \n      <div class=\"grid\">\n        <div class=\"grid__col--12\">\n          <p>\n            <i class=\"fa fa-circle\" style=\"transform: scale(0.6);\"></i>\n            Speak aloud and close to the microphone.\n          </p>\n          <p>\n            <i class=\"fa fa-circle\" style=\"transform: scale(0.6);\"></i>\n            Don't speak slowly. Speak at a natural pace.\n          </p>\n          <p>\n            <i class=\"fa fa-circle\" style=\"transform: scale(0.6);\"></i>\n            For beginners, focus more on the whole sentence. Don't get stuck on 1~2 mispronounced words.\n          </p>\n        </div>\n      </div>\n      \n      <p>&nbsp;</p>\n      <p>&nbsp;</p>\n      \n      <div class=\"grid\">\n        <div class=\"grid__col--12 txtcenter\">\n          <label for=\"speak\" class=\"btn--default fill pointer\">\n            Back\n          </label>\n        </div>\n      </div>\n    </div>\n    \n    <!--Translation tooltip-->\n    <div class=\"translation hide\">\n      <i class=\"fa fa-caret-up\"></i>\n      \n      <div class=\"text\"></div>\n    </div>";
             $(this).val($(this).val() + '\n\n' + lastPage);
           }
+          $(".cards-container h1").show();
         });
       },
       fullLessonCode       = function() {
@@ -188,19 +184,15 @@ $(document).ready(function() {
         }
       },
       initiateDesigner     = function() {
-        $("input, [contentEditable]").on("keyup change", function() {
-          setLessonCode();
-          fullLessonCode();
+        $("[data-output=html] input[type=text], [contentEditable]").on("keyup change", function() {
           setLocalStorage();
         });
-        setLessonCode();
-        fullLessonCode();
 
         //  Debug lesson
         $("[data-action=play]").click(function() {
           //alertify.message('Debug lesson coming soon...');
 
-          if (!$("input").val()) {
+          if (!$("[data-output=html] input").val()) {
             alertify.error('Run Failed: All inputs <u>MUST</u> have a value');
             return false;
           }
@@ -259,8 +251,10 @@ $(document).ready(function() {
             $(".display-modal").fadeOut();
           }
         });
-        WHICHONEOFTHESEIS();
         setLocalStorage();
+        WHICHONEOFTHESEIS();
+        setLessonCode();
+        fullLessonCode();
 
         //  Change lesson type
         $(".lesson-types a").on("click", function() {
@@ -280,37 +274,35 @@ $(document).ready(function() {
           }
           if (lessonType.toUpperCase() === "HOW DO YOU SAY?") {
             $(this).parent().parent().next().find("[data-output=lesson]").empty().html("<textarea class=\"lessonpage\"></textarea>\n\n<form action=\"#\" class=\"mdl-cell--6-col ib\">\n  <div class=\"mdl-textfield mdl-js-textfield\">\n    <input class=\"mdl-textfield__input\" type=\"text\" placeholder=\"Arabic word:\" data-word=\"arbword\" value=\"مرحبا\">\n  </div>\n</form>\n<form action=\"#\" class=\"mdl-cell--6-col ib\">\n  <div class=\"mdl-textfield mdl-js-textfield\">\n    <input class=\"mdl-textfield__input\" type=\"text\" placeholder=\"English translation:\" data-word=\"engtrans\" value=\"hello\">\n  </div>\n</form>\n<div>\n  <form action=\"#\" class=\"mdl-cell--6-col ib\">\n    <div class=\"mdl-textfield mdl-js-textfield\">\n      <input class=\"mdl-textfield__input\" type=\"text\" placeholder=\"Correct answer:\" data-word=\"correctanswer\" value=\"hello\">\n    </div>\n  </form>\n  <form action=\"#\" class=\"mdl-cell--6-col ib\">\n    <div class=\"mdl-textfield mdl-js-textfield\">\n      <input class=\"mdl-textfield__input\" type=\"text\" placeholder=\"Wrong answer:\" data-word=\"wronganswer1\" value=\"woman\">\n    </div>\n  </form>\n</div>\n<div>\n  <form action=\"#\" class=\"mdl-cell--6-col ib\">\n    <div class=\"mdl-textfield mdl-js-textfield\">\n      <input class=\"mdl-textfield__input\" type=\"text\" placeholder=\"Wrong answer:\" data-word=\"wronganswer2\" value=\"goodbye\">\n    </div>\n  </form>\n  <form action=\"#\" class=\"mdl-cell--6-col ib\">\n    <div class=\"mdl-textfield mdl-js-textfield\">\n      <input class=\"mdl-textfield__input\" type=\"text\" placeholder=\"Wrong answer:\" data-word=\"wronganswer3\" value=\"good morning\">\n    </div>\n  </form>\n</div>");
-            HOWDOYOUSAY();
+            saveLessonState();
           }
           if (lessonType.toUpperCase() === "HOW DO YOU SAY (ARB)?") {
             $(this).parent().parent().next().find("[data-output=lesson]").empty().html("<textarea class=\"lessonpage\"></textarea>\n\n<form action=\"#\" class=\"mdl-cell--6-col ib\">\n  <div class=\"mdl-textfield mdl-js-textfield\">\n    <input class=\"mdl-textfield__input\" type=\"text\" placeholder=\"Arabic word:\" data-word=\"arbword\" value=\"انا\">\n  </div>\n</form>\n<form action=\"#\" class=\"mdl-cell--6-col ib\">\n  <div class=\"mdl-textfield mdl-js-textfield\">\n    <input class=\"mdl-textfield__input\" type=\"text\" placeholder=\"English translation:\" data-word=\"engtrans\" value=\"I; I am; Me\">\n  </div>\n</form>\n<div>\n  <form action=\"#\" class=\"mdl-cell--6-col ib\">\n    <div class=\"mdl-textfield mdl-js-textfield\">\n      <input class=\"mdl-textfield__input\" type=\"text\" placeholder=\"Correct answer:\" data-word=\"correctanswer\" value=\"انا\">\n    </div>\n  </form>\n  <form action=\"#\" class=\"mdl-cell--6-col ib\">\n    <div class=\"mdl-textfield mdl-js-textfield\">\n      <input class=\"mdl-textfield__input\" type=\"text\" placeholder=\"Wrong answer:\" data-word=\"wronganswer1\" value=\"مرحبا\">\n    </div>\n  </form>\n</div>\n<div>\n  <form action=\"#\" class=\"mdl-cell--6-col ib\">\n    <div class=\"mdl-textfield mdl-js-textfield\">\n      <input class=\"mdl-textfield__input\" type=\"text\" placeholder=\"Wrong answer:\" data-word=\"wronganswer2\" value=\"امراه\">\n    </div>\n  </form>\n  <form action=\"#\" class=\"mdl-cell--6-col ib\">\n    <div class=\"mdl-textfield mdl-js-textfield\">\n      <input class=\"mdl-textfield__input\" type=\"text\" placeholder=\"Wrong answer:\" data-word=\"wronganswer3\" value=\"ولد\">\n    </div>\n  </form>\n</div>");
-            HOWDOYOUSAYARB();
+            saveLessonState();
           }
           if (lessonType.toUpperCase() === "HOW DO YOU SAY {TYPING}?") {
             $(this).parent().parent().next().find("[data-output=lesson]").empty().html("<textarea class=\"lessonpage\"></textarea>\n\n<form action=\"#\" class=\"mdl-cell--6-col ib\">\n  <div class=\"mdl-textfield mdl-js-textfield\">\n    <input class=\"mdl-textfield__input\" type=\"text\" placeholder=\"Arabic word:\" data-word=\"arbword\" value=\"مرحبا\">\n  </div>\n</form>\n<form action=\"#\" class=\"mdl-cell--6-col ib\">\n  <div class=\"mdl-textfield mdl-js-textfield\">\n    <input class=\"mdl-textfield__input\" type=\"text\" placeholder=\"English translation:\" data-word=\"engtrans\" value=\"hello\">\n  </div>\n</form>");
-            HOWDOYOUSAYTYPING();
+            saveLessonState();
           }
           if (lessonType.toUpperCase() === "WHAT WAS SAID?") {
             $(this).parent().parent().next().find("[data-output=lesson]").empty().html("<textarea class=\"lessonpage\"></textarea>\n\n<form action=\"#\" class=\"mdl-cell--6-col ib\">\n  <div class=\"mdl-textfield mdl-js-textfield\">\n    <input class=\"mdl-textfield__input\" type=\"text\" placeholder=\"Arabic word:\" data-word=\"arbword\" value=\"مرحبا\">\n  </div>\n</form>\n<div>\n  <form action=\"#\" class=\"mdl-cell--6-col ib\">\n    <div class=\"mdl-textfield mdl-js-textfield\">\n      <input class=\"mdl-textfield__input\" type=\"text\" placeholder=\"Correct answer:\" data-word=\"correctanswer\" value=\"girl\">\n    </div>\n  </form>\n  <form action=\"#\" class=\"mdl-cell--6-col ib\">\n    <div class=\"mdl-textfield mdl-js-textfield\">\n      <input class=\"mdl-textfield__input\" type=\"text\" placeholder=\"Wrong answer:\" data-word=\"wronganswer1\" value=\"man\">\n    </div>\n  </form>\n</div>\n<div>\n  <form action=\"#\" class=\"mdl-cell--6-col ib\">\n    <div class=\"mdl-textfield mdl-js-textfield\">\n      <input class=\"mdl-textfield__input\" type=\"text\" placeholder=\"Wrong answer:\" data-word=\"wronganswer2\" value=\"hello\">\n    </div>\n  </form>\n  <form action=\"#\" class=\"mdl-cell--6-col ib\">\n    <div class=\"mdl-textfield mdl-js-textfield\">\n      <input class=\"mdl-textfield__input\" type=\"text\" placeholder=\"Wrong answer:\" data-word=\"wronganswer3\" value=\"woman\">\n    </div>\n  </form>\n</div>");
-            WHATWASSAID();
+            saveLessonState();
           }
           if (lessonType.toUpperCase() === "WHAT WAS SAID {TYPING}?") {
             $(this).parent().parent().next().find("[data-output=lesson]").empty().html("<textarea class=\"lessonpage\"></textarea>\n\n<form action=\"#\" class=\"mdl-cell--6-col ib\">\n  <div class=\"mdl-textfield mdl-js-textfield\">\n    <input class=\"mdl-textfield__input\" type=\"text\" placeholder=\"Arabic word:\" data-word=\"arbword\" value=\"امراه\">\n  </div>\n</form>");
-            WHATWASSAIDTYPING();
+            saveLessonState();
           }
           if (lessonType.toUpperCase() === "SELECT THE MISSING WORD?") {
             $(this).parent().parent().next().find("[data-output=lesson]").empty().html("<textarea class=\"lessonpage\"></textarea>\n\n<form action=\"#\" class=\"mdl-cell--6-col ib\">\n  <div class=\"mdl-textfield mdl-js-textfield\">\n    <input class=\"mdl-textfield__input\" type=\"text\" placeholder=\"Arabic word:\" data-word=\"arbword\" value=\"... انا\">\n  </div>\n</form>\n<form action=\"#\" class=\"mdl-cell--6-col ib\">\n  <div class=\"mdl-textfield mdl-js-textfield\">\n    <input class=\"mdl-textfield__input\" type=\"text\" placeholder=\"English translation:\" data-word=\"engtrans\" value=\"I am; I am a ...\">\n  </div>\n</form>\n<div>\n  <form action=\"#\" class=\"mdl-cell--6-col ib\">\n    <div class=\"mdl-textfield mdl-js-textfield\">\n      <input class=\"mdl-textfield__input\" type=\"text\" placeholder=\"Correct answer:\" data-word=\"correctanswer\" value=\"ولد\">\n    </div>\n  </form>\n  <form action=\"#\" class=\"mdl-cell--6-col ib\">\n    <div class=\"mdl-textfield mdl-js-textfield\">\n      <input class=\"mdl-textfield__input\" type=\"text\" placeholder=\"Wrong answer:\" data-word=\"wronganswer1\" value=\"شكرا\">\n    </div>\n  </form>\n</div>\n<div>\n  <form action=\"#\" class=\"mdl-cell--6-col ib\">\n    <div class=\"mdl-textfield mdl-js-textfield\">\n      <input class=\"mdl-textfield__input\" type=\"text\" placeholder=\"Wrong answer:\" data-word=\"wronganswer2\" value=\"مع السلامه\">\n    </div>\n  </form>\n  <form action=\"#\" class=\"mdl-cell--6-col ib\">\n    <div class=\"mdl-textfield mdl-js-textfield\">\n      <input class=\"mdl-textfield__input\" type=\"text\" placeholder=\"Wrong answer:\" data-word=\"wronganswer3\" value=\"مرحبا\">\n    </div>\n  </form>\n</div>");
-            SELECTTHEMISSINGWORD();
+            saveLessonState();
           }
 
-          $("input, [contentEditable]").on("keyup change", function() {
-            setLessonCode();
-            fullLessonCode();
+          $("[data-output=html] input, [contentEditable]").on("keyup change", function() {
+            $("[data-action=saveCode]").trigger("click");
             setLocalStorage();
             localStorage.setItem("grabLessons", $("[data-output=html]").html());
           });
-          setLessonCode();
-          fullLessonCode();
+          $("[data-action=saveCode]").trigger("click");
           localStorage.setItem("grabLessons", $("[data-output=html]").html());
         });
 
@@ -387,6 +379,7 @@ $(document).ready(function() {
           });
         });
         
+        // Donate modal
         $("[data-open=donate]").on("click", function() {
           $("[data-modal=donate]").fadeIn();
         });
