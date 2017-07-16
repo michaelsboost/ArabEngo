@@ -320,7 +320,10 @@ $(document).ready(function() {
           $(".preloader").html('<div class="table"><div class="cell"><img class="spin" src="../imgs/loading.svg"></div></div>');
           detectOrientation();
           
+          setLessonCode();
+          fullLessonCode();
           var grabHTML = $("[data-output=html]").html();
+          var lessonCode = $('.fullcode').val();
 
           // check for title
           if ( !$('[data-lesson=title]').text()) {
@@ -339,6 +342,7 @@ $(document).ready(function() {
 
           var files = {};
           files["lessons.html"]   = $("[data-output=html]").html() ? { content: $("[data-output=html]").html() } : null;
+          files["lesson.html"]   = $('.fullcode').val() ? { content: $('.fullcode').val() } : null;
           files["properties.json"] = { "content": JSON.stringify(sArr) };
 
           data = {

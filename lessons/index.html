@@ -1,18 +1,119 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html>
   <head>
-    <meta charset="UTF-8">
-    <title>ArabEngo: Community Lessons</title>
+    <title>ArabEngo: Lessons</title>
+    <meta name="viewport"  content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <link rel="stylesheet" href="../css/lessons.css">
+    <link rel="stylesheet" href="../libraries/alertifyjs/css/alertify.min.css">
+    <link rel="stylesheet" href="../libraries/alertifyjs/css/themes/default.min.css">
+    <script src="../libraries/alertifyjs/alertify.min.js"></script>
+    <script src="../libraries/jquery/jquery.js"></script>
+    <script src="../libraries/jquery/jquery-migrate-1.2.1.min.js"></script>
+    <script src="../js/astral.js"></script>
     <style>
-      iframe[id*="twitter-widget"] {
-        float: none;
-        width: 100%!important;
-        height: calc(100vh - 20px)!important;
+      /*Globals*/
+      html, body, .preview, iframe {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+      }
+      iframe {
+        height: calc(100vh - 3px);
+      }
+      h1 {
+        color: #fff;
+        font-size: 2em;
+        font-weight: 100;
+        text-shadow: 0 0 1em #fff;
+      }
+      
+      /* Preloader */
+      .preloader {
+        background: #fff;
+        background: rgba(255, 255, 255, 0.68);
+        z-index: 99999!important;
+        color: #4E92A2;
+      }
+      nav {
+        display: table-cell;
+        vertical-align: middle;
+        z-index: 1;
+      }
+      .fixedfill {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+      }
+      .nohash {
+        z-index: 99999!important;
+        color: #4E92A2;
+      }
+      /* Center preloader content horizontally and vertically */
+      .table {
+        display: table;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        overflow: hidden;
+      }
+      .cell {
+        display: table-cell;
+        vertical-align: middle;
+      }
+      .spin {
+        width: 30%;
+        animation: spin 1.3s infinite ease-in-out both;
+      }
+      @keyframes spin {
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+      
+      /*Launch editor button*/
+      .launchdesigner {
+        position: relative;
+        background: #4e92a2;
+        color: #fff;
+        padding: 1em 2em;
+        font-size: 14px;
+        top: 15px;
+      }
+      .launchdesigner:hover {
+        color: #fff;
+        background: #57b5cc;
+        text-decoration: none;
+      }
+      
+      /*No lesson detected? Show cool background*/
+      #container {
+        position: absolute;
+        top: 0;
+        height: 100vh;
+        width: 100vw;
+        background-color: rgba(145, 224, 255, 0.51);
+      }
+      .wrapper {
+        overflow: hidden;
+        position: absolute;
+        top: 0;
+        width: 100vw;
+        height: 100vh;
+        background-position: center center;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-image: url(../imgs/akira.svg);
       }
     </style>
   </head>
   <body>
-    <a class="twitter-timeline"  href="https://twitter.com/hashtag/ArabEngoLessons" data-widget-id="886559730314956800">#ArabEngoLessons Tweets</a>
-    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+    <!--Preview lesson-->
+    <div class="preview"></div>
+    
+    <script src="../js/community-lessons.js"></script>
   </body>
 </html>
