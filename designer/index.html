@@ -42,6 +42,9 @@ Accent Light (Fallback): #FFD180
           <div class="mdl-layout-spacer"></div>
           <!-- Navigation -->
           <nav class="mdl-navigation">
+            <button class="mdl-navigation__link mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect" type="button" onclick="location.reload(true)">
+              <i class="material-icons">refresh</i>
+            </button>
             <button id="demo-show-toast" class="mdl-navigation__link mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect" type="button" data-action="play">
               <i class="material-icons">play_arrow</i>
             </button>
@@ -151,7 +154,7 @@ Accent Light (Fallback): #FFD180
           </a>
         </nav>
       </div>
-      <main class="mdl-layout__content">
+      <main class="mdl-layout__content" data-output="html">
         <section class="mdl-layout__tab-panel is-active" id="scroll-tab-summary">
           <div class="page-content">
             <div class="mdl-cell mdl-cell--12-col">

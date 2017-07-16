@@ -18,6 +18,9 @@ body {
 a {
   cursor: pointer;
 }
+[contenteditable] {
+  cursor: text;
+}
 
 /*Header*/
 .mdl-layout__header {

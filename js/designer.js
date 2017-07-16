@@ -6,11 +6,12 @@ var addImage = function(source) {
 };
 
 $(document).ready(function() {
+  $(".mdl-layout__tab-bar a:eq(3)").click();
   $(".comingsoon").click(function() {
     alertify.message('coming soon..');
   });
   
-  var searchForPictures = function(source) {
+  var searchForPictures    = function(source) {
         alertify.message('Searching for "'+source+'"');
 
         // If domain is HTTP
@@ -37,6 +38,63 @@ $(document).ready(function() {
               return false;
             }
           });
+        });
+      },
+      WHICHONEOFTHESEIS    = function() {
+        $(".card img").on("click", function() {
+          if ($(".selected").is(":visible")) {
+            $(".selected").removeClass("selected");
+            $(this).addClass("selected");
+          } else {
+            $(this).addClass("selected");
+          }
+          $(".images-modal").fadeIn();
+          localStorage.setItem("grabLessons", $("[data-output=html]").html());
+        });
+      },
+      HOWDOYOUSAY          = function() {
+        localStorage.setItem("grabLessons", $("[data-output=html]").html());
+      },
+      HOWDOYOUSAYTYPING    = function() {
+        localStorage.setItem("grabLessons", $("[data-output=html]").html());
+      },
+      WHATWASSAID          = function() {
+        localStorage.setItem("grabLessons", $("[data-output=html]").html());
+      },
+      WHATWASSAIDTYPING    = function() {
+        localStorage.setItem("grabLessons", $("[data-output=html]").html());
+      },
+      SELECTTHEMISSINGWORD = function() {
+        localStorage.setItem("grabLessons", $("[data-output=html]").html());
+      },
+      setLocalStorage      = function() {
+        // Remember Tab
+        if ( localStorage.getItem("rememberTab")) {
+          $('a.mdl-layout__tab').removeClass('is-active');
+          // activate desired tab
+          $('a[href="#scroll-tab-'+ localStorage.getItem("rememberTab") +'"]').addClass('is-active');
+          // remove all is-active classes from panels
+          $('.mdl-layout__tab-panel').removeClass('is-active');
+          // activate desired tab panel
+          $('#scroll-tab-'+ localStorage.getItem("rememberTab")).addClass('is-active');
+        }
+        $("a.mdl-layout__tab").on("click", function() {
+          localStorage.setItem("rememberTab", $(this).index());
+        });
+        
+        // Remember Lessons
+        if ( localStorage.getItem("grabLessons")) {
+          $("[data-output=html]").html(localStorage.getItem("grabLessons"));
+        }
+        $("input[type=text]").on("keyup change", function() {
+          $(this).attr('value', this.value);
+          localStorage.setItem("grabLessons", $("[data-output=html]").html());
+        });
+        $("form").submit(function(e) {
+          e.preventDefault();
+        });
+        $("[contenteditable]").on("keyup change", function() {
+          localStorage.setItem("grabLessons", $("[data-output=html]").html());
         });
       };
   
@@ -68,33 +126,8 @@ $(document).ready(function() {
   $(".close-modal").click(function() {
     $(".images-modal").fadeOut();
   });
-
-  var WHICHONEOFTHESEIS = function(){
-    $(".card").on("click", function() {
-      if ($(".selected").is(":visible")) {
-        $(".selected").removeClass("selected");
-        $(this).find("img").addClass("selected");
-      } else {
-        $(this).find("img").addClass("selected");
-      }
-      $(".images-modal").fadeIn();
-    });
-  };
-  var HOWDOYOUSAY = function(){
-    
-  };
-  var HOWDOYOUSAYTYPING = function(){
-    
-  };
-  var WHATWASSAID = function(){
-    
-  };
-  var WHATWASSAIDTYPING = function(){
-    
-  };
-  var SELECTTHEMISSINGWORD = function(){
-    
-  };
+  WHICHONEOFTHESEIS();
+  setLocalStorage();
   
   $(".lesson-types a").on("click", function() {
 //    WHICH ONE OF THESE IS?
@@ -112,24 +145,26 @@ $(document).ready(function() {
       WHICHONEOFTHESEIS();
     }
     if (lessonType.toUpperCase() === "HOW DO YOU SAY?") {
-      $(this).parent().parent().next().find("[data-output=lesson]").empty().html("\n<form class=\"mdl-cell--6-col ib\">\n  <div class=\"mdl-textfield mdl-js-textfield\">\n    <input class=\"mdl-textfield__input\" type=\"text\" placeholder=\"Arabic word:\" id=\"arbword\">\n  </div>\n</form>\n<form class=\"mdl-cell--6-col ib\">\n  <div class=\"mdl-textfield mdl-js-textfield\">\n    <input class=\"mdl-textfield__input\" type=\"text\" placeholder=\"English translation:\" id=\"engtrans\">\n  </div>\n</form>\n<div>\n  <form class=\"mdl-cell--6-col ib\">\n    <div class=\"mdl-textfield mdl-js-textfield\">\n      <input class=\"mdl-textfield__input\" type=\"text\" placeholder=\"Correct answer:\" id=\"correctanswer\">\n    </div>\n  </form>\n  <form class=\"mdl-cell--6-col ib\">\n    <div class=\"mdl-textfield mdl-js-textfield\">\n      <input class=\"mdl-textfield__input\" type=\"text\" placeholder=\"Wrong answer:\" id=\"wronganswer1\">\n    </div>\n  </form>\n</div>\n<div>\n  <form class=\"mdl-cell--6-col ib\">\n    <div class=\"mdl-textfield mdl-js-textfield\">\n      <input class=\"mdl-textfield__input\" type=\"text\" placeholder=\"Wrong answer:\" id=\"wronganswer2\">\n    </div>\n  </form>\n  <form class=\"mdl-cell--6-col ib\">\n    <div class=\"mdl-textfield mdl-js-textfield\">\n      <input class=\"mdl-textfield__input\" type=\"text\" placeholder=\"Wrong answer:\" id=\"wronganswer3\">\n    </div>\n  </form>\n</div>");
+      $(this).parent().parent().next().find("[data-output=lesson]").empty().html("\n<form action=\"#\" class=\"mdl-cell--6-col ib\">\n  <div class=\"mdl-textfield mdl-js-textfield\">\n    <input class=\"mdl-textfield__input\" type=\"text\" placeholder=\"Arabic word:\" id=\"arbword\">\n  </div>\n</form>\n<form action=\"#\" class=\"mdl-cell--6-col ib\">\n  <div class=\"mdl-textfield mdl-js-textfield\">\n    <input class=\"mdl-textfield__input\" type=\"text\" placeholder=\"English translation:\" id=\"engtrans\">\n  </div>\n</form>\n<div>\n  <form action=\"#\" class=\"mdl-cell--6-col ib\">\n    <div class=\"mdl-textfield mdl-js-textfield\">\n      <input class=\"mdl-textfield__input\" type=\"text\" placeholder=\"Correct answer:\" id=\"correctanswer\">\n    </div>\n  </form>\n  <form action=\"#\" class=\"mdl-cell--6-col ib\">\n    <div class=\"mdl-textfield mdl-js-textfield\">\n      <input class=\"mdl-textfield__input\" type=\"text\" placeholder=\"Wrong answer:\" id=\"wronganswer1\">\n    </div>\n  </form>\n</div>\n<div>\n  <form action=\"#\" class=\"mdl-cell--6-col ib\">\n    <div class=\"mdl-textfield mdl-js-textfield\">\n      <input class=\"mdl-textfield__input\" type=\"text\" placeholder=\"Wrong answer:\" id=\"wronganswer2\">\n    </div>\n  </form>\n  <form action=\"#\" class=\"mdl-cell--6-col ib\">\n    <div class=\"mdl-textfield mdl-js-textfield\">\n      <input class=\"mdl-textfield__input\" type=\"text\" placeholder=\"Wrong answer:\" id=\"wronganswer3\">\n    </div>\n  </form>\n</div>");
       HOWDOYOUSAY();
     }
     if (lessonType.toUpperCase() === "HOW DO YOU SAY {TYPING}?") {
-      $(this).parent().parent().next().find("[data-output=lesson]").empty().html("\n<form class=\"mdl-cell--6-col ib\">\n  <div class=\"mdl-textfield mdl-js-textfield\">\n    <input class=\"mdl-textfield__input\" type=\"text\" placeholder=\"Arabic word:\" id=\"arbword\">\n  </div>\n</form>\n<form class=\"mdl-cell--6-col ib\">\n  <div class=\"mdl-textfield mdl-js-textfield\">\n    <input class=\"mdl-textfield__input\" type=\"text\" placeholder=\"English translation:\" id=\"engtrans\">\n  </div>\n</form>");
+      $(this).parent().parent().next().find("[data-output=lesson]").empty().html("\n<form action=\"#\" class=\"mdl-cell--6-col ib\">\n  <div class=\"mdl-textfield mdl-js-textfield\">\n    <input class=\"mdl-textfield__input\" type=\"text\" placeholder=\"Arabic word:\" id=\"arbword\">\n  </div>\n</form>\n<form action=\"#\" class=\"mdl-cell--6-col ib\">\n  <div class=\"mdl-textfield mdl-js-textfield\">\n    <input class=\"mdl-textfield__input\" type=\"text\" placeholder=\"English translation:\" id=\"engtrans\">\n  </div>\n</form>");
       HOWDOYOUSAYTYPING();
     }
     if (lessonType.toUpperCase() === "WHAT WAS SAID?") {
-      $(this).parent().parent().next().find("[data-output=lesson]").empty().html("\n<form class=\"mdl-cell--6-col ib\">\n  <div class=\"mdl-textfield mdl-js-textfield\">\n    <input class=\"mdl-textfield__input\" type=\"text\" placeholder=\"Arabic word:\" id=\"arbword\">\n  </div>\n</form>\n<form class=\"mdl-cell--6-col ib\">\n  <div class=\"mdl-textfield mdl-js-textfield\">\n    <input class=\"mdl-textfield__input\" type=\"text\" placeholder=\"English translation:\" id=\"engtrans\">\n  </div>\n</form>\n<div>\n  <form class=\"mdl-cell--6-col ib\">\n    <div class=\"mdl-textfield mdl-js-textfield\">\n      <input class=\"mdl-textfield__input\" type=\"text\" placeholder=\"Correct answer:\" id=\"correctanswer\">\n    </div>\n  </form>\n  <form class=\"mdl-cell--6-col ib\">\n    <div class=\"mdl-textfield mdl-js-textfield\">\n      <input class=\"mdl-textfield__input\" type=\"text\" placeholder=\"Wrong answer:\" id=\"wronganswer1\">\n    </div>\n  </form>\n</div>\n<div>\n  <form class=\"mdl-cell--6-col ib\">\n    <div class=\"mdl-textfield mdl-js-textfield\">\n      <input class=\"mdl-textfield__input\" type=\"text\" placeholder=\"Wrong answer:\" id=\"wronganswer2\">\n    </div>\n  </form>\n  <form class=\"mdl-cell--6-col ib\">\n    <div class=\"mdl-textfield mdl-js-textfield\">\n      <input class=\"mdl-textfield__input\" type=\"text\" placeholder=\"Wrong answer:\" id=\"wronganswer3\">\n    </div>\n  </form>\n</div>");
+      $(this).parent().parent().next().find("[data-output=lesson]").empty().html("\n<form action=\"#\" class=\"mdl-cell--6-col ib\">\n  <div class=\"mdl-textfield mdl-js-textfield\">\n    <input class=\"mdl-textfield__input\" type=\"text\" placeholder=\"Arabic word:\" id=\"arbword\">\n  </div>\n</form>\n<form action=\"#\" class=\"mdl-cell--6-col ib\">\n  <div class=\"mdl-textfield mdl-js-textfield\">\n    <input class=\"mdl-textfield__input\" type=\"text\" placeholder=\"English translation:\" id=\"engtrans\">\n  </div>\n</form>\n<div>\n  <form action=\"#\" class=\"mdl-cell--6-col ib\">\n    <div class=\"mdl-textfield mdl-js-textfield\">\n      <input class=\"mdl-textfield__input\" type=\"text\" placeholder=\"Correct answer:\" id=\"correctanswer\">\n    </div>\n  </form>\n  <form action=\"#\" class=\"mdl-cell--6-col ib\">\n    <div class=\"mdl-textfield mdl-js-textfield\">\n      <input class=\"mdl-textfield__input\" type=\"text\" placeholder=\"Wrong answer:\" id=\"wronganswer1\">\n    </div>\n  </form>\n</div>\n<div>\n  <form action=\"#\" class=\"mdl-cell--6-col ib\">\n    <div class=\"mdl-textfield mdl-js-textfield\">\n      <input class=\"mdl-textfield__input\" type=\"text\" placeholder=\"Wrong answer:\" id=\"wronganswer2\">\n    </div>\n  </form>\n  <form action=\"#\" class=\"mdl-cell--6-col ib\">\n    <div class=\"mdl-textfield mdl-js-textfield\">\n      <input class=\"mdl-textfield__input\" type=\"text\" placeholder=\"Wrong answer:\" id=\"wronganswer3\">\n    </div>\n  </form>\n</div>");
       WHATWASSAID();
     }
     if (lessonType.toUpperCase() === "WHAT WAS SAID {TYPING}?") {
-      $(this).parent().parent().next().find("[data-output=lesson]").empty().html("\n<form class=\"mdl-cell--6-col ib\">\n  <div class=\"mdl-textfield mdl-js-textfield\">\n    <input class=\"mdl-textfield__input\" type=\"text\" placeholder=\"Arabic word:\" id=\"arbword\">\n  </div>\n</form>\n<form class=\"mdl-cell--6-col ib\">\n  <div class=\"mdl-textfield mdl-js-textfield\">\n    <input class=\"mdl-textfield__input\" type=\"text\" placeholder=\"English translation:\" id=\"engtrans\">\n  </div>\n</form>");
+      $(this).parent().parent().next().find("[data-output=lesson]").empty().html("\n<form action=\"#\" class=\"mdl-cell--6-col ib\">\n  <div class=\"mdl-textfield mdl-js-textfield\">\n    <input class=\"mdl-textfield__input\" type=\"text\" placeholder=\"Arabic word:\" id=\"arbword\">\n  </div>\n</form>\n<form action=\"#\" class=\"mdl-cell--6-col ib\">\n  <div class=\"mdl-textfield mdl-js-textfield\">\n    <input class=\"mdl-textfield__input\" type=\"text\" placeholder=\"English translation:\" id=\"engtrans\">\n  </div>\n</form>");
       WHATWASSAIDTYPING();
     }
     if (lessonType.toUpperCase() === "SELECT THE MISSING WORD?") {
-      $(this).parent().parent().next().find("[data-output=lesson]").empty().html("\n<form class=\"mdl-cell--6-col ib\">\n  <div class=\"mdl-textfield mdl-js-textfield\">\n    <input class=\"mdl-textfield__input\" type=\"text\" placeholder=\"Arabic word:\" id=\"arbword\">\n  </div>\n</form>\n<form class=\"mdl-cell--6-col ib\">\n  <div class=\"mdl-textfield mdl-js-textfield\">\n    <input class=\"mdl-textfield__input\" type=\"text\" placeholder=\"English translation:\" id=\"engtrans\">\n  </div>\n</form>\n<div>\n  <form class=\"mdl-cell--6-col ib\">\n    <div class=\"mdl-textfield mdl-js-textfield\">\n      <input class=\"mdl-textfield__input\" type=\"text\" placeholder=\"Correct answer:\" id=\"correctanswer\">\n    </div>\n  </form>\n  <form class=\"mdl-cell--6-col ib\">\n    <div class=\"mdl-textfield mdl-js-textfield\">\n      <input class=\"mdl-textfield__input\" type=\"text\" placeholder=\"Wrong answer:\" id=\"wronganswer1\">\n    </div>\n  </form>\n</div>\n<div>\n  <form class=\"mdl-cell--6-col ib\">\n    <div class=\"mdl-textfield mdl-js-textfield\">\n      <input class=\"mdl-textfield__input\" type=\"text\" placeholder=\"Wrong answer:\" id=\"wronganswer2\">\n    </div>\n  </form>\n  <form class=\"mdl-cell--6-col ib\">\n    <div class=\"mdl-textfield mdl-js-textfield\">\n      <input class=\"mdl-textfield__input\" type=\"text\" placeholder=\"Wrong answer:\" id=\"wronganswer3\">\n    </div>\n  </form>\n</div>");
+      $(this).parent().parent().next().find("[data-output=lesson]").empty().html("\n<form action=\"#\" class=\"mdl-cell--6-col ib\">\n  <div class=\"mdl-textfield mdl-js-textfield\">\n    <input class=\"mdl-textfield__input\" type=\"text\" placeholder=\"Arabic word:\" id=\"arbword\">\n  </div>\n</form>\n<form action=\"#\" class=\"mdl-cell--6-col ib\">\n  <div class=\"mdl-textfield mdl-js-textfield\">\n    <input class=\"mdl-textfield__input\" type=\"text\" placeholder=\"English translation:\" id=\"engtrans\">\n  </div>\n</form>\n<div>\n  <form action=\"#\" class=\"mdl-cell--6-col ib\">\n    <div class=\"mdl-textfield mdl-js-textfield\">\n      <input class=\"mdl-textfield__input\" type=\"text\" placeholder=\"Correct answer:\" id=\"correctanswer\">\n    </div>\n  </form>\n  <form action=\"#\" class=\"mdl-cell--6-col ib\">\n    <div class=\"mdl-textfield mdl-js-textfield\">\n      <input class=\"mdl-textfield__input\" type=\"text\" placeholder=\"Wrong answer:\" id=\"wronganswer1\">\n    </div>\n  </form>\n</div>\n<div>\n  <form action=\"#\" class=\"mdl-cell--6-col ib\">\n    <div class=\"mdl-textfield mdl-js-textfield\">\n      <input class=\"mdl-textfield__input\" type=\"text\" placeholder=\"Wrong answer:\" id=\"wronganswer2\">\n    </div>\n  </form>\n  <form action=\"#\" class=\"mdl-cell--6-col ib\">\n    <div class=\"mdl-textfield mdl-js-textfield\">\n      <input class=\"mdl-textfield__input\" type=\"text\" placeholder=\"Wrong answer:\" id=\"wronganswer3\">\n    </div>\n  </form>\n</div>");
       SELECTTHEMISSINGWORD();
     }
+    
+    localStorage.setItem("grabLessons", $("[data-output=html]").html());
   });
 });
