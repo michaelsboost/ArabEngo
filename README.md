@@ -9,10 +9,8 @@ However what if you don't want to have a conversation with a real person? What i
 
 To Do's
 -------------
-- Add option to donate via PayPal or SquareCash
-- Fix text & image placement on cards for lesson designer
 - Incorporate 3 sample templates for lesson designer
-- Add share option for lesson designer
+- Add page to load lessons
 
 License
 -------------

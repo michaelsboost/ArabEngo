@@ -41,6 +41,9 @@ Accent Light (Fallback): #FFD180
           
           <!-- Top right button navigation -->
           <nav class="mdl-navigation">
+            <button class="mdl-navigation__link mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect" type="button" onclick="localStorage.clear(); if(window.location.hash) {window.location.href = window.location.toString().split(/\?|#/)[0]} else {location.reload(true);}">
+              <i class="material-icons">fiber_new</i>
+            </button>
             <button class="mdl-navigation__link mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect" type="button" onclick="location.reload(true)">
               <i class="material-icons">refresh</i>
             </button>
@@ -61,7 +64,7 @@ Accent Light (Fallback): #FFD180
                   How to make a lesson
                 </span>
             </li>
-            <a href="https://www.gospeaky.com/" target="_blank">
+            <a href="http://get.speaky.com/JwBt/yphmXkXOPE" target="_blank">
               <li class="mdl-menu__item">
                 <i class="material-icons">chat</i>
                 <span>
@@ -69,7 +72,7 @@ Accent Light (Fallback): #FFD180
                 </span>
               </li>
             </a>
-            <a href="https://www.gospeaky.com/" target="_blank">
+            <a href="http://get.speaky.com/JwBt/yphmXkXOPE" target="_blank">
               <li class="mdl-menu__item">
                 <i class="material-icons">person</i>
                 <span>
@@ -89,7 +92,7 @@ Accent Light (Fallback): #FFD180
         </div>
         <!-- Tabs -->
         <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
-          <a href="#scroll-tab-summary" class="mdl-layout__tab is-active">Summary</a>
+          <a href="#scroll-tab-0" class="mdl-layout__tab is-active">Summary</a>
           <a href="#scroll-tab-1" class="mdl-layout__tab">Question 1</a>
           <a href="#scroll-tab-2" class="mdl-layout__tab">Question 2</a>
           <a href="#scroll-tab-3" class="mdl-layout__tab">Question 3</a>
@@ -121,10 +124,10 @@ Accent Light (Fallback): #FFD180
           <a class="mdl-navigation__link mdl-js-button">
             <i class="material-icons" role="presentation">adjust</i> &nbsp; Designer
           </a>
-          <a class="mdl-navigation__link mdl-js-button mdl-js-ripple-effect comingsoon">
+          <a class="mdl-navigation__link mdl-js-button mdl-js-ripple-effect" data-action="save-gist">
             <i class="material-icons" role="presentation">share</i> &nbsp; Share
           </a>
-          <a class="mdl-navigation__link mdl-js-button mdl-js-ripple-effect comingsoon">
+          <a class="mdl-navigation__link mdl-js-button mdl-js-ripple-effect" data-open="donate">
             <i class="material-icons" role="presentation">favorite</i> &nbsp; Donate
           </a>
           <hr>
@@ -142,7 +145,7 @@ Accent Light (Fallback): #FFD180
       
       <!--Tabular data-->
       <main class="mdl-layout__content" data-output="html">
-        <section class="mdl-layout__tab-panel is-active" id="scroll-tab-summary">
+        <section class="mdl-layout__tab-panel is-active" id="scroll-tab-0">
           <div class="page-content">
             <div class="mdl-cell mdl-cell--12-col">
               <div class="mdl-card mdl-shadow--2dp mdl-card__supporting-text">
@@ -219,6 +222,7 @@ Accent Light (Fallback): #FFD180
               <div class="mdl-card mdl-shadow--2dp mdl-card__supporting-text">
                 <div class="mdl-shadow--4dp">
                   <div class="lesson-types"></div>
+                </div>
                 <div>
                   <h3>Question Type: "<span data-output="questiontype">Which one of these is?</span>"</h3>
                   <div data-output="lesson">
@@ -933,7 +937,7 @@ Accent Light (Fallback): #FFD180
     
     <textarea class="fullcode"></textarea>
     
-    <div class="images-modal hide">
+    <div class="display-modal images-modal hide">
       <div class="content">
         <input type="search" class="txtbox ib" placeholder="search for something like dogs" data-search="flicker" style="width: calc(100% - 6.2em); margin: 24px 0 24px 24px; display: inline-block; padding-right: 50px;" />
         <button class="clear-search mdl-button mdl-js-button mdl-button--icon" data-clear="search">
@@ -946,13 +950,84 @@ Accent Light (Fallback): #FFD180
         <div data-output="images" class="searched-images hide"></div>
       </div>
     </div>
-    <div class="preview-modal hide">
+    <div class="display-modal preview-modal hide">
       <div class="content">
         <button class="close-modal mdl-button mdl-js-button mdl-button--icon">
           <i class="material-icons">close</i>
         </button>
         
         <div class="preview"></div>
+      </div>
+    </div>
+
+    <!--Donate dialog-->
+    <div class="display-modal donate-modal hide" data-modal="donate">
+      <div class="content">
+        <button class="close-modal mdl-button mdl-js-button mdl-button--icon">
+          <i class="material-icons">close</i>
+        </button>
+
+        <div class="scroll">
+          <div class="table">
+            <div class="cell">
+              <div class="donate-card">
+                <p>Glad you enjoyed ArabEngo! Care to buy me a coffee?</p>
+
+                <a href="https://www.paypal.me/mikethedj4" target="_blank">
+                  <img src="../imgs/paypal.svg" alt="Donate via PayPal">
+                </a>
+              </div>
+              <div class="donate-card">
+                <p>Glad you enjoyed ArabEngo! Care to buy me a sandwich?</p>
+
+                <a href="https://cash.me/$mschwar4" target="_blank">
+                  <img src="../imgs/square_cash.svg" alt="Donate via SquareCash">
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!--Share to social media dialog-->
+    <div class="display-modal save-modal hide" data-action="socialdialog">
+      <div>
+        <nav>
+          <div class="grid socialdialog">
+            <div class="grid__col-12 tc socialbtns">
+              <h1>Share your chat with your friends!</h1>
+              <h4 class="tl nomar" style="color: #888888;">Link:</h4>
+              <input class="txtbox block" data-output="lessonURL">
+
+              <h4 class="tl nomar" style="color: #888888;">Edit:</h4>
+              <input class="txtbox block" data-output="editLesson">
+
+              <a class="share-facebook" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A//mikethedj4.github.io/kodeWeave/editor/%23c8f226c5e20b774806f507a06be12fee">
+                <i class="fa fa-facebook-square"></i>
+              </a>
+              <a class="share-twitter" target="_blank" href="https://twitter.com/home?status=Checkout%20my%20site%20title%20%23weave%20on%20%23kodeWeave%20%23kodeWeaveShare%20-%20https%3A//mikethedj4.github.io/kodeWeave/e/%23c8f226c5e20b774806f507a06be12fee">
+                <i class="fa fa-twitter-square"></i>
+              </a>
+              <a class="share-gplus" target="_blank" href="https://plus.google.com/share?url=https%3A//mikethedj4.github.io/kodeWeave/editor/%23c8f226c5e20b774806f507a06be12fee">
+                <i class="fa fa-google-plus-square"></i>
+              </a>
+              <a class="share-instagram" target="_blank">
+                <i class="fa fa-instagram"></i>
+              </a>
+              <a target="_blank" href="https://cash.me/$mschwar4">
+                <i class="fa fa-credit-card"></i>
+              </a>
+              <a target="_blank" href="https://paypal.me/mikethedj4">
+                <i class="fa fa-cc-paypal"></i>
+              </a>
+              <p></p>
+              <p>
+                <a class="btn--warning close-modal">Close</a>
+              </p>
+            </div>
+          </div>
+        </nav>
       </div>
     </div>
     
