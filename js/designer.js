@@ -110,18 +110,27 @@ $(document).ready(function() {
           var lessonPage = $(this).parents(".mdl-layout__tab-panel").attr('id').toString();
           lessonPage = lessonPage.substring(11);
           var lessonType = $(this).parent().prev("h3").find("span").text();
-          var arbWord = $(this).parent().find("[data-word=arbword]");
-          var engTrans = $(this).parent().find("[data-word=engtrans]");
-          var correctAnswer = $(this).parent().find("[data-word=correctanswer]");
-          var wrongAnswer1 = $(this).parent().find("[data-word=wordanswer1]");
-          var wrongAnswer2 = $(this).parent().find("[data-word=wordanswer1]");
-          var wrongAnswer3 = $(this).parent().find("[data-word=wordanswer1]");
+          
+          // Grab lesson answers
+          var arbWord = $(this).parent().find("[data-word=arbword]").val();
+          var engTrans = $(this).parent().find("[data-word=engtrans]").val();
+          var correctAnswer = $(this).parent().find("[data-word=correctanswer]").val();
+          var wrongAnswer1 = $(this).parent().find("[data-word=wordanswer1]").val();
+          var wrongAnswer2 = $(this).parent().find("[data-word=wordanswer1]").val();
+          var wrongAnswer3 = $(this).parent().find("[data-word=wordanswer1]").val();
+          
+          // Grab text for cards
+          var engWord = $(this).parent().find(".cards-container").find("h1").text();
+          var correctCard = $(this).parent().find(".card.correct").find("h2").text();
+          var wrongCard1 = $(this).parent().find(".card.wrong").first().find("h2").text();
+          var wrongCard2 = $(this).parent().find(".card.wrong").first().next().find("h2").text();
+          var wrongCard3 = $(this).parent().find(".card.wrong").last().find("h2").text();
           
           if (lessonType.toUpperCase() === "WHICH ONE OF THESE IS?") {
-            $(this).val("<div class=\"page "+ lessonPage +"\">\n      <div class=\"txtcenter\" style=\"font: 400 normal normal 24px/2 'Lato'; cursor: default;\">\n        <p>&nbsp;</p>\n        How do you say \"<span class=\"pointer underline arb ques\" data-meaning=\""+ engTrans +"\">"+ arbWord +"</span>\"?\n      </div>\n\n      <div class=\"grid\">\n        <div class=\"grid__col--12 list txtcenter\">\n          <p>&nbsp;</p>\n          <button class=\"btn--default addword wrong\">"+ wrongAnswer1 +"</button>\n          <button class=\"btn--default addword wrong\">"+ wrongAnswer2 +"</button>\n          <button class=\"btn--default addword correct answer\">"+ correctAnswer +"</button>\n          <button class=\"btn--default addword wrong\">" wrongAnswer3 "</button>\n        </div>\n      </div>\n    </div>");
+            $(this).val("<div class=\"page 2\">\n      <div class=\"txtcenter\" style=\"font: 400 normal normal 24px/2 'Lato';\">\n        Which one of these is \"<span class=\"pointer underline eng ques\">"+ engWord +"</span>\"?\n      </div>\n      \n      <div class=\"cards-container txtcenter\">\n        <a class=\"card correct answer pointer\">\n          <h2 class=\"arb\">"+ correctCard +"</h2>\n\n          <img src=\"../imgs/basics/man.jpg\">\n        </a>\n        <a class=\"card wrong pointer\">\n          <h2 class=\"arb\">"+ wrongCard1 +"</h2>\n\n          <img src=\"../imgs/basics/woman.png\">\n        </a>\n        <a class=\"card wrong pointer\">\n          <h2 class=\"arb\">"+ wrongCard3 +"</h2>\n\n          <img src=\"../imgs/basics/girl.jpg\">\n        </a>\n        <a class=\"card wrong pointer\">\n          <h2 class=\"arb\">"+ wrongCard2 +"</h2>\n\n          <img src=\"../imgs/basics/boy.jpg\">\n        </a>\n      </div>\n    </div>");
           }
           if (lessonType.toUpperCase() === "HOW DO YOU SAY?") {
-            $(this).val(lessonType.toUpperCase());
+            $(this).val("<div class=\"page "+ lessonPage +"\">\n      <div class=\"txtcenter\" style=\"font: 400 normal normal 24px/2 'Lato'; cursor: default;\">\n        <p>&nbsp;</p>\n        How do you say \"<span class=\"pointer underline arb ques\" data-meaning=\""+ engTrans +"\">"+ arbWord +"</span>\"?\n      </div>\n\n      <div class=\"grid\">\n        <div class=\"grid__col--12 list txtcenter\">\n          <p>&nbsp;</p>\n          <button class=\"btn--default addword wrong\">"+ wrongAnswer1 +"</button>\n          <button class=\"btn--default addword wrong\">"+ wrongAnswer2 +"</button>\n          <button class=\"btn--default addword correct answer\">"+ correctAnswer +"</button>\n          <button class=\"btn--default addword wrong\">"+ wrongAnswer3 +"</button>\n        </div>\n      </div>\n    </div>");
           }
           if (lessonType.toUpperCase() === "HOW DO YOU SAY {TYPING}?") {
             $(this).val(lessonType.toUpperCase());
@@ -144,6 +153,9 @@ $(document).ready(function() {
         
       };
   
+  $("input, [contentEditable]").on("keyup change", function() {
+    setLessonCode();
+  });
   setLessonCode();
   
   //  Debug lesson
