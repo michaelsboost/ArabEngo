@@ -108,7 +108,15 @@ a.mdl-js-ripple-effect {
   margin-bottom: 15px;
 }
 
-/*Search*/
+/*Lesson cards*/
+.cards-container > .card.correct {
+  background: #b4fdf4;
+}
+.cards-container > .card.wrong {
+  background: #ffbaba;
+}
+
+/*Search & preview modal windows*/
 .images-modal,
 .preview-modal {
   position: absolute;
@@ -185,12 +193,18 @@ a.mdl-js-ripple-effect {
   border: 0;
 }
 
-/*Lesson cards*/
-.cards-container > .card.correct {
-  background: #b4fdf4;
-}
-.cards-container > .card.wrong {
-  background: #ffbaba;
+/*Preview full code while editing*/
+.fullcode {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: calc(100%/3);
+  height: calc(100%/3);
+  border: 0;
+  z-index: 6;
+  margin: 1em;
+  resize: none;
+  box-shadow: 0 0 2em rgba(0, 0, 0, 0.65);
 }
 
 /*misc*/
