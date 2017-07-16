@@ -8,6 +8,7 @@
     <meta name="theme-color" content="#009688">
     <!-- Material Design Lite -->
     <link rel="stylesheet" href="../css/material.min.css">
+    <link rel="stylesheet" href="../css/lessons.css">
     <link rel="stylesheet" href="../css/designer.css">
     <link rel="stylesheet" href="../libraries/alertifyjs/css/alertify.min.css">
     <link rel="stylesheet" href="../libraries/alertifyjs/css/themes/default.min.css">
@@ -199,49 +200,8 @@ Accent Light (Fallback): #FFD180
                   </div>
                 </div>
                 <div>
-                  <h3>Question Type: "<span data-output="questiontype">How do you say?</span>"</h3>
-                  <div data-output="lesson">
-                    <form class="mdl-cell--6-col ib">
-                      <div class="mdl-textfield mdl-js-textfield">
-                          <input class="mdl-textfield__input" type="text" placeholder="Arabic word:" id="arbword">
-                          <label class="mdl-textfield__label" for="arbword">Text...</label>
-                      </div>
-                    </form>
-                    <form class="mdl-cell--6-col ib">
-                      <div class="mdl-textfield mdl-js-textfield">
-                          <input class="mdl-textfield__input" type="text" placeholder="English translation:" id="engtrans">
-                          <label class="mdl-textfield__label" for="engtrans">Text...</label>
-                      </div>
-                    </form>
-                    <div>
-                      <form class="mdl-cell--6-col ib">
-                        <div class="mdl-textfield mdl-js-textfield">
-                            <input class="mdl-textfield__input" type="text" placeholder="Correct answer:" id="correctanswer">
-                            <label class="mdl-textfield__label" for="correctanswer">Text...</label>
-                        </div>
-                      </form>
-                      <form class="mdl-cell--6-col ib">
-                        <div class="mdl-textfield mdl-js-textfield">
-                            <input class="mdl-textfield__input" type="text" placeholder="Wrong answer:" id="wronganswer1">
-                            <label class="mdl-textfield__label" for="wronganswer1">Text...</label>
-                        </div>
-                      </form>
-                    </div>
-                    <div>
-                      <form class="mdl-cell--6-col ib">
-                        <div class="mdl-textfield mdl-js-textfield">
-                            <input class="mdl-textfield__input" type="text" placeholder="Wrong answer:" id="wronganswer2">
-                            <label class="mdl-textfield__label" for="wronganswer2">Text...</label>
-                        </div>
-                      </form>
-                      <form class="mdl-cell--6-col ib">
-                        <div class="mdl-textfield mdl-js-textfield">
-                            <input class="mdl-textfield__input" type="text" placeholder="Wrong answer:" id="wronganswer3">
-                            <label class="mdl-textfield__label" for="wronganswer3">Text...</label>
-                        </div>
-                      </form>
-                    </div>
-                  </div>
+                  <h3>Question Type: "<span data-output="questiontype">select a question type</span>"</h3>
+                  <div data-output="lesson"></div>
                 </div>
               </div>
             </div>
@@ -368,6 +328,20 @@ Accent Light (Fallback): #FFD180
           </div>
         </section>
       </main>
+    </div>
+    
+    <div class="images-modal hide">
+      <div class="content">
+        <input type="search" class="txtbox ib" placeholder="search for something like dogs" data-search="flicker" style="width: calc(100% - 6.2em); margin: 24px 0 24px 24px; display: inline-block; padding-right: 50px;" />
+        <button class="clear-search mdl-button mdl-js-button mdl-button--icon" data-clear="search">
+          <i class="material-icons">close</i>
+        </button>
+        <button class="close-modal mdl-button mdl-js-button mdl-button--icon">
+          <i class="material-icons">close</i>
+        </button>
+
+        <div data-output="images" class="searched-images hide"></div>
+      </div>
     </div>
     
     <script src="../js/designer.js"></script>

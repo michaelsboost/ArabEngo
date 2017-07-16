@@ -250,7 +250,16 @@ var grabHTML,
         pos: 'bottom-right'
       });
 
-      var flickerAPI = "http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?";
+      // If domain is HTTP
+      var flickerAPI;
+      var site = window.location;
+      site = site.toString();
+      if (site.substring(0, 7) === "http://") {
+        flickerAPI = "http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?";
+      } else {
+        flickerAPI = "https://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?";
+      }
+      
       $.getJSON(flickerAPI, {
         tags: source,
         tagmode: "any",
