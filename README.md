@@ -9,7 +9,10 @@ However what if you don't want to have a conversation with a real person? What i
 
 To Do's
 -------------
-- Build a lesson designer and make it so community can share lesson's they've built.
+- Add option to donate via PayPal or SquareCash
+- Fix text & image placement on cards for lesson designer
+- Incorporate 3 sample templates for lesson designer
+- Add share option for lesson designer
 
 License
 -------------

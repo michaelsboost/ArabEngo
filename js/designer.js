@@ -66,9 +66,6 @@ $(document).ready(function() {
       WHATWASSAID          = function() {
         localStorage.setItem("grabLessons", $("[data-output=html]").html());
       },
-      WHATWASSAIDARB       = function() {
-        localStorage.setItem("grabLessons", $("[data-output=html]").html());
-      },
       WHATWASSAIDTYPING    = function() {
         localStorage.setItem("grabLessons", $("[data-output=html]").html());
       },
@@ -108,16 +105,17 @@ $(document).ready(function() {
       setLessonCode        = function() {
         $(".lessonpage").each(function() {
           var lessonPage = $(this).parents(".mdl-layout__tab-panel").attr('id').toString();
-          lessonPage = lessonPage.substring(11);
+          lessonPage     = lessonPage.substring(11);
+          var nextPage   = parseInt(lessonPage.toString()) + 1;
           var lessonType = $(this).parent().prev("h3").find("span").text();
           
           // Grab lesson answers
           var arbWord = $(this).parent().find("[data-word=arbword]").val();
           var engTrans = $(this).parent().find("[data-word=engtrans]").val();
           var correctAnswer = $(this).parent().find("[data-word=correctanswer]").val();
-          var wrongAnswer1 = $(this).parent().find("[data-word=wordanswer1]").val();
-          var wrongAnswer2 = $(this).parent().find("[data-word=wordanswer1]").val();
-          var wrongAnswer3 = $(this).parent().find("[data-word=wordanswer1]").val();
+          var wrongAnswer1 = $(this).parent().find("[data-word=wronganswer1]").val();
+          var wrongAnswer2 = $(this).parent().find("[data-word=wronganswer2]").val();
+          var wrongAnswer3 = $(this).parent().find("[data-word=wronganswer3]").val();
           
           // Grab text for cards
           var engWord = $(this).parent().find(".cards-container").find("h1").text();
@@ -127,36 +125,51 @@ $(document).ready(function() {
           var wrongCard3 = $(this).parent().find(".card.wrong").last().find("h2").text();
           
           if (lessonType.toUpperCase() === "WHICH ONE OF THESE IS?") {
-            $(this).val("<div class=\"page 2\">\n      <div class=\"txtcenter\" style=\"font: 400 normal normal 24px/2 'Lato';\">\n        Which one of these is \"<span class=\"pointer underline eng ques\">"+ engWord +"</span>\"?\n      </div>\n      \n      <div class=\"cards-container txtcenter\">\n        <a class=\"card correct answer pointer\">\n          <h2 class=\"arb\">"+ correctCard +"</h2>\n\n          <img src=\"../imgs/basics/man.jpg\">\n        </a>\n        <a class=\"card wrong pointer\">\n          <h2 class=\"arb\">"+ wrongCard1 +"</h2>\n\n          <img src=\"../imgs/basics/woman.png\">\n        </a>\n        <a class=\"card wrong pointer\">\n          <h2 class=\"arb\">"+ wrongCard3 +"</h2>\n\n          <img src=\"../imgs/basics/girl.jpg\">\n        </a>\n        <a class=\"card wrong pointer\">\n          <h2 class=\"arb\">"+ wrongCard2 +"</h2>\n\n          <img src=\"../imgs/basics/boy.jpg\">\n        </a>\n      </div>\n    </div>");
+            $(this).val("<div class=\"page "+ lessonPage +"\">\n      <div class=\"txtcenter\" style=\"font: 400 normal normal 24px/2 'Lato';\">\n        Which one of these is \"<span class=\"pointer underline eng ques\">"+ engWord +"</span>\"?\n      </div>\n      \n      <div class=\"cards-container txtcenter\">\n        <a class=\"card correct answer pointer\">\n          <h2 class=\"arb\">"+ correctCard +"</h2>\n\n          <img src=\"../imgs/basics/man.jpg\">\n        </a>\n        <a class=\"card wrong pointer\">\n          <h2 class=\"arb\">"+ wrongCard1 +"</h2>\n\n          <img src=\"../imgs/basics/woman.png\">\n        </a>\n        <a class=\"card wrong pointer\">\n          <h2 class=\"arb\">"+ wrongCard3 +"</h2>\n\n          <img src=\"../imgs/basics/girl.jpg\">\n        </a>\n        <a class=\"card wrong pointer\">\n          <h2 class=\"arb\">"+ wrongCard2 +"</h2>\n\n          <img src=\"../imgs/basics/boy.jpg\">\n        </a>\n      </div>\n    </div>\n    <input id=\""+ nextPage +"\" type=\"radio\" name=\"lesson\">");
           }
           if (lessonType.toUpperCase() === "HOW DO YOU SAY?") {
-            $(this).val("<div class=\"page "+ lessonPage +"\">\n      <div class=\"txtcenter\" style=\"font: 400 normal normal 24px/2 'Lato'; cursor: default;\">\n        <p>&nbsp;</p>\n        How do you say \"<span class=\"pointer underline arb ques\" data-meaning=\""+ engTrans +"\">"+ arbWord +"</span>\"?\n      </div>\n\n      <div class=\"grid\">\n        <div class=\"grid__col--12 list txtcenter\">\n          <p>&nbsp;</p>\n          <button class=\"btn--default addword wrong\">"+ wrongAnswer1 +"</button>\n          <button class=\"btn--default addword wrong\">"+ wrongAnswer2 +"</button>\n          <button class=\"btn--default addword correct answer\">"+ correctAnswer +"</button>\n          <button class=\"btn--default addword wrong\">"+ wrongAnswer3 +"</button>\n        </div>\n      </div>\n    </div>");
+            $(this).val("<div class=\"page "+ lessonPage +"\">\n      <div class=\"txtcenter\" style=\"font: 400 normal normal 24px/2 'Lato'; cursor: default;\">\n        <p>&nbsp;</p>\n        How do you say \"<span class=\"pointer underline arb ques\" data-meaning=\""+ engTrans +"\">"+ arbWord +"</span>\"?\n      </div>\n\n      <div class=\"grid\">\n        <div class=\"grid__col--12 list txtcenter\">\n          <p>&nbsp;</p>\n          <button class=\"btn--default addword wrong\">"+ wrongAnswer1 +"</button>\n          <button class=\"btn--default addword wrong\">"+ wrongAnswer2 +"</button>\n          <button class=\"btn--default addword correct answer\">"+ correctAnswer +"</button>\n          <button class=\"btn--default addword wrong\">"+ wrongAnswer3 +"</button>\n        </div>\n      </div>\n    </div>\n    <input id=\""+ nextPage +"\" type=\"radio\" name=\"lesson\">");
           }
           if (lessonType.toUpperCase() === "HOW DO YOU SAY {TYPING}?") {
-            $(this).val(lessonType.toUpperCase());
+            $(this).val("<div class=\"page "+ lessonPage +"\">\n      <div class=\"txtcenter\" style=\"font: 400 normal normal 24px/2 'Lato'; cursor: default;\">\n        <p>&nbsp;</p>\n        <p>&nbsp;</p>\n        How do you say \"<span class=\"pointer underline eng ques\" data-meaning=\""+ arbWord +"\">"+ engTrans +"</span>\"?\n      </div>\n      \n      <div class=\"hide answer\">"+ arbWord +"</div>\n      \n      <div id=\"charmenu\" class=\"charmenu txtcenter\">\n        <a class=\"pointer\" data-char=\"0\">ي</a>\n        <a class=\"pointer\" data-char=\"1\">و</a>\n        <a class=\"pointer\" data-char=\"2\">ه</a>\n        <a class=\"pointer\" data-char=\"3\">ن</a>\n        <a class=\"pointer\" data-char=\"4\">م</a>\n        <a class=\"pointer\" data-char=\"5\">ل</a>\n        <a class=\"pointer\" data-char=\"6\">ك</a>\n        <a class=\"pointer\" data-char=\"7\">ق</a>\n        <a class=\"pointer\" data-char=\"8\">ف</a>\n        <a class=\"pointer\" data-char=\"9\">غ</a>\n        <a class=\"pointer\" data-char=\"10\">ع</a>\n        <a class=\"pointer\" data-char=\"11\">ظ</a>\n        <a class=\"pointer\" data-char=\"12\">ط</a>\n        <a class=\"pointer\" data-char=\"13\">ض</a>\n        <a class=\"pointer\" data-char=\"14\">ص</a>\n        <a class=\"pointer\" data-char=\"15\">ش</a>\n        <a class=\"pointer\" data-char=\"16\">س</a>\n        <a class=\"pointer\" data-char=\"17\">ز</a>\n        <a class=\"pointer\" data-char=\"18\">ر</a>\n        <a class=\"pointer\" data-char=\"19\">ذ</a>\n        <a class=\"pointer\" data-char=\"20\">د</a>\n        <a class=\"pointer\" data-char=\"21\">خ</a>\n        <a class=\"pointer\" data-char=\"22\">ح</a>\n        <a class=\"pointer\" data-char=\"23\">ج</a>\n        <a class=\"pointer\" data-char=\"24\">ث</a>\n        <a class=\"pointer\" data-char=\"25\">ت</a>\n        <a class=\"pointer\" data-char=\"26\">ب</a>\n        <a class=\"pointer\" data-char=\"27\">ا</a>\n      </div>\n\n      <div class=\"grid\">\n        <div class=\"grid__col--12\">\n          <div>\n            <p>&nbsp;</p>\n            <input class=\"userSentence txtcenter\">\n            <p></p>\n            <button class=\"btn--default fill checkSentence\">\n              Confirm\n            </button>\n          </div>\n        </div>\n      </div>\n\n      <div class=\"grid\">\n        <div class=\"grid__col--8 wordlist txtcenter\">\n          <button class=\"btn--default addword block\" style=\"width: 100%;\">&nbsp;</button>\n        </div>\n        <div class=\"grid__col--4\">\n          <button class=\"btn--default delword fr\" style=\"background: #fff;\">\n            <img class=\"nomar\" src=\"../imgs/backspace.svg\" alt=\"backspace\">\n          </button>\n        </div>\n      </div>\n    </div>\n    <input id=\""+ nextPage +"\" type=\"radio\" name=\"lesson\">");
           }
           if (lessonType.toUpperCase() === "HOW DO YOU SAY (ARB)?") {
-            $(this).val(lessonType.toUpperCase());
+            $(this).val("<div class=\"page "+ lessonPage +"\">\n      <div class=\"txtcenter\" style=\"font: 400 normal normal 24px/2 'Lato'; cursor: default;\">\n        <p>&nbsp;</p>\n        How do you say \"<span class=\"pointer underline eng ques\" data-meaning=\""+ arbWord +"\">"+ engTrans +"</span>\"?\n      </div>\n\n      <div class=\"grid\">\n        <div class=\"grid__col--12 list txtcenter\">\n          <p>&nbsp;</p>\n          <button class=\"btn--default arb addword wrong\">"+ wrongAnswer1 +"</button>\n          <button class=\"btn--default arb addword wrong\">"+ wrongAnswer2 +"</button>\n          <button class=\"btn--default arb addword correct answer\">"+ correctAnswer +"</button>\n          <button class=\"btn--default arb addword wrong\">"+ wrongAnswer3 +"</button>\n        </div>\n      </div>\n    </div>\n    <input id=\""+ nextPage +"\" type=\"radio\" name=\"lesson\">");
           }
-          if (lessonType.toUpperCase() === "WHAT WAS SAID (ARB)?") {
-            $(this).val(lessonType.toUpperCase());
+          if (lessonType.toUpperCase() === "WHAT WAS SAID?") {
+            $(this).val("<div class=\"page "+ lessonPage +"\">\n      <span class=\"invisible arb ques\">"+ arbWord +"</span>\n      \n      <div class=\"txtcenter\" style=\"font: 400 normal normal 24px/2 'Lato'; cursor: default;\">\n        <p>\n          What was said?\n        </p>\n        <p>&nbsp;</p>\n      </div>\n      \n      <div class=\"txtcenter\">\n        <a class=\"ib pointer hear xxx-large\">\n          <i class=\"fa fa-volume-up\" style=\"transform: scale(0.8);\"></i>\n        </a>\n      </div>\n      \n      <div class=\"grid\">\n        <div class=\"grid__col--12 list txtcenter\">\n          <p>&nbsp;</p>\n          <button class=\"btn--default addword correct answer\">"+ correctAnswer +"</button>\n          <button class=\"btn--default addword wrong\">"+ wrongAnswer1 +"</button>\n          <button class=\"btn--default addword wrong\">"+ wrongAnswer2 +"</button>\n          <button class=\"btn--default addword wrong\">"+ wrongAnswer3 +"</button>\n        </div>\n      </div>\n    </div>\n    <input id=\""+ nextPage +"\" type=\"radio\" name=\"lesson\">");
           }
           if (lessonType.toUpperCase() === "WHAT WAS SAID {TYPING}?") {
-            $(this).val(lessonType.toUpperCase());
+            $(this).val("<div class=\"page "+ lessonPage +"\">\n      <span class=\"invisible arb ques answer\">"+ arbWord +"</span>\n      \n      <div class=\"txtcenter\" style=\"font: 400 normal normal 24px/2 'Lato'; cursor: default;\">\n        <p>&nbsp;</p>\n        <p>\n          What was said?\n        </p>\n      </div>\n\n      <div class=\"txtcenter\">\n        <a class=\"ib pointer hear xxx-large\">\n          <i class=\"fa fa-volume-up\" style=\"transform: scale(0.8);\"></i>\n        </a>\n      </div>\n\n      <div id=\"charmenu\" class=\"charmenu txtcenter\">\n        <a class=\"pointer\" data-char=\"0\">ي</a>\n        <a class=\"pointer\" data-char=\"1\">و</a>\n        <a class=\"pointer\" data-char=\"2\">ه</a>\n        <a class=\"pointer\" data-char=\"3\">ن</a>\n        <a class=\"pointer\" data-char=\"4\">م</a>\n        <a class=\"pointer\" data-char=\"5\">ل</a>\n        <a class=\"pointer\" data-char=\"6\">ك</a>\n        <a class=\"pointer\" data-char=\"7\">ق</a>\n        <a class=\"pointer\" data-char=\"8\">ف</a>\n        <a class=\"pointer\" data-char=\"9\">غ</a>\n        <a class=\"pointer\" data-char=\"10\">ع</a>\n        <a class=\"pointer\" data-char=\"11\">ظ</a>\n        <a class=\"pointer\" data-char=\"12\">ط</a>\n        <a class=\"pointer\" data-char=\"13\">ض</a>\n        <a class=\"pointer\" data-char=\"14\">ص</a>\n        <a class=\"pointer\" data-char=\"15\">ش</a>\n        <a class=\"pointer\" data-char=\"16\">س</a>\n        <a class=\"pointer\" data-char=\"17\">ز</a>\n        <a class=\"pointer\" data-char=\"18\">ر</a>\n        <a class=\"pointer\" data-char=\"19\">ذ</a>\n        <a class=\"pointer\" data-char=\"20\">د</a>\n        <a class=\"pointer\" data-char=\"21\">خ</a>\n        <a class=\"pointer\" data-char=\"22\">ح</a>\n        <a class=\"pointer\" data-char=\"23\">ج</a>\n        <a class=\"pointer\" data-char=\"24\">ث</a>\n        <a class=\"pointer\" data-char=\"25\">ت</a>\n        <a class=\"pointer\" data-char=\"26\">ب</a>\n        <a class=\"pointer\" data-char=\"27\">ا</a>\n      </div>\n\n      <div class=\"grid\">\n        <div class=\"grid__col--12\">\n          <div>\n            <p>&nbsp;</p>\n            <input class=\"userSentence txtcenter\">\n            <p></p>\n            <button class=\"btn--default fill checkSentence\">\n              Confirm\n            </button>\n          </div>\n        </div>\n      </div>\n\n      <div class=\"grid\">\n        <div class=\"grid__col--8 wordlist txtcenter\">\n          <button class=\"btn--default addword block\" style=\"width: 100%;\">&nbsp;</button>\n        </div>\n        <div class=\"grid__col--4\">\n          <button class=\"btn--default delword fr\" style=\"background: #fff;\">\n            <img class=\"nomar\" src=\"../imgs/backspace.svg\" alt=\"backspace\">\n          </button>\n        </div>\n      </div>\n    </div>\n    <input id=\""+ nextPage +"\" type=\"radio\" name=\"lesson\">");
           }
           if (lessonType.toUpperCase() === "SELECT THE MISSING WORD?") {
-            $(this).val(lessonType.toUpperCase());
+            $(this).val("<div class=\"page "+ lessonPage +"\">\n      <div class=\"txtcenter\" style=\"font: 400 normal normal 24px/2 'Lato'; cursor: default;\">\n        <p>&nbsp;</p>\n        Select the missing word \"<span class=\"pointer underline arb ques\" data-meaning=\""+ engTrans +"\">"+ arbWord +"</span>\"?\n      </div>\n\n      <div class=\"grid\">\n        <div class=\"grid__col--12 list txtcenter\">\n          <p>&nbsp;</p>\n          <button class=\"btn--default arb addword wrong\">"+ wrongAnswer1 +"</button>\n          <button class=\"btn--default arb addword wrong\">"+ wrongAnswer2 +"</button>\n          <button class=\"btn--default arb addword wrong\">"+ wrongAnswer3 +"</button>\n          <button class=\"btn--default arb addword correct answer\">"+ correctAnswer +"</button>\n        </div>\n      </div>\n    </div>\n    <input id=\""+ nextPage +"\" type=\"radio\" name=\"lesson\">");
+          }
+          
+          if (lessonPage === "1") {
+            var firstPage = '<input id="1" type="radio" name="lesson" checked>';
+            $(this).val(firstPage + '\n' + $(this).val());
+          }
+          if (lessonPage === "20") {
+            var lastPage = "<!--End of the lesson-->\n    <div class=\"page 21 end\">\n      <div class=\"txtcenter\" style=\"font: 400 normal normal 24px/2 'Lato';\">\n        <br><br>\n        You've completed <span data-document=\"title\"></span>\n        <p>&nbsp;</p>\n      </div>\n      \n      <div class=\"grid\">\n        <div class=\"grid__col--12\">\n          <h2>You scored!</h2>\n          <h1>\n            <span data-correct=\"amount\">0</span> out of 20\n          </h1>\n        </div>\n      </div>\n      \n      <p>&nbsp;</p>\n      <p>&nbsp;</p>\n      \n      <div class=\"grid\">\n        <div class=\"grid__col--12 txtcenter\">\n          <a href=\"../skills/basics1.html\" class=\"btn--default fill pointer\">\n            Back\n          </a>\n        </div>\n      </div>\n    </div>\n    \n    <!-- Speaking Tips -->\n    <div class=\"tips\">\n      <div class=\"txtcenter\" style=\"font: 400 normal normal 24px/2 'Lato';\">\n        <br><br>\n        General tips on how to pass a speaking exercise:\n        <p>&nbsp;</p>\n      </div>\n      \n      <div class=\"grid\">\n        <div class=\"grid__col--12\">\n          <p>\n            <i class=\"fa fa-circle\" style=\"transform: scale(0.6);\"></i>\n            Speak aloud and close to the microphone.\n          </p>\n          <p>\n            <i class=\"fa fa-circle\" style=\"transform: scale(0.6);\"></i>\n            Don't speak slowly. Speak at a natural pace.\n          </p>\n          <p>\n            <i class=\"fa fa-circle\" style=\"transform: scale(0.6);\"></i>\n            For beginners, focus more on the whole sentence. Don't get stuck on 1~2 mispronounced words.\n          </p>\n        </div>\n      </div>\n      \n      <p>&nbsp;</p>\n      <p>&nbsp;</p>\n      \n      <div class=\"grid\">\n        <div class=\"grid__col--12 txtcenter\">\n          <label for=\"speak\" class=\"btn--default fill pointer\">\n            Back\n          </label>\n        </div>\n      </div>\n    </div>\n    \n    <!--Translation tooltip-->\n    <div class=\"translation hide\">\n      <i class=\"fa fa-caret-up\"></i>\n      \n      <div class=\"text\"></div>\n    </div>";
+            $(this).val($(this).val() + '\n\n' + lastPage);
           }
         });
       },
       fullLessonCode       = function() {
-        
+        $('.fullcode').val(function() {
+          return $.map($(".lessonpage"), function(el) {
+            return el.value
+          }).join('\n\n');
+        });
       };
   
   $("input, [contentEditable]").on("keyup change", function() {
     setLessonCode();
+    fullLessonCode();
   });
   setLessonCode();
+  fullLessonCode();
   
   //  Debug lesson
   $("[data-action=play]").click(function() {
@@ -185,7 +198,7 @@ $(document).ready(function() {
     var previewFrame = document.getElementById("preview"),
         preview =  previewFrame.contentDocument ||  previewFrame.contentWindow.document;
     
-    var fullLesson = 'lesson code coming soon';
+    var fullLesson = "<!DOCTYPE html>\n<html>\n  <head>\n    <title>ArabEngo: "+ $("[data-lesson=title]").text() +"</title>\n    <meta charset=\"utf-8\">\n    <meta name=\"viewport\" content=\"initial-scale=1.0\">\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=9\">\n    <link rel=\"stylesheet\" href=\"../css/lessons.css\">\n    <script src=\"../libraries/jquery/jquery.js\"></script>\n    <script src=\"../libraries/alertify/alertify.min.js\"></script>\n  </head>\n  <body>\n    <script src=\"../js/responsivevoice.js\"></script>\n    <script src=\"../js/annyang.min.js\"></script>\n    <script src=\"../js/speechkitt.min.js\"></script>\n    <script src=\"../js/lessons.js\"></script>\n    \n    <!--Lesson Pages-->\n    "+ $('.fullcode').val() +"\n  </body>\n</html>";
     preview.open();
     preview.write(fullLesson);
     preview.close();
@@ -233,7 +246,6 @@ $(document).ready(function() {
 //    HOW DO YOU SAY {TYPING}?
 //    HOW DO YOU SAY (ARB)?
 //    WHAT WAS SAID?
-//    WHAT WAS SAID (ARB)?
 //    WHAT WAS SAID {TYPING}?
 //    SELECT THE MISSING WORD?
 
@@ -258,10 +270,6 @@ $(document).ready(function() {
     if (lessonType.toUpperCase() === "WHAT WAS SAID?") {
       $(this).parent().parent().next().find("[data-output=lesson]").empty().html("<textarea class=\"lessonpage\"></textarea>\n\n<form action=\"#\" class=\"mdl-cell--6-col ib\">\n  <div class=\"mdl-textfield mdl-js-textfield\">\n    <input class=\"mdl-textfield__input\" type=\"text\" placeholder=\"Arabic word:\" data-word=\"arbword\" value=\"مرحبا\">\n  </div>\n</form>\n<div>\n  <form action=\"#\" class=\"mdl-cell--6-col ib\">\n    <div class=\"mdl-textfield mdl-js-textfield\">\n      <input class=\"mdl-textfield__input\" type=\"text\" placeholder=\"Correct answer:\" data-word=\"correctanswer\" value=\"girl\">\n    </div>\n  </form>\n  <form action=\"#\" class=\"mdl-cell--6-col ib\">\n    <div class=\"mdl-textfield mdl-js-textfield\">\n      <input class=\"mdl-textfield__input\" type=\"text\" placeholder=\"Wrong answer:\" data-word=\"wronganswer1\" value=\"man\">\n    </div>\n  </form>\n</div>\n<div>\n  <form action=\"#\" class=\"mdl-cell--6-col ib\">\n    <div class=\"mdl-textfield mdl-js-textfield\">\n      <input class=\"mdl-textfield__input\" type=\"text\" placeholder=\"Wrong answer:\" data-word=\"wronganswer2\" value=\"hello\">\n    </div>\n  </form>\n  <form action=\"#\" class=\"mdl-cell--6-col ib\">\n    <div class=\"mdl-textfield mdl-js-textfield\">\n      <input class=\"mdl-textfield__input\" type=\"text\" placeholder=\"Wrong answer:\" data-word=\"wronganswer3\" value=\"woman\">\n    </div>\n  </form>\n</div>");
       WHATWASSAID();
-    }
-    if (lessonType.toUpperCase() === "WHAT WAS SAID (ARB)?") {
-      $(this).parent().parent().next().find("[data-output=lesson]").empty().html("<textarea class=\"lessonpage\"></textarea>\n\n<form action=\"#\" class=\"mdl-cell--6-col ib\">\n  <div class=\"mdl-textfield mdl-js-textfield\">\n    <input class=\"mdl-textfield__input\" type=\"text\" placeholder=\"Arabic word:\" data-word=\"arbword\">\n  </div>\n</form>\n<div>\n  <form action=\"#\" class=\"mdl-cell--6-col ib\">\n    <div class=\"mdl-textfield mdl-js-textfield\">\n      <input class=\"mdl-textfield__input\" type=\"text\" placeholder=\"Correct answer:\" data-word=\"correctanswer\">\n    </div>\n  </form>\n  <form action=\"#\" class=\"mdl-cell--6-col ib\">\n    <div class=\"mdl-textfield mdl-js-textfield\">\n      <input class=\"mdl-textfield__input\" type=\"text\" placeholder=\"Wrong answer:\" data-word=\"wronganswer1\">\n    </div>\n  </form>\n</div>\n<div>\n  <form action=\"#\" class=\"mdl-cell--6-col ib\">\n    <div class=\"mdl-textfield mdl-js-textfield\">\n      <input class=\"mdl-textfield__input\" type=\"text\" placeholder=\"Wrong answer:\" data-word=\"wronganswer2\">\n    </div>\n  </form>\n  <form action=\"#\" class=\"mdl-cell--6-col ib\">\n    <div class=\"mdl-textfield mdl-js-textfield\">\n      <input class=\"mdl-textfield__input\" type=\"text\" placeholder=\"Wrong answer:\" data-word=\"wronganswer3\">\n    </div>\n  </form>\n</div>");
-      WHATWASSAIDARB();
     }
     if (lessonType.toUpperCase() === "WHAT WAS SAID {TYPING}?") {
       $(this).parent().parent().next().find("[data-output=lesson]").empty().html("<textarea class=\"lessonpage\"></textarea>\n\n<form action=\"#\" class=\"mdl-cell--6-col ib\">\n  <div class=\"mdl-textfield mdl-js-textfield\">\n    <input class=\"mdl-textfield__input\" type=\"text\" placeholder=\"Arabic word:\" data-word=\"arbword\" value=\"امراه\">\n  </div>\n</form>");

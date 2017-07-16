@@ -194,7 +194,11 @@ a.mdl-js-ripple-effect {
 }
 
 /*Preview full code while editing*/
+.lessonpage {
+  display: none;
+}
 .fullcode {
+  display: none;
   position: absolute;
   bottom: 0;
   right: 0;
