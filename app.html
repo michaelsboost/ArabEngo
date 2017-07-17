@@ -269,7 +269,7 @@
               </a>
             </div>
             <div>
-              <a class="pointer">
+              <a class="pointer" uk-toggle="target: #modal-close-default">
                 <span class="skill" style="background-color: transparent!important; background-image: url(imgs/group-color.svg); background-size: 87%;"></span>
                 <p>Community Submissions</p>
               </a>
@@ -291,6 +291,14 @@
             -->
           </div>
         </div>
+      </div>
+    </div>
+
+    <!-- This is the modal with the default close button -->
+    <div id="modal-close-default" uk-modal>
+      <div class="uk-modal-dialog uk-modal-body">
+        <button class="uk-modal-close-default" type="button" uk-close></button>
+        <iframe src="community.html"></iframe>
       </div>
     </div>
 

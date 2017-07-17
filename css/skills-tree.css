@@ -252,3 +252,17 @@ body {
   background-size: 100%;
   opacity: .7;
 }
+
+.uk-modal-dialog.uk-modal-body {
+  padding: 0;
+}
+.uk-modal-body iframe {
+  width: 100%;
+  height: calc(100vh - 6.25em);
+  border: 0;
+}
+@media all and (max-width:640px) {
+  .uk-modal-body iframe {
+    height: calc(100vh - 30px);
+  }
+}
