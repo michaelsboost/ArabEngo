@@ -7,8 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=9" />
     <meta name="description" content="Learn Arabic for English Speakers with ArabEngo.">
     <meta name="author" content="Michael Schwartz">
-    <link rel="icon" type="image/vnd.microsoft.icon" href="logo.ico">
-    <link rel="SHORTCUT ICON" href="logo.ico">
+    <link rel="icon" type="image/vnd.microsoft.icon" href="favicon.ico">
+    <link rel="SHORTCUT ICON" href="favicon.ico">
     <!-- Style sheets -->
     <link rel="stylesheet" href="libraries/polyui/polyui.css">
     <link rel="stylesheet" href="libraries/uikit/css/uikit.min.css" />
@@ -22,8 +22,6 @@
     <!-- Scripts -->
     <script src="libraries/jquery/jquery.js"></script>
     <script src="libraries/alertify/alertify.min.js"></script>
-    <script src="libraries/jquery/jquery-migrate-1.2.1.min.js"></script>
-    <script src="libraries/slick/slick.min.js"></script>
     <script src="libraries/uikit/js/uikit.min.js"></script>
     <script src="libraries/uikit/js/uikit-icons.min.js"></script>
   </head>
@@ -269,7 +267,7 @@
               </a>
             </div>
             <div>
-              <a class="pointer" uk-toggle="target: #modal-close-default">
+              <a class="pointer" onclick="window.location.hash = 'community';" uk-toggle="target: #modal-close-default" data-open="community">
                 <span class="skill" style="background-color: transparent!important; background-image: url(imgs/group-color.svg); background-size: 87%;"></span>
                 <p>Community Submissions</p>
               </a>
@@ -309,5 +307,21 @@
         <h2>Loading lesson...</h2>
       </div>
     </div> -->
+    
+    <script>
+      // Check if there's a hash onload
+      if (window.location.hash === "#community") {
+        $("[data-open=community]").trigger('click');
+      }
+
+      // Add hash when commuity is clicked
+      $("[data-open=community]").click(function() {
+        window.location.hash = "#community";
+      });
+      $(".uk-modal-close-default").click(function() {
+        window.location.hash = "";
+        // window.location.href = window.location.toString().split(/\?|#/)[0];
+      });
+    </script>
   </body>
 </html>

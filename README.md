@@ -39,6 +39,47 @@ ArabEngo uses a number of open source projects to work properly:
 * [Github Gists](https://developer.github.com/v3/gists/) - A reliable host used to save your lessons & chats to the cloud
 * [Twitter Web API](https://dev.twitter.com/web/embedded-timelines) - Allows users to share their lessons and chats to the community but also makes it easier interact with ArabEngo developers.
 
+Folder Structure
+-------------
+- c
+ - short directory to redirect to [chat](http://mikethedj4.github.io/ArabEngo/chat/)
+- css
+ - holds all css files
+- designer
+ - lesson designers html
+- e
+ - short directory to redirect to [designer](http://mikethedj4.github.io/ArabEngo/designer/)
+- editor
+ - lesson chat editors html
+- imgs
+ - holds all images
+- js
+ - holds all javascript files
+- l
+ - short directory to redirect to [lessons](http://mikethedj4.github.io/ArabEngo/lessons/)
+- lessons
+ - output lesson html
+- libraries
+ - holds all libraries (jquery, alertify, etc:)
+- sounds
+ - holds all sound files
+
+JavaScript Files
+-------------
+- chat.js
+ - powers chats made and published by the community from the [chat editor](http://mikethedj4.github.io/ArabEngo/editor/)
+- chat-sample.js
+ - powers the [sample chat](http://mikethedj4.github.io/ArabEngo/lessons/kareem.html)
+- community-lessons.js
+ - powers lessons made and published by the community from the [lesson designer](http://mikethedj4.github.io/ArabEngo/designer/)
+- designer.js
+ - powers the [lesson designer](http://mikethedj4.github.io/ArabEngo/designer/)
+- editor.js
+ - powers the [chat editor](http://mikethedj4.github.io/ArabEngo/editor/)
+- lessons.js
+ - powers all ArabEngo [lessons](http://mikethedj4.github.io/ArabEngo/lessons/)
+- [responsivevoice.js](https://responsivevoice.org/) - powerful text to speech library
+
 Free Software, Hell Yeah!
 -------------
 
