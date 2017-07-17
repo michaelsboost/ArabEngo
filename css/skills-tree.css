@@ -37,6 +37,15 @@ body {
   margin: 0 auto;
   padding: 3em 1em;
 }
+.skillstree p {
+  margin: 0 0 1.66667em;
+}
+.skillstree a {
+  color: inherit;
+}
+.skillstree a:hover {
+  text-decoration: none;
+}
 .skillnotavailable {
   opacity: .5;
 }

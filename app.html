@@ -7,152 +7,299 @@
     <meta http-equiv="X-UA-Compatible" content="IE=9" />
     <meta name="description" content="Learn Arabic for English Speakers with ArabEngo.">
     <meta name="author" content="Michael Schwartz">
-    <link rel="icon" type="image/vnd.microsoft.icon" href="favicon.ico">
-    <link rel="SHORTCUT ICON" href="favicon.ico">
-    <link rel="stylesheet" href="css/app.css">
+    <link rel="icon" type="image/vnd.microsoft.icon" href="logo.ico">
+    <link rel="SHORTCUT ICON" href="logo.ico">
+    <!-- Style sheets -->
+    <link rel="stylesheet" href="libraries/polyui/polyui.css">
+    <link rel="stylesheet" href="libraries/uikit/css/uikit.min.css" />
+    <link rel="stylesheet" href="libraries/alertify/themes/alertify.core.css" />
+    <link rel="stylesheet" href="libraries/alertify/themes/alertify.default.css" />
+    <link rel="stylesheet" href="libraries/font-awesome/font-awesome.css" />
+    <link rel="stylesheet" href="libraries/font-awesome/macset.css" />
+    <link rel="stylesheet" href="css/skills-tree.css" />
+    <link rel="stylesheet" href="css/lessongrid.css" />
+    <link rel="stylesheet" href="css/vars.css" />
+    <!-- Scripts -->
     <script src="libraries/jquery/jquery.js"></script>
     <script src="libraries/alertify/alertify.min.js"></script>
     <script src="libraries/jquery/jquery-migrate-1.2.1.min.js"></script>
+    <script src="libraries/slick/slick.min.js"></script>
     <script src="libraries/uikit/js/uikit.min.js"></script>
     <script src="libraries/uikit/js/uikit-icons.min.js"></script>
   </head>
   <body>
-    <!-- lessons -->
-    <div class="uk-child-width-1-2@s uk-grid-match" uk-grid>
-      <div>
-        <div uk-toggle="target: #introduction" class="pointer uk-card uk-card-primary uk-card-hover uk-card-body uk-width-1-@m" data-open="introduction">
-          <div class="uk-card-badge uk-label">Beginner</div>
-          <h3 class="uk-card-title">Introduction</h3>
-          <p>All you need to know about ArabEngo!</p>
+    <!-- Background -->
+    <div class="bgi"></div>
+    <div class="bgc"></div>
+
+    <!-- Skill Tree -->
+    <div class="skills-tree-container">
+      <div class="grid learning-courses">
+        <div class="skillstree txtcenter">
+          <div class="grid__col--12 skilltree txtcenter">
+            <div>
+              <a class="introduction pointer" href="lessons/introduction.html">
+                <span class="skill"></span>
+                <p>Introduction</p>
+              </a>
+            </div>
+            <a class="alphabet pointer" href="lessons/alphabet/index.html">
+              <span class="skill"></span>
+              <p>Alphabet</p>
+            </a>
+            <a class="basics1 basic pointer" href="lessons/basics1/index.html">
+              <span class="skill"></span>
+              <p>Basics 1</p>
+            </a>
+            <!--
+            <a class="skillnotavailable basics2 basic pointer" href="javascript:alertify.log('coming soon...')">
+              <span class="skill"></span>
+              <p>Basics 2</p>
+            </a>
+            <a class="skillnotavailable phrases pointer" href="javascript:alertify.log('coming soon...')">
+              <span class="skill"></span>
+              <p>Phrases</p>
+            </a>
+            <a class="skillnotavailable food pointer" href="javascript:alertify.log('coming soon...')">
+              <span class="skill"></span>
+              <p>Food</p>
+            </a>
+            <a class="skillnotavailable animals pointer" href="javascript:alertify.log('coming soon...')">
+              <span class="skill"></span>
+              <p>Animals</p>
+            </a>
+            <a class="skillnotavailable plurals pointer" href="javascript:alertify.log('coming soon...')">
+              <span class="skill"></span>
+              <p>Plurals</p>
+            </a>
+            <a class="skillnotavailable possession pointer" href="javascript:alertify.log('coming soon...')">
+              <span class="skill"></span>
+              <p>Possession</p>
+            </a>
+            <a class="skillnotavailable clothing pointer" href="javascript:alertify.log('coming soon...')">
+              <span class="skill"></span>
+              <p>Clothing</p>
+            </a>
+            <a class="skillnotavailable questions pointer" href="javascript:alertify.log('coming soon...')">
+              <span class="skill"></span>
+              <p>Questions</p>
+            </a>
+            <a class="skillnotavailable present1 run pointer" href="javascript:alertify.log('coming soon...')">
+              <span class="skill"></span>
+              <p>Present 1</p>
+            </a>
+            <a class="skillnotavailable colors art pointer" href="javascript:alertify.log('coming soon...')">
+              <span class="skill"></span>
+              <p>Colors</p>
+            </a>
+            <a class="skillnotavailable conjunctions magnet pointer" href="javascript:alertify.log('coming soon...')">
+              <span class="skill"></span>
+              <p>Conjunctions</p>
+            </a>
+            <a class="skillnotavailable family pointer" href="javascript:alertify.log('coming soon...')">
+              <span class="skill"></span>
+              <p>Family</p>
+            </a>
+            <a class="skillnotavailable prepositions pointer" href="javascript:alertify.log('coming soon...')">
+              <span class="skill"></span>
+              <p>Prepositions</p>
+            </a>
+            <a class="skillnotavailable time pointer" href="javascript:alertify.log('coming soon...')">
+              <span class="skill"></span>
+              <p>Time</p>
+            </a>
+            <a class="skillnotavailable household pointer" href="javascript:alertify.log('coming soon...')">
+              <span class="skill"></span>
+              <p>Household</p>
+            </a>
+            <a class="skillnotavailable sizes pointer" href="javascript:alertify.log('coming soon...')">
+              <span class="skill"></span>
+              <p>Sizes</p>
+            </a>
+            <a class="skillnotavailable occupation pointer" href="javascript:alertify.log('coming soon...')">
+              <span class="skill"></span>
+              <p>Occupation</p>
+            </a>
+            <a class="skillnotavailable adject1 adject pointer" href="javascript:alertify.log('coming soon...')">
+              <span class="skill"></span>
+              <p>Adject. 1</p>
+            </a>
+            <a class="skillnotavailable present2 run pointer" href="javascript:alertify.log('coming soon...')">
+              <span class="skill"></span>
+              <p>Present 2</p>
+            </a>
+            <a class="skillnotavailable determin cog pointer" href="javascript:alertify.log('coming soon...')">
+              <span class="skill"></span>
+              <p>Determin.</p>
+            </a>
+            <a class="skillnotavailable adverbs pointer" href="javascript:alertify.log('coming soon...')">
+              <span class="skill"></span>
+              <p>Adverbs</p>
+            </a>
+            <a class="skillnotavailable objects pointer" href="javascript:alertify.log('coming soon...')">
+              <span class="skill"></span>
+              <p>Objects</p>
+            </a>
+            <a class="skillnotavailable tobe pointer" href="javascript:alertify.log('coming soon...')">
+              <span class="skill"></span>
+              <p>To Be</p>
+            </a>
+            <a class="skillnotavailable places pointer" href="javascript:alertify.log('coming soon...')">
+              <span class="skill"></span>
+              <p>Places</p>
+            </a>
+            <a class="skillnotavailable people pointer" href="javascript:alertify.log('coming soon...')">
+              <span class="skill"></span>
+              <p>People</p>
+            </a>
+            <a class="skillnotavailable objpronouns people pointer" href="javascript:alertify.log('coming soon...')">
+              <span class="skill"></span>
+              <p>Obj. Pronouns</p>
+            </a>
+            <a class="skillnotavailable numbers pointer" href="javascript:alertify.log('coming soon...')">
+              <span class="skill"></span>
+              <p>Numbers</p>
+            </a>
+            <a class="skillnotavailable pasttense run pointer" href="javascript:alertify.log('coming soon...')">
+              <span class="skill"></span>
+              <p>Past Tense</p>
+            </a>
+            <a class="skillnotavailable present3 run pointer" href="javascript:alertify.log('coming soon...')">
+              <span class="skill"></span>
+              <p>Present 3</p>
+            </a>
+            <a class="skillnotavailable countries flag pointer" href="javascript:alertify.log('coming soon...')">
+              <span class="skill"></span>
+              <p>Countries</p>
+            </a>
+            <a class="skillnotavailable adject2 adject pointer" href="javascript:alertify.log('coming soon...')">
+              <span class="skill"></span>
+              <p>Adject 2</p>
+            </a>
+            <a class="skillnotavailable pronouns people pointer" href="javascript:alertify.log('coming soon...')">
+              <span class="skill"></span>
+              <p>Pronouns</p>
+            </a>
+            <a class="skillnotavailable direction pointer" href="javascript:alertify.log('coming soon...')">
+              <span class="skill"></span>
+              <p>Direction</p>
+            </a>
+            <a class="skillnotavailable education pointer" href="javascript:alertify.log('coming soon...')">
+              <span class="skill"></span>
+              <p>Education</p>
+            </a>
+            <a class="skillnotavailable participle run pointer" href="javascript:alertify.log('coming soon...')">
+              <span class="skill"></span>
+              <p>Participle</p>
+            </a>
+            <a class="skillnotavailable feelings pointer" href="javascript:alertify.log('coming soon...')">
+              <span class="skill"></span>
+              <p>Feelings</p>
+            </a>
+            <a class="skillnotavailable nature pointer" href="javascript:alertify.log('coming soon...')">
+              <span class="skill"></span>
+              <p>Nature</p>
+            </a>
+            <a class="skillnotavailable sports pointer" href="javascript:alertify.log('coming soon...')">
+              <span class="skill"></span>
+              <p>Sports</p>
+            </a>
+            <a class="skillnotavailable medical pointer" href="javascript:alertify.log('coming soon...')">
+              <span class="skill"></span>
+              <p>Medical</p>
+            </a>
+            <a class="skillnotavailable business pointer" href="javascript:alertify.log('coming soon...')">
+              <span class="skill"></span>
+              <p>Business</p>
+            </a>
+            <a class="skillnotavailable communication pointer" href="javascript:alertify.log('coming soon...')">
+              <span class="skill"></span>
+              <p>Communication</p>
+            </a>
+            <a class="skillnotavailable spiritual pointer" href="javascript:alertify.log('coming soon...')">
+              <span class="skill"></span>
+              <p>Spiritual</p>
+            </a>
+            <a class="skillnotavailable future run pointer" href="javascript:alertify.log('coming soon...')">
+              <span class="skill"></span>
+              <p>Future</p>
+            </a>
+            <a class="skillnotavailable arts art pointer" href="javascript:alertify.log('coming soon...')">
+              <span class="skill"></span>
+              <p>Arts</p>
+            </a>
+            <a class="skillnotavailable politics pointer" href="javascript:alertify.log('coming soon...')">
+              <span class="skill"></span>
+              <p>Politics</p>
+            </a>
+            <a class="skillnotavailable science pointer" href="javascript:alertify.log('coming soon...')">
+              <span class="skill"></span>
+              <p>Science</p>
+            </a>
+            -->
+            
+            <div>
+              <a class="pointer" href="lessons/akira.html">
+                <span class="skill" style="background-color: transparent!important; background-image: url(imgs/akira.svg); background-size: 87%;"></span>
+                <p>Female Chat</p>
+              </a>
+              <a class="pointer" href="lessons/kareem.html">
+                <span class="skill" style="background-color: transparent!important; background-image: url(imgs/kareem.svg); background-size: 87%;"></span>
+                <p>Male Chat</p>
+              </a>
+            </div>
+            
+            <a class="pointer" href="https://cash.me/$mschwar4" target="_blank">
+              <span class="skill" style="background-color: transparent!important; background-image: url(imgs/square_cash.svg); background-size: 77%;"></span>
+              <p>Donate via SquareCash</p>
+            </a>
+            <a class="pointer" href="https://www.paypal.me/mikethedj4" target="_blank">
+              <span class="skill" style="background-color: transparent!important; background-image: url(imgs/paypal.svg); background-size: 74%;"></span>
+              <p>Donate via PayPal</p>
+            </a>
+            
+            <div class="add-a-skill">
+              <a class="addskill pointer" href="designer/index.html">
+                <span class="add-skill"></span>
+                <p>Add a lesson</p>
+              </a>
+              <a class="addskill pointer" href="editor/index.html">
+                <span class="add-skill"></span>
+                <p>Add a chat</p>
+              </a>
+            </div>
+            <div>
+              <a class="pointer">
+                <span class="skill" style="background-color: transparent!important; background-image: url(imgs/group-color.svg); background-size: 87%;"></span>
+                <p>Community Submissions</p>
+              </a>
+            </div>
+
+            <!-- 
+            <span class="added-skill">
+              <a class="add pointer">
+                <span class="skill"></span>
+                <p>Added Skill</p>
+              </a>
+            </span>
+            <div class="add-a-skill">
+              <a class="addskill pointer">
+                <span class="add-skill"></span>
+                <p>Add Skill</p>
+              </a>
+            </div>
+            -->
+          </div>
         </div>
       </div>
-      <div>
-        <a class="pointer uk-card uk-card-secondary uk-card-hover uk-card-body uk-width-1-@m" href="lessons/alphabet/index.html" target="_blank">
-          <div class="uk-card-badge uk-label">Beginner</div>
-          <h3 class="uk-card-title">Alphabet</h3>
-          <p>Fun games to learn the arabic alphabet!</p>
-        </a>
-      </div>
-      <div>
-        <a class="pointer uk-card uk-card-default uk-card-hover uk-card-body uk-width-1-@m" href="lessons/akira.html" target="_blank">
-          <div class="uk-card-badge uk-label">Beginner</div>
-          <div class="uk-grid-small uk-flex-middle" uk-grid>
-            <div class="uk-width-auto">
-              <img class="uk-border-circle" width="40" height="40" src="imgs/akira.svg">
-            </div>
-            <div class="uk-width-expand">
-              <h3 class="uk-card-title uk-margin-remove-bottom">Meet Akira</h3>
-            </div>
-          </div>
-          <p>In Arabic words change depending on the gender you're speaking with. First lets learn how to introduce ourselves to a female.</p>
-        </a>
-      </div>
-      <div>
-        <a class="pointer uk-card uk-card-default uk-card-hover uk-card-body uk-width-1-@m" href="lessons/kareem.html" target="_blank">
-          <div class="uk-card-badge uk-label">Beginner</div>
-          <div class="uk-grid-small uk-flex-middle" uk-grid>
-            <div class="uk-width-auto">
-              <img class="uk-border-circle" width="40" height="40" src="imgs/kareem.svg">
-            </div>
-            <div class="uk-width-expand">
-              <h3 class="uk-card-title uk-margin-remove-bottom">Meet Kareem</h3>
-            </div>
-          </div>
-          <p>In Arabic words change depending on the gender you're speaking with. Second lets learn how to introduce ourselves to a male.</p>
-        </a>
-      </div>
-    </div>
-    <hr class="uk-divider-icon">
-    <div class="uk-child-width-1-2@s uk-grid-match" uk-grid>
-      <div>
-        <a class="pointer uk-card uk-card-default uk-card-hover uk-card-body uk-width-1-@m" href="designer/" target="_blank">
-          <div class="uk-card-badge uk-label">Tool</div>
-          <div class="uk-grid-small uk-flex-middle" uk-grid>
-            <div class="uk-width-auto">
-              <img class="uk-border-circle" width="40" height="40" src="imgs/design.png">
-            </div>
-            <div class="uk-width-expand">
-              <h3 class="uk-card-title uk-margin-remove-bottom">Designer</h3>
-            </div>
-          </div>
-          <p>Design your own lesson and share it with the world!</p>
-        </a>
-      </div>
-      <div>
-        <a class="pointer uk-card uk-card-default uk-card-hover uk-card-body uk-width-1-@m" href="editor/" target="_blank">
-          <div class="uk-card-badge uk-label">Tool</div>
-          <div class="uk-grid-small uk-flex-middle" uk-grid>
-            <div class="uk-width-auto">
-              <img class="uk-border-circle" width="40" height="40" src="imgs/tool.svg">
-            </div>
-            <div class="uk-width-expand">
-              <h3 class="uk-card-title uk-margin-remove-bottom">Editor</h3>
-            </div>
-          </div>
-          <p>Build your own chat session and share it with the world!</p>
-        </a>
-      </div>
-    </div>
-    <hr class="uk-divider-icon">
-    <div class="uk-child-width-1-0@s uk-grid-match" uk-grid>
-      <div>
-        <div uk-toggle="target: #arabengochats" class="pointer uk-card uk-card-default uk-card-hover uk-card-body uk-width-1-@m" data-open="arabengochats">
-          <div class="uk-card-badge uk-label">Community</div>
-          <div class="uk-grid-small uk-flex-middle" uk-grid>
-            <div class="uk-width-auto">
-              <img class="uk-border-circle" width="40" height="40" src="imgs/group.svg">
-            </div>
-            <div class="uk-width-expand">
-              <h3 class="uk-card-title uk-margin-remove-bottom">Community Builds!</h3>
-            </div>
-          </div>
-          <p>Interact with lessons & chats made by the ArabEngo community!</p>
-        </div>
-      </div>
     </div>
 
-    <!-- off-canvas introduction menu -->
-    <div id="introduction" uk-modal>
-      <div class="uk-modal-dialog">
-        <button class="uk-modal-close-default" type="button" uk-close></button>
-
-        <h1>Introduction</h1>
-        <h3>Greetings and Salutations</h3>
-        <h3>السلام عليكم</h3>
-        <h3>و عليكم السلام</h3>
-        <h2>Things to know about the Arabic language before you get started.</h2>
-        
-        <b class="bold-heading">Modern Standard Arabic or Classical Arabic?</b>
-        Arabic is the official language of the counties within the Arab League.  The Arab Leagues is a region of 22 countries which covers a vast geographic area from Southwest Asia to Northwest Africa. Arabic is also used by over 1 million Muslims, as Classical Arabic is the religious language of the Qur’an (The holy book of Islam).  Classical Arabic is now considered more of a written language than a spoken one. Modern Standard Arabic (MSA) is what is mainly understood across most Arabic countries and is the version used to broadcast news on television, and what most students use as an introduction to Arabic.  Official documents, newspapers and modern literature also tend to be written in MSA.<br><br>
-
-        With ArabEngo you will be learning, "Modern Standard Arabic".<br><br>
-
-        <b class="bold-heading">Will Arabic help me with learning any other languages?</b>
-        You will encounter difficulties with Arabic dialects but you will be able to communicate using MSA.  If you are learning for a specific purpose/ going to a particular country, it may be worth learning MSA as your introduction to Arabic and dabbling in some phrases of the local dialect. As Arabic is a Semantic language, you will find similarities with spoken Aramaic and Hebrew.  As the alphabet is used by other languages, you will be able to decipher letters form Pashto, Kurdish, Urdu and Persian/Farsi – but you won’t know what they mean!<br><br>
-
-        By learning other languages, you gain a greater perspective and understanding about the world we live in.<br><br>
-
-        Excerpt from - <a href="https://lingos.co/blog/brief-introduction-to-arabic-language/" target="_blank">https://lingos.co/</a><br><br>
-
-        <b class="bold-heading">Sources:</b>
-        <a href="https://lingos.co/blog/brief-introduction-to-arabic-language/" target="_blank">https://lingos.co/</a><br>
-        <a href="http://www.omniglot.com/writing/arabic.htm" target="_blank">http://www.omniglot.com/</a><br>
-        <a href="http://www.al-bab.com/arab/language/lang.htm" target="_blank">http://www.al-bab.com/</a><br>
-        <a href="http://www.aataweb.org/about" target="_blank">http://www.aataweb.org/</a><br>
-        <a href="http://www.arabion.net/learnarabic.html" target="_blank">http://www.arabion.net/</a><br>
-        <a href="https://en.wikipedia.org/wiki/Arabic" target="_blank">https://en.wikipedia.org/wiki/Arabic</a>
+    <!-- Preloader -->
+    <!-- <div class="hide table lightbluishoverlay spinner">
+      <div class="cell">
+        <div class="loading"></div>
+        <h2>Loading lesson...</h2>
       </div>
-    </div>
-    <div id="arabengochats" uk-modal>
-      <div class="uk-modal-dialog">
-        <button class="uk-modal-close-default" type="button" uk-close></button>
-
-        <div class="uk-modal-body" uk-overflow-auto style="padding: 0; height: 100vh;">
-          <iframe src="community.html" width="100%" height="100%" frameborder="0"></iframe>
-        </div>
-      </div>
-    </div>
-
-    <script src="js/app.js"></script>
+    </div> -->
   </body>
 </html>
