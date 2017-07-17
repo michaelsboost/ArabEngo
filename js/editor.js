@@ -528,7 +528,7 @@ $("[data-play=howto]").click(function() {
       controls : 0,
       showinfo : 0
     },
-    src  : 'https://www.youtube.com/embed/fW10FYVjTEY', // Source of the content
+    src  : 'https://www.youtube.com/embed/xRYeqeyYgZc', // Source of the content
     type : 'iframe' // Content type: image|inline|ajax|iframe|html (optional)
   });
 });
