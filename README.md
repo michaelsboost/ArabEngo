@@ -31,11 +31,12 @@ Tech
 
 ArabEngo uses a number of open source projects to work properly:
 
-* [Poly UI Kit](https://github.com/Guilh/Poly) - Used for the alphabet's user interface
-* [Uikit](https://getuikit.com) - Used mostly for the website's interface and part of the lessons's interface
+* [Poly UI Kit](https://github.com/Guilh/Poly) - Used for lessons & alphabet's user interface 
+* [Material Design Lite](https://getmdl.io/) - Used to make the lesson designer
+* [Uikit](https://getuikit.com) - Used briefly throughout the website, skills and chat section
 * [jQuery](http://jquery.com/) - duh
-* [Github Gists](https://developer.github.com/v3/gists/) - A reliable host used to save your weave to the cloud
-* [Twitter Web API](https://dev.twitter.com/web/embedded-timelines) - Allows users to interact with ArabEngo developers easier and share their chats to the ArabEngo community.
+* [Github Gists](https://developer.github.com/v3/gists/) - A reliable host used to save your lessons & chats to the cloud
+* [Twitter Web API](https://dev.twitter.com/web/embedded-timelines) - Allows users to share their lessons and chats to the community but also makes it easier interact with ArabEngo developers.
 
 Free Software, Hell Yeah!
 -------------
