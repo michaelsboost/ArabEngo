@@ -35,6 +35,7 @@ ArabEngo uses a number of open source projects to work properly:
 * [Material Design Lite](https://getmdl.io/) - Used to make the lesson designer
 * [Uikit](https://getuikit.com) - Used briefly throughout the website, skills and chat section
 * [jQuery](http://jquery.com/) - duh
+* [ResponsiveVoice.JS](https://responsivevoice.org/) - Used to convert text to speech. Also main reason why this application is under the [Creative Commons Attribution-NonCommercial 4.0](https://github.com/mikethedj4/ArabEngo/blob/gh-pages/LICENSE.md) license and not the [MIT](https://opensource.org/licenses/MIT) license.
 * [Github Gists](https://developer.github.com/v3/gists/) - A reliable host used to save your lessons & chats to the cloud
 * [Twitter Web API](https://dev.twitter.com/web/embedded-timelines) - Allows users to share their lessons and chats to the community but also makes it easier interact with ArabEngo developers.
 
