@@ -1,7 +1,7 @@
 # ArabEngo
 Learn Arabic for English Speakers with ArabEngo!
 
-![](https://raw.githubusercontent.com/mikethedj4/ArabEngo/gh-pages/arabengo_app.png)
+![](https://raw.githubusercontent.com/mikethedj4/ArabEngo/gh-pages/imgs/screenshots/arabengo_app.png)
 
 We all learned our first language through social interaction and communication. Sites like [Verbling](https://www.verbling.com/community) and [Speaky](https://www.speaky.com/) are great sites that take advantage of using this technique and we highly recommend them!
 
