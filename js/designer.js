@@ -13,6 +13,16 @@ $(document).ready(function() {
   $(".comingsoon").click(function() {
     alertify.message('coming soon..');
   });
+  $("[data-play=howto]").click(function() {
+    $.fancybox.open({
+      youtube : {
+        controls : 0,
+        showinfo : 0
+      },
+      src  : 'https://www.youtube.com/embed/fW10FYVjTEY', // Source of the content
+      type : 'iframe' // Content type: image|inline|ajax|iframe|html (optional)
+    });
+  });
   $("[data-action=saveCode]").click(function() {
     setLessonCode();
     fullLessonCode();
