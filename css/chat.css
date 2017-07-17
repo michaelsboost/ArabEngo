@@ -145,7 +145,7 @@ a, a:hover {
 
 /* Chat History */
 .chat-container {
-  height: calc(100vh - 54px - 255px - 43px);
+  height: calc(100vh - 54px - 255px - 46px);
   background-color: #f1f7f5;
   overflow: auto;
   padding-bottom: 15px;

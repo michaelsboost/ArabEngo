@@ -522,6 +522,17 @@ var grabHTML,
       });
     };
 
+$("[data-play=howto]").click(function() {
+  $.fancybox.open({
+    youtube : {
+      controls : 0,
+      showinfo : 0
+    },
+    src  : 'https://www.youtube.com/embed/fW10FYVjTEY', // Source of the content
+    type : 'iframe' // Content type: image|inline|ajax|iframe|html (optional)
+  });
+});
+
 // Type the word with a physical keyboard
 function typeWordKeyBoard() {
   $(window).on("keydown", function(e) {

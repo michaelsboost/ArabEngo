@@ -30,7 +30,7 @@ var intervalChat,
     audioKey       = document.createElement("audio"),
     url            = window.location.hash,
     finishedLesson = function() {
-      audioElement.setAttribute("src", "../../sounds/lesson-complete.mp3");
+      audioElement.setAttribute("src", "https://mikethedj4.github.io/ArabEngo/sounds/lesson-complete.mp3");
       audioElement.play();
     },
     scroll2B       = function() {

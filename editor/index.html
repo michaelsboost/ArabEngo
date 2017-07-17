@@ -5,18 +5,34 @@
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=9">
+
+    <!-- CSS -->
     <link rel="stylesheet" href="../libraries/uikit/css/uikit.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
     <link rel="stylesheet" href="../css/chat.css">
     <link rel="stylesheet" href="../libraries/alertifyjs/css/alertify.min.css">
     <link rel="stylesheet" href="../libraries/alertifyjs/css/themes/default.min.css">
+    <link rel="stylesheet" href="../libraries/fancybox/css/core.css" />
+    <link rel="stylesheet" href="../libraries/fancybox/css/fullscreen.css" />
+    <link rel="stylesheet" href="../libraries/fancybox/css/slideshow.css" />
+    <link rel="stylesheet" href="../libraries/fancybox/css/thumbs.css" />
+    <link rel="stylesheet" href="../libraries/fancybox/css/jquery.fancybox.min.css" />
+    
+    <!-- Javascript -->
     <script src="../libraries/jquery/jquery.js"></script>
     <!--<script src="../libraries/alertify/alertify.min.js"></script>-->
     <script src="../libraries/alertifyjs/alertify.min.js"></script>
     <script src="../js/responsivevoice.js"></script>
     <script src="../libraries/uikit/js/uikit.min.js"></script>
     <script src="../libraries/uikit/js/uikit-icons.min.js"></script>
+    <script src="../libraries/fancybox/js/core.js"></script>
+    <script src="../libraries/fancybox/js/fullscreen.js"></script>
+    <script src="../libraries/fancybox/js/guestures.js"></script>
+    <script src="../libraries/fancybox/js/media.js"></script>
+    <script src="../libraries/fancybox/js/slideshow.js"></script>
+    <script src="../libraries/fancybox/js/thumbs.js"></script>
+    <script src="../libraries/fancybox/js/jquery.fancybox.min.js"></script>
   </head>
   <body>
     <div class="uk-offcanvas-content">
@@ -42,7 +58,7 @@
           <a class="pointer largephone uk-modal-close" href="javascript:location.reload(true)">
             <span class="fa fa-refresh scale"></span>
           </a>
-          <a class="pointer uk-modal-close largephone">
+          <a class="pointer uk-modal-close largephone" data-play="howto">
             <span class="fa fa-video-camera scale"></span>
           </a>
           <a class="pointer uk-modal-close" uk-toggle="target: #user-info">
@@ -54,6 +70,9 @@
       <div class="sharelist hide">
         <a class="pointer uk-modal-close onlysmall" href="javascript:location.reload(true)">
           <span class="fa fa-refresh"></span>
+        </a>
+        <a href="javascript:void(0)" class="onlysmall" data-play="howto">
+          <span class="fa fa-question"></span>
         </a>
         <a href="javascript:void(0)" class="onlysmall" data-clear="chat">
           <span class="fa fa-file-o"></span>
