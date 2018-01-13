@@ -32,15 +32,15 @@ var counter = 0;
     audioWord     = document.createElement("audio"),
     keyLetter     = document.createElement("audio"),
     successSound  = function() {
-      audioElement.setAttribute("src", "https://mikethedj4.github.io/ArabEngo/sounds/success.mp3");
+      audioElement.setAttribute("src", "https://michaelsboost.github.io/ArabEngo/sounds/success.mp3");
       audioElement.play();
     },
     errorSound    = function() {
-      audioElement.setAttribute("src", "https://mikethedj4.github.io/ArabEngo/sounds/error.mp3");
+      audioElement.setAttribute("src", "https://michaelsboost.github.io/ArabEngo/sounds/error.mp3");
       audioElement.play();
     },
     wrongSound    = function() {
-      audioElement.setAttribute("src", "https://mikethedj4.github.io/ArabEngo/sounds/wrong.mp3");
+      audioElement.setAttribute("src", "https://michaelsboost.github.io/ArabEngo/sounds/wrong.mp3");
       audioElement.play();
     },
     wrongAnswer   = function(answer, call) {
