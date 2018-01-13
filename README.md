@@ -24,7 +24,7 @@ Version
 Availability
 -------------
 
-Currently ArabEngo is only available [Online](https://mikethedj4.github.io/ArabEngo/) however you can export it for Windows, Linux, Mac OS X, Chrome and for mobile devices (via PhoneGap) using [WebDGap](https://mikethedj4.github.io/WebDGap/)
+Currently ArabEngo is only available [Online](https://michaelsboost.github.io/ArabEngo/) however you can export it for Windows, Linux, Mac OS X, Chrome and for mobile devices (via PhoneGap) using [WebDGap](https://michaelsboost.github.io/WebDGap/)
 
 Tech
 -------------
@@ -101,7 +101,7 @@ Free Software, Hell Yeah!
 Author
 -------------
 
-- [michael schwartz](http://mikethedj4.github.io/) and others
+- [michael schwartz](http://michaelsboost.github.io/) and others
 
 Contribution
 -------------
@@ -112,4 +112,4 @@ You can submit a pull request or simply share the project :)
 
 Of course ArabEngo is free and open source, so you can always fork the project and have fun :)
 
-If ArabEngo was at all helpful for you. You can show your appreciation by [Donating via SquareCash](https://cash.me/$mschwar4) and/or [PayPal](https://www.paypal.me/mikethedj4)
+If ArabEngo was at all helpful for you. You can show your appreciation by [Donating via SquareCash](https://cash.me/$michaelsboost) and/or [PayPal](https://www.paypal.me/mikethedj4)
