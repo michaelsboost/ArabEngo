@@ -493,19 +493,19 @@ var grabHTML,
           hash = window.location.hash.replace(/#/g,"");
           
           embedProject = e.html_url.split("https://gist.github.com/").join("");
-          document.querySelector("[data-output=chatURL]").value = "https://mikethedj4.github.io/ArabEngo/chat/#" + embedProject;
+          document.querySelector("[data-output=chatURL]").value = "https://michaelsboost.github.io/ArabEngo/chat/#" + embedProject;
           document.querySelector("[data-output=chatURL]").onclick = function() {
             this.select(true);
           };
-          document.querySelector("[data-output=editProject]").value = "https://mikethedj4.github.io/ArabEngo/editor/#" + embedProject;
+          document.querySelector("[data-output=editProject]").value = "https://michaelsboost.github.io/ArabEngo/editor/#" + embedProject;
           document.querySelector("[data-output=editProject]").onclick = function() {
             this.select(true);
           };
 
-          $(".share-facebook").attr("href", "https://www.facebook.com/sharer/sharer.php?u=https%3A//mikethedj4.github.io/ArabEngo/chat/%23" + hash);
-          $(".share-twitter").attr("href", "https://twitter.com/home?status=Checkout%20my%20%23"+ $("[data-set=topic]").text().replace(" ", "%20%23").toString() +"%20%23chat%20on%20%23ArabEngo%20%23ArabEngoChat%20-%20https%3A//mikethedj4.github.io/ArabEngo/chat/%23" + hash);
-          $(".share-gplus").attr("href", "https://plus.google.com/share?url=https%3A//mikethedj4.github.io/ArabEngo/chat/%23" + hash);
-          $(".share-linkedin-square").attr("href", "https://www.linkedin.com/shareArticle?mini=true&url=https%3A//mikethedj4.github.io/ArabEngo/chat/%23"+ hash +"&title=Checkout%20my%20%23"+ $("[data-set=topic]").text().replace(" ", "%20%23").toString() +"%20%23chat%20on%20%23ArabEngo%3A%20&summary=&source=");
+          $(".share-facebook").attr("href", "https://www.facebook.com/sharer/sharer.php?u=https%3A//michaelsboost.github.io/ArabEngo/chat/%23" + hash);
+          $(".share-twitter").attr("href", "https://twitter.com/home?status=Checkout%20my%20%23"+ $("[data-set=topic]").text().replace(" ", "%20%23").toString() +"%20%23chat%20on%20%23ArabEngo%20%23ArabEngoChat%20-%20https%3A//michaelsboost.github.io/ArabEngo/chat/%23" + hash);
+          $(".share-gplus").attr("href", "https://plus.google.com/share?url=https%3A//michaelsboost.github.io/ArabEngo/chat/%23" + hash);
+          $(".share-linkedin-square").attr("href", "https://www.linkedin.com/shareArticle?mini=true&url=https%3A//michaelsboost.github.io/ArabEngo/chat/%23"+ hash +"&title=Checkout%20my%20%23"+ $("[data-set=topic]").text().replace(" ", "%20%23").toString() +"%20%23chat%20on%20%23ArabEngo%3A%20&summary=&source=");
           $("[data-action=socialdialog]").fadeIn();
 
           // Successfully saved weave. 
