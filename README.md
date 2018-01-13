@@ -1,7 +1,7 @@
 # ArabEngo
 Learn Arabic for English Speakers with ArabEngo!
 
-![](https://raw.githubusercontent.com/mikethedj4/ArabEngo/gh-pages/imgs/screenshots/arabengo_app.png)
+![](https://raw.githubusercontent.com/michaelsboost/ArabEngo/gh-pages/imgs/screenshots/arabengo_app.png)
 
 We all learned our first language through social interaction and communication. Sites like [Verbling](https://www.verbling.com/community) and [Speaky](https://www.speaky.com/) are great sites that take advantage of using this technique and we highly recommend them!
 
@@ -14,7 +14,7 @@ To Do's
 License
 -------------
 
-[Creative Commons Attribution-NonCommercial 4.0](https://github.com/mikethedj4/ArabEngo/blob/gh-pages/LICENSE.md)
+[Creative Commons Attribution-NonCommercial 4.0](https://github.com/michaelsboost/ArabEngo/blob/gh-pages/LICENSE.md)
 
 Version
 -------------
@@ -35,20 +35,20 @@ ArabEngo uses a number of open source projects to work properly:
 * [Material Design Lite](https://getmdl.io/) - Used to make the lesson designer
 * [Uikit](https://getuikit.com) - Used briefly throughout the website, skills and chat section
 * [jQuery](http://jquery.com/) - duh
-* [ResponsiveVoice.JS](https://responsivevoice.org/) - Used to convert text to speech. Also main reason why this application is under the [Creative Commons Attribution-NonCommercial 4.0](https://github.com/mikethedj4/ArabEngo/blob/gh-pages/LICENSE.md) license and not the [MIT](https://opensource.org/licenses/MIT) license.
+* [ResponsiveVoice.JS](https://responsivevoice.org/) - Used to convert text to speech. Also main reason why this application is under the [Creative Commons Attribution-NonCommercial 4.0](https://github.com/michaelsboost/ArabEngo/blob/gh-pages/LICENSE.md) license and not the [MIT](https://opensource.org/licenses/MIT) license.
 * [Github Gists](https://developer.github.com/v3/gists/) - A reliable host used to save your lessons & chats to the cloud
 * [Twitter Web API](https://dev.twitter.com/web/embedded-timelines) - Allows users to share their lessons and chats to the community but also makes it easier interact with ArabEngo developers.
 
 Folder Structure
 -------------
 - c
-  - short directory to redirect to [chat](http://mikethedj4.github.io/ArabEngo/chat/)
+  - short directory to redirect to [chat](http://michaelsboost.github.io/ArabEngo/chat/)
 - css
   - holds all css files
 - designer
   - lesson designers html
 - e
-  - short directory to redirect to [designer](http://mikethedj4.github.io/ArabEngo/designer/)
+  - short directory to redirect to [designer](http://michaelsboost.github.io/ArabEngo/designer/)
 - editor
   - lesson chat editors html
 - imgs
@@ -56,7 +56,7 @@ Folder Structure
 - js
   - holds all javascript files
 - l
-  - short directory to redirect to [lessons](http://mikethedj4.github.io/ArabEngo/lessons/)
+  - short directory to redirect to [lessons](http://michaelsboost.github.io/ArabEngo/lessons/)
 - lessons
   - output lesson html
 - libraries
@@ -67,24 +67,24 @@ Folder Structure
 JavaScript Files
 -------------
 - chat.js
-  - powers chats made and published by the community from the [chat editor](http://mikethedj4.github.io/ArabEngo/editor/)
+  - powers chats made and published by the community from the [chat editor](http://michaelsboost.github.io/ArabEngo/editor/)
 - chat-sample.js
-  - powers the [sample chat](http://mikethedj4.github.io/ArabEngo/lessons/kareem.html)
+  - powers the [sample chat](http://michaelsboost.github.io/ArabEngo/lessons/kareem.html)
 - community-lessons.js
-  - powers lessons made and published by the community from the [lesson designer](http://mikethedj4.github.io/ArabEngo/designer/)
+  - powers lessons made and published by the community from the [lesson designer](http://michaelsboost.github.io/ArabEngo/designer/)
 - designer.js
-  - powers the [lesson designer](http://mikethedj4.github.io/ArabEngo/designer/)
+  - powers the [lesson designer](http://michaelsboost.github.io/ArabEngo/designer/)
 - editor.js
-  - powers the [chat editor](http://mikethedj4.github.io/ArabEngo/editor/)
+  - powers the [chat editor](http://michaelsboost.github.io/ArabEngo/editor/)
 - lessons.js
-  - powers all ArabEngo [lessons](http://mikethedj4.github.io/ArabEngo/lessons/)
+  - powers all ArabEngo [lessons](http://michaelsboost.github.io/ArabEngo/lessons/)
 - [responsivevoice.js](https://responsivevoice.org/)  - powerful text to speech library
 
 Free Software, Hell Yeah!
 -------------
 
-- [WebDGap](https://mikethedj4.github.io/WebDGap/)
-- [kodeWeave](https://mikethedj4.github.io/kodeWeave/)
+- [WebDGap](https://michaelsboost.github.io/WebDGap/)
+- [kodeWeave](https://michaelsboost.github.io/kodeWeave/)
 - [Araby](https://itunes.apple.com/us/app/learn-arabic-language-with-araby/id1070554896?mt=8)
 - [Duolingo](https://duolingo.com/)
 - [Memrise](https://memrise.com/)
