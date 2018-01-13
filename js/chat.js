@@ -30,7 +30,7 @@ var intervalChat,
     audioKey       = document.createElement("audio"),
     url            = window.location.hash,
     finishedLesson = function() {
-      audioElement.setAttribute("src", "https://mikethedj4.github.io/ArabEngo/sounds/lesson-complete.mp3");
+      audioElement.setAttribute("src", "https://michaelsboost.github.io/ArabEngo/sounds/lesson-complete.mp3");
       audioElement.play();
     },
     scroll2B       = function() {
@@ -342,10 +342,10 @@ if (window.location.hash) {
   $(".preloader").html('<div class="table"><div class="cell"><img class="spin" src="../imgs/loading.svg"></div></div>');
   loadgist(hash);
 
-  $(".share-facebook").attr("href", "https://www.facebook.com/sharer/sharer.php?u=https%3A//mikethedj4.github.io/ArabEngo/chat/%23" + hash);
-  $(".share-twitter").attr("href", "https://twitter.com/home?status=Checkout%20my%20%23"+ $("[data-set=topic]").text().replace(" ", "%20%23").toString() +"%20%23chat%20on%20%23ArabEngo%20%23ArabEngoChat%20-%20https%3A//mikethedj4.github.io/ArabEngo/chat/%23" + hash);
-  $(".share-gplus").attr("href", "https://plus.google.com/share?url=https%3A//mikethedj4.github.io/ArabEngo/chat/%23" + hash);
-  $(".share-linkedin-square").attr("href", "https://www.linkedin.com/shareArticle?mini=true&url=https%3A//mikethedj4.github.io/ArabEngo/chat/%23"+ hash +"&title=Checkout%20my%20%23"+ $("[data-set=topic]").text().replace(" ", "%20%23").toString() +"%20%23chat%20on%20%23ArabEngo%3A%20&summary=&source=");
+  $(".share-facebook").attr("href", "https://www.facebook.com/sharer/sharer.php?u=https%3A//michaelsboost.github.io/ArabEngo/chat/%23" + hash);
+  $(".share-twitter").attr("href", "https://twitter.com/home?status=Checkout%20my%20%23"+ $("[data-set=topic]").text().replace(" ", "%20%23").toString() +"%20%23chat%20on%20%23ArabEngo%20%23ArabEngoChat%20-%20https%3A//michaelsboost.github.io/ArabEngo/chat/%23" + hash);
+  $(".share-gplus").attr("href", "https://plus.google.com/share?url=https%3A//michaelsboost.github.io/ArabEngo/chat/%23" + hash);
+  $(".share-linkedin-square").attr("href", "https://www.linkedin.com/shareArticle?mini=true&url=https%3A//michaelsboost.github.io/ArabEngo/chat/%23"+ hash +"&title=Checkout%20my%20%23"+ $("[data-set=topic]").text().replace(" ", "%20%23").toString() +"%20%23chat%20on%20%23ArabEngo%3A%20&summary=&source=");
 } else {
   $(document.body).append('<div class="fixedfill no-hash"></div>');
   $(".no-hash").html('<div class="table"><div class="cell"><h1>No chat detected!</h1><a class="launcheditor" href="../editor" target="_blank">Launch Editor!</a></div></div>');
