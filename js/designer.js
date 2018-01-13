@@ -364,19 +364,19 @@ $(document).ready(function() {
             hash = window.location.hash.replace(/#/g,"");
 
             embedProject = e.html_url.split("https://gist.github.com/").join("");
-            document.querySelector("[data-output=lessonURL]").value = "https://mikethedj4.github.io/ArabEngo/lessons/#" + embedProject;
+            document.querySelector("[data-output=lessonURL]").value = "https://michaelsboost.github.io/ArabEngo/lessons/#" + embedProject;
             document.querySelector("[data-output=lessonURL]").onclick = function() {
               this.select(true);
             };
-            document.querySelector("[data-output=editLesson]").value = "https://mikethedj4.github.io/ArabEngo/designer/#" + embedProject;
+            document.querySelector("[data-output=editLesson]").value = "https://michaelsboost.github.io/ArabEngo/designer/#" + embedProject;
             document.querySelector("[data-output=editLesson]").onclick = function() {
               this.select(true);
             };
 
-            $(".share-facebook").attr("href", "https://www.facebook.com/sharer/sharer.php?u=https%3A//mikethedj4.github.io/ArabEngo/lessons/%23" + hash);
-            $(".share-twitter").attr("href", "https://twitter.com/home?status=Checkout%20my%20%23"+ $("[data-lesson=title]").text().replace(" ", "%20%23").toString() +"%20%23lesson%20on%20%23ArabEngo%20%23ArabEngoLessons%20-%20https%3A//mikethedj4.github.io/ArabEngo/lessons/%23" + hash);
-            $(".share-gplus").attr("href", "https://plus.google.com/share?url=https%3A//mikethedj4.github.io/ArabEngo/lessons/%23" + hash);
-            $(".share-linkedin-square").attr("href", "https://www.linkedin.com/shareArticle?mini=true&url=https%3A//mikethedj4.github.io/ArabEngo/lessons/%23"+ hash +"&title=Checkout%20my%20%23"+ $("[data-lesson=title]").text().replace(" ", "%20%23").toString() +"%20%23lesson%20on%20%23ArabEngo%3A%20&summary=&source=");
+            $(".share-facebook").attr("href", "https://www.facebook.com/sharer/sharer.php?u=https%3A//michaelsboost.github.io/ArabEngo/lessons/%23" + hash);
+            $(".share-twitter").attr("href", "https://twitter.com/home?status=Checkout%20my%20%23"+ $("[data-lesson=title]").text().replace(" ", "%20%23").toString() +"%20%23lesson%20on%20%23ArabEngo%20%23ArabEngoLessons%20-%20https%3A//michaelsboost.github.io/ArabEngo/lessons/%23" + hash);
+            $(".share-gplus").attr("href", "https://plus.google.com/share?url=https%3A//michaelsboost.github.io/ArabEngo/lessons/%23" + hash);
+            $(".share-linkedin-square").attr("href", "https://www.linkedin.com/shareArticle?mini=true&url=https%3A//michaelsboost.github.io/ArabEngo/lessons/%23"+ hash +"&title=Checkout%20my%20%23"+ $("[data-lesson=title]").text().replace(" ", "%20%23").toString() +"%20%23lesson%20on%20%23ArabEngo%3A%20&summary=&source=");
             $(".preloader").remove();
             $("[data-action=socialdialog]").fadeIn();
 
