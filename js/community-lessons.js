@@ -1,4 +1,7 @@
 $(document).ready(function() {
+  // Announce Discontinuation
+  alertify.alert("ArabEngo Discontinued:", "As of Mar 21, 2018 Github updated their API on Gists. In which you can <a href='https://help.github.com/articles/creating-gists' target='_blank'>no longer save gists anonymously</a>.<br><br>If you try to save a gist anonymously you will be presented with a 404 as seen on Dabblet.com.<br><br><img src='https://user-images.githubusercontent.com/2473707/38180483-933e0d50-35f2-11e8-8e24-0cca98d4f4db.png'><br><br>ArabEngo relied on Github Gists to save your chats and lessons anonymously to the community. Do to this update ArabEngo is officially a discontinued project as of April 2, 2018.");
+
   var hash = window.location.hash.substring(1);
   function loadgist(gistid) {
     $.ajax({
