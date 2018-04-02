@@ -1,3 +1,6 @@
+// Announce Discontinuation
+alertify.alert("ArabEngo Discontinued:", "As of Mar 21, 2018 Github updated their API on Gists. In which you can <a href='https://help.github.com/articles/creating-gists' target='_blank'>no longer save gists anonymously</a>.<br><br>If you try to save a gist anonymously you will be presented with a 404 as seen on Dabblet.com.<br><br><img src='https://user-images.githubusercontent.com/2473707/38180483-933e0d50-35f2-11e8-8e24-0cca98d4f4db.png'><br><br>ArabEngo relied on Github Gists to save your chats and lessons anonymously to the community. Do to this update ArabEngo is officially a discontinued project as of April 2, 2018.");
+
 var addImage = function(source) {
   document.querySelector("[data-search=flicker]").value = "";
   document.querySelector("[data-output=images]").innerHTML = "";
@@ -318,75 +321,8 @@ $(document).ready(function() {
 
         // Save as a Gist Online
         $("[data-action=save-gist]").on("click", function() {
-          $(document.body).append('<div class="fixedfill preloader"></div>');
-          $(".preloader").html('<div class="table"><div class="cell"><img class="spin" src="../imgs/loading.svg"></div></div>');
-          detectOrientation();
-          
-          setLessonCode();
-          fullLessonCode();
-          var grabHTML = $("[data-output=html]").html();
-          var lessonCode = $('.fullcode').val();
-
-          // check for title
-          if ( !$('[data-lesson=title]').text()) {
-            $('[data-lesson=title]').text("Saved from ArabEngo!");
-          }
-          if ( !$('[data-lesson=description]').text()) {
-            $('[data-lesson=description]').text("Saved from ArabEngo!");
-          }
-
-          // Return user properties
-          var sArr = {
-            "lessonTitle": $('[data-lesson=title]').text(),
-            "lessonPage": $(".mdl-layout__tab-bar .mdl-layout__tab.is-active").index(),
-            "description": $('[data-lesson=description]').text()
-          };
-
-          var files = {};
-          files["lessons.html"]   = $("[data-output=html]").html() ? { content: $("[data-output=html]").html() } : null;
-          files["lesson.html"]   = $('.fullcode').val() ? { content: $('.fullcode').val() } : null;
-          files["properties.json"] = { "content": JSON.stringify(sArr) };
-
-          data = {
-            "description": $("[data-set=topic]").text(),
-            "public": true,
-            "files": files
-          };
-
-          // Post on Github via JQuery Ajax
-          $.ajax({
-            url: "https://api.github.com/gists",
-            type: "POST",
-            dataType: "json",
-            data: JSON.stringify(data)
-          }).success(function(e) {
-            window.location.hash = e.html_url.split("https://gist.github.com/").join("");
-            hash = window.location.hash.replace(/#/g,"");
-
-            embedProject = e.html_url.split("https://gist.github.com/").join("");
-            document.querySelector("[data-output=lessonURL]").value = "https://michaelsboost.github.io/ArabEngo/lessons/#" + embedProject;
-            document.querySelector("[data-output=lessonURL]").onclick = function() {
-              this.select(true);
-            };
-            document.querySelector("[data-output=editLesson]").value = "https://michaelsboost.github.io/ArabEngo/designer/#" + embedProject;
-            document.querySelector("[data-output=editLesson]").onclick = function() {
-              this.select(true);
-            };
-
-            $(".share-facebook").attr("href", "https://www.facebook.com/sharer/sharer.php?u=https%3A//michaelsboost.github.io/ArabEngo/lessons/%23" + hash);
-            $(".share-twitter").attr("href", "https://twitter.com/home?status=Checkout%20my%20%23"+ $("[data-lesson=title]").text().replace(" ", "%20%23").toString() +"%20%23lesson%20on%20%23ArabEngo%20%23ArabEngoLessons%20-%20https%3A//michaelsboost.github.io/ArabEngo/lessons/%23" + hash);
-            $(".share-gplus").attr("href", "https://plus.google.com/share?url=https%3A//michaelsboost.github.io/ArabEngo/lessons/%23" + hash);
-            $(".share-linkedin-square").attr("href", "https://www.linkedin.com/shareArticle?mini=true&url=https%3A//michaelsboost.github.io/ArabEngo/lessons/%23"+ hash +"&title=Checkout%20my%20%23"+ $("[data-lesson=title]").text().replace(" ", "%20%23").toString() +"%20%23lesson%20on%20%23ArabEngo%3A%20&summary=&source=");
-            $(".preloader").remove();
-            $("[data-action=socialdialog]").fadeIn();
-
-            // Successfully saved lesson. 
-            // Ask to support open source software.
-            // alertify.message("<div class=\"grid\"><div class=\"centered grid__col--12 tc\"><h2>Help keep this free!</h2><a href=\"https://snaptee.co/t/2nezt/?r=fb&teeId=2nezt\" target=\"_blank\"><img src=\"../assets/images/model-2.jpg\" width=\"100%\"></a><a class=\"btn--success\" href=\"https://snaptee.co/t/2nezt/?r=fb&teeId=2nezt\" target=\"_blank\" style=\"display: block;\">Buy Now</a></div></div>");
-          }).error(function(e) {
-            console.warn("Error: Could not save weave!", e);
-            alertify.error("Error: Could not save weave!");
-          });
+          // Announce Discontinuation
+          alertify.alert("ArabEngo Discontinued:", "As of Mar 21, 2018 Github updated their API on Gists. In which you can <a href='https://help.github.com/articles/creating-gists' target='_blank'>no longer save gists anonymously</a>.<br><br>If you try to save a gist anonymously you will be presented with a 404 as seen on Dabblet.com.<br><br><img src='https://user-images.githubusercontent.com/2473707/38180483-933e0d50-35f2-11e8-8e24-0cca98d4f4db.png'><br><br>ArabEngo relied on Github Gists to save your chats and lessons anonymously to the community. Do to this update ArabEngo is officially a discontinued project as of April 2, 2018.");
         });
         
         // Donate modal
