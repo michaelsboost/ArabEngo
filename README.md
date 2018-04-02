@@ -103,13 +103,17 @@ Author
 
 - [michael schwartz](http://michaelsboost.github.io/) and others
 
-Contribution
+Development
 -------------
 
-Want to contribute? Great!  
+As of Mar 21, 2018 Github updated their API on Gists. In which you can [no longer save gists anonymously](https://help.github.com/articles/creating-gists).
 
-You can submit a pull request or simply share the project :)
+If you try to save a gist anonymously you will be presented with a 404.
 
-Of course ArabEngo is free and open source, so you can always fork the project and have fun :)
+![screen shot 2018-04-01 at 9 17 21 pm](https://user-images.githubusercontent.com/2473707/38180483-933e0d50-35f2-11e8-8e24-0cca98d4f4db.png)
+
+ArabEngo relied on Github Gists to save your chats and lessons anonymously to the community. Do to this update ArabEngo is officially a discontinued project as of April 2, 2018.
+
+ArabEngo is free and open source, so you can always fork the project and have fun :)
 
 If ArabEngo was at all helpful for you. You can show your appreciation by [Donating via SquareCash](https://cash.me/$michaelsboost) and/or [PayPal](https://www.paypal.me/mikethedj4)
