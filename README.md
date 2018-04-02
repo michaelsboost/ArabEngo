@@ -5,11 +5,7 @@ Learn Arabic for English Speakers with ArabEngo!
 
 We all learned our first language through social interaction and communication. Sites like [Verbling](https://www.verbling.com/community) and [Speaky](https://www.speaky.com/) are great sites that take advantage of using this technique and we highly recommend them!
 
-However what if you don't want to have a conversation with a real person? What if you just want to text message a robot and learn the language that way? That's why we created ArabEngo!
-
-To Do's
--------------
-- Incorporate 3 sample templates for lesson designer
+However what if you don't want to have a conversation with a real person? What if you just want to text message a robot and learn the language that way? That's why I created ArabEngo!
 
 License
 -------------
@@ -24,7 +20,7 @@ Version
 Availability
 -------------
 
-Currently ArabEngo is only available [Online](https://michaelsboost.github.io/ArabEngo/) however you can export it for Windows, Linux, Mac OS X, Chrome and for mobile devices (via PhoneGap) using [WebDGap](https://michaelsboost.github.io/WebDGap/)
+Currently ArabEngo is only available [Online](https://michaelsboost.github.io/ArabEngo/) however you can export it for Windows, Linux, Mac OS X, Chrome and for mobile devices (via PhoneGap Build) using [WebDGap](https://michaelsboost.github.io/WebDGap/)
 
 Tech
 -------------
