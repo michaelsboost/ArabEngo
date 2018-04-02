@@ -445,76 +445,9 @@ var grabHTML,
       // Save as a Gist Online
       $("[data-action=save-gist]").on("click", function() {
         $(".sharelist").slideToggle();
-        grabHTML = $("[data-output=messages]").html();
-        $("[data-output=messages] .msg").addClass("hide");
-        $("[data-edit=msg]").remove();
         
-        // check if description and markdown editor have a value
-        if ( !$("[data-set=topic]").text()) {
-          $("[data-set=topic]").text("Saved from ArabEngo!");
-        }
-
-        // Return user properties
-        var sArr = {
-          "personName": $("[data-person]").text(),
-          "personAvatar": $("[data-set=avatar]").attr("data-avatarurl"),
-          "personGender": (document.getElementById('setGender').checked ? true : false),
-          "personLocation": $("[data-set=location]").text(),
-          "personTopic": $("[data-set=topic]").text(),
-          "personBio": $("[data-set=bio]").text(),
-          "description": $("[data-set=topic]").text()
-        };
-
-        var socialArr = {};
-        $("[data-social=links] input").each(function() {
-          var id = this.id;
-          socialArr[id] = (this.value ? this.value : "");
-        });
-
-        var files = {};
-        files["messages.html"]   = $("[data-output=messages]").html() ? { content: $("[data-output=messages]").html() } : null;
-        files["social.json"]     = { "content": JSON.stringify(socialArr) };
-        files["properties.json"] = { "content": JSON.stringify(sArr) };
-
-        data = {
-          "description": $("[data-set=topic]").text(),
-          "public": true,
-          "files": files
-        };
-
-        // Post on Github via JQuery Ajax
-        $.ajax({
-          url: "https://api.github.com/gists",
-          type: "POST",
-          dataType: "json",
-          data: JSON.stringify(data)
-        }).success(function(e) {
-          window.location.hash = e.html_url.split("https://gist.github.com/").join("");
-          hash = window.location.hash.replace(/#/g,"");
-          
-          embedProject = e.html_url.split("https://gist.github.com/").join("");
-          document.querySelector("[data-output=chatURL]").value = "https://michaelsboost.github.io/ArabEngo/chat/#" + embedProject;
-          document.querySelector("[data-output=chatURL]").onclick = function() {
-            this.select(true);
-          };
-          document.querySelector("[data-output=editProject]").value = "https://michaelsboost.github.io/ArabEngo/editor/#" + embedProject;
-          document.querySelector("[data-output=editProject]").onclick = function() {
-            this.select(true);
-          };
-
-          $(".share-facebook").attr("href", "https://www.facebook.com/sharer/sharer.php?u=https%3A//michaelsboost.github.io/ArabEngo/chat/%23" + hash);
-          $(".share-twitter").attr("href", "https://twitter.com/home?status=Checkout%20my%20%23"+ $("[data-set=topic]").text().replace(" ", "%20%23").toString() +"%20%23chat%20on%20%23ArabEngo%20%23ArabEngoChat%20-%20https%3A//michaelsboost.github.io/ArabEngo/chat/%23" + hash);
-          $(".share-gplus").attr("href", "https://plus.google.com/share?url=https%3A//michaelsboost.github.io/ArabEngo/chat/%23" + hash);
-          $(".share-linkedin-square").attr("href", "https://www.linkedin.com/shareArticle?mini=true&url=https%3A//michaelsboost.github.io/ArabEngo/chat/%23"+ hash +"&title=Checkout%20my%20%23"+ $("[data-set=topic]").text().replace(" ", "%20%23").toString() +"%20%23chat%20on%20%23ArabEngo%3A%20&summary=&source=");
-          $("[data-action=socialdialog]").fadeIn();
-
-          // Successfully saved weave. 
-          // Ask to support open source software.
-          // alertify.message("<div class=\"grid\"><div class=\"centered grid__col--12 tc\"><h2>Help keep this free!</h2><a href=\"https://snaptee.co/t/2nezt/?r=fb&teeId=2nezt\" target=\"_blank\"><img src=\"../assets/images/model-2.jpg\" width=\"100%\"></a><a class=\"btn--success\" href=\"https://snaptee.co/t/2nezt/?r=fb&teeId=2nezt\" target=\"_blank\" style=\"display: block;\">Buy Now</a></div></div>");
-        }).error(function(e) {
-          console.warn("Error: Could not save weave!", e);
-          alertify.error("Error: Could not save weave!");
-        });
+        // Announce Discontinuation
+        alertify.alert("ArabEngo Discontinued:", "As of Mar 21, 2018 Github updated their API on Gists. In which you can <a href='https://help.github.com/articles/creating-gists' target='_blank'>no longer save gists anonymously</a>.<br><br>If you try to save a gist anonymously you will be presented with a 404 as seen on Dabblet.com.<br><br><img src='https://user-images.githubusercontent.com/2473707/38180483-933e0d50-35f2-11e8-8e24-0cca98d4f4db.png'><br><br>ArabEngo relied on Github Gists to save your chats and lessons anonymously to the community. Do to this update ArabEngo is officially a discontinued project as of April 2, 2018.");
       });
       $("[data-action=social-close]").click(function() {
         $("[data-output=messages]").html(grabHTML);
