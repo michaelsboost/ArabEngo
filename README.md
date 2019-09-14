@@ -7,6 +7,11 @@ We all learned our first language through social interaction and communication. 
 
 However what if you don't want to have a conversation with a real person? What if you just want to text message a robot and learn the language that way? That's why I created ArabEngo!
 
+Did you know?
+-------------
+
+ArabEngo was the very first open source language learning application designed for English Speakers to learn Arabic.
+
 License
 -------------
 
